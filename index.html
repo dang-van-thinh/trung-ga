@@ -30,6 +30,19 @@
 </head>
 
 <body>
+    <!-- Custom Alert Notification -->
+    <div id="customAlert" class="custom-alert">
+        <div class="alert-content">
+            <span class="alert-icon">✓</span>
+            <div class="alert-text">
+                <div class="alert-customer"><strong id="customerName">Nguyễn Văn A</strong></div>
+                <div class="alert-product">vừa mua: <strong id="productName">Trứng Gà Thảo Dược - Hộp 10 Trứng</strong>
+                </div>
+            </div>
+            <span class="alert-close" id="alertCloseBtn">×</span>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-container">
@@ -55,8 +68,8 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <div class="discount-badge">GIẢM 25%</div>
-                <div class="discount-text">Mua 3 tặng 1</div>
+                <div class="discount-badge">GIẢM 20%</div>
+                <div class="discount-text">Mua 3 Tặng 1</div>
                 <h1>TRỨNG GÀ THẢO DƯỢC SADU</h1>
                 <p>Dinh dưỡng vàng cho mẹ bầu, mẹ bỉm sữa và gia đình. Nuôi bằng thảo dược tự nhiên, không kháng sinh,
                     cholesterol thấp chỉ 1/2 so với trứng thường.</p>
@@ -75,17 +88,17 @@
             <div class="benefit-item">
                 <div class="benefit-icon">✓</div>
                 <h3>Bảo Hành Chính Hãng</h3>
-                <p>100% sản phẩm chính hãng, có chứng chỉ kiểm nghiệm</p>
+                <p>Cam Kết 3 KHÔNG : Không Kháng Sinh - Không Chất Kích Thích - Không Cám Công Nghiệp</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">🚚</div>
                 <h3>Giao Hàng Toàn Quốc</h3>
-                <p>Giao hàng nhanh, đóng gói cẩn thận</p>
+                <p>Giao hàng toàn quốc, đóng gói cẩn thận</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">🔄</div>
                 <h3>1 ĐỔI 1</h3>
-                <p>Bảo hành 1 đổi 1, nếu bị vỡ trong quá trình vận chuyển</p>
+                <p>Bảo hành 1 đổi 1 hoặc hoàn tiền, nếu bị vỡ trong quá trình vận chuyển</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">💬</div>
@@ -108,7 +121,7 @@
                 <p>Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư
                     kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.</p>
 
-                <h3 style="margin-top: 25px;">Giải Pháp Từ Sadu</h3>
+                <h3 style="margin-top: 25px;">Giải Pháp Từ SADU</h3>
                 <ul class="why-list">
                     <li>100% nuôi bằng thảo dược tự nhiên (cà gai leo, xạ đen, đinh lăng , khôi đốm,...)</li>
                     <li>Không tồn dư kháng sinh - An toàn tuyệt đối</li>
@@ -122,7 +135,7 @@
 
     <!-- Comparison Table -->
     <section class="comparison">
-        <h2>So Sánh Trứng Sadu vs Trứng Thường</h2>
+        <h2>So Sánh Trứng Gà Thảo Dược SADU vs Trứng Thường</h2>
         <table class="comparison-table">
             <thead>
                 <tr>
@@ -275,7 +288,7 @@
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <div class="testimonial-text">"Mình mua Sadu cho cả gia đình. Trứng tươi, ngon, an toàn cho con. Mình
-                    thích nhất là có thể truy xuất nguồn gốc qua QR code, biết rõ trứng từ đâu."</div>
+                    đã mua tại sadu 2 năm nay rồi."</div>
                 <div class="testimonial-author">
                     <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp"
                         alt="Chị Minh" class="author-avatar">
@@ -318,11 +331,11 @@
             <div class="pricing-table">
                 <div class="pricing-item">
                     <h3>1 Hộp Trứng Gà Thảo Dược SADU</h3>
-                    <p>149.500đ</p>
+                    <p>119.500đ</p>
                     <ul>
                         <li>✓ 12 quả trứng</li>
-                        <li>✓ Miễn phí vận chuyển</li>
-                        <!-- <li>✓ </li> -->
+                        <!-- <li>✓ Miễn phí vận chuyển toàn quốc</li> -->
+                        <li>✓ Phụ thụ 30.000đ phí ship</li>
                         <li>✓ Tư vấn 24/7</li>
                     </ul>
                     <button class="cta-btn" onclick="addToCart('1 Hộp Sadu', 149500)" style="width: 100%;">ĐẶT

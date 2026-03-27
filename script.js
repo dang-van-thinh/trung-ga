@@ -1,5 +1,93 @@
 
-// Countdown Timer
+// ============ CUSTOM ALERT NOTIFICATION ============
+// Fake customer data - 10 customers
+const fakeCustomers = [
+    { name: "Nguyễn Thị Hương", product: "Trứng Gà Thảo Dược - 1 Hộp Trứng" },
+    { name: "Trần Văn Đức", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
+    { name: "Phạm Thị Linh", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
+    { name: "Hoàng Minh Tuấn", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
+    { name: "Lê Thị Hoa", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
+    { name: "Đỗ Văn Hùng", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
+    { name: "Vũ Thị Xuân", product: "Trứng Gà Thảo Dược - 1 Hộp Trứng" },
+    { name: "Bùi Văn Long", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
+    { name: "Trương Thị Mai", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
+    { name: "Đinh Văn Sơn", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" }
+];
+
+let currentCustomerIndex = 0;
+let alertTimeout;
+
+// Function to display customer alert
+function showCustomerAlert() {
+    const customer = fakeCustomers[currentCustomerIndex];
+    const alertEl = document.getElementById('customAlert');
+
+    document.getElementById('customerName').textContent = customer.name;
+    document.getElementById('productName').textContent = customer.product;
+
+    // Remove hide class if exists
+    alertEl.classList.remove('hide');
+
+    // Trigger animation
+    setTimeout(() => {
+        alertEl.classList.add('show');
+    }, 10);
+
+    // Hide alert after 10 seconds and show next one
+    clearTimeout(alertTimeout);
+    alertTimeout = setTimeout(() => {
+        hideCustomerAlert();
+        currentCustomerIndex = (currentCustomerIndex + 1) % fakeCustomers.length;
+
+        // Show next alert after 1 second
+        setTimeout(() => {
+            showCustomerAlert();
+        }, 7000);
+    }, 5000);
+}
+
+// Function to close alert (when user clicks X)
+function closeCustomerAlert() {
+    const alertEl = document.getElementById('customAlert');
+    alertEl.classList.remove('show');
+    alertEl.classList.add('hide');
+
+    clearTimeout(alertTimeout);
+
+    // Move to next customer and show after delay
+    currentCustomerIndex = (currentCustomerIndex + 1) % fakeCustomers.length;
+    setTimeout(() => {
+        showCustomerAlert();
+    }, 5000);
+}
+
+function hideCustomerAlert() {
+    const alertEl = document.getElementById('customAlert');
+    alertEl.classList.remove('show');
+    alertEl.classList.add('hide');
+}
+
+// Start showing alerts when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Setup close button event listener
+    const closeBtn = document.getElementById('alertCloseBtn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeCustomerAlert);
+    }
+
+    setTimeout(() => {
+        showCustomerAlert();
+    }, 2000);
+});
+
+// ============ END CUSTOM ALERT ============
+
+// Function to toggle mobile menu
+function toggleMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    navMenu.classList.toggle('mobile-active');
+}
+
 function updateCountdown() {
     const endDate = new Date();
     endDate.setDate(endDate.getDate() + 3);
@@ -45045,29 +45133,29 @@ function submitOrder(event) {
         method: 'POST',
         body: formData
     })
-    .then(response => {
-        console.log('✅ Gửi thành công:', response);
-        // Thành công nếu request được gửi (không cần check response vì Google Apps Script không trả về CORS header)
-        const fullAddress = `${detailedAddress}, ${ward}, ${district}, ${province}`;
-        const message = `Cảm ơn bạn!\nĐơn hàng của bạn đã được ghi nhận.\n\n- Khách: ${name}\n- SĐT: ${phone}\n- Địa chỉ: ${fullAddress}\n- Sản phẩm: ${product}\n- Số lượng: ${quantity}\n\nChúng tôi sẽ liên hệ với bạn sớm nhất.`;
-        alert(message);
-        
-        // Thêm vào hàm submitOrder
-        fbq('track', 'AddToCart'); // Khi thêm vào giỏ
-        fbq('track', 'Purchase', { value: quantity * 100000, currency: 'VND' }); // Khi hoàn tất đơn
-        
-        closeOrderModal();
-        document.querySelector('form').reset();
-        
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-    })
-    .catch(error => {
-        console.error('Lỗi:', error);
-        alert('Lỗi kết nối! Vui lòng thử lại.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-    });
+        .then(response => {
+            console.log('✅ Gửi thành công:', response);
+            // Thành công nếu request được gửi (không cần check response vì Google Apps Script không trả về CORS header)
+            const fullAddress = `${detailedAddress}, ${ward}, ${district}, ${province}`;
+            const message = `Cảm ơn bạn!\nĐơn hàng của bạn đã được ghi nhận.\n\n- Khách: ${name}\n- SĐT: ${phone}\n- Địa chỉ: ${fullAddress}\n- Sản phẩm: ${product}\n- Số lượng: ${quantity}\n\nChúng tôi sẽ liên hệ với bạn sớm nhất.`;
+            alert(message);
+
+            // Thêm vào hàm submitOrder
+            fbq('track', 'AddToCart'); // Khi thêm vào giỏ
+            fbq('track', 'Purchase', { value: quantity * 100000, currency: 'VND' }); // Khi hoàn tất đơn
+
+            closeOrderModal();
+            document.querySelector('form').reset();
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+            alert('Lỗi kết nối! Vui lòng thử lại.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        });
 }
 
 // FAQ Toggle
