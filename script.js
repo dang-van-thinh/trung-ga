@@ -45140,9 +45140,11 @@ function submitOrder(event) {
             const message = `Cảm ơn bạn!\nĐơn hàng của bạn đã được ghi nhận.\n\n- Khách: ${name}\n- SĐT: ${phone}\n- Địa chỉ: ${fullAddress}\n- Sản phẩm: ${product}\n- Số lượng: ${quantity}\n\nChúng tôi sẽ liên hệ với bạn sớm nhất.`;
             alert(message);
 
-            // Thêm vào hàm submitOrder
-            fbq('track', 'AddToCart'); // Khi thêm vào giỏ
-            fbq('track', 'Purchase', { value: quantity * 100000, currency: 'VND' }); // Khi hoàn tất đơn
+            // Khi khách click hoàn tất đặt hàng, bắn sự kiện 'Lead' hoặc 'Purchase' về Facebook
+            fbq('track', 'Lead', {
+                content_name: 'Đặt Mua Trứng Sadu',
+                currency: 'VND'
+            });
 
             closeOrderModal();
             document.querySelector('form').reset();
