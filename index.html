@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trứng Gà Thảo Dược Sadu - Dinh Dưỡng Vàng Cho Mẹ Và Bé</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID_HERE'); // Thay YOUR_PIXEL_ID_HERE bằng ID thực tế
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -15,7 +37,7 @@
                 <div class="logo-icon">🥚</div>
                 <div>
                     <div>SADU</div>
-                    <div style="font-size: 12px;">Thảo Dược Tự Nhiên</div>
+                    <div style="font-size: 12px;">Trứng Gà Thảo Dược</div>
                 </div>
             </div>
             <nav class="nav-menu">
@@ -36,11 +58,13 @@
                 <div class="discount-badge">GIẢM 25%</div>
                 <div class="discount-text">Mua 3 tặng 1</div>
                 <h1>TRỨNG GÀ THẢO DƯỢC SADU</h1>
-                <p>Dinh dưỡng vàng cho mẹ bầu, mẹ bỉm sữa và gia đình. Nuôi bằng thảo dược tự nhiên, không kháng sinh, cholesterol thấp chỉ 1/3 so với trứng thường.</p>
+                <p>Dinh dưỡng vàng cho mẹ bầu, mẹ bỉm sữa và gia đình. Nuôi bằng thảo dược tự nhiên, không kháng sinh,
+                    cholesterol thấp chỉ 1/2 so với trứng thường.</p>
                 <button class="cta-btn" onclick="openOrderModal()">ĐẶT MUA NGAY</button>
             </div>
             <div class="hero-image">
-                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/hero-farm-fresh-eggs-GDHWnV9c8HNLyoMcyNhwLZ.webp" alt="Trứng Sadu">
+                <!-- <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/hero-farm-fresh-eggs-GDHWnV9c8HNLyoMcyNhwLZ.webp" alt="Trứng Sadu"> -->
+                <img src="source/trung-2.jpg" alt="Trứng Sadu">
             </div>
         </div>
     </section>
@@ -56,12 +80,12 @@
             <div class="benefit-item">
                 <div class="benefit-icon">🚚</div>
                 <h3>Giao Hàng Toàn Quốc</h3>
-                <p>Giao hàng nhanh, đúng tiến độ, đóng gói cẩn thận</p>
+                <p>Giao hàng nhanh, đóng gói cẩn thận</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">🔄</div>
-                <h3>Đổi Mới 3 Ngày</h3>
-                <p>Không hài lòng? Đổi mới trong 3 ngày</p>
+                <h3>1 ĐỔI 1</h3>
+                <p>Bảo hành 1 đổi 1, nếu bị vỡ trong quá trình vận chuyển</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">💬</div>
@@ -73,22 +97,24 @@
 
     <!-- Why Section -->
     <section class="why-section">
-        <h2>Tại Sao Bạn Cần Trứng Sadu?</h2>
+        <h2>Tại Sao Bạn Nên Lựa Chọn Trứng Gà Thảo Dược SADU ?</h2>
         <div class="why-content">
             <div class="why-image">
-                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp" alt="Mẹ và bé">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp"
+                    alt="Mẹ và bé">
             </div>
             <div class="why-text">
                 <h3>Mẹ Bầu & Mẹ Bỉm Sữa Luôn Lo Lắng</h3>
-                <p>Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.</p>
-                
+                <p>Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư
+                    kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.</p>
+
                 <h3 style="margin-top: 25px;">Giải Pháp Từ Sadu</h3>
                 <ul class="why-list">
-                    <li>100% nuôi bằng thảo dược tự nhiên (cà gai leo, tỏi, hoàn ngọc, quế)</li>
+                    <li>100% nuôi bằng thảo dược tự nhiên (cà gai leo, xạ đen, đinh lăng , khôi đốm,...)</li>
                     <li>Không tồn dư kháng sinh - An toàn tuyệt đối</li>
-                    <li>Cholesterol chỉ ~125mg/100g (thấp hơn 1/3 so với trứng thường)</li>
-                    <li>Lòng đỏ sánh màu, không mùi tanh</li>
-                    <li>Truy xuất nguồn gốc 100% qua QR code</li>
+                    <li>Cholesterol thấp hơn 1/2 so với trứng thường - Lựa chọn an toàn cho người già và trẻ nhỏ</li>
+                    <li>Lòng đỏ đặc, thơm ngon, béo ngậy, không tanh</li>
+                    <li>Cam kết 3 không : Không kháng sinh, Không chất kích thích, Không cám công nghiệp</li>
                 </ul>
             </div>
         </div>
@@ -107,7 +133,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Thảo Dược Tự Nhiên</strong></td>
+                    <td><strong>Đội Ngũ Chuyên Gia</strong></td>
+                    <td><span class="check-mark">✓</span></td>
+                    <td><span class="cross-mark">✗</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Thức Ăn 100% Từ Thực Vật</strong></td>
                     <td><span class="check-mark">✓</span></td>
                     <td><span class="cross-mark">✗</span></td>
                 </tr>
@@ -127,10 +158,11 @@
                     <td><span class="cross-mark">✗</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Truy Xuất Nguồn Gốc</strong></td>
+                    <td><strong>Chế độ chăm sóc đặc biệt</strong></td>
                     <td><span class="check-mark">✓</span></td>
                     <td><span class="cross-mark">✗</span></td>
                 </tr>
+
                 <tr>
                     <td><strong>An Toàn Cho Mẹ Bầu</strong></td>
                     <td><span class="check-mark">✓</span></td>
@@ -146,47 +178,48 @@
         <div class="products-container">
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/sadu-packaging-detail-FeDaS4xCHZ4d5nzjpCQCxP.webp" alt="Sadu Egg">
+                    <!-- <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/sadu-packaging-detail-FeDaS4xCHZ4d5nzjpCQCxP.webp" alt="Sadu Egg"> -->
+                    <img src="source/trung-3.png" alt="Sadu Egg">
                     <div class="discount-label">-15%</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-name">1 Hộp Sadu</div>
+                    <div class="product-name">1 Hộp</div>
                     <div class="product-specs">
-                        • 10 quả trứng<br>
-                        • Thảo dược tự nhiên<br>
-                        • Không kháng sinh
+                        • 12 quả trứng<br>
+                        • Phí ship +30.000đ<br>
                     </div>
                     <div class="product-price">
-                        <span class="price-old">200.000đ</span>
-                        <span class="price-new">170.000đ</span>
+                        <!-- <span class="price-old">200.000đ</span> -->
+                        <span class="price-new">149.500đ <span style="font-size: small;">(Đã bao gồm phí
+                                ship)</span></span>
                     </div>
-                    <button class="product-btn" onclick="addToCart('1 Hộp Sadu', 170000)">ĐẶT MUA NGAY</button>
+                    <button class="product-btn" onclick="addToCart('1 Hộp', 149500)">ĐẶT MUA NGAY</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/sadu-packaging-detail-FeDaS4xCHZ4d5nzjpCQCxP.webp" alt="Sadu Egg">
+                    <img src="source/trung-3.png" alt="Sadu Egg">
                     <div class="discount-label">-20%</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-name">Combo 3 Hộp Sadu</div>
+                    <div class="product-name">Combo 3 Hộp Tặng 1</div>
                     <div class="product-specs">
-                        • 30 quả trứng<br>
-                        • Mua 3 tặng 1<br>
+                        • 48 quả trứng<br>
+                        • Miễn phí vận chuyển toàn quốc<br>
                         • Tiết kiệm 20%
                     </div>
                     <div class="product-price">
-                        <span class="price-old">600.000đ</span>
-                        <span class="price-new">480.000đ</span>
+                        <span class="price-old">478.000đ</span>
+                        <span class="price-new">358.000đ</span>
                     </div>
-                    <button class="product-btn" onclick="addToCart('Combo 3 Hộp Sadu', 480000)">ĐẶT MUA NGAY</button>
+                    <button class="product-btn" onclick="addToCart('Combo 3 Hộp Tặng 1', 358000)">ĐẶT MUA NGAY</button>
                 </div>
             </div>
 
-            <div class="product-card">
+            <!-- <div class="product-card">
                 <div class="product-image">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/sadu-packaging-detail-FeDaS4xCHZ4d5nzjpCQCxP.webp" alt="Sadu Egg">
+                    <img src="source/trung-3.png" alt="Sadu Egg">
                     <div class="discount-label">-25%</div>
                 </div>
                 <div class="product-info">
@@ -202,7 +235,7 @@
                     </div>
                     <button class="product-btn" onclick="addToCart('Combo 5 Hộp Sadu', 750000)">ĐẶT MUA NGAY</button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -212,9 +245,12 @@
         <div class="testimonials-container">
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <div class="testimonial-text">"Mình rất lo lắng về chất lượng trứng cho thai kỳ. Sau khi dùng Sadu, mình cảm thấy yên tâm vì sản phẩm hoàn toàn tự nhiên và không có kháng sinh. Lòng đỏ sánh màu, ngon lắm!"</div>
+                <div class="testimonial-text">"Mình rất lo lắng về chất lượng trứng cho thai kỳ. Sau khi dùng Sadu, mình
+                    cảm thấy yên tâm vì sản phẩm hoàn toàn tự nhiên và không có kháng sinh. Lòng đỏ sánh màu, ngon lắm!"
+                </div>
                 <div class="testimonial-author">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp" alt="Chị Hương" class="author-avatar">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp"
+                        alt="Chị Hương" class="author-avatar">
                     <div class="author-info">
                         <h4>Chị Hương</h4>
                         <p>Mẹ bầu - Tháng 7</p>
@@ -224,9 +260,11 @@
 
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <div class="testimonial-text">"Sau khi sinh, mình cần ăn nhiều trứng để tăng sữa. Trứng Sadu rất tốt, cholesterol thấp, lại không có kháng sinh. Con mình khỏe mạnh và sữa cũng nhiều hơn."</div>
+                <div class="testimonial-text">"Sau khi sinh, mình cần ăn nhiều trứng để tăng sữa. Trứng Sadu rất tốt,
+                    cholesterol thấp, lại không có kháng sinh. Con mình khỏe mạnh và sữa cũng nhiều hơn."</div>
                 <div class="testimonial-author">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp" alt="Chị Linh" class="author-avatar">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp"
+                        alt="Chị Linh" class="author-avatar">
                     <div class="author-info">
                         <h4>Chị Linh</h4>
                         <p>Mẹ bỉm sữa - Con 3 tháng</p>
@@ -236,9 +274,11 @@
 
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <div class="testimonial-text">"Mình mua Sadu cho cả gia đình. Trứng tươi, ngon, an toàn cho con. Mình thích nhất là có thể truy xuất nguồn gốc qua QR code, biết rõ trứng từ đâu."</div>
+                <div class="testimonial-text">"Mình mua Sadu cho cả gia đình. Trứng tươi, ngon, an toàn cho con. Mình
+                    thích nhất là có thể truy xuất nguồn gốc qua QR code, biết rõ trứng từ đâu."</div>
                 <div class="testimonial-author">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp" alt="Chị Minh" class="author-avatar">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp"
+                        alt="Chị Minh" class="author-avatar">
                     <div class="author-info">
                         <h4>Chị Minh</h4>
                         <p>Mẹ trẻ - Con 2 tuổi</p>
@@ -252,7 +292,7 @@
     <section class="pricing">
         <div class="pricing-container">
             <h2>ĐẶT HÀNG NHANH TAY - ƯU ĐÃI CÓ HẠN</h2>
-            
+
             <div class="countdown">
                 <h3>⏰ Ưu đãi kết thúc sau</h3>
                 <div class="countdown-timer">
@@ -285,7 +325,8 @@
                         <li>✓ Không kháng sinh</li>
                         <li>✓ Truy xuất nguồn gốc</li>
                     </ul>
-                    <button class="cta-btn" onclick="addToCart('1 Hộp Sadu', 170000)" style="width: 100%;">ĐẶT MUA</button>
+                    <button class="cta-btn" onclick="addToCart('1 Hộp Sadu', 170000)" style="width: 100%;">ĐẶT
+                        MUA</button>
                 </div>
 
                 <div class="pricing-item featured">
@@ -297,7 +338,8 @@
                         <li>✓ Tiết kiệm 6%</li>
                         <li>✓ Giao hàng nhanh</li>
                     </ul>
-                    <button class="cta-btn" onclick="addToCart('2 Hộp Sadu', 319000)" style="width: 100%; background: white; color: var(--accent);">ĐẶT MUA</button>
+                    <button class="cta-btn" onclick="addToCart('2 Hộp Sadu', 319000)"
+                        style="width: 100%; background: white; color: var(--accent);">ĐẶT MUA</button>
                 </div>
 
                 <div class="pricing-item">
@@ -309,7 +351,8 @@
                         <li>✓ Tiết kiệm 20%</li>
                         <li>✓ Hỗ trợ 24/7</li>
                     </ul>
-                    <button class="cta-btn" onclick="addToCart('3 Hộp Sadu', 480000)" style="width: 100%;">ĐẶT MUA</button>
+                    <button class="cta-btn" onclick="addToCart('3 Hộp Sadu', 480000)" style="width: 100%;">ĐẶT
+                        MUA</button>
                 </div>
             </div>
         </div>
@@ -325,7 +368,9 @@
                     <span class="faq-icon">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Có, trứng Sadu 100% an toàn cho mẹ bầu. Sản phẩm được nuôi bằng thảo dược tự nhiên, không tồn dư kháng sinh, và có cholesterol thấp. Tất cả sản phẩm đều được kiểm nghiệm bởi các phòng thí nghiệm uy tín.</p>
+                    <p>Có, trứng Sadu 100% an toàn cho mẹ bầu. Sản phẩm được nuôi bằng thảo dược tự nhiên, không tồn dư
+                        kháng sinh, và có cholesterol thấp. Tất cả sản phẩm đều được kiểm nghiệm bởi các phòng thí
+                        nghiệm uy tín.</p>
                 </div>
             </div>
 
@@ -335,7 +380,8 @@
                     <span class="faq-icon">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Chúng tôi giao hàng toàn quốc trong 2-3 ngày làm việc. Bạn sẽ nhận được SMS thông báo khi hàng được gửi đi. Chúng tôi cam kết giao hàng đúng tiến độ hoặc hoàn tiền 100%.</p>
+                    <p>Chúng tôi giao hàng toàn quốc trong 2-3 ngày làm việc. Bạn sẽ nhận được SMS thông báo khi hàng
+                        được gửi đi. Chúng tôi cam kết giao hàng đúng tiến độ hoặc hoàn tiền 100%.</p>
                 </div>
             </div>
 
@@ -345,7 +391,8 @@
                     <span class="faq-icon">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Có, chúng tôi cam kết đổi trả trong 3 ngày nếu sản phẩm không đạt yêu cầu. Nếu trứng không tươi hoặc bị vỡ, vui lòng liên hệ với chúng tôi ngay để được hỗ trợ.</p>
+                    <p>Có, chúng tôi cam kết đổi trả trong 3 ngày nếu sản phẩm không đạt yêu cầu. Nếu trứng không tươi
+                        hoặc bị vỡ, vui lòng liên hệ với chúng tôi ngay để được hỗ trợ.</p>
                 </div>
             </div>
 
@@ -355,7 +402,8 @@
                     <span class="faq-icon">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Trứng Sadu có cholesterol khoảng 125mg/100g, thấp hơn 1/3 so với trứng thường (380mg/100g). Điều này rất phù hợp cho mẹ bầu, mẹ bỉm sữa và những người cần kiểm soát cholesterol.</p>
+                    <p>Trứng Sadu có cholesterol khoảng 125mg/100g, thấp hơn 1/3 so với trứng thường (380mg/100g). Điều
+                        này rất phù hợp cho mẹ bầu, mẹ bỉm sữa và những người cần kiểm soát cholesterol.</p>
                 </div>
             </div>
 
@@ -365,7 +413,8 @@
                     <span class="faq-icon">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Mỗi hộp trứng Sadu đều có mã QR code trên bao bì. Bạn chỉ cần quét mã QR bằng điện thoại để xem thông tin chi tiết về nguồn gốc, ngày sản xuất, và các chứng chỉ kiểm nghiệm.</p>
+                    <p>Mỗi hộp trứng Sadu đều có mã QR code trên bao bì. Bạn chỉ cần quét mã QR bằng điện thoại để xem
+                        thông tin chi tiết về nguồn gốc, ngày sản xuất, và các chứng chỉ kiểm nghiệm.</p>
                 </div>
             </div>
 
@@ -375,7 +424,8 @@
                     <span class="faq-icon">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Có, chúng tôi có đội hỗ trợ khách hàng 24/7. Bạn có thể liên hệ qua Hotline: 1900 123 456, Email: info@sadu.vn hoặc chat trực tiếp trên website.</p>
+                    <p>Có, chúng tôi có đội hỗ trợ khách hàng 24/7. Bạn có thể liên hệ qua Hotline: 1900 123 456, Email:
+                        info@sadu.vn hoặc chat trực tiếp trên website.</p>
                 </div>
             </div>
         </div>
@@ -436,10 +486,9 @@
                     <label for="productSelect">Chọn Sản Phẩm *</label>
                     <select id="productSelect" required>
                         <option value="">-- Chọn sản phẩm --</option>
-                        <option value="1-hop-sadu|170000">1 Hộp Sadu - 170.000đ</option>
-                        <option value="2-hop-sadu|319000">2 Hộp Sadu - 319.000đ</option>
-                        <option value="3-hop-sadu|480000">3 Hộp Sadu - 480.000đ</option>
-                        <option value="5-hop-sadu|750000">5 Hộp Sadu - 750.000đ</option>
+                        <option value="1-hop|149500">1 Hộp - 149.500đ</option>
+                        <option value="3-hop-tang-1|358500">3 Hộp Tặng 1 - 358.500đ</option>
+                        <!-- <option value="5-hop-sadu|750000">5 Hộp Sadu - 750.000đ</option> -->
                     </select>
                 </div>
 
@@ -457,11 +506,6 @@
                         <label for="phone">Số Điện Thoại *</label>
                         <input type="tel" id="phone" required>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email">
                 </div>
 
                 <div class="form-group">
@@ -486,19 +530,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="coupon">Mã Coupon (nếu có)</label>
-                    <input type="text" id="coupon" placeholder="VD: SADU25">
+                    <label for="address">Địa Chỉ Chi Tiết *</label>
+                    <input type="text" id="address" placeholder="VD: 123 Đường ABC, Số nhà..." required>
                 </div>
 
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" required> Tôi đồng ý với điều khoản sử dụng
-                    </label>
-                </div>
-
-                <div class="form-group" style="background: var(--bg-light); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <div class="form-group"
+                    style="background: var(--bg-light); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
                     <strong>Tổng Tiền: </strong>
-                    <span id="totalPrice" style="color: var(--accent); font-size: 18px; font-weight: bold;">170.000đ</span>
+                    <span id="totalPrice"
+                        style="color: var(--accent); font-size: 18px; font-weight: bold;">170.000đ</span>
                 </div>
 
                 <button type="submit" class="submit-btn">HOÀN TẤT ĐẶT HÀNG</button>
@@ -508,6 +548,7 @@
 
     <!-- Scroll to Top Button -->
     <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
-   <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
