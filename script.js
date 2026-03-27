@@ -79,7 +79,7 @@ function loadInlineLocations() {
     "provinces": [
         {
             "id": "01",
-            "name": "HANOI",
+            "name": "Hà Nội",
             "districts": [
                 {
                     "id": "001",
@@ -2369,7 +2369,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HAGIANG",
+            "name": "Hà Giang",
             "districts": [
                 {
                     "id": "024",
@@ -3213,7 +3213,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "CAOBANG",
+            "name": "Cao Bằng",
             "districts": [
                 {
                     "id": "040",
@@ -3923,7 +3923,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BACKAN",
+            "name": "Bắc Kạn",
             "districts": [
                 {
                     "id": "058",
@@ -4409,7 +4409,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "TUYENQUANG",
+            "name": "Tuyên Quang",
             "districts": [
                 {
                     "id": "070",
@@ -5005,7 +5005,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "LAOCAI",
+            "name": "Lào Cai",
             "districts": [
                 {
                     "id": "080",
@@ -5669,7 +5669,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "DIENBIEN",
+            "name": "Điện Biên",
             "districts": [
                 {
                     "id": "094",
@@ -6251,7 +6251,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "LAICHAU",
+            "name": "Lai Châu",
             "districts": [
                 {
                     "id": "105",
@@ -6729,7 +6729,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "SONLA",
+            "name": "Sơn La",
             "districts": [
                 {
                     "id": "116",
@@ -7607,7 +7607,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "YENBAI",
+            "name": "Yên Bái",
             "districts": [
                 {
                     "id": "132",
@@ -8339,7 +8339,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HOABINH",
+            "name": "Hòa Bình",
             "districts": [
                 {
                     "id": "148",
@@ -9009,7 +9009,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "THAINGUYEN",
+            "name": "Thái Nguyên",
             "districts": [
                 {
                     "id": "164",
@@ -9757,7 +9757,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "LANGSON",
+            "name": "Lạng Sơn",
             "districts": [
                 {
                     "id": "178",
@@ -10605,7 +10605,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "QUANGNINH",
+            "name": "Quảng Ninh",
             "districts": [
                 {
                     "id": "193",
@@ -11373,7 +11373,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BACGIANG",
+            "name": "Bắc Giang",
             "districts": [
                 {
                     "id": "213",
@@ -12207,7 +12207,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "PHUTHO",
+            "name": "Phú Thọ",
             "districts": [
                 {
                     "id": "227",
@@ -13119,7 +13119,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "VINHPHUC",
+            "name": "Vĩnh Phúc",
             "districts": [
                 {
                     "id": "243",
@@ -13663,7 +13663,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BACNINH",
+            "name": "Bắc Ninh",
             "districts": [
                 {
                     "id": "256",
@@ -14201,7 +14201,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HAIDUONG",
+            "name": "Hải Dương",
             "districts": [
                 {
                     "id": "288",
@@ -15107,7 +15107,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HAIPHONG",
+            "name": "Hải Phòng",
             "districts": [
                 {
                     "id": "303",
@@ -15903,7 +15903,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HUNGYEN",
+            "name": "Hưng Yên",
             "districts": [
                 {
                     "id": "323",
@@ -16525,7 +16525,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "THAIBINH",
+            "name": "Thái Bình",
             "districts": [
                 {
                     "id": "336",
@@ -17547,7 +17547,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HANAM",
+            "name": "Hà Nam",
             "districts": [
                 {
                     "id": "347",
@@ -17981,7 +17981,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "NAMDINH",
+            "name": "Nam Định",
             "districts": [
                 {
                     "id": "356",
@@ -18741,7 +18741,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "NINHBINH",
+            "name": "Ninh Bình",
             "districts": [
                 {
                     "id": "370",
@@ -19289,7 +19289,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "THANHHOA",
+            "name": "Thanh Hóa",
             "districts": [
                 {
                     "id": "380",
@@ -21639,7 +21639,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "NGHEAN",
+            "name": "Nghệ An",
             "districts": [
                 {
                     "id": "412",
@@ -23413,7 +23413,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HATINH",
+            "name": "Hà Tĩnh",
             "districts": [
                 {
                     "id": "436",
@@ -24327,7 +24327,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "QUANGBINH",
+            "name": "Quảng Bình",
             "districts": [
                 {
                     "id": "450",
@@ -24961,7 +24961,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "QUANGTRI",
+            "name": "Quảng Trị",
             "districts": [
                 {
                     "id": "461",
@@ -25535,7 +25535,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "THUATHIENHUE",
+            "name": "Thừa Thiên Huế",
             "districts": [
                 {
                     "id": "474",
@@ -26127,7 +26127,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "DANANG",
+            "name": "Đà Nẵng",
             "districts": [
                 {
                     "id": "490",
@@ -26401,7 +26401,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "QUANGNAM",
+            "name": "Quảng Nam",
             "districts": [
                 {
                     "id": "502",
@@ -27441,7 +27441,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "QUANGNGAI",
+            "name": "Quảng Ngãi",
             "districts": [
                 {
                     "id": "522",
@@ -28237,7 +28237,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BINHDINH",
+            "name": "Bình Định",
             "districts": [
                 {
                     "id": "540",
@@ -28929,7 +28929,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "PHUYEN",
+            "name": "Phú Yên",
             "districts": [
                 {
                     "id": "555",
@@ -29413,7 +29413,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "KHANHHOA",
+            "name": "Khánh Hòa",
             "districts": [
                 {
                     "id": "568",
@@ -30001,7 +30001,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "NINHTHUAN",
+            "name": "Ninh Thuận",
             "districts": [
                 {
                     "id": "582",
@@ -30297,7 +30297,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BINHTHUAN",
+            "name": "Bình Thuận",
             "districts": [
                 {
                     "id": "593",
@@ -30847,7 +30847,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "KONTUM",
+            "name": "Kon Tum",
             "districts": [
                 {
                     "id": "608",
@@ -31321,7 +31321,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "GIALAI",
+            "name": "Gia Lai",
             "districts": [
                 {
                     "id": "622",
@@ -32301,7 +32301,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "DAKLAK",
+            "name": "Đắk Lắk",
             "districts": [
                 {
                     "id": "643",
@@ -33117,7 +33117,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "DAKNONG",
+            "name": "Đắk Nông",
             "districts": [
                 {
                     "id": "660",
@@ -33455,7 +33455,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "LAMDONG",
+            "name": "Lâm Đồng",
             "districts": [
                 {
                     "id": "672",
@@ -34069,7 +34069,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BINHPHUOC",
+            "name": "Bình Phước",
             "districts": [
                 {
                     "id": "688",
@@ -34585,7 +34585,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "TAYNINH",
+            "name": "Tây Ninh",
             "districts": [
                 {
                     "id": "703",
@@ -35021,7 +35021,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BINHDUONG",
+            "name": "Bình Dương",
             "districts": [
                 {
                     "id": "718",
@@ -35445,7 +35445,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "DONGNAI",
+            "name": "Đồng Nai",
             "districts": [
                 {
                     "id": "731",
@@ -36153,7 +36153,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BARIAVUNGTAU",
+            "name": "Bà Rịa - Vũng Tàu",
             "districts": [
                 {
                     "id": "747",
@@ -36541,7 +36541,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HOCHIMINH",
+            "name": "Hồ Chí Minh",
             "districts": [
                 {
                     "id": "760",
@@ -37771,7 +37771,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "LONGAN",
+            "name": "Long An",
             "districts": [
                 {
                     "id": "794",
@@ -38611,7 +38611,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "TIENGIANG",
+            "name": "Tiền Giang",
             "districts": [
                 {
                     "id": "815",
@@ -39339,7 +39339,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BENTRE",
+            "name": "Bến Tre",
             "districts": [
                 {
                     "id": "829",
@@ -39991,7 +39991,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "TRAVINH",
+            "name": "Trà Vinh",
             "districts": [
                 {
                     "id": "842",
@@ -40467,7 +40467,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "VINHLONG",
+            "name": "Vĩnh Long",
             "districts": [
                 {
                     "id": "855",
@@ -41571,7 +41571,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "ANGIANG",
+            "name": "An Giang",
             "districts": [
                 {
                     "id": "883",
@@ -42263,7 +42263,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "KIENGIANG",
+            "name": "Kiên Giang",
             "districts": [
                 {
                     "id": "899",
@@ -42931,7 +42931,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "CANTHO",
+            "name": "Cần Thơ",
             "districts": [
                 {
                     "id": "916",
@@ -43311,7 +43311,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "HAUGIANG",
+            "name": "Hậu Giang",
             "districts": [
                 {
                     "id": "930",
@@ -43665,7 +43665,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "SOCTRANG",
+            "name": "Sóc Trăng",
             "districts": [
                 {
                     "id": "941",
@@ -44169,7 +44169,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "BACLIEU",
+            "name": "Bạc Liêu",
             "districts": [
                 {
                     "id": "954",
@@ -44473,7 +44473,7 @@ function loadInlineLocations() {
         },
         {
             "id": "01",
-            "name": "CAMAU",
+            "name": "Cà Mau",
             "districts": [
                 {
                     "id": "964",
