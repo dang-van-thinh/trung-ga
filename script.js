@@ -78,6 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         showCustomerAlert();
     }, 2000);
+
+    // Radio product selection handler (custom design)
+    const productRadios = document.querySelectorAll('input[name="productOption"]');
+    productRadios.forEach(radio => {
+        radio.addEventListener('change', (event) => {
+            const value = event.target.value; // format: productKey|price
+            document.getElementById('productSelect').value = value;
+            updateTotalPrice();
+        });
+    });
 });
 
 // ============ END CUSTOM ALERT ============
@@ -126,7 +136,15 @@ function closeOrderModal() {
 
 // Add to Cart
 function addToCart(product, price) {
-    document.getElementById('productSelect').value = product + '|' + price;
+    const productSelect = document.getElementById('productSelect');
+    const value = `${product}|${price}`;
+    productSelect.value = value;
+
+    const radio = document.querySelector(`input[name="productOption"][data-product="${product}"][data-price="${price}"]`);
+    if (radio) {
+        radio.checked = true;
+    }
+
     updateTotalPrice();
     openOrderModal();
 }
@@ -45088,7 +45106,7 @@ function updateWards() {
 }
 
 // URL của Google Apps Script
-const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzOnd1BcOoXemeZhaatNQOXhJDy0kQL0YLMwzDEOKwrrNntaHvmDNrnn1mQhVVXVQ/exec';
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwh-bYUTz5gfqYlQuVkA1fI_1EZIexf9vn-sv23t1Sh0CO_ntHGZSY6X591Shhpow/exec';
 
 // Submit Order
 function submitOrder(event) {
@@ -45100,6 +45118,7 @@ function submitOrder(event) {
     const district = document.getElementById('district').options[document.getElementById('district').selectedIndex].text;
     const ward = document.getElementById('ward').options[document.getElementById('ward').selectedIndex].text;
     const detailedAddress = document.getElementById('address').value;
+    const note = document.getElementById('note').value;
     const product = document.getElementById('productSelect').value;
     const quantity = document.getElementById('quantity').value;
 
@@ -45111,6 +45130,7 @@ function submitOrder(event) {
         district: district,
         ward: ward,
         address: detailedAddress,
+        note: note,
         product: product,
         quantity: quantity
     };
@@ -45137,7 +45157,7 @@ function submitOrder(event) {
             console.log('✅ Gửi thành công:', response);
             // Thành công nếu request được gửi (không cần check response vì Google Apps Script không trả về CORS header)
             const fullAddress = `${detailedAddress}, ${ward}, ${district}, ${province}`;
-            const message = `Cảm ơn bạn!\nĐơn hàng của bạn đã được ghi nhận.\n\n- Khách: ${name}\n- SĐT: ${phone}\n- Địa chỉ: ${fullAddress}\n- Sản phẩm: ${product}\n- Số lượng: ${quantity}\n\nChúng tôi sẽ liên hệ với bạn sớm nhất.`;
+            const message = `Cảm ơn bạn!\nĐơn hàng của bạn đã được ghi nhận.\n\n- Khách: ${name}\n- SĐT: ${phone}\n- Địa chỉ: ${fullAddress}\n- Ghi chú: ${note || 'Không có'}\n- Sản phẩm: ${product}\n- Số lượng: ${quantity}\n\nChúng tôi sẽ liên hệ với bạn sớm nhất.`;
             alert(message);
 
             // Khi khách click hoàn tất đặt hàng, bắn sự kiện 'Lead' hoặc 'Purchase' về Facebook

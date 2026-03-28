@@ -518,14 +518,36 @@
                 <button class="close-btn" onclick="closeOrderModal()">×</button>
             </div>
             <form onsubmit="submitOrder(event)">
-                <div class="form-group">
-                    <label for="productSelect">Chọn Sản Phẩm *</label>
-                    <select id="productSelect" required>
-                        <option value="">-- Chọn sản phẩm --</option>
-                        <option value="1-hop|149500">1 Hộp - 149.500đ</option>
-                        <option value="3-hop-tang-1|358500">3 Hộp Tặng 1 - 358.500đ</option>
-                        <!-- <option value="5-hop-sadu|750000">5 Hộp Sadu - 750.000đ</option> -->
-                    </select>
+                <input type="hidden" id="productSelect" required>
+
+                <div class="form-group product-options">
+                    <label>Chọn Sản Phẩm *</label>
+                    <div class="product-radio-grid">
+                        <label class="product-radio-card">
+                            <input type="radio" name="productOption" data-product="1 Hộp" data-price="149500" value="1-hop|149500">
+                            <div>
+                                <strong>1 Hộp</strong>
+                                <p>149.500đ</p>
+                                <small>12 quả trứng</small>
+                            </div>
+                        </label>
+                        <label class="product-radio-card">
+                            <input type="radio" name="productOption" data-product="3 Hộp Tặng 1" data-price="358500" value="3-hop-tang-1|358500">
+                            <div>
+                                <strong>3 Hộp Tặng 1</strong>
+                                <p>358.500đ</p>
+                                <small>48 quả trứng</small>
+                            </div>
+                        </label>
+                        <!-- <label class="product-radio-card">
+                            <input type="radio" name="productOption" data-product="5 Hộp Tặng 1" data-price="750000" value="5-hop-sadu|750000">
+                            <div>
+                                <strong>5 Hộp Tặng 1</strong>
+                                <p>750.000đ</p>
+                                <small>80 quả trứng</small>
+                            </div>
+                        </label> -->
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -568,6 +590,11 @@
                 <div class="form-group">
                     <label for="address">Địa Chỉ Chi Tiết *</label>
                     <input type="text" id="address" placeholder="VD: 123 Đường ABC, Số nhà..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="note">Ghi Chú Đơn Hàng</label>
+                    <textarea id="note" rows="3" placeholder="Ghi chú thêm cho đơn hàng (nếu có)"></textarea>
                 </div>
 
                 <div class="form-group"

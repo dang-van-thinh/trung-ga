@@ -1071,6 +1071,58 @@ header {
   gap: 15px;
 }
 
+.product-options {
+  margin-bottom: 20px;
+}
+
+.product-radio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.product-radio-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-radio-card input {
+  accent-color: #1976d2;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.product-radio-card strong {
+  font-size: 15px;
+  display: block;
+}
+
+.product-radio-card p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.product-radio-card small {
+  color: #666;
+}
+
+.product-radio-card:hover {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
+}
+
+.product-radio-card input:checked + div {
+  background: #f2f7ff;
+}
+
 .submit-btn {
   width: 100%;
   background: var(--accent);
