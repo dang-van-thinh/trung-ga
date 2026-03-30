@@ -125,6 +125,15 @@ function updateCountdown() {
 
 // Modal Functions
 function openOrderModal() {
+    const productSelect = document.getElementById('productSelect');
+    const firstProductRadio = document.querySelector('input[name="productOption"]');
+
+    if (!productSelect.value && firstProductRadio) {
+        firstProductRadio.checked = true;
+        productSelect.value = firstProductRadio.value;
+        updateTotalPrice();
+    }
+
     document.getElementById('orderModal').classList.add('show');
     document.body.style.overflow = 'hidden';
 }
@@ -45110,6 +45119,11 @@ const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwh-bYUTz5gfqY
 
 // Submit Order
 function submitOrder(event) {
+    const form = event.target;
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
     event.preventDefault();
 
     const name = document.getElementById('name').value;
