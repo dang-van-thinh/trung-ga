@@ -12,7 +12,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -82,6 +82,34 @@
         </div>
     </section>
 
+    <section class="pricing" style="margin-top: 0 !important;">
+        <div class="pricing-container">
+            <h2>ĐẶT HÀNG NHANH TAY - ƯU ĐÃI CÓ HẠN</h2>
+
+            <div class="countdown">
+                <h3>⏰ Ưu đãi kết thúc sau</h3>
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="countdown-label">Ngày</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label">Giờ</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label">Phút</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label">Giây</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Benefits Section -->
     <section class="benefits">
         <div class="benefits-container">
@@ -111,13 +139,45 @@
     <!-- Why Section -->
     <section class="why-section">
         <h2>Tại Sao Bạn Nên Lựa Chọn Trứng Gà Thảo Dược SADU ?</h2>
-        <div class="why-content">
+        <div class="farm-story" style="">
+            <h3>Cam Kết 3 KHÔNG Từ SADU</h3>
+            <div class="story-content">
+                <div class="story-image">
+                    <img src="source/yolk.jpg" alt="Lòng đỏ trứng SADU">
+                </div>
+                <div class="story-text">
+                    <!-- <p>Chúng tôi kể câu chuyện về sự tận tâm với quy trình <strong>3 KHÔNG</strong>:</p> -->
+                    <ul class="usp-list">
+                        <li>KHÔNG kháng sinh</li>
+                        <li>KHÔNG hormone tăng trưởng</li>
+                        <li>KHÔNG cám công nghiệp</li>
+                    </ul>
+                    <p>Đàn gà được ăn thức ăn 100% từ thực vật (ngô sơn la, cám gạo tươi, khô đậu tương, khoáng,
+                        premix,...), thức ăn được phối trộn thêm 13 loại thảo dược tự nhiên (cà gai leo, xạ đen, đinh
+                        lăng, khôi đốm,...), uống nước sạch và được chăm sóc bài bản để cho ra những quả trứng an toàn
+                        nhất.</p>
+                </div>
+            </div>
+            <!-- <hr style=" margin-top: 20px ;"> -->
+            <div class="story-content reverse">
+                <div class="story-image">
+                    <img src="source/comparison.jpg" alt="So sánh trứng SADU và trứng thường">
+                </div>
+                <div class="story-text">
+                <h4>Sự khác biệt được nhìn thấy bằng mắt thường</h4>
+
+                    <p>Lòng đỏ trứng SADU luôn sánh màu, tươi ngon và đậm đà hơn so với trứng thường. Đây là kết quả của
+                        chế độ dinh dưỡng tự nhiên và chăm sóc đặc biệt từ trang trại.</p>
+                </div>
+            </div>
+        </div>
+        <div class="why-content" style="margin-top: 40px !important;">
+            <!-- <hr> -->
             <div class="why-image">
-                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/mother-baby-wellness-85FVquZoiWWXLwrJQZ23Eh.webp"
-                    alt="Mẹ và bé">
+                <img src="source/me-bau-3.jpg" alt="Mẹ và bé">
             </div>
             <div class="why-text">
-                <h3>Mẹ Bầu & Mẹ Bỉm Sữa Luôn Lo Lắng</h3>
+<h3>An Toàn Cho Mẹ Bầu & Mẹ Bỉm Sữa</h3>
                 <p>Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư
                     kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.</p>
 
@@ -132,6 +192,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Comparison Table -->
     <section class="comparison">
@@ -262,8 +323,7 @@
                     cảm thấy yên tâm vì sản phẩm hoàn toàn tự nhiên và không có kháng sinh. Lòng đỏ sánh màu, ngon lắm!"
                 </div>
                 <div class="testimonial-author">
-                    <img src="source/avatar-1.jpg"
-                        alt="Chị Hương" class="author-avatar">
+                    <img src="source/avatar-1.jpg" alt="Chị Hương" class="author-avatar">
                     <div class="author-info">
                         <h4>Chị Hương</h4>
                         <p>Mẹ bầu - Tháng 7</p>
@@ -276,8 +336,7 @@
                 <div class="testimonial-text">"Sau khi sinh, mình cần ăn nhiều trứng để tăng sữa. Trứng Sadu rất tốt,
                     cholesterol thấp, lại không có kháng sinh. Con mình khỏe mạnh và sữa cũng nhiều hơn."</div>
                 <div class="testimonial-author">
-                    <img src="source/avatar-2.jpg"
-                        alt="Chị Linh" class="author-avatar">
+                    <img src="source/avatar-2.jpg" alt="Chị Linh" class="author-avatar">
                     <div class="author-info">
                         <h4>Chị Linh</h4>
                         <p>Mẹ bỉm sữa - Con 3 tháng</p>
@@ -287,11 +346,34 @@
 
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
+                <div class="testimonial-text">"10 điểm khâu vận chuyển, sản phẩm mà đúng như chất lượng quảng cáo thì cũng cho 10 điểm. Anh mua hàng ăn uống rất kĩ tính, thường thì anh trả rảnh mà feedback, nhưng sản phẩm tốt cho sức khỏe thì cần phải cảm ơn người sản xuất."</div>
+                <div class="testimonial-author">
+                    <img src="source/avatar-4.jpg" alt="Anh Long" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Anh Long</h4>
+                        <p>Khách hàng mới</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <div class="testimonial-text">"Gia đình mình ăn chay tháng 10 ngày, có trứng sạch thuần chay là gia đình mình an tâm rồi. Cảm ơn shop."</div>
+                <div class="testimonial-author">
+                    <img src="source/avatar-5.jpg" alt="Chị Bích" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Chị Bích</h4>
+                        <p>Ăn chay</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
                 <div class="testimonial-text">"Mình mua Sadu cho cả gia đình. Trứng tươi, ngon, an toàn cho con. Mình
                     đã mua tại sadu 2 năm nay rồi."</div>
                 <div class="testimonial-author">
-                    <img src="source/avatar-3.jpg"
-                        alt="Chị Minh" class="author-avatar">
+                    <img src="source/avatar-3.jpg" alt="Chị Minh" class="author-avatar">
                     <div class="author-info">
                         <h4>Chị Minh</h4>
                         <p>Mẹ trẻ - Con 2 tuổi</p>
@@ -304,7 +386,7 @@
     <!-- Pricing Section -->
     <section class="pricing">
         <div class="pricing-container">
-            <h2>ĐẶT HÀNG NHANH TAY - ƯU ĐÃI CÓ HẠN</h2>
+            <!-- <h2>ĐẶT HÀNG NHANH TAY - ƯU ĐÃI CÓ HẠN</h2>
 
             <div class="countdown">
                 <h3>⏰ Ưu đãi kết thúc sau</h3>
@@ -326,7 +408,7 @@
                         <div class="countdown-label">Giây</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="pricing-table">
                 <div class="pricing-item">
@@ -524,7 +606,8 @@
                     <label>Chọn Sản Phẩm *</label>
                     <div class="product-radio-grid">
                         <label class="product-radio-card">
-                            <input type="radio" name="productOption" data-product="1 Hộp" data-price="149500" value="1-hop|149500">
+                            <input type="radio" name="productOption" data-product="1 Hộp" data-price="149500"
+                                value="1-hop|149500">
                             <div>
                                 <strong>1 Hộp</strong>
                                 <p>149.500đ</p>
@@ -532,7 +615,8 @@
                             </div>
                         </label>
                         <label class="product-radio-card">
-                            <input type="radio" name="productOption" data-product="3 Hộp Tặng 1" data-price="358500" value="3-hop-tang-1|358500">
+                            <input type="radio" name="productOption" data-product="3 Hộp Tặng 1" data-price="358500"
+                                value="3-hop-tang-1|358500">
                             <div>
                                 <strong>3 Hộp Tặng 1</strong>
                                 <p>358.500đ</p>

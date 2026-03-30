@@ -507,6 +507,69 @@ header {
   font-size: 20px;
 }
 
+.why-section .farm-story {
+  margin-top: 50px;
+}
+
+.story-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.story-content.reverse .story-image {
+  order: 2;
+}
+
+.story-content.reverse .story-text {
+  order: 1;
+}
+
+.story-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.story-image img:hover {
+  transform: scale(1.03);
+}
+
+.story-text h3,
+.story-text h4 {
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.story-text p {
+  line-height: 1.8;
+  color: var(--text-light);
+}
+
+.usp-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.usp-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  color: var(--text-light);
+}
+
+.usp-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
 /* Comparison Table */
 .comparison {
   max-width: 1200px;
@@ -700,9 +763,25 @@ header {
 }
 
 .testimonials-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  display: flex;
   gap: 30px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.testimonials-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.testimonials-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 999px;
+}
+
+.testimonials-container::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .testimonial-card {
@@ -713,6 +792,9 @@ header {
   border-left: 5px solid var(--primary);
   transition: all 0.3s;
   animation: fadeInUp 0.6s ease-out;
+  min-width: 320px;
+  flex: 0 0 320px;
+  scroll-snap-align: start;
 }
 
 .testimonial-card:hover {
@@ -1310,6 +1392,29 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .why-section .farm-story {
+    padding-top: 20px;
+  }
+
+  .story-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .story-content.reverse {
+    direction: ltr;
+  }
+
+  .story-content.reverse .story-image,
+  .story-content.reverse .story-text {
+    order: unset;
+  }
+
+  .story-text h3,
+  .story-text h4 {
+    font-size: 1.5rem;
+  }
+
   .modal-content {
     padding: 25px;
     max-height: 90vh;
@@ -1330,9 +1435,20 @@ footer {
     font-size: 24px;
   }
 
-  .products-container,
-  .testimonials-container {
+  .products-container {
     grid-template-columns: 1fr;
+  }
+
+  .testimonials-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .testimonial-card {
+    min-width: 280px;
+    flex: 0 0 280px;
   }
 
   .pricing-table {
