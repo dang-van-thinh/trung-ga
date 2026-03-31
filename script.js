@@ -67,6 +67,71 @@ function hideCustomerAlert() {
     alertEl.classList.add('hide');
 }
 
+function initComparisonCarousel() {
+    const carousels = Array.from(document.querySelectorAll('.comparison-carousel'));
+
+    carousels.forEach((carousel) => {
+        const mainImage = carousel.querySelector('.comparison-carousel-main img');
+        const thumbs = Array.from(carousel.querySelectorAll('.comparison-carousel-thumbs .thumb'));
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+
+        if (!mainImage || !thumbs.length) return;
+
+        let currentIndex = thumbs.findIndex(thumb => thumb.classList.contains('active'));
+        if (currentIndex === -1) currentIndex = 0;
+        let autoPlayTimer;
+
+        const startAutoPlay = () => {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = setInterval(() => {
+                const nextIndex = (currentIndex + 1) % thumbs.length;
+                updateCarousel(nextIndex);
+            }, 5000);
+        };
+
+        const updateCarousel = (index) => {
+            const thumb = thumbs[index];
+            const newSrc = thumb.getAttribute('data-src');
+            const newAlt = thumb.querySelector('img')?.getAttribute('alt') || 'Hình ảnh chứng nhận';
+            if (newSrc) {
+                mainImage.classList.add('fade-out');
+                setTimeout(() => {
+                    mainImage.src = newSrc;
+                    mainImage.alt = newAlt;
+                    mainImage.classList.remove('fade-out');
+                }, 250);
+            }
+            thumbs.forEach(item => item.classList.remove('active'));
+            thumb.classList.add('active');
+            currentIndex = index;
+            startAutoPlay();
+        };
+
+        thumbs.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                updateCarousel(index);
+            });
+        });
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                const nextIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+                updateCarousel(nextIndex);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const nextIndex = (currentIndex + 1) % thumbs.length;
+                updateCarousel(nextIndex);
+            });
+        }
+
+        startAutoPlay();
+    });
+}
+
 // Start showing alerts when page loads
 document.addEventListener('DOMContentLoaded', () => {
     // Setup close button event listener
@@ -78,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         showCustomerAlert();
     }, 2000);
+
+    initComparisonCarousel();
 
     // Radio product selection handler (custom design)
     const productRadios = document.querySelectorAll('input[name="productOption"]');

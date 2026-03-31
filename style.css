@@ -433,7 +433,8 @@ header {
 /* Why Section */
 .why-section {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 0 auto;
+  margin-top: 60px;
   padding: 0 20px;
 }
 
@@ -573,7 +574,8 @@ header {
 /* Comparison Table */
 .comparison {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 0 auto;
+  margin-top: 60px;
   padding: 0 20px;
 }
 
@@ -619,6 +621,128 @@ header {
   font-weight: bold;
   font-size: 18px;
 }
+
+/* Comparison Image Section */
+.comparison-image {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 0 20px;
+}
+
+.comparison-image h2 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary);
+}
+
+.comparison-carousel {
+  max-width: 920px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+}
+
+.comparison-carousel-main {
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+}
+
+.comparison-carousel-main img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.4s ease;
+  opacity: 1;
+}
+
+.comparison-carousel-main img.fade-out {
+  opacity: 0;
+}
+
+.comparison-carousel-main img:hover {
+  transform: scale(1.02);
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.carousel-nav:hover {
+  transform: translateY(-50%) scale(1.05);
+  background: white;
+}
+
+.carousel-prev {
+  left: 14px;
+}
+
+.carousel-next {
+  right: 14px;
+}
+
+.comparison-carousel-thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.comparison-carousel-thumbs .thumb {
+  border: 2px solid transparent;
+  border-radius: 14px;
+  padding: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  width: 110px;
+  height: 82px;
+  overflow: hidden;
+}
+
+.comparison-carousel-thumbs .thumb.active {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.comparison-carousel-thumbs .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.comparison-carousel p {
+  margin-top: 18px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-light);
+}
+
 
 .cross-mark {
   color: #dc3545;
@@ -751,7 +875,8 @@ header {
 /* Testimonials */
 .testimonials {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 0 auto;
+  margin-top: 60px;
   padding: 0 20px;
 }
 
@@ -974,7 +1099,8 @@ header {
 /* FAQ Section */
 .faq {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 0 auto;
+  margin-top: 60px;
   padding: 0 20px;
 }
 
@@ -1343,6 +1469,55 @@ footer {
 
   .header-container {
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-btn {
+    padding: 10px 18px;
+  }
+
+  .hero {
+    padding: 40px 16px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .hero-image {
+    order: 2;
+  }
+
+  .hero-text {
+    order: 1;
+  }
+
+  .hero-text p {
+    font-size: 15px;
+  }
+
+  .comparison-image h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+
+  .comparison-carousel {
+    padding: 16px;
+  }
+
+  .comparison-carousel-thumbs {
+    gap: 10px;
+  }
+
+  .comparison-carousel-thumbs .thumb {
+    width: 90px;
+    height: 70px;
+  }
+
+  .comparison-carousel p {
+    font-size: 15px;
   }
 
   .nav-menu {
@@ -1433,6 +1608,64 @@ footer {
 @media (max-width: 480px) {
   .hero-text h1 {
     font-size: 24px;
+  }
+
+  .header-container {
+    padding: 0 16px;
+  }
+
+  .nav-menu a {
+    font-size: 15px;
+  }
+
+  .hero {
+    padding: 30px 16px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+  }
+
+  .cta-btn {
+    width: 100%;
+    padding: 14px 20px;
+  }
+
+  .comparison-image h2 {
+    font-size: 26px;
+  }
+
+  .comparison-carousel {
+    padding: 14px;
+  }
+
+  .comparison-carousel-main img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .comparison-carousel-thumbs {
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .comparison-carousel-thumbs .thumb {
+    min-width: 84px;
+    width: auto;
+    flex: 0 0 auto;
+    height: 64px;
+  }
+
+  .comparison-carousel-thumbs .thumb img {
+    height: 100%;
+  }
+
+  .comparison-carousel p {
+    font-size: 14px;
   }
 
   .products-container {
