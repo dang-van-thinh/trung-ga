@@ -1471,10 +1471,26 @@ footer {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
+    padding: 0 16px;
   }
 
   .header-btn {
     padding: 10px 18px;
+    font-size: 13px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .logo > div:last-child > div:last-child {
+    font-size: 10px;
   }
 
   .hero {
@@ -1499,8 +1515,19 @@ footer {
   }
 
   .comparison-image h2 {
-    font-size: 30px;
+    font-size: 28px;
     margin-bottom: 25px;
+  }
+
+  .comparison h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 14px 12px;
+    font-size: 13px;
   }
 
   .comparison-carousel {
@@ -1608,14 +1635,40 @@ footer {
 @media (max-width: 480px) {
   .hero-text h1 {
     font-size: 24px;
+    margin-bottom: 15px;
   }
 
   .header-container {
-    padding: 0 16px;
+    padding: 0 12px;
+  }
+
+  .header-btn {
+    padding: 9px 15px;
+    font-size: 12px;
+  }
+
+  .logo {
+    font-size: 16px;
+    gap: 8px;
+  }
+
+  .logo-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .logo > div:last-child > div:first-child {
+    font-size: 14px;
+  }
+
+  .logo > div:last-child > div:last-child {
+    font-size: 9px;
   }
 
   .nav-menu a {
-    font-size: 15px;
+    font-size: 13px;
+    padding: 10px 16px;
   }
 
   .hero {
@@ -1624,25 +1677,45 @@ footer {
 
   .hero-text p {
     font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .discount-badge {
+    font-size: 22px;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+  }
+
+  .discount-text {
+    font-size: 12px;
+    margin-top: 8px;
   }
 
   .cta-btn {
     width: 100%;
-    padding: 14px 20px;
+    padding: 12px 20px;
+    font-size: 14px;
   }
 
   .comparison-image h2 {
-    font-size: 26px;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
 
   .comparison-carousel {
-    padding: 14px;
+    padding: 12px;
   }
 
   .comparison-carousel-main img {
     width: 100%;
     height: auto;
     max-height: none;
+  }
+
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
   }
 
   .comparison-carousel-thumbs {
@@ -1654,18 +1727,15 @@ footer {
   }
 
   .comparison-carousel-thumbs .thumb {
-    min-width: 84px;
+    min-width: 74px;
     width: auto;
     flex: 0 0 auto;
-    height: 64px;
-  }
-
-  .comparison-carousel-thumbs .thumb img {
-    height: 100%;
+    height: 58px;
   }
 
   .comparison-carousel p {
-    font-size: 14px;
+    font-size: 13px;
+    margin-top: 15px;
   }
 
   .products-container {
@@ -1674,14 +1744,20 @@ footer {
 
   .testimonials-container {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
   }
 
   .testimonial-card {
-    min-width: 280px;
-    flex: 0 0 280px;
+    min-width: 270px;
+    flex: 0 0 270px;
+    padding: 20px;
+  }
+
+  .testimonial-text {
+    font-size: 13px;
+    margin-bottom: 15px;
   }
 
   .pricing-table {
@@ -1697,6 +1773,14 @@ footer {
     padding: 12px 15px;
   }
 
+  .countdown-value {
+    font-size: 28px;
+  }
+
+  .countdown-label {
+    font-size: 11px;
+  }
+
   .modal-content {
     width: 95%;
     padding: 20px;
@@ -1705,5 +1789,631 @@ footer {
 
   .form-group {
     margin-bottom: 15px;
+  }
+
+  .story-text h3,
+  .story-text h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .why-text h3 {
+    font-size: 20px;
+  }
+
+  .why-text p,
+  .why-list li {
+    font-size: 14px;
+  }
+
+  .benefit-item h3 {
+    font-size: 15px;
+  }
+
+  .benefit-item p {
+    font-size: 13px;
+  }
+}
+
+/* iPhone 14 Pro & Small Phones Optimization */
+@media (max-width: 393px) {
+  header {
+    padding: 10px 0;
+  }
+
+  .header-container {
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .logo {
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .logo > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .logo > div:last-child > div:first-child {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .logo > div:last-child > div:last-child {
+    font-size: 7px;
+    line-height: 1;
+  }
+
+  .header-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+    border-radius: 4px;
+  }
+
+  .mobile-menu-btn {
+    font-size: 20px;
+  }
+
+  .nav-menu a {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  .hero {
+    padding: 25px 12px;
+  }
+
+  .hero::before {
+    width: 350px;
+    height: 350px;
+    top: -50%;
+    right: -15%;
+  }
+
+  .hero-text {
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  .hero-text h1 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .hero-text p {
+    font-size: 12px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .discount-badge {
+    font-size: 18px;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+    border-radius: 40px;
+  }
+
+  .discount-text {
+    font-size: 10px;
+    margin-top: 6px;
+  }
+
+  .cta-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+    margin-top: 15px;
+  }
+
+  .hero-image {
+    margin-top: 20px;
+  }
+
+  .hero-image img {
+    border-radius: 12px;
+  }
+
+  /* Benefits Section */
+  .benefits {
+    padding: 30px 12px;
+    margin-top: 25px;
+  }
+
+  .benefits-container {
+    gap: 15px;
+  }
+
+  .benefit-item {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .benefit-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .benefit-item h3 {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .benefit-item p {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  /* Why Section */
+  .why-section {
+    padding: 0 12px;
+    margin-top: 40px;
+  }
+
+  .why-section h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .why-content {
+    gap: 20px;
+    margin-top: 25px !important;
+  }
+
+  .why-image img {
+    border-radius: 12px;
+  }
+
+  .why-text h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .why-text p {
+    font-size: 12px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .why-list li {
+    padding: 8px 0;
+    padding-left: 28px;
+    font-size: 12px;
+  }
+
+  .why-list li:before {
+    font-size: 16px;
+  }
+
+  .story-text h3,
+  .story-text h4 {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .story-text p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .usp-list li {
+    padding: 8px 0;
+    padding-left: 28px;
+    font-size: 12px;
+  }
+
+  .usp-list li:before {
+    font-size: 16px;
+  }
+
+  /* Comparison Section */
+  .comparison {
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+
+  .comparison h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .comparison-table {
+    border-radius: 8px;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 10px;
+    font-size: 11px;
+  }
+
+  .comparison-table th {
+    font-size: 12px;
+  }
+
+  .check-mark {
+    font-size: 16px;
+  }
+
+  .cross-mark {
+    font-size: 16px;
+  }
+
+  /* Comparison Image Section */
+  .comparison-image {
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+
+  .comparison-image h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .comparison-carousel {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .comparison-carousel-main {
+    border-radius: 14px;
+  }
+
+  .carousel-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+
+  .carousel-prev {
+    left: 10px;
+  }
+
+  .carousel-next {
+    right: 10px;
+  }
+
+  .comparison-carousel-thumbs {
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .comparison-carousel-thumbs .thumb {
+    min-width: 64px;
+    width: auto;
+    height: 48px;
+    padding: 3px;
+    border-radius: 10px;
+  }
+
+  .comparison-carousel-thumbs .thumb img {
+    border-radius: 8px;
+  }
+
+  .comparison-carousel p {
+    font-size: 12px;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* Products Section */
+  .products {
+    padding: 40px 12px;
+    margin-top: 40px;
+  }
+
+  .products h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .products-container {
+    gap: 15px;
+  }
+
+  .product-card {
+    border-radius: 10px;
+  }
+
+  .product-image {
+    height: 200px;
+  }
+
+  .discount-label {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .product-info {
+    padding: 15px;
+  }
+
+  .product-name {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .product-specs {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  .price-new {
+    font-size: 20px;
+  }
+
+  .price-old {
+    font-size: 12px;
+  }
+
+  .product-btn {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+
+  .testimonials h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .testimonial-card {
+    min-width: 240px;
+    flex: 0 0 240px;
+    padding: 16px;
+    border-left-width: 4px;
+  }
+
+  .stars {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .testimonial-text {
+    font-size: 12px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .author-avatar {
+    width: 45px;
+    height: 45px;
+    border-width: 2px;
+  }
+
+  .author-info h4 {
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .author-info p {
+    font-size: 11px;
+  }
+
+  /* Pricing Section */
+  .pricing {
+    padding: 40px 12px;
+    margin-top: 50px;
+  }
+
+  .pricing h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .countdown {
+    margin: 25px 0;
+    padding: 25px 15px;
+    border-radius: 10px;
+  }
+
+  .countdown h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .countdown-timer {
+    gap: 8px;
+  }
+
+  .countdown-item {
+    min-width: 60px;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+
+  .countdown-value {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+
+  .countdown-label {
+    font-size: 9px;
+  }
+
+  .pricing-table {
+    gap: 15px;
+  }
+
+  .pricing-item {
+    padding: 20px 15px;
+    border-radius: 10px;
+  }
+
+  .pricing-item h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .pricing-item p {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .pricing-item ul {
+    margin-bottom: 15px;
+  }
+
+  .pricing-item li {
+    padding: 8px 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* FAQ Section */
+  .faq {
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+
+  .faq h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .faq-item {
+    margin-bottom: 12px;
+    border-radius: 8px;
+  }
+
+  .faq-question {
+    padding: 15px;
+    font-size: 13px;
+  }
+
+  .faq-icon {
+    font-size: 18px;
+  }
+
+  .faq-answer {
+    transition: all 0.3s ease;
+  }
+
+  .faq-item.active .faq-answer {
+    padding: 15px;
+  }
+
+  .faq-answer p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  /* Modal */
+  .modal-content {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .modal-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+
+  .modal-header h2 {
+    font-size: 18px;
+  }
+
+  .close-btn {
+    font-size: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .product-radio-grid {
+    gap: 10px;
+  }
+
+  .product-radio-card {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .product-radio-card strong {
+    font-size: 13px;
+  }
+
+  .product-radio-card small {
+    font-size: 11px;
+  }
+
+  .submit-btn {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 12px 20px;
+    margin-top: 50px;
+  }
+
+  .footer-container {
+    gap: 25px;
+    margin-bottom: 25px;
+  }
+
+  .footer-section h4 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .social-links {
+    gap: 12px;
+  }
+
+  .social-links a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+    padding-top: 15px;
+  }
+
+  /* Scroll to Top Button */
+  .scroll-top {
+    width: 40px;
+    height: 40px;
+    bottom: 15px;
+    right: 15px;
+    font-size: 18px;
   }
 }
