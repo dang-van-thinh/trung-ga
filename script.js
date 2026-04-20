@@ -11,7 +11,9 @@ const fakeCustomers = [
     { name: "Vũ Thị Xuân", product: "Trứng Gà Thảo Dược - 1 Hộp Trứng" },
     { name: "Bùi Văn Long", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
     { name: "Trương Thị Mai", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Đinh Văn Sơn", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" }
+    { name: "Đinh Văn Sơn", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" },
+    { name: "Nguyễn Văn An", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" },
+    { name: "Lê Thị Lan", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" }
 ];
 
 let currentCustomerIndex = 0;
@@ -166,8 +168,7 @@ function toggleMenu() {
 }
 
 function updateCountdown() {
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 3);
+    const endDate = new Date(2026, 4, 1, 23, 59, 59); // Đếm ngược đến hết ngày 1/5/2026
 
     function tick() {
         const now = new Date();

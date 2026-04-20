@@ -2417,3 +2417,136 @@ footer {
     font-size: 18px;
   }
 }
+
+/* Special Offer Section */
+.special-offer {
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  color: white;
+  padding: 60px 20px;
+  margin: 40px 0;
+}
+
+.special-offer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.special-offer-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.special-offer-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.special-badge {
+  background: #ff3333;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+.special-offer-text h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.special-offer-text p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.highlight-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffeb3b;
+}
+
+.special-features {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.special-features li {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+.special-features li:before {
+  content: "✓";
+  color: #4caf50;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.special-cta-btn {
+  background: #ff3333;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
+}
+
+.special-cta-btn:hover {
+  background: #e60000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 51, 51, 0.4);
+}
+
+.special-offer-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.special-offer-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Responsive for Special Offer */
+@media (max-width: 768px) {
+  .special-offer {
+    padding: 40px 20px;
+    margin: 20px 0;
+  }
+
+  .special-offer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .special-offer-text h2 {
+    font-size: 24px;
+  }
+
+  .special-offer-text p {
+    font-size: 16px;
+  }
+
+  .special-features li {
+    font-size: 14px;
+  }
+
+  .special-cta-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
