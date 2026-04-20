@@ -1924,7 +1924,7 @@ footer {
   /* Benefits Section */
   .benefits {
     padding: 30px 12px;
-    margin-top: 25px;
+    margin-top: 0;
   }
 
   .benefits-container {
