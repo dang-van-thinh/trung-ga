@@ -2209,7 +2209,7 @@ footer {
   /* Pricing Section */
   .pricing {
     padding: 40px 12px;
-    margin-top: 50px;
+    margin-top: 0px;
   }
 
   .pricing h2 {
@@ -2524,7 +2524,7 @@ footer {
 @media (max-width: 768px) {
   .special-offer {
     padding: 40px 20px;
-    margin: 20px 0;
+    margin:  0;
   }
 
   .special-offer-content {
