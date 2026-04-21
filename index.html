@@ -119,15 +119,15 @@
             <div class="special-offer-content">
                 <div class="special-offer-text">
                     <div class="special-badge">ƯU ĐÃI 30/4</div>
-                    <h2>Mua 3 Hộp Tặng 1 Hộp + 1 Hộp Muối Hymalaya 200g</h2>
+                    <h2>Mua 3 Hộp Tặng 1 Hộp + 1 Hộp Muối Himalaya 200g</h2>
                     <p>Chỉ với <span class="highlight-price">358.000đ</span> - Tiết kiệm ngay 20%</p>
                     <ul class="special-features">
                         <li>✓ 48 quả trứng gà thảo dược tự nhiên</li>
-                        <li>✓ 1 hộp muối Hymalaya 200g cao cấp</li>
+                        <li>✓ 1 hộp muối Himalaya 200g cao cấp</li>
                         <li>✓ Miễn phí vận chuyển toàn quốc</li>
                         <li>✓ Bảo hành 1 đổi 1 nếu vỡ</li>
                     </ul>
-                    <button class="special-cta-btn" onclick="addToCart('Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya', 358500)">ĐẶT MUA NGAY</button>
+                    <button class="special-cta-btn" onclick="addToCart('Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Himalaya', 358500)">ĐẶT MUA NGAY</button>
                 </div>
                 <div class="special-offer-image">
                     <img src="source/banner.jpg" alt="Ưu đãi 30/4">
@@ -200,6 +200,7 @@
             </div>
         </div>
         <div class="why-content" style="margin-top: 40px !important;">
+        
             <!-- <hr> -->
             <div class="why-image">
                 <img src="source/me-bau-3.jpg" alt="Mẹ và bé">
@@ -684,21 +685,54 @@
 
                 <div class="form-group">
                     <label for="province">Tỉnh/Thành Phố *</label>
-                    <select id="province" required onchange="updateDistricts()">
+                    <div class="searchable-select" data-target="province">
+                        <button type="button" class="searchable-select-trigger">
+                            <span class="searchable-select-label">-- Chọn Tỉnh/Thành Phố --</span>
+                            <span class="searchable-select-arrow">▼</span>
+                        </button>
+                        <div class="searchable-select-dropdown">
+                            <input type="text" class="searchable-select-input" placeholder="Tìm tỉnh/thành phố">
+                            <div class="searchable-select-options"></div>
+                            <div class="searchable-select-empty">Không tìm thấy kết quả phù hợp</div>
+                        </div>
+                    </div>
+                    <select id="province" required onchange="updateDistricts()" class="native-select-hidden">
                         <option value="">-- Chọn Tỉnh/Thành Phố --</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="district">Quận/Huyện *</label>
-                    <select id="district" required onchange="updateWards()" disabled>
+                    <div class="searchable-select is-disabled" data-target="district">
+                        <button type="button" class="searchable-select-trigger" disabled>
+                            <span class="searchable-select-label">-- Chọn Quận/Huyện --</span>
+                            <span class="searchable-select-arrow">▼</span>
+                        </button>
+                        <div class="searchable-select-dropdown">
+                            <input type="text" class="searchable-select-input" placeholder="Tìm quận/huyện" disabled>
+                            <div class="searchable-select-options"></div>
+                            <div class="searchable-select-empty">Không tìm thấy kết quả phù hợp</div>
+                        </div>
+                    </div>
+                    <select id="district" required onchange="updateWards()" disabled class="native-select-hidden">
                         <option value="">-- Chọn Quận/Huyện --</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="ward">Phường/Xã *</label>
-                    <select id="ward" required disabled>
+                    <div class="searchable-select is-disabled" data-target="ward">
+                        <button type="button" class="searchable-select-trigger" disabled>
+                            <span class="searchable-select-label">-- Chọn Phường/Xã --</span>
+                            <span class="searchable-select-arrow">▼</span>
+                        </button>
+                        <div class="searchable-select-dropdown">
+                            <input type="text" class="searchable-select-input" placeholder="Tìm phường/xã" disabled>
+                            <div class="searchable-select-options"></div>
+                            <div class="searchable-select-empty">Không tìm thấy kết quả phù hợp</div>
+                        </div>
+                    </div>
+                    <select id="ward" required disabled class="native-select-hidden">
                         <option value="">-- Chọn Phường/Xã --</option>
                     </select>
                 </div>

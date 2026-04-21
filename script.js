@@ -195,6 +195,11 @@ function updateCountdown() {
 function openOrderModal() {
     const productSelect = document.getElementById('productSelect');
     const firstProductRadio = document.querySelector('input[name="productOption"]');
+    const checkedProductRadio = document.querySelector('input[name="productOption"]:checked');
+
+    if (checkedProductRadio) {
+        productSelect.value = checkedProductRadio.value;
+    }
 
     if (!productSelect.value && firstProductRadio) {
         firstProductRadio.checked = true;
@@ -238,11 +243,162 @@ function updateTotalPrice() {
         const [product, price] = select.value.split('|');
         const total = parseInt(price) * quantity;
         document.getElementById('totalPrice').textContent = total.toLocaleString('vi-VN') + 'đ';
+    } else {
+        document.getElementById('totalPrice').textContent = '0đ';
     }
+}
+
+function resetProductSelection() {
+    const productSelect = document.getElementById('productSelect');
+    const productRadios = document.querySelectorAll('input[name="productOption"]');
+
+    productSelect.value = '';
+    productRadios.forEach(radio => {
+        radio.checked = false;
+    });
+
+    updateTotalPrice();
 }
 
 // Load Locations Data
 let locationsData = {};
+const searchableSelects = {};
+
+function normalizeSearchText(text) {
+    return (text || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/Đ/g, 'D')
+        .toLowerCase()
+        .trim();
+}
+
+function closeAllSearchableSelects(exceptId = null) {
+    Object.entries(searchableSelects).forEach(([id, state]) => {
+        if (id !== exceptId) {
+            state.container.classList.remove('is-open');
+        }
+    });
+}
+
+function renderSearchableOptions(selectId) {
+    const state = searchableSelects[selectId];
+    if (!state) return;
+
+    const { nativeSelect, optionsContainer, emptyState, input } = state;
+    const filterValue = normalizeSearchText(input.value);
+    const selectedValue = nativeSelect.value;
+    const options = Array.from(nativeSelect.options).filter(option => option.value);
+    const filteredOptions = options.filter(option =>
+        normalizeSearchText(option.textContent).includes(filterValue)
+    );
+
+    optionsContainer.innerHTML = '';
+
+    filteredOptions.forEach(option => {
+        const optionButton = document.createElement('button');
+        optionButton.type = 'button';
+        optionButton.className = 'searchable-select-option';
+        optionButton.textContent = option.textContent;
+
+        if (option.value === selectedValue) {
+            optionButton.classList.add('is-selected');
+        }
+
+        optionButton.addEventListener('click', () => {
+            const hasChanged = nativeSelect.value !== option.value;
+            nativeSelect.value = option.value;
+            input.value = '';
+            syncSearchableSelect(selectId);
+            state.container.classList.remove('is-open');
+
+            if (hasChanged) {
+                nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+
+        optionsContainer.appendChild(optionButton);
+    });
+
+    state.container.classList.toggle('is-empty', filteredOptions.length === 0);
+    emptyState.style.display = filteredOptions.length === 0 ? 'block' : 'none';
+}
+
+function syncSearchableSelect(selectId) {
+    const state = searchableSelects[selectId];
+    if (!state) return;
+
+    const { nativeSelect, container, trigger, label, input } = state;
+    const selectedOption = nativeSelect.options[nativeSelect.selectedIndex];
+    const placeholder = nativeSelect.options[0]?.textContent || '-- Chọn --';
+
+    label.textContent = selectedOption && nativeSelect.value ? selectedOption.textContent : placeholder;
+    container.classList.toggle('is-disabled', nativeSelect.disabled);
+    trigger.disabled = nativeSelect.disabled;
+    input.disabled = nativeSelect.disabled;
+
+    if (nativeSelect.disabled) {
+        container.classList.remove('is-open');
+        input.value = '';
+    }
+
+    renderSearchableOptions(selectId);
+}
+
+function syncAllSearchableSelects() {
+    Object.keys(searchableSelects).forEach(syncSearchableSelect);
+}
+
+function initSearchableSelects() {
+    const containers = document.querySelectorAll('.searchable-select[data-target]');
+
+    containers.forEach(container => {
+        const selectId = container.getAttribute('data-target');
+        const nativeSelect = document.getElementById(selectId);
+        if (!nativeSelect) return;
+
+        const trigger = container.querySelector('.searchable-select-trigger');
+        const label = container.querySelector('.searchable-select-label');
+        const input = container.querySelector('.searchable-select-input');
+        const optionsContainer = container.querySelector('.searchable-select-options');
+        const emptyState = container.querySelector('.searchable-select-empty');
+
+        searchableSelects[selectId] = {
+            container,
+            nativeSelect,
+            trigger,
+            label,
+            input,
+            optionsContainer,
+            emptyState
+        };
+
+        trigger.addEventListener('click', () => {
+            if (nativeSelect.disabled) return;
+
+            const willOpen = !container.classList.contains('is-open');
+            closeAllSearchableSelects(selectId);
+            container.classList.toggle('is-open', willOpen);
+
+            if (willOpen) {
+                input.value = '';
+                renderSearchableOptions(selectId);
+                input.focus();
+            }
+        });
+
+        input.addEventListener('input', () => {
+            renderSearchableOptions(selectId);
+        });
+
+        nativeSelect.addEventListener('change', () => {
+            syncSearchableSelect(selectId);
+        });
+
+        syncSearchableSelect(selectId);
+    });
+}
 
 async function loadLocations() {
     try {
@@ -45121,12 +45277,14 @@ function loadInlineLocations() {
 
 function populateProvinces() {
     const provinceSelect = document.getElementById('province');
+    provinceSelect.innerHTML = '<option value="">-- Chọn Tỉnh/Thành Phố --</option>';
     locationsData.provinces.forEach(province => {
         const option = document.createElement('option');
         option.value = province.id;
         option.textContent = province.name;
         provinceSelect.appendChild(option);
     });
+    syncSearchableSelect('province');
 }
 
 function updateDistricts() {
@@ -45140,6 +45298,8 @@ function updateDistricts() {
 
     if (!provinceId) {
         districtSelect.disabled = true;
+        syncSearchableSelect('district');
+        syncSearchableSelect('ward');
         return;
     }
 
@@ -45153,6 +45313,9 @@ function updateDistricts() {
         });
         districtSelect.disabled = false;
     }
+
+    syncSearchableSelect('district');
+    syncSearchableSelect('ward');
 }
 
 function updateWards() {
@@ -45164,6 +45327,7 @@ function updateWards() {
 
     if (!districtId) {
         wardSelect.disabled = true;
+        syncSearchableSelect('ward');
         return;
     }
 
@@ -45180,6 +45344,24 @@ function updateWards() {
             wardSelect.disabled = false;
         }
     }
+
+    syncSearchableSelect('ward');
+}
+
+function resetLocationSelectors() {
+    const provinceSelect = document.getElementById('province');
+    const districtSelect = document.getElementById('district');
+    const wardSelect = document.getElementById('ward');
+
+    provinceSelect.value = '';
+    districtSelect.innerHTML = '<option value="">-- Chọn Quận/Huyện --</option>';
+    wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
+    districtSelect.disabled = true;
+    wardSelect.disabled = true;
+
+    syncSearchableSelect('province');
+    syncSearchableSelect('district');
+    syncSearchableSelect('ward');
 }
 
 // URL của Google Apps Script
@@ -45250,6 +45432,9 @@ function submitOrder(event) {
 
             closeOrderModal();
             document.querySelector('form').reset();
+            resetProductSelection();
+            resetLocationSelectors();
+            syncAllSearchableSelects();
 
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
@@ -45288,9 +45473,14 @@ window.addEventListener('click', function (event) {
     if (event.target === modal) {
         closeOrderModal();
     }
+
+    if (!event.target.closest('.searchable-select')) {
+        closeAllSearchableSelects();
+    }
 });
 
 // Initialize
+initSearchableSelects();
 updateCountdown();
 updateTotalPrice();
 loadLocations();
