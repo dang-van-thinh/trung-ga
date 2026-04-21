@@ -45384,8 +45384,7 @@ function resetLocationSelectors() {
 }
 
 // URL của Google Apps Script
-// const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwh-bYUTz5gfqYlQuVkA1fI_1EZIexf9vn-sv23t1Sh0CO_ntHGZSY6X591Shhpow/exec';
-const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzxz9DwSro8UlCfaaXHxibA3atum-3a4N8a1chXNpAQsNLmE8ivPltZkwIsqCi_TTQ/exec';
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycby7n1vHD2AGcUPTY67hg5chHKTSkKcMPQD4abO0QdDHMQ3-svokYSQ9Hid7cDXqSw/exec';
 
 // Submit Order
 function submitOrder(event) {
