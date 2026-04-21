@@ -219,12 +219,31 @@ function closeOrderModal() {
 // Add to Cart
 function addToCart(product, price) {
     const productSelect = document.getElementById('productSelect');
-    const value = `${product}|${price}`;
-    productSelect.value = value;
+    const normalizeProductKey = (value) => (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/\s+/g, ' ')
+        .trim();
 
-    const radio = document.querySelector(`input[name="productOption"][data-product="${product}"][data-price="${price}"]`);
+    const productRadios = Array.from(document.querySelectorAll('input[name="productOption"]'));
+    const targetProductKey = normalizeProductKey(product);
+    const radio = productRadios.find((item) => {
+        const samePrice = String(item.dataset.price) === String(price);
+        const sameProduct = normalizeProductKey(item.dataset.product) === targetProductKey;
+        return samePrice && sameProduct;
+    }) || productRadios.find((item) => String(item.dataset.price) === String(price));
+
     if (radio) {
         radio.checked = true;
+        productSelect.value = radio.value;
+    } else {
+        productSelect.value = `${product}|${price}`;
+    }
+
+    if (radio) {
+        radio.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
     updateTotalPrice();
