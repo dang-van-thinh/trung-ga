@@ -1458,7 +1458,7 @@ header {
 
 .product-radio-card {
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #cfd8e3;
   border-radius: 10px;
   padding: 12px;
   cursor: pointer;
@@ -1466,6 +1466,8 @@ header {
   display: flex;
   align-items: center;
   gap: 12px;
+  position: relative;
+  overflow: hidden;
 }
 
 .product-radio-card input {
@@ -1489,13 +1491,57 @@ header {
   color: #666;
 }
 
+.product-radio-card::after {
+  content: "Đang chọn";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary) 0%, #2f80ed 100%);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
 .product-radio-card:hover {
   border-color: #1976d2;
   box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
+  transform: translateY(-2px);
+}
+
+.product-radio-card:has(input:checked) {
+  border-color: #1976d2;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2),
+    0 12px 24px rgba(25, 118, 210, 0.16);
+  transform: translateY(-2px);
+}
+
+.product-radio-card:has(input:checked)::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .product-radio-card input:checked + div {
-  background: #f2f7ff;
+  background: transparent;
+}
+
+.product-radio-card:has(input:checked) strong {
+  color: var(--primary);
+}
+
+.product-radio-card:has(input:checked) p {
+  color: var(--accent);
+}
+
+.product-radio-card:has(input:checked) small {
+  color: #35506b;
 }
 
 .submit-btn {
