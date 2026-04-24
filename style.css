@@ -420,7 +420,7 @@ header {
   background: var(--primary);
   color: white;
   padding: 50px 20px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 .benefits-container {
@@ -1005,7 +1005,7 @@ header {
   background: linear-gradient(135deg, var(--primary) 0%, #0052a3 100%);
   color: white;
   padding: 80px 20px;
-  margin-top: 80px;
+  /* margin-top: 80px; */
 }
 
 .pricing-container {
@@ -2771,7 +2771,7 @@ footer {
   background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
   color: white;
   padding: 60px 20px;
-  margin: 40px 0;
+  /* margin: 40px 0; */
 }
 
 .special-offer-container {

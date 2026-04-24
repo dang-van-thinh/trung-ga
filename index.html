@@ -13,7 +13,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -65,23 +65,29 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="discount-badge">GIẢM 20%</div>
-                <div class="discount-text">Mua 3 Tặng 1</div>
-                <h1>TRỨNG GÀ THẢO DƯỢC SADU</h1>
-                <p>Dinh dưỡng vàng cho mẹ bầu, mẹ bỉm sữa và gia đình. Nuôi bằng thảo dược tự nhiên, không kháng sinh,
-                    cholesterol thấp chỉ 1/2 so với trứng thường.</p>
-                <button class="cta-btn" onclick="openOrderModal()">ĐẶT MUA NGAY</button>
-            </div>
-            <div class="hero-image">
-                <!-- <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/hero-farm-fresh-eggs-GDHWnV9c8HNLyoMcyNhwLZ.webp" alt="Trứng Sadu"> -->
-                <img src="source/banner-2.jpg" alt="Trứng Sadu">
+    <!-- Special Offer Section -->
+    <section class="special-offer">
+        <div class="special-offer-container">
+            <div class="special-offer-content">
+                <div class="special-offer-text">
+                    <div class="special-badge">ƯU ĐÃI 30/4</div>
+                    <h2>Mua 3 Hộp Tặng 1 Hộp + 1 Hộp Muối Himalaya 200g</h2>
+                    <p>Chỉ với <span class="highlight-price">358.000đ</span> - Tiết kiệm ngay 20%</p>
+                    <ul class="special-features">
+                        <li>✓ 48 quả trứng gà thảo dược tự nhiên</li>
+                        <li>✓ 1 hộp muối Himalaya 200g cao cấp</li>
+                        <li>✓ Miễn phí vận chuyển toàn quốc</li>
+                        <li>✓ Bảo hành 1 đổi 1 nếu vỡ</li>
+                    </ul>
+                    <button class="special-cta-btn" onclick="addToCart('Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya', 358500)">ĐẶT MUA NGAY</button>
+                </div>
+                <div class="special-offer-image">
+                    <img src="source/banner.jpg" alt="Ưu đãi 30/4">
+                </div>
             </div>
         </div>
     </section>
+
 
     <!-- Pricing Section -->
     <section class="pricing">
@@ -113,32 +119,29 @@
         </div>
     </section>
 
-    <!-- Special Offer Section -->
-    <section class="special-offer">
-        <div class="special-offer-container">
-            <div class="special-offer-content">
-                <div class="special-offer-text">
-                    <div class="special-badge">ƯU ĐÃI 30/4</div>
-                    <h2>Mua 3 Hộp Tặng 1 Hộp + 1 Hộp Muối Himalaya 200g</h2>
-                    <p>Chỉ với <span class="highlight-price">358.000đ</span> - Tiết kiệm ngay 20%</p>
-                    <ul class="special-features">
-                        <li>✓ 48 quả trứng gà thảo dược tự nhiên</li>
-                        <li>✓ 1 hộp muối Himalaya 200g cao cấp</li>
-                        <li>✓ Miễn phí vận chuyển toàn quốc</li>
-                        <li>✓ Bảo hành 1 đổi 1 nếu vỡ</li>
-                    </ul>
-                    <button class="special-cta-btn"
-                        onclick="addToCart('Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya', 358500)">ĐẶT MUA
-                        NGAY</button>
-                </div>
-                <div class="special-offer-image">
-                    <img src="source/banner.jpg" alt="Ưu đãi 30/4">
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="discount-badge">GIẢM 20%</div>
+                <div class="discount-text">Mua 3 Tặng 1</div>
+                <h1>TRỨNG GÀ THẢO DƯỢC SADU</h1>
+                <p>Dinh dưỡng vàng cho mẹ bầu, mẹ bỉm sữa và gia đình. Nuôi bằng thảo dược tự nhiên, không kháng sinh,
+                    cholesterol thấp chỉ 1/2 so với trứng thường.</p>
+                <button class="cta-btn" onclick="openOrderModal()">ĐẶT MUA NGAY</button>
+            </div>
+            <div class="hero-image">
+                <!-- <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663433146916/6HX9SbDfg93A93ij5Z4aWW/hero-farm-fresh-eggs-GDHWnV9c8HNLyoMcyNhwLZ.webp" alt="Trứng Sadu"> -->
+                <img src="source/banner-2.jpg" alt="Trứng Sadu">
             </div>
         </div>
     </section>
 
+    
 
+    
+
+    
 
     <!-- Benefits Section -->
     <section class="benefits">
@@ -194,7 +197,7 @@
                     <img src="source/comparison.jpg" alt="So sánh trứng SADU và trứng thường">
                 </div>
                 <div class="story-text">
-                    <h4>Sự khác biệt được nhìn thấy bằng mắt thường</h4>
+                <h4>Sự khác biệt được nhìn thấy bằng mắt thường</h4>
 
                     <p>Lòng đỏ trứng SADU luôn sánh màu, tươi ngon và đậm đà hơn so với trứng thường. Đây là kết quả của
                         chế độ dinh dưỡng tự nhiên và chăm sóc đặc biệt từ trang trại.</p>
@@ -202,13 +205,13 @@
             </div>
         </div>
         <div class="why-content" style="margin-top: 40px !important;">
-
+        
             <!-- <hr> -->
             <div class="why-image">
                 <img src="source/me-bau-3.jpg" alt="Mẹ và bé">
             </div>
             <div class="why-text">
-                <h3>An Toàn Cho Mẹ Bầu & Mẹ Bỉm Sữa</h3>
+<h3>An Toàn Cho Mẹ Bầu & Mẹ Bỉm Sữa</h3>
                 <p>Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư
                     kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.</p>
 
@@ -224,7 +227,7 @@
         </div>
     </section>
 
-
+    
     <!-- Comparison Image Section Duplicate -->
     <section class="comparison-image">
         <h2>Quà Tặng Ý Nghĩa</h2>
@@ -254,7 +257,7 @@
         </div>
     </section>
 
-
+    
 
     <!-- Comparison Table -->
     <section class="comparison">
@@ -401,9 +404,7 @@
                         <span class="price-old">478.000đ</span>
                         <span class="price-new">358.000đ</span>
                     </div>
-                    <button class="product-btn"
-                        onclick="addToCart('Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya', 358500)">ĐẶT MUA
-                        NGAY</button>
+                    <button class="product-btn" onclick="addToCart('Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya', 358500)">ĐẶT MUA NGAY</button>
                 </div>
             </div>
         </div>
@@ -442,9 +443,7 @@
 
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <div class="testimonial-text">"10 điểm khâu vận chuyển, sản phẩm mà đúng như chất lượng quảng cáo thì
-                    cũng cho 10 điểm. Anh mua hàng ăn uống rất kĩ tính, thường thì anh trả rảnh mà feedback, nhưng sản
-                    phẩm tốt cho sức khỏe thì cần phải cảm ơn người sản xuất."</div>
+                <div class="testimonial-text">"10 điểm khâu vận chuyển, sản phẩm mà đúng như chất lượng quảng cáo thì cũng cho 10 điểm. Anh mua hàng ăn uống rất kĩ tính, thường thì anh trả rảnh mà feedback, nhưng sản phẩm tốt cho sức khỏe thì cần phải cảm ơn người sản xuất."</div>
                 <div class="testimonial-author">
                     <img src="source/avatar-4.jpg" alt="Anh Long" class="author-avatar">
                     <div class="author-info">
@@ -456,8 +455,7 @@
 
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <div class="testimonial-text">"Gia đình mình ăn chay tháng 10 ngày, có trứng sạch thuần chay là gia đình
-                    mình an tâm rồi. Cảm ơn shop."</div>
+                <div class="testimonial-text">"Gia đình mình ăn chay tháng 10 ngày, có trứng sạch thuần chay là gia đình mình an tâm rồi. Cảm ơn shop."</div>
                 <div class="testimonial-author">
                     <img src="source/avatar-5.jpg" alt="Chị Bích" class="author-avatar">
                     <div class="author-info">
@@ -482,7 +480,7 @@
         </div>
     </section>
 
-
+    
 
     <!-- FAQ Section -->
     <section class="faq" id="faq">
@@ -655,8 +653,7 @@
                             </div>
                         </label>
                         <label class="product-radio-card">
-                            <input type="radio" name="productOption"
-                                data-product="Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" data-price="358500"
+                            <input type="radio" name="productOption" data-product="Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" data-price="358500"
                                 value="uu-dai-30-4|358500">
                             <div>
                                 <strong>Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya</strong>
