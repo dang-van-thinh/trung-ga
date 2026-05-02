@@ -10,10 +10,16 @@ const fakeCustomers = [
     { name: "Đỗ Văn Hùng", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
     { name: "Vũ Thị Xuân", product: "Trứng Gà Thảo Dược - 1 Hộp Trứng" },
     { name: "Bùi Văn Long", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
+    { name: "Trần Ngọc Bảo", product: "Trứng Gà Thảo Dược - 5 Hộp Tặng 2" },
     { name: "Trương Thị Mai", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Đinh Văn Sơn", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" },
-    { name: "Nguyễn Văn An", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" },
-    { name: "Lê Thị Lan", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" }
+    { name: "Nguyễn Quỳnh Nga", product: "Trứng Gà Thảo Dược - 5 Hộp Tặng 2" },
+    { name: "Ngô Như", product: "Trứng Gà Thảo Dược - 5 Hộp Tặng 2" },
+
+
+    // ƯU ĐÃI 
+    //     { name: "Đinh Văn Sơn", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" },
+    //     { name: "Nguyễn Văn An", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" },
+    //     { name: "Lê Thị Lan", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" }
 ];
 
 let currentCustomerIndex = 0;
