@@ -45504,8 +45504,31 @@ window.addEventListener('click', function (event) {
     }
 });
 
+function initFarmVideoAutoplay() {
+    const farmVideos = Array.from(document.querySelectorAll('.farm-video video'));
+    if (!farmVideos.length || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                video.play().catch(() => {
+                    // Autoplay may be blocked on some browsers if not allowed
+                });
+            } else {
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.55
+    });
+
+    farmVideos.forEach(video => observer.observe(video));
+}
+
 // Initialize
 initSearchableSelects();
+initFarmVideoAutoplay();
 updateCountdown();
 updateTotalPrice();
 loadLocations();
