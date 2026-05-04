@@ -45508,13 +45508,17 @@ function initFarmVideoAutoplay() {
     const farmVideos = Array.from(document.querySelectorAll('.farm-video video'));
     if (!farmVideos.length || !('IntersectionObserver' in window)) return;
 
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
             if (entry.isIntersecting) {
-                video.play().catch(() => {
-                    // Autoplay may be blocked on some browsers if not allowed
-                });
+                if (!isMobile || video.muted) {
+                    video.play().catch(() => {
+                        // Autoplay may be blocked on some browsers if not allowed
+                    });
+                }
             } else {
                 video.pause();
             }
