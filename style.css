@@ -925,33 +925,30 @@ header {
   color: var(--primary);
 }
 
-.farm-video-wrapper {
+.vimeo-vertical-wrapper {
   position: relative;
   width: 100%;
-  max-width: 360px; /* Giới hạn chiều rộng giống màn hình điện thoại */
+  max-width: 360px;
   margin: 0 auto;
-  aspect-ratio: 9 / 16; /* Tỷ lệ video dọc chuẩn */
+  aspect-ratio: 9 / 16;
   background: #000;
+  border-radius: 16px;
   overflow: hidden;
-  border-radius: 12px; /* Optional: bo góc */
-}
-/* Fallback cho trình duyệt cũ không hỗ trợ aspect-ratio */
-@supports not (aspect-ratio: 9 / 16) {
-  .farm-video-wrapper::before {
-    content: "";
-    display: block;
-    padding-top: 177.78%; /* 16 ÷ 9 × 100% */
-  }
-  .farm-video-wrapper video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  line-height: 0;
 }
 
-/* .farm-video-wrapper {
+.vimeo-vertical-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+/* 
+.farm-video-wrapper {
   max-width: 420px;
   width: min(100%, 420px);
   aspect-ratio: 9 / 16;
@@ -969,6 +966,12 @@ header {
   object-fit: cover;
 } */
 
+/* Testimonials Section */
+.testimonials {
+  background: var(--bg-light);
+  padding: 80px 20px;
+  margin-top: 60px;
+}
 .testimonials h2 {
   font-size: 36px;
   text-align: center;
@@ -1965,7 +1968,12 @@ footer {
 
   .farm-video h2 {
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+  }
+
+  .vimeo-vertical-wrapper {
+    max-width: 320px;
+    border-radius: 14px;
   }
 
   .farm-video-wrapper {
@@ -2065,11 +2073,18 @@ footer {
   }
 
   .farm-video {
-    padding: 28px 14px;
+    padding: 30px 12px;
   }
 
   .farm-video h2 {
     font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .vimeo-vertical-wrapper {
+    max-width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
   }
 
   .farm-video-wrapper {
