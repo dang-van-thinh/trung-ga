@@ -926,6 +926,32 @@ header {
 }
 
 .farm-video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 360px; /* Giới hạn chiều rộng giống màn hình điện thoại */
+  margin: 0 auto;
+  aspect-ratio: 9 / 16; /* Tỷ lệ video dọc chuẩn */
+  background: #000;
+  overflow: hidden;
+  border-radius: 12px; /* Optional: bo góc */
+}
+/* Fallback cho trình duyệt cũ không hỗ trợ aspect-ratio */
+@supports not (aspect-ratio: 9 / 16) {
+  .farm-video-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: 177.78%; /* 16 ÷ 9 × 100% */
+  }
+  .farm-video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* .farm-video-wrapper {
   max-width: 420px;
   width: min(100%, 420px);
   aspect-ratio: 9 / 16;
@@ -941,7 +967,7 @@ header {
   height: 100%;
   display: block;
   object-fit: cover;
-}
+} */
 
 .testimonials h2 {
   font-size: 36px;
