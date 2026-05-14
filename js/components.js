@@ -492,15 +492,15 @@ const components = {
             <p>Trứng gà thảo dược Sadu – Lựa chọn tinh túy cho sức khỏe gia đình bạn.</p>
           </div>
           
-          <div class="footer-section">
-            <h4>Sản Phẩm</h4>
-            <ul>
-              <li><a href="#products">Hộp Nhỏ (6 quả)</a></li>
-              <li><a href="#products">Hộp Vừa (10 quả)</a></li>
-              <li><a href="#products">Hộp Lớn (12 quả)</a></li>
-              <li><a href="#products">Combo Tiết Kiệm</a></li>
-            </ul>
-          </div>
+          // <div class="footer-section">
+          //   <h4>Sản Phẩm</h4>
+          //   <ul>
+          //     <li><a href="#products">Hộp Nhỏ (6 quả)</a></li>
+          //     <li><a href="#products">Hộp Vừa (10 quả)</a></li>
+          //     <li><a href="#products">Hộp Lớn (12 quả)</a></li>
+          //     <li><a href="#products">Combo Tiết Kiệm</a></li>
+          //   </ul>
+          // </div>
           
           <div class="footer-section">
             <h4>Công Ty</h4>
