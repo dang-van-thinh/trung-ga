@@ -171,6 +171,13 @@ const siteData = {
     { src: '/assets/images/fb2.jpg', alt: 'Khách hàng hài lòng 4' },
     { src: '/assets/images/fb3.jpg', alt: 'Khách hàng hài lòng 3' },
     { src: '/assets/images/fb4.jpg', alt: 'Khách hàng hài lòng 4' },
+    { src: '/assets/images/fb10.jpg', alt: 'Khách hàng hài lòng 10' },
+    { src: '/assets/images/fb11.jpg', alt: 'Khách hàng hài lòng 11' },
+    { src: '/assets/images/fb12.jpg', alt: 'Khách hàng hài lòng 12' },
+    { src: '/assets/images/fb13.jpg', alt: 'Khách hàng hài lòng 13' },
+    { src: '/assets/images/fb14.jpg', alt: 'Khách hàng hài lòng 14' },
+    { src: '/assets/images/fb15.jpg', alt: 'Khách hàng hài lòng 15' },
+    { src: '/assets/images/fb16.jpg', alt: 'Khách hàng hài lòng 16' },
 
   ],
 
