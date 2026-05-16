@@ -104,23 +104,23 @@ const siteData = {
         'Miễn phí vận chuyển toàn quốc'
       ]
     },
-    {
-      id: 'trung-so',
-      name: 'Mua 5 Tặng 2 (Trứng Gà So)',
-      fullName: 'Mua 5 Tặng 2 (Trứng Gà So)',
-      quantity: '84 quả',
-      priceDisplay: '597.500đ',
-      priceValue: 597500,
-      description: 'Trứng tuy nhỏ nhưng chất lượng không hề nhỏ',
-      image: '/assets/images/image-product.png',
-      featured: false,
-      features: [
-        '100% Thảo dược tự nhiên',
-        '0% Kháng sinh tồn dư',
-        'Miễn phí vận chuyển toàn quốc',
-        'Chỉ áp dụng cho trứng gà so (quả nhỏ)'
-      ]
-    }
+    // {
+    //   id: 'trung-so',
+    //   name: 'Mua 5 Tặng 2 (Trứng Gà So)',
+    //   fullName: 'Mua 5 Tặng 2 (Trứng Gà So)',
+    //   quantity: '84 quả',
+    //   priceDisplay: '597.500đ',
+    //   priceValue: 597500,
+    //   description: 'Trứng tuy nhỏ nhưng chất lượng không hề nhỏ',
+    //   image: '/assets/images/image-product.png',
+    //   featured: false,
+    //   features: [
+    //     '100% Thảo dược tự nhiên',
+    //     '0% Kháng sinh tồn dư',
+    //     'Miễn phí vận chuyển toàn quốc',
+    //     'Chỉ áp dụng cho trứng gà so (quả nhỏ)'
+    //   ]
+    // }
   ],
 
   // Combo Offer
