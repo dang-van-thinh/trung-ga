@@ -1,299 +1,309 @@
+// js/data.js
 /* ============================================
    SADU LANDING PAGE - DATA
    ============================================ */
 
 const siteData = {
 
-
-  // Navigation
-  navigation: [
-    { label: 'Sản Phẩm', href: '#products' },
-    { label: 'Câu Chuyện', href: '#story' },
-    { label: 'Lợi Ích', href: '#benefits' },
-    { label: 'Liên Hệ', href: '#footer' }
-  ],
-
-  // Hero Section
-  hero: {
-    title: 'Trứng Gà Thảo Dược SADU',
-    subtitle: 'Thơm Ngon, Không Tanh, Cholesterol Cực Thấp',
-    description: 'Lựa chọn tính túy cho sức khỏe gia đình bạn. 100% thảo dược tự nhiên, 0% kháng sinh tồn dư.',
-    stats: [
-      { value: '100%', label: 'Thức Ăn Từ Thực Vật' },
-      { value: '0%', label: 'Kháng Sinh Tồn Dư' },
-      { value: '1/2', label: 'Cholesterol Thấp Hơn Trứng Thường' },
+    // Navigation
+    navigation: [
+        { label: 'Sản Phẩm', href: '#products' },
+        { label: 'Đánh Giá', href: '#testimonials' },
+        { label: 'Hỏi Đáp', href: '#faq' },
+        { label: 'Liên Hệ', href: '#footer' }
     ],
-    buttons: [
-      { text: 'Khám Phá Ngay', class: 'btn-primary', href: '#products' },
-      // { text: 'Tìm Cửa Hàng', class: 'btn-secondary', href: '#footer' }
+
+    // Hero Section
+    hero: {
+        discountBadge: 'GIẢM 20%',
+        discountText: 'MUA 3 TẶNG 1',
+        title: 'TRỨNG GÀ THẢO DƯỢC SADU',
+        description: 'Dinh dưỡng vàng cho mẹ bầu, mẹ bỉm sữa và gia đình. Nuôi bằng thảo dược tự nhiên, không kháng sinh, cholesterol thấp chỉ 1/2 so với trứng thường.',
+        ctaText: 'ĐẶT MUA NGAY',
+        image: 'source/banner-2.jpg'
+    },
+
+    // Benefits Section
+    benefits: [
+        {
+            icon: '✓',
+            title: 'Bảo Hành Chính Hãng',
+            description: 'Cam Kết 3 KHÔNG : Không Kháng Sinh - Không Chất Kích Thích - Không Cám Công Nghiệp'
+        },
+        {
+            icon: '🚚',
+            title: 'Giao Hàng Toàn Quốc',
+            description: 'Giao hàng toàn quốc, đóng gói cẩn thận'
+        },
+        {
+            icon: '🔄',
+            title: '1 ĐỔI 1',
+            description: 'Bảo hành 1 đổi 1 hoặc hoàn tiền, nếu bị vỡ trong quá trình vận chuyển'
+        },
+        {
+            icon: '💬',
+            title: 'Hỗ Trợ 24/7',
+            description: 'Tư vấn miễn phí, hỗ trợ khách hàng liên tục'
+        }
+    ],
+
+    // Why Section
+    why: {
+        title: 'Tại Sao Bạn Nên Lựa Chọn Trứng Gà Thảo Dược SADU ?',
+        farmStory: {
+            title: 'Cam kết 3 KHÔNG từ SADU',
+            image: 'source/yolk.jpg',
+            uspList: [
+                'KHÔNG kháng sinh',
+                'KHÔNG hormone tăng trưởng',
+                'KHÔNG cám công nghiệp'
+            ],
+            description: 'Đàn gà được ăn thức ăn 100% từ thực vật (ngô sơn la, cám gạo tươi, khô đậu tương, khoáng, premix,...), thức ăn được phối trộn thêm 13 loại thảo dược tự nhiên (cà gai leo, xạ đen, đinh lăng, khôi đốm,...), uống nước sạch và được chăm sóc bài bản để cho ra những quả trứng an toàn nhất.'
+        },
+        comparison: {
+            image: 'source/comparison.jpg',
+            title: 'Sự khác biệt được nhìn thấy bằng mắt thường',
+            description: 'Lòng đỏ trứng SADU luôn sánh màu, tươi ngon và đậm đà hơn so với trứng thường. Đây là kết quả của chế độ dinh dưỡng tự nhiên và chăm sóc đặc biệt từ trang trại.'
+        },
+        safety: {
+            image: 'source/me-bau-3.jpg',
+            title: 'An Toàn Cho Mẹ Bầu & Mẹ Bỉm Sữa',
+            description: 'Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.'
+        }
+    },
+
+    // Gift Carousel Section
+    giftCarousel: {
+        title: 'Quà Tặng Ý Nghĩa',
+        images: [
+            { src: 'source/qua-5.png', alt: 'Chứng nhận' },
+            { src: 'source/qua-1.png', alt: 'Khay trứng' },
+            { src: 'source/qua-2.png', alt: 'Mẹ bầu' },
+            { src: 'source/qua-7.png', alt: 'Mẹ và bé' },
+            { src: 'source/qua-3.png', alt: 'Lòng đỏ trứng' }
+        ]
+    },
+
+    // Comparison Table
+    comparison: [
+        { criteria: 'Đội Ngũ Chuyên Gia', sadu: true, regular: false },
+        { criteria: 'Thức Ăn 100% Từ Thực Vật', sadu: true, regular: false },
+        { criteria: 'Không Kháng Sinh', sadu: true, regular: false },
+        { criteria: 'Cholesterol Thấp', sadu: '✓ (125mg)', regular: '✗ (380mg)' },
+        { criteria: 'Omega-3 Cao', sadu: true, regular: false },
+        { criteria: 'Chế độ chăm sóc đặc biệt', sadu: true, regular: false },
+        { criteria: 'An Toàn Cho Mẹ Bầu', sadu: true, regular: false }
+    ],
+
+    // Certificates Carousel
+    certificates: {
+        title: 'Sự An Toàn Được Chứng Nhận',
+        images: [
+            { src: 'source/t1.jpg', alt: 'Chứng nhận' },
+            { src: 'source/t2.jpg', alt: 'Khay trứng' },
+            { src: 'source/t3.jpg', alt: 'Mẹ bầu' },
+            { src: 'source/t4.jpg', alt: 'Mẹ và bé' },
+            { src: 'source/t5.jpg', alt: 'Lòng đỏ trứng' }
+        ]
+    },
+
+    // Egg Comparison Section
+    eggComparison: {
+        title: 'Trứng Gà Thảo Dược SADU Có Gì Khác Biệt?',
+        subtitle: 'So sánh chi tiết giữa trứng SADU và trứng công nghiệp thông thường',
+        comparisons: [
+            {
+                icon: '🌿',
+                title: 'Nguồn Thức Ăn',
+                sadu: '100% thảo dược tự nhiên: ngô Sơn La, cám gạo tươi, khô đậu tương, 13 loại thảo dược (cà gai leo, xạ đen, đinh lăng, khôi đốm...)',
+                regular: 'Cám công nghiệp phối trộn sẵn, có thể chứa chất kích thích tăng trưởng và kháng sinh'
+            },
+            {
+                icon: '💊',
+                title: 'Cholesterol',
+                sadu: 'Thấp hơn 1/2 so với trứng thường (125mg/quả) - An toàn cho tim mạch',
+                regular: 'Cao (380mg/quả) - Không tốt cho người có vấn đề về tim mạch'
+            },
+            {
+                icon: '🥚',
+                title: 'Chất Lượng Trứng',
+                sadu: 'Lòng đỏ sánh đặc, màu cam đậm, tươi lâu, không tanh khi ăn sống',
+                regular: 'Lòng đỏ nhạt, dễ vỡ, có mùi tanh, thời gian bảo quản ngắn'
+            },
+            {
+                icon: '🔬',
+                title: 'An Toàn Thực Phẩm',
+                sadu: 'Không tồn dư kháng sinh, không hormone, không chất bảo quản - Đạt chứng nhận an toàn thực phẩm',
+                regular: 'Có thể tồn dư kháng sinh và hormone từ thức ăn công nghiệp'
+            },
+            {
+                icon: '👶',
+                title: 'Đối Tượng Sử Dụng',
+                sadu: 'An toàn cho mọi đối tượng: mẹ bầu, mẹ bỉm, trẻ em, người già, người ăn chay',
+                regular: 'Hạn chế cho mẹ bầu, trẻ nhỏ và người có bệnh lý đặc biệt'
+            },
+            {
+                icon: '⏱️',
+                title: 'Thời Gian Bảo Quản',
+                sadu: 'Nhiệt độ thường: 15-20 ngày | Ngăn mát tủ lạnh: đến 45 ngày',
+                regular: 'Nhiệt độ thường: 7-10 ngày | Ngăn mát tủ lạnh: 20-30 ngày'
+            }
+        ]
+    },
+
+    // Products
+    products: [
+        {
+            id: "1-hop",
+            name: "1 HỘP TRỨNG GÀ THẢO DƯỢC SADU",
+            originalPrice: 0,
+            priceValue: 149500,
+            priceDisplay: "149.500đ (đã bao gồm 30.000đ tiền ship)",
+            specs: [
+                "✓ 1 hộp 12 quả",
+                "✓ Phụ thu 30.000đ tiền ship",
+                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+            ],
+            highlightSpec: true,
+            image: "source/qua-1.png",
+            featured: false // ⭐ Set true để làm sản phẩm nổi bật
+        },
+        {
+            id: "3-hop",
+            name: "COMBO 3 HỘP TẶNG 1 HỘP",
+            originalPrice: 478000,
+            priceValue: 358500,
+            priceDisplay: "358.500đ",
+            specs: [
+                "✓ 4 hộp x 12 quả",
+                "✓ Miễn phí ship toàn quốc",
+                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+            ],
+            highlightSpec: true,
+            image: "source/qua-1.png",
+            featured: true
+        },
+        {
+            id: "trung-so",
+            name: "COMBO 5 HỘP TẶNG 2 (TRỨNG SO)",
+            originalPrice: 836500,
+            priceValue: 597500,
+            priceDisplay: "597.500đ",
+            specs: [
+                "✓ 7 hộp x 12 quả",
+                "✓ Miễn phí ship toàn quốc",
+                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)",
+                "Chỉ áp dụng cho sản phẩm trứng so (trứng nhỏ)"
+            ],
+            highlightSpec: true,
+            image: "source/qua-1.png",
+            featured: false
+        },
+
+    ],
+
+    // Testimonials
+    testimonials: [
+        {
+            name: 'Chị Hương',
+            role: 'Mẹ bầu - Tháng 7',
+            avatar: 'source/avatar-1.jpg',
+            content: 'Mình rất lo lắng về chất lượng trứng cho thai kỳ. Sau khi dùng Sadu, mình cảm thấy yên tâm vì sản phẩm hoàn toàn tự nhiên và không có kháng sinh. Lòng đỏ sánh màu, ngon lắm!'
+        },
+        {
+            name: 'Chị Linh',
+            role: 'Mẹ bỉm sữa - Con 3 tháng',
+            avatar: 'source/avatar-2.jpg',
+            content: 'Sau khi sinh, mình cần ăn nhiều trứng để tăng sữa. Trứng Sadu rất tốt, cholesterol thấp, lại không có kháng sinh. Con mình khỏe mạnh và sữa cũng nhiều hơn.'
+        },
+        {
+            name: 'Anh Long',
+            role: 'Khách hàng mới',
+            avatar: 'source/avatar-4.jpg',
+            content: '10 điểm khâu vận chuyển, sản phẩm mà đúng như chất lượng quảng cáo thì cũng cho 10 điểm. Anh mua hàng ăn uống rất kĩ tính, thường thì anh trả rảnh mà feedback, nhưng sản phẩm tốt cho sức khỏe thì cần phải cảm ơn người sản xuất.'
+        },
+        {
+            name: 'Chị Bích',
+            role: 'Ăn chay',
+            avatar: 'source/avatar-5.jpg',
+            content: 'Gia đình mình ăn chay tháng 10 ngày, có trứng sạch thuần chay là gia đình mình an tâm rồi. Cảm ơn shop.'
+        },
+        {
+            name: 'Chị Minh',
+            role: 'Mẹ trẻ - Con 2 tuổi',
+            avatar: 'source/avatar-3.jpg',
+            content: 'Mình mua Sadu cho cả gia đình. Trứng tươi, ngon, an toàn cho con. Mình đã mua tại sadu 2 năm nay rồi.'
+        }
+    ],
+
+    // Customer Feedback Images (Masonry Gallery)
+    feedbackImages: [
+        { src: 'source/fb1.jpg', alt: 'Khách hàng hài lòng 1' },
+        { src: 'source/fb2.jpg', alt: 'Khách hàng hài lòng 2' },
+        { src: 'source/fb3.jpg', alt: 'Khách hàng hài lòng 3' },
+        { src: 'source/fb4.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb5.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb6.jpg', alt: 'Khách hàng hài lòng 4' },
+    ],
+
+    // FAQ
+    faqs: [
+        {
+            question: 'Trứng Sadu có an toàn cho mẹ bầu không?',
+            answer: 'Có, trứng SADU 100% an toàn cho mẹ bầu. Sản phẩm được nuôi bằng thảo dược tự nhiên, không tồn dư kháng sinh, và có cholesterol thấp.'
+        },
+        {
+            question: 'Giao hàng mất bao lâu?',
+            answer: '- Đối với các đơn trong nội thành TP Hà Nội: thời gian giao hàng dao động từ 2-3 ngày (Kể từ khi lên đơn thành công). <br>- Đối với các tỉnh thành khác: Tùy thuộc vào vị trí của bạn mà thời gian giao hàng dao động từ 4-7 ngày (Kể từ khi lên đơn thành công).'
+        },
+        {
+            question: 'Trứng để được bao nhiêu ngày và bảo quản như thế nào?',
+            answer: 'Bạn có thể bảo quản trứng theo hai cách sau: <br>- Ở nhiệt độ thường: trứng để được từ 15 - 20 ngày. <br> - Trong ngăn mát tủ lạnh: trứng để được tới 45 ngày ạ. <br>Lưu ý: Nên bảo quản trong ngăn mát tủ lạnh.'
+        },
+        {
+            question: 'Có chính sách đổi trả không?',
+            answer: 'Có, SADU có chính sách 1 đổi 1 hoặc hoàn tiền cho các trường hợp trứng bị vỡ trong quá trình vận chuyển. Nếu trứng không tươi hoặc bị vỡ, vui lòng liên hệ với chúng tôi qua hotline hoặc fanpage để được hỗ trợ.<br><span style="color: red;">(Lưu ý: Cần quay hoặc chụp lại hình ảnh khi mở hộp)</span>'
+        },
+        {
+            question: 'Cholesterol trong trứng SADU thấp bao nhiêu?',
+            answer: 'Trứng Sadu có cholesterol thấp hơn 1/2 so với trứng thường. Điều này rất phù hợp cho mẹ bầu, mẹ bỉm sữa và những người cần kiểm soát cholesterol.'
+        },
+        {
+            question: 'Làm thế nào để biết đây là hàng chính hãng của SADU?',
+            answer: 'Để nhận biết sản phẩm chính hãng của SADU, bạn có thể dựa vào các đặc điểm sau: <br>- Trên mỗi quả trứng đều có tem SADU. <br>- Vỏ thùng có in đầy đủ thông tin địa chỉ trang trại, mã vạch để truy xuất nguồn gốc. <br>- Đặc biệt, số hotline chính thức 19008952 của công ty sẽ được in trên bao bì sản phẩm.'
+        },
+        {
+            question: 'Có hỗ trợ khách hàng 24/7 không?',
+            answer: 'Có, chúng tôi có đội hỗ trợ khách hàng 24/7. Bạn có thể liên hệ qua Hotline: 1900 8952, Email: nongnghiepcncthanglong@gmail.com hoặc nhắn tin qua fanpage Trứng Gà Thảo Dươc SADU & SADU FARM.'
+        }
+    ],
+
+    // Contact Info
+    contact: {
+        phone: '1900 8952',
+        email: 'nongnghiepcncthanglong@gmail.com',
+        address: 'HTX NÔNG NGHIỆP CÔNG NGHỆ CAO KIÊN CÀ - Thôn Ứng Hòa - Xã Quảng Bị - TP.Hà Nội.',
+        facebook: 'https://www.facebook.com/trunggasach.sadu/',
+        socialLinks: [
+            { name: 'Facebook', url: 'https://www.facebook.com/trunggasach.sadu/', icon: 'f' },
+            { name: 'Instagram', url: '#', icon: '📷' },
+            { name: 'Zalo', url: '#', icon: 'Z' }
+        ]
+    },
+
+    // Customers for Alert Notification
+    customers: [
+        { name: 'Nguyễn Thị Hương', product: 'Trứng Gà Thảo Dược - 1 Hộp Trứng' },
+        { name: 'Trần Văn Đức', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Phạm Thị Linh', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Hoàng Minh Tuấn', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Lê Thị Hoa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Đỗ Văn Hùng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Vũ Thị Xuân', product: 'Trứng Gà Thảo Dược - 1 Hộp Trứng' },
+        { name: 'Bùi Văn Long', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Trần Ngọc Bảo', product: 'Trứng Gà Thảo Dược - 5 Hộp Tặng 2' },
+        { name: 'Trương Thị Mai', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Nguyễn Quỳnh Nga', product: 'Trứng Gà Thảo Dược - 5 Hộp Tặng 2' },
+        { name: 'Ngô Như', product: 'Trứng Gà Thảo Dược - 5 Hộp Tặng 2' }
     ]
-  },
-
-  // Story Section
-  story: {
-    title: 'Từ Tình Yêu Tới Chất Lượng',
-    subtitle: 'Sứ mệnh của chúng tôi là mang đến những quả trứng gà thảo dược tốt nhất, an toàn nhất cho sức khỏe gia đình bạn.',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663344183182/nd8DyymyeUHes9kHCxyub5/sadu_farm_scene-kqQox7F9MpxD9QMm2HvYSD.webp',
-    content: 'Tại Sadu, chúng tôi tin rằng một quả trứng tốt bắt đầu từ một cô gà hạnh phúc và khỏe mạnh. Mỗi quả trứng SADU là kết quả của sự tận tâm, chế độ ăn đặc biệt từ thảo dược tự nhiên, và yêu thương vô điều kiện dành cho từng con gà.',
-    highlights: [
-      { icon: '🌿', text: '100% Thảo Dược Tự Nhiên' },
-      { icon: '✓', text: '0% Kháng Sinh Tồn Dư' },
-      { icon: '❤️', text: 'Chăm Sóc Tình Yêu' }
-    ]
-  },
-
-  // Process Section (Farm to Table)
-  process: {
-    title: "Quy Trình Từ Trang Trại Đến Bàn Ăn",
-    subtitle: "Minh bạch từng khâu sản xuất vì sức khỏe gia đình bạn",
-    steps: [
-      {
-        icon: "🌿",
-        title: "1. Thức Ăn Thảo Dược Tự Nhiên",
-        desc: "Gà được chăm sóc theo cách đặc biệt, ăn ngô, cám gạo, khô đậu tương,... và thảo dược tự nhiên."
-      },
-      {
-        icon: "🥚",
-        title: "2. Thu Hoạch & Chọn Lọc",
-        desc: "Trứng được thu hoạch mỗi ngày, kiểm tra chất lượng nghiêm ngặt trước khi tới tay người tiêu dùng."
-      },
-      {
-        icon: "🚚 ",
-        title: "3. Giao hàng toàn quốc",
-        desc: "Giao hàng toàn quốc. Đóng gói trong hộp giấy lịch sự, hoặc để trong thùng trấu có vách ngăn để vận chuyển xa."
-      },
-      {
-        icon: "🔄",
-        title: "4. Bảo hành 1 đổi 1",
-        desc: "Bảo hành 1 đổi 1 hoặc hoàn tiền, nếu bị vỡ trong quá trình vận chuyển"
-      }
-    ]
-  },
-
-  // Products
-  products: [
-    {
-      id: 'trung-thuong', // Thêm ID hoặc value riêng biệt
-      name: '1 Hộp Trứng Thảo Dược', // Tên hiển thị ngắn gọn cho form
-      fullName: '1 Hộp Trứng Thảo Dược (12 quả)', // Tên đầy đủ cho thẻ sản phẩm nếu cần
-      quantity: '12 quả',
-      priceDisplay: '119.500đ', // Giá hiển thị
-      priceValue: 119500, // Giá trị số để tính toán
-      description: 'Trải nghiệm ngắn',
-      image: '/assets/images/image-product.png',
-      featured: false,
-      features: [
-        '100% Thảo dược tự nhiên',
-        '0% Kháng sinh tồn dư',
-        'Phí ship 30.000đ'
-      ]
-    },
-    {
-      id: 'com-bo-3-hop',
-      name: 'Gói Trải Nghiệm',
-      fullName: 'Gói Trải Nghiệm: Mua 3 Hộp Tặng 1 Hộp',
-      quantity: '48 quả',
-      priceDisplay: '358.500đ',
-      priceValue: 358500,
-      description: 'Mua 3 Hộp Tặng 1 Hộp - Tối ưu chi phí cho bạn',
-      image: '/assets/images/image-product.png',
-      featured: true,
-      features: [
-        '100% Thảo dược tự nhiên',
-        '0% Kháng sinh tồn dư',
-        'Miễn phí vận chuyển toàn quốc'
-      ]
-    },
-    // {
-    //   id: 'trung-so',
-    //   name: 'Mua 5 Tặng 2 (Trứng Gà So)',
-    //   fullName: 'Mua 5 Tặng 2 (Trứng Gà So)',
-    //   quantity: '84 quả',
-    //   priceDisplay: '597.500đ',
-    //   priceValue: 597500,
-    //   description: 'Trứng tuy nhỏ nhưng chất lượng không hề nhỏ',
-    //   image: '/assets/images/image-product.png',
-    //   featured: false,
-    //   features: [
-    //     '100% Thảo dược tự nhiên',
-    //     '0% Kháng sinh tồn dư',
-    //     'Miễn phí vận chuyển toàn quốc',
-    //     'Chỉ áp dụng cho trứng gà so (quả nhỏ)'
-    //   ]
-    // }
-  ],
-
-  // Combo Offer
-  combo: {
-    title: 'Gói Trải Nghiệm',
-    description: 'Mua Combo 3 Hộp – Tiết Kiệm 20% + Tặng 1 hộp cùng loại',
-    price: '358.500đ'
-  },
-
-  // Nutrition Comparison
-  nutrition: [
-    { nutrient: 'Cholesterol', sadu: 'Thấp (1/2 so với trứng thường)', regular: 'Cao', saduGood: true },
-    { nutrient: 'Omega-3', sadu: 'Cao (từ thảo dược)', regular: 'Thấp', saduGood: true },
-    { nutrient: 'Kháng Sinh Tồn Dư', sadu: '0%', regular: 'Có thể có', saduGood: true },
-    // { nutrient: 'Protein', sadu: '6g/quả', regular: '6g/quả', saduGood: false },
-    { nutrient: 'Choline', sadu: 'Cao (hỗ trợ não)', regular: 'Bình thường', saduGood: true },
-    { nutrient: 'Lutein & Zeaxanthin', sadu: 'Cao (bảo vệ mắt)', regular: 'Bình thường', saduGood: true }
-  ],
-
-  // Benefits
-  benefits: [
-    {
-      icon: '❤️',
-      title: 'Tốt Cho Tim Mạch',
-      description: 'Cholesterol thấp, giàu Omega-3 tự nhiên giúp bảo vệ hệ tim mạch'
-    },
-    {
-      icon: '🧠',
-      title: 'Hỗ Trợ Phát Triển Não',
-      description: 'Choline và các vi chất từ thảo dược hỗ trợ phát triển não bộ trẻ em'
-    },
-    {
-      icon: '👁️',
-      title: 'Bảo Vệ Mắt',
-      description: 'Lutein & Zeaxanthin tự nhiên giúp bảo vệ sức khỏe mắt'
-    },
-    {
-      icon: '🛡️',
-      title: 'Tăng Cường Miễn Dịch',
-      description: 'Vitamin D, E, B12 và thảo dược tăng cường hệ miễn dịch tự nhiên'
-    }
-  ],
-
-
-  // Giả lập danh sách ảnh feedback (Bạn hãy thay đổi src thành đường dẫn ảnh thật của bạn)
-  feedbackImages: [
-    { src: '/assets/images/fb1.jpg', alt: 'Khách hàng hài lòng 3' },
-    { src: '/assets/images/fb2.jpg', alt: 'Khách hàng hài lòng 4' },
-    // { src: '/assets/images/fb3.jpg', alt: 'Khách hàng hài lòng 3' },
-    // { src: '/assets/images/fb4.jpg', alt: 'Khách hàng hài lòng 4' },
-    { src: '/assets/images/fb10.jpg', alt: 'Khách hàng hài lòng 10' },
-    { src: '/assets/images/fb11.jpg', alt: 'Khách hàng hài lòng 11' },
-    { src: '/assets/images/fb12.jpg', alt: 'Khách hàng hài lòng 12' },
-    { src: '/assets/images/fb13.jpg', alt: 'Khách hàng hài lòng 13' },
-    { src: '/assets/images/fb14.jpg', alt: 'Khách hàng hài lòng 14' },
-    { src: '/assets/images/fb15.jpg', alt: 'Khách hàng hài lòng 15' },
-    { src: '/assets/images/fb16.jpg', alt: 'Khách hàng hài lòng 16' },
-
-  ],
-
-  // Testimonials
-  testimonials: [
-    {
-      name: 'Chị Lan',
-      location: 'Hà Nội',
-      avatar: '👩',
-      text: 'Từ ngày ăn trứng Sadu, con nhà mình không còn sợ mùi tanh của trứng nữa. Bé ăn ngon lành, mẹ yên tâm.'
-    },
-    {
-      name: 'Anh Tuấn',
-      location: 'Đầu Bếp Chuyên Nghiệp',
-      avatar: '👨‍🍳',
-      text: 'Màu lòng đỏ cam đậm tự nhiên nhìn là biết trứng chất lượng rồi. Tôi dùng cho các món ăn đặc biệt.'
-    },
-    {
-      name: 'Chị Hương',
-      location: 'TP.HCM',
-      avatar: '👩‍⚕️',
-      text: 'Bố tôi bị cao huyết áp, bác sĩ khuyên ăn trứng Sadu. Sau 3 tháng, chỉ số cholesterol giảm đáng kể.'
-    }
-  ],
-
-  // Gallery
-  gallery: [
-    {
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663344183182/nd8DyymyeUHes9kHCxyub5/sadu_farm_scene-kqQox7F9MpxD9QMm2HvYSD.webp',
-      title: 'Trang Trại Xanh Mướt',
-      description: 'Gà chạy bộ tự do trong vườn thảo dược'
-    },
-    {
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663344183182/nd8DyymyeUHes9kHCxyub5/sadu_herbs_blend-2MuBeFH7eiyp5Srr4ZnCBH.webp',
-      title: 'Thảo Dược Tự Nhiên',
-      description: 'Các loại thảo dược chất lượng cao'
-    },
-    {
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663344183182/nd8DyymyeUHes9kHCxyub5/sadu_family_meal-PNq74LDuvBQLYpw2yrV8Ut.webp',
-      title: 'Gia Đình Hạnh Phúc',
-      description: 'Chia sẻ bữa ăn ngon cùng gia đình'
-    }
-  ],
-
-  // FAQ
-  faqs: [
-    {
-      question: 'Trứng Sadu khác gì so với trứng thường?',
-      answer: 'Trứng Sadu được nuôi từ gà ăn 100% thảo dược tự nhiên (Cà gai leo, mật nhân, v.v.), không sử dụng kháng sinh, và có hàm lượng cholesterol chỉ bằng 1/2 so với trứng thường. Lòng đỏ có màu cam đậm tự nhiên, vị béo ngậy, không tanh.'
-    },
-    {
-      question: 'Giao hàng mất bao lâu?',
-      answer: '- Đối với các đơn trong nội thành TP Hà Nội: thời gian giao hàng dao động từ 2-3 ngày (Kể từ khi lên đơn thành công). <br>- Đối với các tỉnh thành khác: Tùy thuộc vào vị trí của bạn mà thời gian giao hàng dao động từ 4-7 ngày (Kể từ khi lên đơn thành công).'
-    },
-    {
-      question: 'Trứng để được bao nhiêu ngày và bảo quản như thế nào?',
-      answer: 'Bạn có thể bảo quản trứng theo hai cách sau: <br>- Ở nhiệt độ thường: trứng để được từ 15 - 20 ngày. <br> - Trong ngăn mát tủ lạnh: trứng để được tới 45 ngày ạ. Lưu ý: Nên bảo quản trong ngăn mát tủ lạnh.'
-    },
-    {
-      question: 'Có chính sách đổi trả không?',
-      answer: 'Có, SADU có chính sách 1 đổi 1 hoặc hoàn tiền cho các trường hợp trứng bị vỡ trong quá trình vận chuyển. Nếu trứng không tươi hoặc bị vỡ, vui lòng liên hệ với chúng tôi qua hotline hoặc fanpage để được hỗ trợ. <br>(Lưu ý: Cần quay hoặc chụp lại hình ảnh khi mở hộp)'
-    },
-    {
-      question: 'Trứng Sadu có phù hợp cho trẻ em không?',
-      answer: 'Có, trứng Sadu rất phù hợp cho trẻ em. Nó giàu protein, choline (hỗ trợ phát triển não), và các vi chất từ thảo dược. Hàm lượng cholesterol thấp cũng an toàn cho trẻ. Tuy nhiên, nên tham khảo ý kiến bác sĩ trước nếu trẻ có dị ứng.'
-    },
-    {
-      question: 'Làm thế nào để biết đây là hàng chính hãng của SADU?',
-      answer: 'Để nhận biết sản phẩm chính hãng của SADU, bạn có thể dựa vào các đặc điểm sau:<br> - Trên mỗi quả trứng đều có tem SADU.<br>- Vỏ thùng có in đầy đủ thông tin địa chỉ trang trại, mã vạch để truy xuất nguồn gốc.<br>- Đặc biệt, số hotline chính thức 19008952 của công ty sẽ được in trên bao bì sản phẩm.'
-    },
-    {
-      question: 'Sadu có chứng chỉ chất lượng không?',
-      answer: 'Có, tất cả sản phẩm Sadu đều được kiểm định chất lượng và không chứa kháng sinh tồn dư. Chúng tôi tuân thủ các tiêu chuẩn vệ sinh an toàn thực phẩm. Bạn có thể yêu cầu chứng chỉ khi đặt hàng.'
-    },
-    {
-      question: 'Có hỗ trợ khách hàng 24/7 không?',
-      answer: 'Có, chúng tôi có đội hỗ trợ khách hàng 24/7. Bạn có thể liên hệ qua Hotline: 1900 8952, Email: nongnghiepcncthanglong@gmail.com hoặc nhắn tin qua fanpage Trứng Gà Thảo Dươc SADU & SADU FARM.'
-    }
-  ],
-
-  // Contact Info
-  contact: {
-    phone: '1900 8952',
-    page: 'https://www.facebook.com/trunggasach.sadu/',
-    email: "nongnghiepcncthanglong@gmail.com",
-    address: 'Thôn Ứng Hòa - Xã Quảng Bị - Huyện Chương Mỹ - Hà Nội',
-  },
-
-  // Certificates Section (Thay thế cho Gallery cũ)
-  certificates: [
-    {
-      image: '/assets/images/chung-nhan1.jpg', // Thay bằng ảnh thật
-      title: 'Chứng Nhận Phù Hợp Tiêu Chuẩn',
-      description: 'Được cấp bởi Sở Nông Nghiệp và Môi Trường Hà Nội'
-    },
-    {
-      image: '/assets/images/chung-nhan2.jpg', // Thay bằng ảnh thật
-      title: 'Đủ Điều Kiện An Toàn Thực Phẩm',
-      description: 'Được cấp bởi Phòng Kinh Tế Huyện Chương Mỹ'
-    },
-    {
-      image: '/assets/images/chung-nhan4.jpg', // Thay bằng ảnh thật
-      title: 'Kết quả kiểm nghiệm an toàn',
-      description: 'Được cấp bởi Trung Tâm Kiểm Nghiệm NATEK'
-    },
-    {
-      image: '/assets/images/chung-nhan3.2.jpg', // Thay bằng ảnh thật
-      title: 'Kết quả kiểm nghiệm an toàn',
-      description: 'Được cấp bởi Trung Tâm Kiểm Nghiệm NATEK'
-    },
-    {
-      image: '/assets/images/chung-nhan3.1.jpg', // Thay bằng ảnh thật
-      title: 'Kết quả kiểm nghiệm an toàn',
-      description: 'Được cấp bởi Trung Tâm Kiểm Nghiệm NATEK'
-    }
-  ],
-
-
 };
