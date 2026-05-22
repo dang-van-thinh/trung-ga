@@ -1,291 +1,5 @@
+// js/location.js
 
-// ============ CUSTOM ALERT NOTIFICATION ============
-// Fake customer data - 10 customers
-const fakeCustomers = [
-    { name: "Nguyễn Thị Hương", product: "Trứng Gà Thảo Dược - 1 Hộp Trứng" },
-    { name: "Trần Văn Đức", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Phạm Thị Linh", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Hoàng Minh Tuấn", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Lê Thị Hoa", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Đỗ Văn Hùng", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Vũ Thị Xuân", product: "Trứng Gà Thảo Dược - 1 Hộp Trứng" },
-    { name: "Bùi Văn Long", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Trần Ngọc Bảo", product: "Trứng Gà Thảo Dược - 5 Hộp Tặng 2" },
-    { name: "Trương Thị Mai", product: "Trứng Gà Thảo Dược - 3 Hộp Tặng 1" },
-    { name: "Nguyễn Quỳnh Nga", product: "Trứng Gà Thảo Dược - 5 Hộp Tặng 2" },
-    { name: "Ngô Như", product: "Trứng Gà Thảo Dược - 5 Hộp Tặng 2" },
-
-
-    // ƯU ĐÃI 
-    //     { name: "Đinh Văn Sơn", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" },
-    //     { name: "Nguyễn Văn An", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" },
-    //     { name: "Lê Thị Lan", product: "Trứng Gà Thảo Dược - Ưu đãi 30/4: Mua 3 Hộp Tặng 1 Hộp + Muối Hymalaya" }
-];
-
-let currentCustomerIndex = 0;
-let alertTimeout;
-
-// Function to display customer alert
-function showCustomerAlert() {
-    const customer = fakeCustomers[currentCustomerIndex];
-    const alertEl = document.getElementById('customAlert');
-
-    document.getElementById('customerName').textContent = customer.name;
-    document.getElementById('productName').textContent = customer.product;
-
-    // Remove hide class if exists
-    alertEl.classList.remove('hide');
-
-    // Trigger animation
-    setTimeout(() => {
-        alertEl.classList.add('show');
-    }, 10);
-
-    // Hide alert after 10 seconds and show next one
-    clearTimeout(alertTimeout);
-    alertTimeout = setTimeout(() => {
-        hideCustomerAlert();
-        currentCustomerIndex = (currentCustomerIndex + 1) % fakeCustomers.length;
-
-        // Show next alert after 1 second
-        setTimeout(() => {
-            showCustomerAlert();
-        }, 7000);
-    }, 5000);
-}
-
-// Function to close alert (when user clicks X)
-function closeCustomerAlert() {
-    const alertEl = document.getElementById('customAlert');
-    alertEl.classList.remove('show');
-    alertEl.classList.add('hide');
-
-    clearTimeout(alertTimeout);
-
-    // Move to next customer and show after delay
-    currentCustomerIndex = (currentCustomerIndex + 1) % fakeCustomers.length;
-    setTimeout(() => {
-        showCustomerAlert();
-    }, 5000);
-}
-
-function hideCustomerAlert() {
-    const alertEl = document.getElementById('customAlert');
-    alertEl.classList.remove('show');
-    alertEl.classList.add('hide');
-}
-
-function initComparisonCarousel() {
-    const carousels = Array.from(document.querySelectorAll('.comparison-carousel'));
-
-    carousels.forEach((carousel) => {
-        const mainImage = carousel.querySelector('.comparison-carousel-main img');
-        const thumbs = Array.from(carousel.querySelectorAll('.comparison-carousel-thumbs .thumb'));
-        const prevBtn = carousel.querySelector('.carousel-prev');
-        const nextBtn = carousel.querySelector('.carousel-next');
-
-        if (!mainImage || !thumbs.length) return;
-
-        let currentIndex = thumbs.findIndex(thumb => thumb.classList.contains('active'));
-        if (currentIndex === -1) currentIndex = 0;
-        let autoPlayTimer;
-
-        const startAutoPlay = () => {
-            clearInterval(autoPlayTimer);
-            autoPlayTimer = setInterval(() => {
-                const nextIndex = (currentIndex + 1) % thumbs.length;
-                updateCarousel(nextIndex);
-            }, 5000);
-        };
-
-        const updateCarousel = (index) => {
-            const thumb = thumbs[index];
-            const newSrc = thumb.getAttribute('data-src');
-            const newAlt = thumb.querySelector('img')?.getAttribute('alt') || 'Hình ảnh chứng nhận';
-            if (newSrc) {
-                mainImage.classList.add('fade-out');
-                setTimeout(() => {
-                    mainImage.src = newSrc;
-                    mainImage.alt = newAlt;
-                    mainImage.classList.remove('fade-out');
-                }, 250);
-            }
-            thumbs.forEach(item => item.classList.remove('active'));
-            thumb.classList.add('active');
-            currentIndex = index;
-            startAutoPlay();
-        };
-
-        thumbs.forEach((thumb, index) => {
-            thumb.addEventListener('click', () => {
-                updateCarousel(index);
-            });
-        });
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                const nextIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
-                updateCarousel(nextIndex);
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                const nextIndex = (currentIndex + 1) % thumbs.length;
-                updateCarousel(nextIndex);
-            });
-        }
-
-        startAutoPlay();
-    });
-}
-
-// Start showing alerts when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    // Setup close button event listener
-    const closeBtn = document.getElementById('alertCloseBtn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeCustomerAlert);
-    }
-
-    setTimeout(() => {
-        showCustomerAlert();
-    }, 2000);
-
-    initComparisonCarousel();
-
-    // Radio product selection handler (custom design)
-    const productRadios = document.querySelectorAll('input[name="productOption"]');
-    productRadios.forEach(radio => {
-        radio.addEventListener('change', (event) => {
-            const value = event.target.value; // format: productKey|price
-            document.getElementById('productSelect').value = value;
-            updateTotalPrice();
-        });
-    });
-});
-
-// ============ END CUSTOM ALERT ============
-
-// Function to toggle mobile menu
-function toggleMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    navMenu.classList.toggle('mobile-active');
-}
-
-function updateCountdown() {
-    const endDate = new Date(2026, 4, 1, 23, 59, 59); // Đếm ngược đến hết ngày 1/5/2026
-
-    function tick() {
-        const now = new Date();
-        const diff = endDate - now;
-
-        if (diff > 0) {
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-        }
-    }
-
-    tick();
-    setInterval(tick, 1000);
-}
-
-// Modal Functions
-function openOrderModal() {
-    const productSelect = document.getElementById('productSelect');
-    const firstProductRadio = document.querySelector('input[name="productOption"]');
-    const checkedProductRadio = document.querySelector('input[name="productOption"]:checked');
-
-    if (checkedProductRadio) {
-        productSelect.value = checkedProductRadio.value;
-    }
-
-    if (!productSelect.value && firstProductRadio) {
-        firstProductRadio.checked = true;
-        productSelect.value = firstProductRadio.value;
-        updateTotalPrice();
-    }
-
-    document.getElementById('orderModal').classList.add('show');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeOrderModal() {
-    document.getElementById('orderModal').classList.remove('show');
-    document.body.style.overflow = 'auto';
-}
-
-// Add to Cart
-function addToCart(product, price) {
-    const productSelect = document.getElementById('productSelect');
-    const normalizeProductKey = (value) => (value || '')
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/đ/g, 'd')
-        .replace(/\s+/g, ' ')
-        .trim();
-
-    const productRadios = Array.from(document.querySelectorAll('input[name="productOption"]'));
-    const targetProductKey = normalizeProductKey(product);
-    const radio = productRadios.find((item) => {
-        const samePrice = String(item.dataset.price) === String(price);
-        const sameProduct = normalizeProductKey(item.dataset.product) === targetProductKey;
-        return samePrice && sameProduct;
-    }) || productRadios.find((item) => String(item.dataset.price) === String(price));
-
-    if (radio) {
-        radio.checked = true;
-        productSelect.value = radio.value;
-    } else {
-        productSelect.value = `${product}|${price}`;
-    }
-
-    if (radio) {
-        radio.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-
-    updateTotalPrice();
-    openOrderModal();
-}
-
-// Update Total Price
-document.getElementById('productSelect').addEventListener('change', updateTotalPrice);
-document.getElementById('quantity').addEventListener('change', updateTotalPrice);
-
-function updateTotalPrice() {
-    const select = document.getElementById('productSelect');
-    const quantity = parseInt(document.getElementById('quantity').value) || 1;
-
-    if (select.value) {
-        const [product, price] = select.value.split('|');
-        const total = parseInt(price) * quantity;
-        document.getElementById('totalPrice').textContent = total.toLocaleString('vi-VN') + 'đ';
-    } else {
-        document.getElementById('totalPrice').textContent = '0đ';
-    }
-}
-
-function resetProductSelection() {
-    const productSelect = document.getElementById('productSelect');
-    const productRadios = document.querySelectorAll('input[name="productOption"]');
-
-    productSelect.value = '';
-    productRadios.forEach(radio => {
-        radio.checked = false;
-    });
-
-    updateTotalPrice();
-}
-
-// Load Locations Data
 let locationsData = {};
 const searchableSelects = {};
 
@@ -371,10 +85,6 @@ function syncSearchableSelect(selectId) {
     renderSearchableOptions(selectId);
 }
 
-function syncAllSearchableSelects() {
-    Object.keys(searchableSelects).forEach(syncSearchableSelect);
-}
-
 function initSearchableSelects() {
     const containers = document.querySelectorAll('.searchable-select[data-target]');
 
@@ -432,13 +142,12 @@ async function loadLocations() {
         populateProvinces();
     } catch (error) {
         console.error('Error loading locations:', error);
-        // Fallback: Use inline data if file not found
         loadInlineLocations();
     }
 }
 
+// Hàm fallback dữ liệu tỉnh thành (giữ nguyên data dài của bạn ở đây)
 function loadInlineLocations() {
-    // Fallback data if JSON file not accessible
     locationsData = {
         "provinces": [
             {
@@ -45302,34 +45011,45 @@ function loadInlineLocations() {
 
 function populateProvinces() {
     const provinceSelect = document.getElementById('province');
-    provinceSelect.innerHTML = '<option value="">-- Chọn Tỉnh/Thành Phố --</option>';
+    if (!provinceSelect || !locationsData.provinces) return;
+
+    // Clear existing options except the first one
+    while (provinceSelect.options.length > 1) {
+        provinceSelect.remove(1);
+    }
+
     locationsData.provinces.forEach(province => {
         const option = document.createElement('option');
         option.value = province.id;
         option.textContent = province.name;
         provinceSelect.appendChild(option);
     });
+    
+    // Re-sync searchable select for province
     syncSearchableSelect('province');
 }
 
 function updateDistricts() {
-    const provinceId = document.getElementById('province').value;
+    const provinceSelect = document.getElementById('province');
     const districtSelect = document.getElementById('district');
     const wardSelect = document.getElementById('ward');
-
+    
+    const provinceId = provinceSelect.value;
+    
+    // Reset district and ward
     districtSelect.innerHTML = '<option value="">-- Chọn Quận/Huyện --</option>';
     wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
     wardSelect.disabled = true;
+    syncSearchableSelect('ward');
 
     if (!provinceId) {
         districtSelect.disabled = true;
         syncSearchableSelect('district');
-        syncSearchableSelect('ward');
         return;
     }
 
-    const province = locationsData.provinces.find(p => p.id == provinceId);
-    if (province) {
+    const province = locationsData.provinces.find(p => p.id === provinceId);
+    if (province && province.districts) {
         province.districts.forEach(district => {
             const option = document.createElement('option');
             option.value = district.id;
@@ -45337,17 +45057,20 @@ function updateDistricts() {
             districtSelect.appendChild(option);
         });
         districtSelect.disabled = false;
+    } else {
+        districtSelect.disabled = true;
     }
-
+    
     syncSearchableSelect('district');
-    syncSearchableSelect('ward');
 }
 
 function updateWards() {
-    const provinceId = document.getElementById('province').value;
-    const districtId = document.getElementById('district').value;
+    const districtSelect = document.getElementById('district');
     const wardSelect = document.getElementById('ward');
-
+    
+    const districtId = districtSelect.value;
+    
+    // Reset ward
     wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
 
     if (!districtId) {
@@ -45356,183 +45079,24 @@ function updateWards() {
         return;
     }
 
-    const province = locationsData.provinces.find(p => p.id == provinceId);
-    if (province) {
-        const district = province.districts.find(d => d.id == districtId);
-        if (district) {
-            district.wards.forEach(ward => {
-                const option = document.createElement('option');
-                option.value = ward.id;
-                option.textContent = ward.name;
-                wardSelect.appendChild(option);
-            });
-            wardSelect.disabled = false;
-        }
+    // Find district in all provinces (inefficient but simple for this dataset size)
+    let foundDistrict = null;
+    for (const province of locationsData.provinces) {
+        foundDistrict = province.districts.find(d => d.id === districtId);
+        if (foundDistrict) break;
     }
 
-    syncSearchableSelect('ward');
-}
-
-function resetLocationSelectors() {
-    const provinceSelect = document.getElementById('province');
-    const districtSelect = document.getElementById('district');
-    const wardSelect = document.getElementById('ward');
-
-    provinceSelect.value = '';
-    districtSelect.innerHTML = '<option value="">-- Chọn Quận/Huyện --</option>';
-    wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
-    districtSelect.disabled = true;
-    wardSelect.disabled = true;
-
-    syncSearchableSelect('province');
-    syncSearchableSelect('district');
-    syncSearchableSelect('ward');
-}
-
-// URL của Google Apps Script
-const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycby7n1vHD2AGcUPTY67hg5chHKTSkKcMPQD4abO0QdDHMQ3-svokYSQ9Hid7cDXqSw/exec';
-
-// Submit Order
-function submitOrder(event) {
-    const form = event.target;
-    if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-    }
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const province = document.getElementById('province').options[document.getElementById('province').selectedIndex].text;
-    const district = document.getElementById('district').options[document.getElementById('district').selectedIndex].text;
-    const ward = document.getElementById('ward').options[document.getElementById('ward').selectedIndex].text;
-    const detailedAddress = document.getElementById('address').value;
-    const note = document.getElementById('note').value;
-    const product = document.getElementById('productSelect').value;
-    const quantity = document.getElementById('quantity').value;
-
-    // Dữ liệu gửi đi
-    const orderData = {
-        name: name,
-        phone: phone,
-        province: province,
-        district: district,
-        ward: ward,
-        address: detailedAddress,
-        note: note,
-        product: product,
-        quantity: quantity
-    };
-
-    console.log('📤 Dữ liệu gửi đi:', orderData);
-
-    // Hiển thị loading
-    const submitBtn = document.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Đang gửi...';
-
-    // Gửi dữ liệu bằng form submission (tránh CORS)
-    const formData = new FormData();
-    Object.keys(orderData).forEach(key => {
-        formData.append(key, orderData[key]);
-    });
-
-    fetch(GOOGLE_SHEET_URL, {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => {
-            console.log('✅ Gửi thành công:', response);
-            // Thành công nếu request được gửi (không cần check response vì Google Apps Script không trả về CORS header)
-            const fullAddress = `${detailedAddress}, ${ward}, ${district}, ${province}`;
-            const message = `Cảm ơn bạn!\nĐơn hàng của bạn đã được ghi nhận.\n\n- Khách: ${name}\n- SĐT: ${phone}\n- Địa chỉ: ${fullAddress}\n- Ghi chú: ${note || 'Không có'}\n- Sản phẩm: ${product}\n- Số lượng: ${quantity}\n\nChúng tôi sẽ liên hệ với bạn sớm nhất.`;
-            alert(message);
-
-            // Khi khách click hoàn tất đặt hàng, bắn sự kiện 'Lead' hoặc 'Purchase' về Facebook
-            fbq('track', 'Lead', {
-                content_name: 'Đặt Mua Trứng Sadu',
-                currency: 'VND'
-            });
-
-            closeOrderModal();
-            document.querySelector('form').reset();
-            resetProductSelection();
-            resetLocationSelectors();
-            syncAllSearchableSelects();
-
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        })
-        .catch(error => {
-            console.error('Lỗi:', error);
-            alert('Lỗi kết nối! Vui lòng thử lại.');
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
+    if (foundDistrict && foundDistrict.wards) {
+        foundDistrict.wards.forEach(ward => {
+            const option = document.createElement('option');
+            option.value = ward.id;
+            option.textContent = ward.name;
+            wardSelect.appendChild(option);
         });
-}
-
-// FAQ Toggle
-function toggleFaq(element) {
-    const faqItem = element.parentElement;
-    faqItem.classList.toggle('active');
-}
-
-// Scroll to Top
-window.addEventListener('scroll', function () {
-    const scrollTop = document.getElementById('scrollTop');
-    if (window.pageYOffset > 300) {
-        scrollTop.classList.add('show');
+        wardSelect.disabled = false;
     } else {
-        scrollTop.classList.remove('show');
+        wardSelect.disabled = true;
     }
-});
-
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    syncSearchableSelect('ward');
 }
-
-// Close modal when clicking outside
-window.addEventListener('click', function (event) {
-    const modal = document.getElementById('orderModal');
-    if (event.target === modal) {
-        closeOrderModal();
-    }
-
-    if (!event.target.closest('.searchable-select')) {
-        closeAllSearchableSelects();
-    }
-});
-
-function initFarmVideoAutoplay() {
-    const farmVideos = Array.from(document.querySelectorAll('.farm-video video'));
-    if (!farmVideos.length || !('IntersectionObserver' in window)) return;
-
-    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                if (!isMobile || video.muted) {
-                    video.play().catch(() => {
-                        // Autoplay may be blocked on some browsers if not allowed
-                    });
-                }
-            } else {
-                video.pause();
-            }
-        });
-    }, {
-        threshold: 0.55
-    });
-
-    farmVideos.forEach(video => observer.observe(video));
-}
-
-// Initialize
-initSearchableSelects();
-initFarmVideoAutoplay();
-updateCountdown();
-updateTotalPrice();
-loadLocations();
