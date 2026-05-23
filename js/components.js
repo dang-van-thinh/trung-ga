@@ -5,6 +5,40 @@
 
 const Components = {
 
+    // Render Event Popup
+    renderEventPopup: () => {
+        const { eventPopup } = siteData;
+        
+        // Check if popup is enabled
+        if (!eventPopup || !eventPopup.enabled) {
+            return;
+        }
+
+        // Create popup element
+        const popupContainer = document.createElement('div');
+        popupContainer.id = 'eventPopup';
+        popupContainer.className = 'event-popup';
+        popupContainer.innerHTML = `
+            <div class="event-popup-overlay"></div>
+            <div class="event-popup-content">
+                <button class="event-popup-close" onclick="App.closeEventPopup()">×</button>
+                <div class="event-popup-body">
+                    <h3>${eventPopup.title}</h3>
+                    <div class="event-popup-message">${eventPopup.message}</div>
+                    <button class="event-popup-btn" onclick="App.closeEventPopup()">${eventPopup.closeText}</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(popupContainer);
+
+        // Show popup after a short delay
+        setTimeout(() => {
+            popupContainer.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }, 500);
+    },
+
     // Render Header
     renderHeader: () => {
         const header = document.getElementById('header');
@@ -539,6 +573,7 @@ const Components = {
 
     // Initialize all components
     init: () => {
+        Components.renderEventPopup();
         Components.renderHeader();
         Components.renderHero();
         Components.renderBenefits();

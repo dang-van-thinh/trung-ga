@@ -47,6 +47,24 @@ const App = {
     },
 
     // ============================================
+    // EVENT POPUP
+    // ============================================
+    closeEventPopup: () => {
+        const popup = document.getElementById('eventPopup');
+        if (popup) {
+            popup.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            
+            // Remove from DOM after animation
+            setTimeout(() => {
+                if (popup && popup.parentNode) {
+                    popup.parentNode.removeChild(popup);
+                }
+            }, 300);
+        }
+    },
+
+    // ============================================
     // ORDER MODAL
     // ============================================
     openOrderModal: (productIndex = 0) => {
