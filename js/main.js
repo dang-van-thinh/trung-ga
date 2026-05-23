@@ -134,12 +134,17 @@ const App = {
         const productName = selectedProductRadio?.dataset.product || '';
         const quantity = document.getElementById('quantity').value || '1';
 
+        // Get display text instead of ID values
+        const provinceText = provinceEl.options[provinceEl.selectedIndex]?.text || '';
+        const districtText = districtEl.options[districtEl.selectedIndex]?.text || '';
+        const wardText = wardEl.options[wardEl.selectedIndex]?.text || '';
+
         const orderData = {
             name: document.getElementById('name').value,
             phone: document.getElementById('phone').value,
-            province: provinceEl.value,
-            district: districtEl.value,
-            ward: wardEl.value,
+            province: provinceText,
+            district: districtText,
+            ward: wardText,
             address: document.getElementById('address').value,
             note: document.getElementById('note').value || '',
             product: productName,
