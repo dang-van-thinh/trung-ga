@@ -7,7 +7,7 @@ const siteData = {
 
     // Event Popup Configuration
     eventPopup: {
-        enabled: true, // Đổi thành false để tắt popup
+        enabled: false, // Đổi thành false để tắt popup
         title: '🏖️ THÔNG BÁO',
         message: 'Kính chào Quý Khách hàng,<br><br>SADU sẽ có chuyến du lịch nghỉ mát từ <strong>ngày 24/05 đến 26/05/2026</strong>.<br><br>Trong thời gian này,các đơn hàng chưa được xử lý sẽ được bảo lưu và sẽ được ưu tiên xử lý ngay lập tức khi công ty làm việc trở lại vào ngày 27/05.<br><br>Chúng tôi xin lỗi vì sự bất tiện này và cảm ơn Quý khách đã thông cảm!<br><br><strong style="color: var(--primary);">Trân trọng,<br>Trứng Gà Thảo Dược SADU</strong>',
         closeText: 'Đã hiểu',
