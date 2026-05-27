@@ -8,6 +8,37 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby7n1vHD2AGcU
 const App = {
     
     // ============================================
+    // COUNTER ANIMATION
+    // ============================================
+    animateCounters: () => {
+        const counters = document.querySelectorAll('.statistic-number');
+        
+        counters.forEach(counter => {
+            const targetText = counter.getAttribute('data-target');
+            // Extract number from target (e.g., "5,000+" -> 5000)
+            const targetNumber = parseInt(targetText.replace(/[^0-9]/g, ''));
+            const suffix = targetText.replace(/[0-9,]/g, '');
+            const duration = 2000; // 2 seconds
+            const step = targetNumber / (duration / 16); // 60fps
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += step;
+                if (current < targetNumber) {
+                    // Format with commas
+                    const formatted = Math.floor(current).toLocaleString('vi-VN');
+                    counter.textContent = formatted + suffix;
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = targetText;
+                }
+            };
+            
+            updateCounter();
+        });
+    },
+
+    // ============================================
     // CUSTOMER ALERT NOTIFICATION
     // ============================================
     alertIndex: 0,

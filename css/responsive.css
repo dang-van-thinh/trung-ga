@@ -3,6 +3,44 @@
 /* Tablet & Mobile (Max 768px) */
 @media (max-width: 768px) {
   
+  /* Statistics Section - Tablet */
+  .statistics-section {
+    padding: 60px 16px;
+    margin-top: 40px;
+  }
+  
+  .statistics-header h2 {
+    font-size: 28px;
+  }
+  
+  .statistics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .statistic-card {
+    padding: 25px;
+  }
+  
+  .statistic-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+  
+  .statistic-number {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+  
+  .statistic-label {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .statistic-description {
+    font-size: 13px;
+  }
+  
   /* Egg Comparison Section - Tablet */
   .egg-comparison {
     padding: 60px 16px;
@@ -362,6 +400,52 @@
 /* Small Mobile (Max 480px) */
 @media (max-width: 480px) {
   
+  /* Statistics Section - Mobile */
+  .statistics-section {
+    padding: 40px 12px;
+    margin-top: 40px;
+  }
+  
+  .statistics-header h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .statistics-header h2::after {
+    width: 50px;
+    height: 3px;
+  }
+  
+  .statistics-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .statistic-card {
+    padding: 20px;
+    border-width: 1px;
+  }
+  
+  .statistic-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .statistic-number {
+    font-size: 36px;
+    margin-bottom: 6px;
+  }
+  
+  .statistic-label {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  
+  .statistic-description {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
   /* Egg Comparison Section - Mobile */
   .egg-comparison {
     padding: 40px 12px;

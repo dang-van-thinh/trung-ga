@@ -58,7 +58,7 @@ const siteData = {
 
     // Why Section
     why: {
-        title: 'Tại Sao Bạn Nên Lựa Chọn Trứng Gà Thảo Dược SADU ?',
+        title: 'Tại sao bạn nên lựa chọn Trứng Gà Thảo Dược SADU ?',
         farmStory: {
             title: 'Cam kết 3 KHÔNG từ SADU',
             image: 'source/yolk.jpg',
@@ -79,6 +79,37 @@ const siteData = {
             title: 'An Toàn Cho Mẹ Bầu & Mẹ Bỉm Sữa',
             description: 'Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.'
         }
+    },
+
+    // Statistics Section
+    statistics: {
+        title: 'Những Con Số Ấn Tượng',
+        stats: [
+            {
+                icon: '👨‍👩‍👧‍👦',
+                number: '30,000+',
+                label: 'Gia Đình Tin Dùng',
+                description: 'Hàng nghìn gia đình đã tin tưởng lựa chọn'
+            },
+            {
+                icon: '🥚',
+                number: '1,500,000+',
+                label: 'Quả Trứng Bán Ra',
+                description: 'Số lượng trứng đã được phân phối'
+            },
+            {
+                icon: '⭐',
+                number: '40,200+',
+                label: 'Phản Hồi & Đánh Giá',
+                description: 'Đánh giá tích cực từ khách hàng'
+            },
+            {
+                icon: '🏆',
+                number: '98%',
+                label: 'Khách Hài Lòng',
+                description: 'Tỷ lệ khách hàng hài lòng về sản phẩm'
+            }
+        ]
     },
 
     // Gift Carousel Section

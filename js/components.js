@@ -149,6 +149,35 @@ const Components = {
         `;
     },
 
+    // Render Statistics Section
+    renderStatistics: () => {
+        const section = document.getElementById('statistics');
+        const { title, stats } = siteData.statistics;
+
+        section.className = 'statistics-section';
+        section.innerHTML = `
+            <div class="statistics-container">
+                <div class="statistics-header">
+                    <h2>${title}</h2>
+                </div>
+                
+                <div class="statistics-grid">
+                    ${stats.map((stat, index) => `
+                        <div class="statistic-card" style="animation-delay: ${index * 0.1}s">
+                            <div class="statistic-icon">${stat.icon}</div>
+                            <div class="statistic-number" data-target="${stat.number}">${stat.number}</div>
+                            <div class="statistic-label">${stat.label}</div>
+                            <div class="statistic-description">${stat.description}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        // Initialize counter animation
+        setTimeout(() => App.animateCounters(), 300);
+    },
+
     // Render Gift Carousel Section
     renderGiftCarousel: () => {
         const section = document.getElementById('gift-carousel');
@@ -578,6 +607,7 @@ const Components = {
         Components.renderHero();
         Components.renderBenefits();
         Components.renderWhy();
+        Components.renderStatistics();
         Components.renderGiftCarousel();
         Components.renderComparison();
         Components.renderCertificates();

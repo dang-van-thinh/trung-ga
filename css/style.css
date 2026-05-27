@@ -1805,6 +1805,217 @@ footer { background: #222; color: white; padding: 60px 20px 30px; margin-top: 80
 }
 
 /* ============================================
+   STATISTICS SECTION
+   ============================================ */
+
+.statistics-section {
+  background: linear-gradient(135deg, var(--primary) 0%, #00a8ff 100%);
+  padding: 80px 20px;
+  margin-top: 60px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.statistics-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: pulse 6s infinite;
+}
+
+.statistics-section::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  animation: pulse 8s infinite;
+  animation-delay: 2s;
+}
+
+.statistics-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.statistics-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.statistics-header h2 {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 15px;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+}
+
+.statistics-header h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: white;
+  margin: 15px auto 0;
+  border-radius: var(--radius-full);
+}
+
+/* Statistics Grid */
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.statistic-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.statistic-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.statistic-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+  animation: bounce 2s infinite;
+}
+
+.statistic-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.statistic-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.statistic-description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* Responsive for Statistics Section */
+@media (max-width: 768px) {
+  .statistics-section {
+    padding: 60px 16px;
+    margin-top: 40px;
+  }
+
+  .statistics-header h2 {
+    font-size: 28px;
+  }
+
+  .statistics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .statistic-card {
+    padding: 25px;
+  }
+
+  .statistic-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+
+  .statistic-number {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+
+  .statistic-label {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .statistic-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .statistics-section {
+    padding: 40px 12px;
+    margin-top: 40px;
+  }
+
+  .statistics-header h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .statistics-header h2::after {
+    width: 50px;
+    height: 3px;
+  }
+
+  .statistics-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .statistic-card {
+    padding: 20px;
+    border-width: 1px;
+  }
+
+  .statistic-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .statistic-number {
+    font-size: 36px;
+    margin-bottom: 6px;
+  }
+
+  .statistic-label {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .statistic-description {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+/* ============================================
    CUSTOMER FEEDBACK GALLERY (Masonry)
    ============================================ */
 
