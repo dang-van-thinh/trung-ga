@@ -51,7 +51,7 @@ const siteData = {
         },
         {
             icon: '💬',
-            title: 'Hỗ Trợ 24/7',
+            title: 'Hỗ Trợ Khách Hàng',
             description: 'Tư vấn miễn phí, hỗ trợ khách hàng liên tục'
         }
     ],
@@ -60,7 +60,7 @@ const siteData = {
     why: {
         title: 'Tại sao bạn nên lựa chọn Trứng Gà Thảo Dược SADU ?',
         farmStory: {
-            title: 'Cam kết 3 KHÔNG từ SADU',
+            title: 'Cam kết "3 KHÔNG" từ SADU',
             image: 'source/yolk.jpg',
             uspList: [
                 'KHÔNG kháng sinh',
@@ -87,19 +87,19 @@ const siteData = {
         stats: [
             {
                 icon: '👨‍👩‍👧‍👦',
-                number: '30,000+',
+                number: '42,300+',
                 label: 'Gia Đình Tin Dùng',
                 description: 'Hàng nghìn gia đình đã tin tưởng lựa chọn'
             },
             {
                 icon: '🥚',
-                number: '1,500,000+',
+                number: '10,000,000+',
                 label: 'Quả Trứng Bán Ra',
                 description: 'Số lượng trứng đã được phân phối'
             },
             {
                 icon: '⭐',
-                number: '40,200+',
+                number: '39,700+',
                 label: 'Phản Hồi & Đánh Giá',
                 description: 'Đánh giá tích cực từ khách hàng'
             },
@@ -127,6 +127,7 @@ const siteData = {
     // Comparison Table
     comparison: [
         { criteria: 'Đội Ngũ Chuyên Gia', sadu: true, regular: false },
+        { criteria: 'Cám Công Nghiệp', sadu: false, regular: true },
         { criteria: 'Thức Ăn 100% Từ Thực Vật', sadu: true, regular: false },
         { criteria: 'Không Kháng Sinh', sadu: true, regular: false },
         { criteria: 'Cholesterol Thấp', sadu: '✓ (125mg)', regular: '✗ (380mg)' },
@@ -326,8 +327,8 @@ const siteData = {
         facebook: 'https://www.facebook.com/trunggasach.sadu/',
         socialLinks: [
             { name: 'Facebook', url: 'https://www.facebook.com/trunggasach.sadu/', icon: 'f' },
-            { name: 'Instagram', url: '#', icon: '📷' },
-            { name: 'Zalo', url: '#', icon: 'Z' }
+            // { name: 'Instagram', url: '#', icon: '📷' },
+            // { name: 'Zalo', url: '#', icon: 'Z' }
         ]
     },
 

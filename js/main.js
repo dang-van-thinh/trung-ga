@@ -366,6 +366,51 @@ const App = {
     },
 
     // ============================================
+    // EVENT LISTENERS SETUP
+    // ============================================
+    setupEventListeners: () => {
+        // Close modal when clicking outside
+        const orderModal = document.getElementById('orderModal');
+        if (orderModal) {
+            orderModal.addEventListener('click', (e) => {
+                if (e.target === orderModal) {
+                    App.closeOrderModal();
+                }
+            });
+        }
+
+        // Close searchable selects when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.searchable-select')) {
+                closeAllSearchableSelects();
+            }
+        });
+
+        // Update total price when quantity changes
+        const quantityInput = document.getElementById('quantity');
+        if (quantityInput) {
+            quantityInput.addEventListener('input', App.updateTotalPrice);
+            quantityInput.addEventListener('change', App.updateTotalPrice);
+        }
+
+        // Mobile menu close on link click
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.querySelector('.nav-menu');
+                if (nav) nav.classList.remove('mobile-active');
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                App.closeOrderModal();
+            }
+        });
+    },
+
+    // ============================================
     // MAIN INITIALIZATION
     // ============================================
     init: () => {
@@ -381,26 +426,6 @@ const App = {
         setTimeout(App.showCustomerAlert, 2000);
 
         console.log('🎉 SADU Landing Page ready!');
-    },
-
-    setupEventListeners: () => {
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.getElementById('scrollTop');
-            if (scrollTop) {
-                if (window.scrollY > 300) {
-                    scrollTop.classList.add('show');
-                } else {
-                    scrollTop.classList.remove('show');
-                }
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            const modal = document.getElementById('orderModal');
-            if (modal && e.target === modal) {
-                App.closeOrderModal();
-            }
-        });
     }
 };
 
