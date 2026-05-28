@@ -1906,12 +1906,16 @@ footer { background: #222; color: white; padding: 60px 20px 30px; margin-top: 80
 }
 
 .statistic-number {
-  font-size: 48px;
+  font-size: clamp(28px, 5vw, 48px);
   font-weight: bold;
   color: white;
   margin-bottom: 10px;
   line-height: 1.2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  display: inline-block;
 }
 
 .statistic-label {
