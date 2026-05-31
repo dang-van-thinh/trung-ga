@@ -237,7 +237,7 @@ const siteData = {
             ],
             highlightSpec: true,
             image: "source/qua-1.png",
-            featured: true
+            featured: false
         },
         // {
         //     id: "trung-so",
