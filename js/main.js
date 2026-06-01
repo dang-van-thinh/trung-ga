@@ -477,16 +477,58 @@ const App = {
 
 // Run application when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 SADU Landing Page Initializing...');
+
+    // Initialize location selectors first (must complete before other components)
     if (typeof loadLocations === 'function') {
         loadLocations().then(() => {
             if (typeof initSearchableSelects === 'function') {
                 initSearchableSelects();
                 console.log('✅ Location selectors initialized');
             }
+            
+            // Initialize other components AFTER locations are ready
+            if (typeof Components !== 'undefined') {
+                Components.init();
+                console.log('✅ Components rendered');
+            }
+
+            if (typeof App !== 'undefined') {
+                App.setupEventListeners();
+                setTimeout(App.showCustomerAlert, 2000);
+                console.log('🎉 SADU Landing Page ready!');
+            }
         }).catch(err => {
             console.error('❌ Error loading locations:', err);
+            // Still initialize app even if locations fail (will use fallback data)
+            if (typeof initSearchableSelects === 'function') {
+                initSearchableSelects();
+                console.log('⚠️ Location selectors initialized with fallback data');
+            }
+            
+            if (typeof Components !== 'undefined') {
+                Components.init();
+                console.log('✅ Components rendered');
+            }
+
+            if (typeof App !== 'undefined') {
+                App.setupEventListeners();
+                setTimeout(App.showCustomerAlert, 2000);
+                console.log('🎉 SADU Landing Page ready (with fallback)!');
+            }
         });
+    } else {
+        // Fallback if loadLocations is not available
+        console.warn('⚠️ loadLocations not found, initializing without location data');
+        if (typeof Components !== 'undefined') {
+            Components.init();
+            console.log('✅ Components rendered');
+        }
+
+        if (typeof App !== 'undefined') {
+            App.setupEventListeners();
+            setTimeout(App.showCustomerAlert, 2000);
+            console.log('🎉 SADU Landing Page ready!');
+        }
     }
-    
-    App.init();
 });

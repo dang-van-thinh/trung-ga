@@ -2029,6 +2029,13 @@ header {
     visibility 0.2s ease;
 }
 
+/* Show dropdown when container has .is-open */
+.searchable-select.is-open .searchable-select-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .searchable-select-input {
   width: 100%;
   padding: 11px 12px;

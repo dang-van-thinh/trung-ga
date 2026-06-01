@@ -138,11 +138,17 @@ function initSearchableSelects() {
 async function loadLocations() {
     try {
         const response = await fetch('vietnam-locations.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         locationsData = await response.json();
+        console.log('✅ Locations loaded from JSON file');
         populateProvinces();
     } catch (error) {
-        console.error('Error loading locations:', error);
+        console.warn('⚠️ Failed to load locations from JSON, using fallback data:', error.message);
         loadInlineLocations();
+        populateProvinces(); // ← Quan trọng: Phải gọi populateProvinces() sau khi load inline data
+        console.log('✅ Locations loaded from fallback inline data');
     }
 }
 
