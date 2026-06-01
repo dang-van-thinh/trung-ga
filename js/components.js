@@ -630,17 +630,7 @@ const Components = {
                         <h3 class="special-program-subheading">${specialProgram.subtitle}</h3>
                         <p class="special-program-text">${specialProgram.description}</p>
                         
-                        <ul class="special-program-benefits">
-                            ${specialProgram.features.map(feature => `
-                                <li class="benefit-item-special">
-                                    <span class="benefit-icon-special">${feature.icon}</span>
-                                    <div class="benefit-text">
-                                        <strong class="benefit-title">${feature.title}</strong>
-                                        <span class="benefit-desc">${feature.description}</span>
-                                    </div>
-                                </li>
-                            `).join('')}
-                        </ul>
+                        
                         
                         <div class="countdown-wrapper">
                             <p class="countdown-heading">${specialProgram.countdown.title}</p>

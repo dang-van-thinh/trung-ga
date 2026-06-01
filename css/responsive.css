@@ -1264,18 +1264,17 @@
 
 /* Special Program Section - Tablet */
 .special-program-section {
-  padding: 40px 16px;
-  /* margin-top: 40px; */
+  padding: 50px 16px;
 }
 
 .special-program-wrapper {
-  padding: 30px;
+  padding: 32px;
 }
 
 .special-program-badge {
-  font-size: 16px;
+  font-size: 15px;
   padding: 10px 30px;
-  top: -15px;
+  top: -16px;
 }
 
 .special-program-content {
@@ -1284,7 +1283,103 @@
 }
 
 .special-program-heading {
-  font-size: 26px;
+  font-size: 30px;
+}
+
+.special-program-subheading {
+  font-size: 20px;
+}
+
+.special-program-text {
+  font-size: 15px;
+}
+
+.special-program-benefits {
+  gap: 14px;
+}
+
+.benefit-item-special {
+  padding: 16px;
+}
+
+.benefit-icon-special {
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+}
+
+.benefit-title {
+  font-size: 15px;
+}
+
+.benefit-desc {
+  font-size: 13px;
+}
+
+.countdown-box {
+  min-width: 58px;
+  padding: 12px 13px;
+}
+
+.countdown-number {
+  font-size: 24px;
+}
+
+.countdown-text {
+  font-size: 11px;
+}
+
+.special-cta-button {
+  font-size: 17px;
+  padding: 18px;
+}
+
+/* Special Program Section - Mobile */
+.special-program-section {
+  padding: 30px 14px;
+}
+
+.special-program-wrapper {
+  padding: 22px;
+  border-radius: 20px;
+}
+
+.special-program-badge {
+  font-size: 14px;
+  padding: 9px 24px;
+  top: -14px;
+  letter-spacing: 0.5px;
+}
+
+.special-program-content {
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.special-program-image-wrapper {
+  border-radius: 18px;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.special-program-image-wrapper img {
+  width: 100%;
+  height: auto;
+  min-height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.urgency-tag {
+  top: 14px;
+  right: 14px;
+  padding: 8px 14px;
+  font-size: 11px;
+  border-radius: 10px;
+}
+
+.special-program-heading {
+  font-size: 24px;
 }
 
 .special-program-subheading {
@@ -1293,6 +1388,7 @@
 
 .special-program-text {
   font-size: 14px;
+  line-height: 1.65;
 }
 
 .special-program-benefits {
@@ -1300,11 +1396,13 @@
 }
 
 .benefit-item-special {
-  padding: 12px;
+  padding: 14px;
 }
 
 .benefit-icon-special {
-  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
 }
 
 .benefit-title {
@@ -1313,123 +1411,30 @@
 
 .benefit-desc {
   font-size: 12px;
+  line-height: 1.5;
+}
+
+.countdown-wrapper {
+  padding: 18px;
+  border-radius: 16px;
+}
+
+.countdown-heading {
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.countdown-boxes {
+  gap: 10px;
 }
 
 .countdown-box {
-  min-width: 60px;
+  min-width: 54px;
   padding: 10px 12px;
 }
 
 .countdown-number {
   font-size: 22px;
-}
-
-.countdown-text {
-  font-size: 10px;
-}
-
-.special-cta-button {
-  font-size: 16px;
-  padding: 16px;
-}
-
-/* Special Program Section - Mobile */
-.special-program-section {
-  padding: 30px 12px;
-  /* margin-top: 40px; */
-}
-
-.special-program-wrapper {
-  padding: 20px;
-  border-radius: 15px;
-}
-
-.special-program-badge {
-  font-size: 14px;
-  padding: 10px 25px;
-  top: -12px;
-  letter-spacing: 0.5px;
-}
-
-.special-program-content {
-  grid-template-columns: 1fr;
-  gap: 25px;
-}
-
-.special-program-image-wrapper {
-  border-radius: 12px;
-}
-
-.urgency-tag {
-  top: 15px;
-  right: 15px;
-  padding: 8px 15px;
-  font-size: 11px;
-  border-radius: 8px;
-}
-
-.special-program-heading {
-  font-size: 22px;
-}
-
-.special-program-subheading {
-  font-size: 16px;
-}
-
-.special-program-text {
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.special-program-benefits {
-  gap: 10px;
-}
-
-.benefit-item-special {
-  padding: 10px;
-  border-left-width: 3px;
-}
-
-.benefit-item-special:hover {
-  transform: none;
-}
-
-.benefit-icon-special {
-  font-size: 22px;
-}
-
-.benefit-title {
-  font-size: 13px;
-  margin-bottom: 3px;
-}
-
-.benefit-desc {
-  font-size: 11px;
-  line-height: 1.4;
-}
-
-.countdown-wrapper {
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.countdown-heading {
-  font-size: 14px;
-  margin-bottom: 12px;
-}
-
-.countdown-boxes {
-  gap: 8px;
-}
-
-.countdown-box {
-  min-width: 55px;
-  padding: 8px 10px;
-  border-width: 1px;
-}
-
-.countdown-number {
-  font-size: 20px;
   margin-bottom: 4px;
 }
 
@@ -1438,7 +1443,7 @@
 }
 
 .special-cta-button {
-  font-size: 15px;
+  font-size: 16px;
   padding: 16px;
   min-height: 52px;
 }

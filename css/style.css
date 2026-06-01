@@ -1631,9 +1631,8 @@ header {
    ============================================ */
 
 .special-program-section {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
-  padding: 60px 20px;
-  /* margin-top: 60px; */
+  background: linear-gradient(135deg, #0f7df0 0%, #0c72d9 50%, #00a9ff 100%);
+  padding: 70px 20px;
   position: relative;
   overflow: hidden;
 }
@@ -1641,14 +1640,15 @@ header {
 .special-program-section::before {
   content: "";
   position: absolute;
-  top: -100px;
+  top: -110px;
   right: -100px;
-  width: 400px;
-  height: 400px;
+  width: 360px;
+  height: 360px;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 70%
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.04) 40%,
+    transparent 75%
   );
   border-radius: 50%;
   pointer-events: none;
@@ -1657,277 +1657,276 @@ header {
 .special-program-section::after {
   content: "";
   position: absolute;
-  bottom: -100px;
-  left: -100px;
-  width: 300px;
-  height: 300px;
+  bottom: -120px;
+  left: -120px;
+  width: 320px;
+  height: 320px;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.08) 0%,
-    transparent 70%
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    transparent 74%
   );
   border-radius: 50%;
   pointer-events: none;
 }
 
 .special-program-wrapper {
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  background: white;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 28px;
+  padding: 44px;
+  box-shadow: 0 24px 80px rgba(0, 70, 150, 0.14);
+  backdrop-filter: blur(14px);
   animation: fadeInUp 0.6s ease-out;
 }
 
 .special-program-badge {
   position: absolute;
-  top: -18px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #ff3333 0%, #ff6b6b 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #00a8ff 100%);
   color: white;
-  padding: 12px 35px;
-  border-radius: 50px;
-  font-size: 18px;
+  padding: 12px 36px;
+  border-radius: 999px;
+  font-size: 17px;
   font-weight: 800;
-  box-shadow: 0 6px 25px rgba(255, 51, 51, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 102, 204, 0.22);
   z-index: 10;
-  animation: badgePulse 2s ease-in-out infinite;
-  letter-spacing: 1px;
-}
-
-@keyframes badgePulse {
-  0%,
-  100% {
-    transform: translateX(-50%) scale(1);
-    box-shadow: 0 6px 25px rgba(255, 51, 51, 0.5);
-  }
-  50% {
-    transform: translateX(-50%) scale(1.05);
-    box-shadow: 0 8px 35px rgba(255, 51, 51, 0.7);
-  }
+  letter-spacing: 0.7px;
 }
 
 .special-program-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+  grid-template-columns: minmax(280px, 1.25fr) minmax(280px, 0.95fr);
+  gap: 36px;
+  align-items: start;
 }
 
-/* Image Side */
 .special-program-image-wrapper {
   position: relative;
-  border-radius: 15px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 24px 70px rgba(0, 90, 170, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(240, 248, 255, 0.55)
+  );
+}
+
+.special-program-image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 15% 20%,
+    rgba(0, 168, 255, 0.18) 0%,
+    rgba(0, 102, 204, 0.08) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
 }
 
 .special-program-image-wrapper img {
   width: 100%;
-  height: auto;
+  min-height: 400px;
+  object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .special-program-image-wrapper:hover img {
-  transform: scale(1.05);
+  transform: scale(1.04);
+}
+
+.special-program-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 2px;
 }
 
 .urgency-tag {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 51, 51, 0.95);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #d7001c;
+  padding: 11px 18px;
+  border-radius: 12px;
   font-size: 13px;
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(255, 51, 51, 0.4);
-  backdrop-filter: blur(10px);
-  letter-spacing: 0.5px;
-}
-
-/* Info Side */
-.special-program-info-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 28px rgba(0, 102, 204, 0.16);
 }
 
 .special-program-heading {
-  font-size: 32px;
-  color: #ff3333;
+  font-size: 36px;
+  background: linear-gradient(135deg, var(--primary) 0%, #00a8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin: 0;
-  font-weight: 800;
-  line-height: 1.3;
+  font-weight: 900;
+  line-height: 1.1;
 }
 
 .special-program-subheading {
-  font-size: 20px;
-  color: #0066cc;
+  font-size: 22px;
+  color: var(--primary-dark);
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .special-program-text {
   font-size: 15px;
-  color: #666;
-  line-height: 1.7;
+  color: #425174;
+  line-height: 1.75;
   margin: 0;
 }
 
-/* Benefits List */
 .special-program-benefits {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
 .benefit-item-special {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
-  padding: 15px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  border-radius: 12px;
-  border-left: 4px solid #0066cc;
-  transition: all 0.3s ease;
+  gap: 16px;
+  padding: 18px;
+  background: #f5faff;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 102, 204, 0.12);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: 0 10px 26px rgba(0, 102, 204, 0.08);
 }
 
 .benefit-item-special:hover {
-  background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
-  border-left-color: #ff3333;
-  transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 102, 204, 0.14);
+  border-color: rgba(0, 102, 204, 0.18);
 }
 
 .benefit-icon-special {
-  font-size: 28px;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary) 0%, #00a8ff 100%);
+  color: white;
+  font-size: 18px;
   flex-shrink: 0;
-  animation: iconBounce 2s ease-in-out infinite;
-}
-
-@keyframes iconBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
 }
 
 .benefit-text {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .benefit-title {
   font-size: 15px;
-  color: #333;
+  color: #22304f;
   font-weight: 700;
 }
 
 .benefit-desc {
-  font-size: 13px;
-  color: #666;
-  line-height: 1.5;
+  font-size: 14px;
+  color: #4b5a78;
+  line-height: 1.6;
 }
 
-/* Countdown Section */
 .countdown-wrapper {
-  background: linear-gradient(135deg, #0066cc 0%, #00a8ff 100%);
-  padding: 20px;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 24px;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
+  box-shadow: 0 18px 48px rgba(0, 102, 204, 0.14);
+  border: 1px solid rgba(0, 102, 204, 0.12);
 }
 
 .countdown-heading {
   font-size: 16px;
-  color: white;
-  font-weight: 600;
-  margin: 0 0 15px 0;
+  color: var(--primary-dark);
+  font-weight: 700;
+  margin: 0 0 18px 0;
 }
 
 .countdown-boxes {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .countdown-box {
-  background: rgba(255, 255, 255, 0.25);
-  padding: 12px 15px;
-  border-radius: 10px;
-  min-width: 65px;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: #ffffff;
+  padding: 16px 14px;
+  border-radius: 16px;
+  min-width: 64px;
+  border: 1px solid rgba(0, 102, 204, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .countdown-number {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
-  color: white;
+  color: var(--primary);
   margin-bottom: 5px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .countdown-text {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
+  font-size: 12px;
+  color: #5a6d8f;
+  font-weight: 600;
 }
 
 .countdown-expired {
-  color: white;
+  color: var(--primary-dark);
   font-weight: bold;
   font-size: 18px;
   text-align: center;
 }
 
-/* CTA Button */
 .special-cta-button {
   width: 100%;
-  padding: 18px;
-  background: linear-gradient(135deg, #ff3333 0%, #ff6b6b 100%);
+  padding: 18px 20px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 18px;
+  font-family: var(--font-primary);
   font-size: 18px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 25px rgba(255, 51, 51, 0.4);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+  box-shadow: 0 16px 42px rgba(255, 82, 82, 0.2);
   position: relative;
   overflow: hidden;
-  letter-spacing: 0.5px;
-  animation: ctaPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes ctaPulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 6px 25px rgba(255, 51, 51, 0.4);
-  }
-  50% {
-    transform: scale(1.02);
-    box-shadow: 0 8px 35px rgba(255, 51, 51, 0.6);
-  }
 }
 
 .special-cta-button::before {
@@ -1938,7 +1937,7 @@ header {
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.18);
   transform: translate(-50%, -50%);
   transition:
     width 0.6s,
@@ -1946,15 +1945,14 @@ header {
 }
 
 .special-cta-button:hover::before {
-  width: 400px;
-  height: 400px;
+  width: 320px;
+  height: 320px;
 }
 
 .special-cta-button:hover {
-  background: linear-gradient(135deg, #e60000 0%, #ff3333 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 40px rgba(255, 51, 51, 0.5);
-  animation-play-state: paused;
+  background: linear-gradient(135deg, #ff1c1c 0%, #ff5757 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 48px rgba(255, 82, 82, 0.28);
 }
 
 .special-cta-button:active {

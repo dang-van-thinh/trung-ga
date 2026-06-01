@@ -382,7 +382,7 @@ const siteData = {
     // Special Program Section
     specialProgram: {
         title: '🎉 CHƯƠNG TRÌNH KHUYẾN MÃI ĐẶC BIỆT',
-        subtitle: 'Kỷ Niệm 10 Năm Thành Lập - Tri Ân Khách Hàng',
+        subtitle: 'Kỷ Niệm 10 Năm Thành Lập',
         description: 'Nhân dịp kỷ niệm 10 năm thành lập, SADU dành tặng chương trình ưu đãi đặc biệt chưa từng có! Chỉ áp dụng đến <strong>hết ngày 07/06/2026</strong>.',
         image: 'source/banner-special.jpg',
         imageAlt: 'Chương trình đặc biệt kỷ niệm 10 năm SADU',
