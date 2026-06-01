@@ -585,7 +585,10 @@ const Components = {
                     <div>
                         <strong>${product.name}</strong>
                         <p>${product.priceDisplay}</p>
-                        <small>${product.specs[0]}</small>
+                        <small>${product.specs[0]}</small> <br>
+                        <small>${product.specs[1]}</small> <br>
+                        ${product.id == "special-offer" ? `<small>${product.specs[2]}</small>` : ''}
+                        
                     </div>
                 </label>
             `).join('')}
@@ -600,6 +603,81 @@ const Components = {
         }, 0);
     },
 
+    // Render Special Program Section
+    renderSpecialProgram: () => {
+        const section = document.getElementById('special-program');
+        const { specialProgram } = siteData;
+
+        // Check if special program is configured
+        if (!specialProgram) {
+            section.style.display = 'none';
+            return;
+        }
+
+        section.className = 'special-program-section';
+        section.innerHTML = `
+            <div class="special-program-wrapper">
+                <div class="special-program-badge">${specialProgram.badge}</div>
+                
+                <div class="special-program-content">
+                    <div class="special-program-image-wrapper">
+                        <img src="${specialProgram.image}" alt="${specialProgram.imageAlt}">
+                        <div class="urgency-tag">${specialProgram.highlightText}</div>
+                    </div>
+                    
+                    <div class="special-program-info-wrapper">
+                        <h2 class="special-program-heading">${specialProgram.title}</h2>
+                        <h3 class="special-program-subheading">${specialProgram.subtitle}</h3>
+                        <p class="special-program-text">${specialProgram.description}</p>
+                        
+                        <ul class="special-program-benefits">
+                            ${specialProgram.features.map(feature => `
+                                <li class="benefit-item-special">
+                                    <span class="benefit-icon-special">${feature.icon}</span>
+                                    <div class="benefit-text">
+                                        <strong class="benefit-title">${feature.title}</strong>
+                                        <span class="benefit-desc">${feature.description}</span>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                        
+                        <div class="countdown-wrapper">
+                            <p class="countdown-heading">${specialProgram.countdown.title}</p>
+                            <div class="countdown-boxes" id="specialCountdown">
+                                <div class="countdown-box">
+                                    <span class="countdown-number" id="days">00</span>
+                                    <span class="countdown-text">Ngày</span>
+                                </div>
+                                <div class="countdown-box">
+                                    <span class="countdown-number" id="hours">00</span>
+                                    <span class="countdown-text">Giờ</span>
+                                </div>
+                                <div class="countdown-box">
+                                    <span class="countdown-number" id="minutes">00</span>
+                                    <span class="countdown-text">Phút</span>
+                                </div>
+                                <div class="countdown-box">
+                                    <span class="countdown-number" id="seconds">00</span>
+                                    <span class="countdown-text">Giây</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="special-cta-button" onclick="App.openOrderModal()">
+                            ${specialProgram.ctaText}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Initialize countdown if enabled
+        if (specialProgram.countdown.enabled) {
+            setTimeout(() => App.initSpecialCountdown(), 100);
+        }
+    },
+
     // Initialize all components
     init: () => {
         Components.renderEventPopup();
@@ -608,6 +686,7 @@ const Components = {
         Components.renderBenefits();
         Components.renderWhy();
         Components.renderStatistics();
+        Components.renderSpecialProgram();
         Components.renderGiftCarousel();
         Components.renderComparison();
         Components.renderCertificates();

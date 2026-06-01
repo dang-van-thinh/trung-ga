@@ -195,6 +195,22 @@ const siteData = {
     // Products
     products: [
         {
+            id: "special-offer",
+            name: "Combo Kỷ Niệm 10 Năm SADU",
+            originalPrice: 478000,
+            priceValue: 358500,
+            priceDisplay: "358.500đ",
+            specs: [
+                "✓ 4 hộp x 12 quả",
+                "✓ Miễn phí ship toàn quốc",
+                "✓ Tặng 1 túi đậu xanh (150g)",
+                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+            ],
+            highlightSpec: true,
+            image: "source/banner-special.jpg",
+            featured: true // ⭐ Set true để làm sản phẩm nổi bật
+        },
+        {
             id: "1-hop",
             name: "1 HỘP TRỨNG GÀ THẢO DƯỢC SADU",
             originalPrice: 0,
@@ -222,7 +238,7 @@ const siteData = {
             ],
             highlightSpec: true,
             image: "source/qua-1.png",
-            featured: true
+            featured: false
         },
         {
             id: "6-hop",
@@ -349,17 +365,56 @@ const siteData = {
 
     // Customers for Alert Notification
     customers: [
-        { name: 'Nguyễn Thị Hương', product: 'Trứng Gà Thảo Dược - 1 Hộp Trứng' },
+        { name: 'Nguyễn Thị Hương', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
         { name: 'Trần Văn Đức', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Phạm Thị Linh', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Phạm Thị Linh', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
         { name: 'Hoàng Minh Tuấn', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
         { name: 'Lê Thị Hoa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
         { name: 'Đỗ Văn Hùng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Vũ Thị Xuân', product: 'Trứng Gà Thảo Dược - 1 Hộp Trứng' },
+        { name: 'Vũ Thị Xuân', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
         { name: 'Bùi Văn Long', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Trần Ngọc Bảo', product: 'Trứng Gà Thảo Dược - 5 Hộp Tặng 2' },
+        { name: 'Trần Ngọc Bảo', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
         { name: 'Trương Thị Mai', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Nguyễn Quỳnh Nga', product: 'Trứng Gà Thảo Dược - 5 Hộp Tặng 2' },
-        { name: 'Ngô Như', product: 'Trứng Gà Thảo Dược - 5 Hộp Tặng 2' }
-    ]
+        { name: 'Nguyễn Quỳnh Nga', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
+        { name: 'Ngô Như', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' }
+    ],
+
+    // Special Program Section
+    specialProgram: {
+        title: '🎉 CHƯƠNG TRÌNH KHUYẾN MÃI ĐẶC BIỆT',
+        subtitle: 'Kỷ Niệm 10 Năm Thành Lập - Tri Ân Khách Hàng',
+        description: 'Nhân dịp kỷ niệm 10 năm thành lập, SADU dành tặng chương trình ưu đãi đặc biệt chưa từng có! Chỉ áp dụng đến <strong>hết ngày 07/06/2026</strong>.',
+        image: 'source/banner-special.jpg',
+        imageAlt: 'Chương trình đặc biệt kỷ niệm 10 năm SADU',
+        badge: '',
+        highlightText: 'CHỈ 100 SUẤT ĐẦU TIÊN',
+        features: [
+            {
+                icon: '🎁',
+                title: 'Quà Tặng Đặc Biệt',
+                description: 'Tặng 1 túi đậu xanh (150g)'
+            },
+            {
+                icon: '🚚',
+                title: 'Miễn Phí Vận Chuyển',
+                description: 'Freeship toàn quốc'
+            },
+            {
+                icon: '🛡️',
+                title: 'Bảo Hành Đặc Biệt',
+                description: '1 đổi 1 hoặc hoàn tiền nếu có lỗi do vận chuyển'
+            },
+            {
+                icon: '⭐',
+                title: 'Giá Ưu Đãi',
+                description: 'Giảm đến 25% so với giá thông thường'
+            }
+        ],
+        ctaText: '🛒 ĐẶT HÀNG NGAY',
+        countdown: {
+            title: '⏰ Kết thúc sau:',
+            enabled: true,
+            endDate: '2026-06-07T23:59:59'
+        }
+    }
 };

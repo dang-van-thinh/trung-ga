@@ -366,6 +366,52 @@ const App = {
     },
 
     // ============================================
+    // SPECIAL PROGRAM COUNTDOWN TIMER
+    // ============================================
+    initSpecialCountdown: () => {
+        // Get countdown end date from siteData
+        const { specialProgram } = siteData;
+        if (!specialProgram || !specialProgram.countdown || !specialProgram.countdown.endDate) {
+            console.warn('⚠️ Special program countdown end date not configured');
+            return;
+        }
+
+        // Set countdown target from data.js
+        const countdownDate = new Date(specialProgram.countdown.endDate).getTime();
+        
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            
+            if (distance < 0) {
+                const countdownEl = document.getElementById('specialCountdown');
+                if (countdownEl) {
+                    countdownEl.innerHTML = '<p class="countdown-expired">Chương trình đã kết thúc!</p>';
+                }
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            
+            if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+        };
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    },
+
+    // ============================================
     // EVENT LISTENERS SETUP
     // ============================================
     setupEventListeners: () => {
