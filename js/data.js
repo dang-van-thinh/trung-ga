@@ -255,22 +255,22 @@ const siteData = {
         //     image: "source/qua-1.png",
         //     featured: false
         // },
-        {
-            id: "trung-so",
-            name: "COMBO 5 HỘP TẶNG 2 (TRỨNG SO)",
-            originalPrice: 836500,
-            priceValue: 597500,
-            priceDisplay: "597.500đ",
-            specs: [
-                "✓ 7 hộp x 12 quả",
-                "✓ Miễn phí ship toàn quốc",
-                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)",
-                "Chỉ áp dụng cho sản phẩm trứng so (trứng nhỏ)"
-            ],
-            highlightSpec: true,
-            image: "source/qua-1.png",
-            featured: false
-        },
+        // {
+        //     id: "trung-so",
+        //     name: "COMBO 5 HỘP TẶNG 2 (TRỨNG SO)",
+        //     originalPrice: 836500,
+        //     priceValue: 597500,
+        //     priceDisplay: "597.500đ",
+        //     specs: [
+        //         "✓ 7 hộp x 12 quả",
+        //         "✓ Miễn phí ship toàn quốc",
+        //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)",
+        //         "Chỉ áp dụng cho sản phẩm trứng so (trứng nhỏ)"
+        //     ],
+        //     highlightSpec: true,
+        //     image: "source/qua-1.png",
+        //     featured: false
+        // },
 
     ],
 
