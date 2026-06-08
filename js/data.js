@@ -194,22 +194,22 @@ const siteData = {
 
     // Products
     products: [
-        {
-            id: "special-offer",
-            name: "Combo Kỷ Niệm 10 Năm SADU",
-            originalPrice: 478000,
-            priceValue: 358500,
-            priceDisplay: "358.500đ",
-            specs: [
-                "✓ 4 hộp x 12 quả",
-                "✓ Miễn phí ship toàn quốc",
-                "✓ Tặng 1 túi đậu xanh (150g)",
-                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
-            ],
-            highlightSpec: true,
-            image: "source/banner-special.jpg",
-            featured: true // ⭐ Set true để làm sản phẩm nổi bật
-        },
+        // {
+        //     id: "special-offer",
+        //     name: "Combo Kỷ Niệm 10 Năm SADU",
+        //     originalPrice: 478000,
+        //     priceValue: 358500,
+        //     priceDisplay: "358.500đ",
+        //     specs: [
+        //         "✓ 4 hộp x 12 quả",
+        //         "✓ Miễn phí ship toàn quốc",
+        //         "✓ Tặng 1 túi đậu xanh (150g)",
+        //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+        //     ],
+        //     highlightSpec: true,
+        //     image: "source/banner-special.jpg",
+        //     featured: true // ⭐ Set true để làm sản phẩm nổi bật
+        // },
         {
             id: "1-hop",
             name: "1 HỘP TRỨNG GÀ THẢO DƯỢC SADU",
@@ -238,23 +238,23 @@ const siteData = {
             ],
             highlightSpec: true,
             image: "source/qua-1.png",
+            featured: true
+        },
+        {
+            id: "6-hop",
+            name: "COMBO 6 HỘP TẶNG 2 HỘP",
+            originalPrice: 956000,
+            priceValue: 717000,
+            priceDisplay: "717.000đ",
+            specs: [
+                "✓ 8 hộp x 12 quả",
+                "✓ Miễn phí ship toàn quốc",
+                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+            ],
+            highlightSpec: true,
+            image: "source/qua-1.png",
             featured: false
         },
-        // {
-        //     id: "6-hop",
-        //     name: "COMBO 6 HỘP TẶNG 2 HỘP",
-        //     originalPrice: 956000,
-        //     priceValue: 717000,
-        //     priceDisplay: "717.000đ",
-        //     specs: [
-        //         "✓ 8 hộp x 12 quả",
-        //         "✓ Miễn phí ship toàn quốc",
-        //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
-        //     ],
-        //     highlightSpec: true,
-        //     image: "source/qua-1.png",
-        //     featured: false
-        // },
         // {
         //     id: "trung-so",
         //     name: "COMBO 5 HỘP TẶNG 2 (TRỨNG SO)",

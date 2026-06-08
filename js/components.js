@@ -676,7 +676,7 @@ const Components = {
         Components.renderBenefits();
         Components.renderWhy();
         Components.renderStatistics();
-        Components.renderSpecialProgram();
+        // Components.renderSpecialProgram();
         Components.renderGiftCarousel();
         Components.renderComparison();
         Components.renderCertificates();
