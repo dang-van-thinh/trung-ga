@@ -65,20 +65,23 @@ const Components = {
     // Render Hero Section
     renderHero: () => {
         const hero = document.getElementById('hero');
-        const { discountBadge, discountText, title, description, ctaText, image } = siteData.hero;
+        const { label, title, description, ctaText, ctaNote, offerBadge, image } = siteData.hero;
 
         hero.className = 'hero';
         hero.innerHTML = `
             <div class="hero-content">
                 <div class="hero-text">
-                    <div class="discount-badge">${discountBadge}</div>
-                    <div class="discount-text">${discountText}</div>
+                    <div class="hero-label">${label}</div>
                     <h1>${title}</h1>
                     <p>${description}</p>
-                    <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
+                    <div class="hero-cta-group">
+                        <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
+                        <span class="hero-cta-note">${ctaNote}</span>
+                    </div>
+                    <div class="hero-offer-badge">${offerBadge}</div>
                 </div>
                 <div class="hero-image">
-                    <img src="${image}" alt="Trứng Sadu">
+                    <img src="${image}" alt="Trứng Gà Thảo Dược SADU">
                 </div>
             </div>
         `;
@@ -103,6 +106,44 @@ const Components = {
         `;
     },
 
+    // Render Herbal Story Section
+    renderHerbalStory: () => {
+        const section = document.getElementById('herbal-story');
+        if (!section) return;
+        const { label, title, description, herbs, result } = siteData.herbalStory;
+
+        section.className = 'herbal-story-section';
+        section.innerHTML = `
+            <div class="herbal-story-container">
+                <div class="herbal-story-header">
+                    <span class="herbal-story-label">${label}</span>
+                    <h2>${title}</h2>
+                    <p>${description}</p>
+                </div>
+                <div class="herbal-story-body">
+                    <div class="herbs-grid">
+                        ${herbs.map(h => `
+                            <div class="herb-card">
+                                <div class="herb-icon">🌿</div>
+                                <div class="herb-info">
+                                    <strong>${h.name}</strong>
+                                    <span>${h.benefit}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="herbal-result-card">
+                        <div class="herbal-result-icon">${result.icon}</div>
+                        <h3>${result.title}</h3>
+                        <ul class="herbal-result-list">
+                            ${result.points.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+
     // Render Why Section
     renderWhy: () => {
         const why = document.getElementById('why');
@@ -113,7 +154,7 @@ const Components = {
             <h2>${title}</h2>
             
             <div class="farm-story">
-                <h3 style="color: #0066cc;">${farmStory.title}</h3>
+                <h3 style="color: var(--primary);">${farmStory.title}</h3>
                 <div class="story-content">
                     <div class="story-image">
                         <img src="${farmStory.image}" alt="Lòng đỏ trứng SADU">
@@ -181,29 +222,108 @@ const Components = {
     // Render Gift Carousel Section
     renderGiftCarousel: () => {
         const section = document.getElementById('gift-carousel');
-        const { title, images } = siteData.giftCarousel;
+        if (!section) return;
+        const { label, title, subtitle, occasions, packaging, images, ctaText } = siteData.giftSection;
 
-        section.className = 'comparison-image';
+        section.className = 'gift-section';
         section.innerHTML = `
-            <h2>${title}</h2>
-            <div class="comparison-carousel">
-                <div class="comparison-carousel-main">
-                    <button type="button" class="carousel-nav carousel-prev" aria-label="Ảnh trước">‹</button>
-                    <img id="carouselMainImageTop" src="${images[0].src}" alt="${images[0].alt}" />
-                    <button type="button" class="carousel-nav carousel-next" aria-label="Ảnh tiếp theo">›</button>
+            <div class="gift-container">
+                <div class="gift-header">
+                    <span class="gift-label">${label}</span>
+                    <h2>${title}</h2>
+                    <p>${subtitle}</p>
                 </div>
-                <div class="comparison-carousel-thumbs">
-                    ${images.map((img, index) => `
-                        <button type="button" class="thumb ${index === 0 ? 'active' : ''}" data-src="${img.src}" aria-label="${img.alt}">
-                            <img src="${img.src}" alt="${img.alt}" />
-                        </button>
-                    `).join('')}
+
+                <div class="gift-body">
+                    <div class="gift-occasions">
+                        ${occasions.map(o => `
+                            <div class="gift-occasion-card">
+                                <div class="gift-occasion-icon">${o.icon}</div>
+                                <div class="gift-occasion-info">
+                                    <strong>${o.title}</strong>
+                                    <p>${o.desc}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="gift-visual">
+                        <div class="gift-carousel-wrap comparison-carousel">
+                            <div class="comparison-carousel-main">
+                                <button type="button" class="carousel-nav carousel-prev" aria-label="Ảnh trước">‹</button>
+                                <img id="carouselGiftMain" src="${images[0].src}" alt="${images[0].alt}" />
+                                <button type="button" class="carousel-nav carousel-next" aria-label="Ảnh tiếp">›</button>
+                            </div>
+                            <div class="comparison-carousel-thumbs gift-thumbs">
+                                ${images.map((img, i) => `
+                                    <button type="button" class="thumb ${i === 0 ? 'active' : ''}" data-src="${img.src}" aria-label="${img.alt}">
+                                        <img src="${img.src}" alt="${img.alt}" />
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="gift-packaging-card">
+                            <h4>${packaging.title}</h4>
+                            <ul>
+                                ${packaging.points.map(p => `<li>${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gift-cta">
+                    <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
                 </div>
             </div>
         `;
 
-        // Initialize carousel functionality
-        setTimeout(() => App.initCarousel('carouselMainImageTop', '.comparison-carousel-thumbs'), 0);
+        setTimeout(() => App.initCarousel('carouselGiftMain', '.gift-thumbs'), 0);
+    },
+
+    // Render Value Justification Section
+    renderValueJustification: () => {
+        const section = document.getElementById('value-justification');
+        if (!section) return;
+        const { label, title, subtitle, comparisons, anchors, ctaText } = siteData.valueJustification;
+
+        section.className = 'value-justification-section';
+        section.innerHTML = `
+            <div class="value-justification-container">
+                <div class="value-header">
+                    <span class="value-label">${label}</span>
+                    <h2>${title}</h2>
+                    <p>${subtitle}</p>
+                </div>
+
+                <div class="value-price-compare">
+                    ${comparisons.map(c => `
+                        <div class="value-price-card ${c.highlight ? 'value-price-card--highlight' : ''}">
+                            ${c.highlight ? '<div class="value-price-best">Lựa chọn của bạn</div>' : ''}
+                            <div class="value-price-label">${c.label}</div>
+                            <div class="value-price-amount">${c.price}</div>
+                            <div class="value-price-note">${c.note}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="value-anchors">
+                    ${anchors.map(a => `
+                        <div class="value-anchor-card">
+                            <div class="value-anchor-icon">${a.icon}</div>
+                            <div class="value-anchor-body">
+                                <strong>${a.comparison}</strong>
+                                <p>${a.value}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="value-cta">
+                    <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
+                </div>
+            </div>
+        `;
     },
 
     // Render Comparison Table
@@ -562,6 +682,23 @@ const Components = {
                     </ul>
                 </div>
             </div>
+            ${contact.mapEmbedUrl ? `
+            <div class="footer-map">
+                <h4>Tìm Chúng Tôi Trên Bản Đồ</h4>
+                <div class="footer-map-frame">
+                    <iframe
+                        src="${contact.mapEmbedUrl}"
+                        width="100%"
+                        height="300"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Bản đồ SADU Farm">
+                    </iframe>
+                </div>
+            </div>
+            ` : ''}
             <div class="footer-bottom">
                 <p>&copy; 2026 SADU - Trứng Gà Thảo Dược.</p>
             </div>
@@ -608,8 +745,8 @@ const Components = {
         const section = document.getElementById('special-program');
         const { specialProgram } = siteData;
 
-        // Check if special program is configured
-        if (!specialProgram) {
+        // Ẩn section nếu không có chương trình hoặc disabled
+        if (!specialProgram || !specialProgram.enabled) {
             section.style.display = 'none';
             return;
         }
@@ -617,43 +754,42 @@ const Components = {
         section.className = 'special-program-section';
         section.innerHTML = `
             <div class="special-program-wrapper">
-                <div class="special-program-badge">${specialProgram.badge}</div>
-                
+                <div class="special-program-badge">${specialProgram.tag}</div>
+
                 <div class="special-program-content">
                     <div class="special-program-image-wrapper">
                         <img src="${specialProgram.image}" alt="${specialProgram.imageAlt}">
-                        <div class="urgency-tag">${specialProgram.highlightText}</div>
+                        ${specialProgram.highlightText ? `<div class="urgency-tag">${specialProgram.highlightText}</div>` : ''}
                     </div>
-                    
+
                     <div class="special-program-info-wrapper">
                         <h2 class="special-program-heading">${specialProgram.title}</h2>
                         <h3 class="special-program-subheading">${specialProgram.subtitle}</h3>
                         <p class="special-program-text">${specialProgram.description}</p>
-                        
-                        
-                        
+
+                        <ul class="special-program-benefits">
+                            ${specialProgram.features.map(f => `
+                                <li class="benefit-item-special">
+                                    <span class="benefit-icon-special">${f.icon}</span>
+                                    <div class="benefit-text">
+                                        <span class="benefit-title">${f.title}</span>
+                                        <span class="benefit-desc">${f.description}</span>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+
+                        ${specialProgram.countdown.enabled ? `
                         <div class="countdown-wrapper">
                             <p class="countdown-heading">${specialProgram.countdown.title}</p>
                             <div class="countdown-boxes" id="specialCountdown">
-                                <div class="countdown-box">
-                                    <span class="countdown-number" id="days">00</span>
-                                    <span class="countdown-text">Ngày</span>
-                                </div>
-                                <div class="countdown-box">
-                                    <span class="countdown-number" id="hours">00</span>
-                                    <span class="countdown-text">Giờ</span>
-                                </div>
-                                <div class="countdown-box">
-                                    <span class="countdown-number" id="minutes">00</span>
-                                    <span class="countdown-text">Phút</span>
-                                </div>
-                                <div class="countdown-box">
-                                    <span class="countdown-number" id="seconds">00</span>
-                                    <span class="countdown-text">Giây</span>
-                                </div>
+                                <div class="countdown-box"><span class="countdown-number" id="days">00</span><span class="countdown-text">Ngày</span></div>
+                                <div class="countdown-box"><span class="countdown-number" id="hours">00</span><span class="countdown-text">Giờ</span></div>
+                                <div class="countdown-box"><span class="countdown-number" id="minutes">00</span><span class="countdown-text">Phút</span></div>
+                                <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-text">Giây</span></div>
                             </div>
-                        </div>
-                        
+                        </div>` : ''}
+
                         <button class="special-cta-button" onclick="App.openOrderModal()">
                             ${specialProgram.ctaText}
                         </button>
@@ -662,10 +798,34 @@ const Components = {
             </div>
         `;
 
-        // Initialize countdown if enabled
         if (specialProgram.countdown.enabled) {
             setTimeout(() => App.initSpecialCountdown(), 100);
         }
+    },
+
+    // Render Final CTA Section
+    renderFinalCTA: () => {
+        const section = document.getElementById('final-cta');
+        if (!section) return;
+        const { title, subtitle, highlights, ctaText, ctaSubtext } = siteData.finalCta;
+
+        section.className = 'final-cta-section';
+        section.innerHTML = `
+            <div class="final-cta-container">
+                <h2 class="final-cta-title">${title}</h2>
+                <p class="final-cta-subtitle">${subtitle}</p>
+                <ul class="final-cta-highlights">
+                    ${highlights.map(h => `
+                        <li class="final-cta-highlight-item">
+                            <span class="final-cta-icon">${h.icon}</span>
+                            <span>${h.text}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+                <button class="final-cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
+                <p class="final-cta-subtext">${ctaSubtext}</p>
+            </div>
+        `;
     },
 
     // Initialize all components
@@ -674,17 +834,19 @@ const Components = {
         Components.renderHeader();
         Components.renderHero();
         Components.renderBenefits();
+        Components.renderHerbalStory();
         Components.renderWhy();
-        Components.renderStatistics();
-        // Components.renderSpecialProgram();
-        Components.renderGiftCarousel();
+        Components.renderEggComparison();
+        Components.renderValueJustification();
         Components.renderComparison();
+        Components.renderStatistics();
         Components.renderCertificates();
+        Components.renderSpecialProgram();
         Components.renderProducts();
-        // Components.renderEggComparison();
+        Components.renderGiftCarousel();
         Components.renderCustomerFeedbackGallery();
-        // Components.renderTestimonials();
         Components.renderFAQ();
+        Components.renderFinalCTA();
         Components.renderFooter();
         Components.renderProductOptions();
     }

@@ -272,7 +272,7 @@
     top: 60px;
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, var(--primary) 0%, #0052a3 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, #1b5e20 100%);
     flex-direction: column;
     gap: 0;
     padding: 15px 0;
@@ -1446,4 +1446,224 @@
   font-size: 16px;
   padding: 16px;
   min-height: 52px;
+}
+
+/* ============================================
+   NEW SECTIONS RESPONSIVE
+   ============================================ */
+
+/* Hero mới — tablet */
+@media (max-width: 768px) {
+  .hero-label {
+    font-size: 11px;
+    padding: 5px 14px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .hero-cta-note {
+    font-size: 12px;
+  }
+
+  .hero-offer-badge {
+    font-size: 13px;
+    padding: 7px 16px;
+  }
+
+  /* Herbal Story — tablet */
+  .herbal-story-section {
+    padding: 50px 16px;
+  }
+
+  .herbal-story-header h2 {
+    font-size: 26px;
+  }
+
+  .herbal-story-body {
+    grid-template-columns: 1fr;
+  }
+
+  .herbal-result-card {
+    position: static;
+  }
+
+  /* Value Justification — tablet */
+  .value-justification-section {
+    padding: 50px 16px;
+  }
+
+  .value-header h2 {
+    font-size: 26px;
+  }
+
+  .value-price-compare {
+    gap: 16px;
+  }
+
+  /* Gift Section — tablet */
+  .gift-section {
+    padding: 50px 16px;
+  }
+
+  .gift-header h2 {
+    font-size: 26px;
+  }
+
+  .gift-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero mới — mobile nhỏ */
+@media (max-width: 480px) {
+  .hero-label {
+    font-size: 10px;
+    padding: 4px 12px;
+    margin-bottom: 14px;
+  }
+
+  .hero-text h1 {
+    font-size: 22px !important;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cta-btn {
+    width: 100%;
+    font-size: 15px;
+    padding: 14px 20px;
+  }
+
+  .hero-offer-badge {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+
+  /* Herbal Story — mobile */
+  .herbal-story-section {
+    padding: 40px 12px;
+  }
+
+  .herbal-story-header h2 {
+    font-size: 22px;
+  }
+
+  .herbal-story-label {
+    font-size: 11px;
+  }
+
+  .herbs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .herb-card {
+    padding: 12px 14px;
+  }
+
+  .herbal-result-card {
+    padding: 22px 20px;
+  }
+
+  .herbal-result-card h3 {
+    font-size: 17px;
+  }
+
+  .herbal-result-list li {
+    font-size: 13px;
+  }
+
+  /* Value Justification — mobile */
+  .value-justification-section {
+    padding: 40px 12px;
+  }
+
+  .value-header h2 {
+    font-size: 22px;
+  }
+
+  .value-price-compare {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .value-price-amount {
+    font-size: 26px;
+  }
+
+  .value-anchor-card {
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .value-anchor-icon {
+    font-size: 28px;
+  }
+
+  .value-anchor-body strong {
+    font-size: 14px;
+  }
+
+  /* Gift Section — mobile */
+  .gift-section {
+    padding: 40px 12px;
+  }
+
+  .gift-header h2 {
+    font-size: 22px;
+  }
+
+  .gift-occasion-card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .gift-occasion-icon {
+    font-size: 26px;
+  }
+
+  .gift-occasion-info strong {
+    font-size: 14px;
+  }
+
+  .gift-occasion-info p {
+    font-size: 12px;
+  }
+
+  .gift-packaging-card {
+    padding: 18px;
+  }
+
+  .gift-packaging-card h4 {
+    font-size: 13px;
+  }
+
+  .gift-packaging-card ul li {
+    font-size: 12px;
+  }
+
+  /* Final CTA — mobile */
+  .final-cta-title {
+    font-size: 22px;
+  }
+
+  .final-cta-subtitle {
+    font-size: 14px;
+  }
+
+  .final-cta-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .final-cta-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+  }
 }

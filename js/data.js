@@ -17,44 +17,72 @@ const siteData = {
     // Navigation
     navigation: [
         { label: 'Sản Phẩm', href: '#products' },
-        { label: 'Đánh Giá', href: '#testimonials' },
+        { label: 'Đánh Giá', href: '#customer-feedback-gallery' },
         { label: 'Hỏi Đáp', href: '#faq' },
         { label: 'Liên Hệ', href: '#footer' }
     ],
 
     // Hero Section
     hero: {
-        discountBadge: 'GIẢM 20%',
-        discountText: 'MUA 3 TẶNG 1',
-        title: 'TRỨNG GÀ THẢO DƯỢC SADU',
-        description: 'Dinh dưỡng vàng cho mẹ bầu, mẹ bỉm sữa và gia đình. Nuôi bằng thảo dược tự nhiên, không kháng sinh, cholesterol thấp chỉ 1/2 so với trứng thường.',
-        ctaText: 'ĐẶT MUA NGAY',
+        label: 'Trứng Gà Thảo Dược Cao Cấp',
+        title: 'Khi Mỗi Bữa Ăn Là Một Lựa Chọn Cho Sức Khỏe',
+        description: 'SADU nuôi gà bằng 13 loại thảo dược tự nhiên — không kháng sinh, không chất kích thích, cholesterol thấp hơn 1/2 trứng thường. Từng quả trứng là cam kết bảo vệ sức khỏe gia đình bạn.',
+        ctaText: '🛒 Đặt Mua Ngay',
+        ctaNote: 'Combo từ 3 hộp — Miễn phí giao hàng toàn quốc',
+        offerBadge: 'Ưu đãi: Mua 3 Tặng 1',
         image: 'source/banner-2.jpg'
     },
 
     // Benefits Section
     benefits: [
         {
-            icon: '✓',
-            title: 'Bảo Hành Chính Hãng',
-            description: 'Cam Kết 3 KHÔNG : Không Kháng Sinh - Không Chất Kích Thích - Không Cám Công Nghiệp'
+            icon: '🌿',
+            title: 'Yên Tâm Tuyệt Đối',
+            description: '3 KHÔNG: Không kháng sinh · Không chất kích thích · Không cám công nghiệp — kiểm định độc lập'
+        },
+        {
+            icon: '💛',
+            title: 'Khác Biệt Nhìn Thấy Ngay',
+            description: 'Lòng đỏ cam sậm, sánh đặc — màu tự nhiên từ 13 loại thảo dược, không phẩm màu'
+        },
+        {
+            icon: '🛡️',
+            title: 'Mua Không Lo Rủi Ro',
+            description: 'Đổi mới hoặc hoàn tiền 100% nếu hàng vỡ trong vận chuyển — chụp ảnh, báo ngay'
         },
         {
             icon: '🚚',
-            title: 'Giao Hàng Toàn Quốc',
-            description: 'Giao hàng toàn quốc, đóng gói cẩn thận'
-        },
-        {
-            icon: '🔄',
-            title: '1 ĐỔI 1',
-            description: 'Bảo hành 1 đổi 1 hoặc hoàn tiền, nếu bị vỡ trong quá trình vận chuyển'
-        },
-        {
-            icon: '💬',
-            title: 'Hỗ Trợ Khách Hàng',
-            description: 'Tư vấn miễn phí, hỗ trợ khách hàng liên tục'
+            title: 'Đến Tận Cửa, Đúng Hẹn',
+            description: 'Giao toàn quốc · Đóng gói chống sốc · Freeship combo từ 3 hộp'
         }
     ],
+
+    // Herbal Story Section
+    herbalStory: {
+        label: 'Bí Quyết Tạo Nên Sự Khác Biệt',
+        title: '13 Loại Thảo Dược — Dưỡng Từ Bên Trong',
+        description: 'Không có con đường tắt nào để tạo ra trứng thực sự sạch. SADU phối trộn 13 loại thảo dược quý vào khẩu phần ăn hàng ngày của đàn gà — kết quả hiện ra ngay trên từng quả trứng bạn cầm trên tay.',
+        herbs: [
+            { name: 'Cà Gai Leo', benefit: 'Hỗ trợ gan, giải độc tự nhiên' },
+            { name: 'Xạ Đen', benefit: 'Tăng đề kháng, chống oxy hóa' },
+            { name: 'Đinh Lăng', benefit: 'Bổ khí huyết, tăng sức sống' },
+            { name: 'Khôi Đốm', benefit: 'Kháng viêm, bảo vệ đường tiêu hóa' },
+            { name: 'Ngô Sơn La', benefit: 'Nguồn tinh bột sạch từ vùng cao' },
+            { name: 'Cám Gạo Tươi', benefit: 'Vitamin E tự nhiên, dưỡng lòng đỏ' },
+            { name: 'Khô Đậu Tương', benefit: 'Protein thực vật, không cholesterol xấu' },
+            { name: '+ 6 Thảo Dược Khác', benefit: 'Bổ sung khoáng chất & premix tự nhiên' }
+        ],
+        result: {
+            icon: '🥚',
+            title: 'Kết Quả Nhìn Thấy Bằng Mắt',
+            points: [
+                'Lòng đỏ cam sậm, sánh đặc — không phẩm màu',
+                'Không mùi tanh kể cả khi ăn sống',
+                'Cholesterol chỉ 125mg — thấp hơn 1/2 trứng thường (380mg)',
+                'Bảo quản được 15–20 ngày ở nhiệt độ thường'
+            ]
+        }
+    },
 
     // Why Section
     why: {
@@ -79,6 +107,45 @@ const siteData = {
             title: 'An Toàn Cho Mẹ Bầu & Mẹ Bỉm Sữa',
             description: 'Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.'
         }
+    },
+
+    // Value Justification Section
+    valueJustification: {
+        label: 'Tại Sao Xứng Đáng?',
+        title: 'Hơn 10.000đ Một Quả — Bạn Đang Mua Gì?',
+        subtitle: 'So sánh thật, không che giấu. Một quả trứng SADU có giá khoảng 10.000đ — cao hơn trứng thường. Đây là lý do tại sao con số đó xứng đáng.',
+        comparisons: [
+            {
+                label: 'Trứng thường',
+                price: '~2.000đ/quả',
+                note: 'Nuôi cám công nghiệp · Có thể tồn dư kháng sinh · Cholesterol 380mg',
+                highlight: false
+            },
+            {
+                label: 'Trứng SADU',
+                price: '~10.000đ/quả',
+                note: '13 loại thảo dược · 0 kháng sinh · Cholesterol chỉ 125mg',
+                highlight: true
+            }
+        ],
+        anchors: [
+            {
+                icon: '☕',
+                comparison: 'Bằng 1 ly cà phê',
+                value: 'Một quả trứng SADU có giá tương đương 1 ly cà phê sáng — nhưng nuôi dưỡng cả gia đình bạn'
+            },
+            {
+                icon: '🏥',
+                comparison: 'Rẻ hơn 1 lần khám bệnh',
+                value: 'Chi phí điều trị kháng sinh đề kháng tốn gấp hàng trăm lần — ăn sạch từ đầu mới là tiết kiệm thực sự'
+            },
+            {
+                icon: '👶',
+                comparison: 'Đầu tư cho con',
+                value: 'Với trẻ nhỏ và mẹ bầu, chất lượng thực phẩm ảnh hưởng trực tiếp đến sự phát triển — không thể thỏa hiệp'
+            }
+        ],
+        ctaText: 'Đặt Thử Ngay'
     },
 
     // Statistics Section
@@ -112,16 +179,50 @@ const siteData = {
         ]
     },
 
-    // Gift Carousel Section
-    giftCarousel: {
-        title: 'Quà Tặng Ý Nghĩa',
+    // Gift Section
+    giftSection: {
+        label: 'Quà Tặng Sức Khỏe',
+        title: 'Trứng SADU — Món Quà Biếu Ý Nghĩa',
+        subtitle: 'Không cần đắt tiền để thể hiện sự quan tâm. Một hộp trứng thảo dược chất lượng cao là món quà thiết thực, tốt cho sức khỏe — được lòng người nhận hơn bất kỳ lời chúc nào.',
+        occasions: [
+            {
+                icon: '🤰',
+                title: 'Tặng Mẹ Bầu',
+                desc: 'Bổ sung dinh dưỡng an toàn, không kháng sinh — món quà thiết thực nhất cho thai kỳ khỏe mạnh'
+            },
+            {
+                icon: '👴',
+                title: 'Biếu Ông Bà Cha Mẹ',
+                desc: 'Cholesterol thấp, thảo dược tự nhiên — phù hợp người lớn tuổi cần kiểm soát tim mạch'
+            },
+            {
+                icon: '🏠',
+                title: 'Tặng Gia Đình, Bạn Bè',
+                desc: 'Thực phẩm sạch là quà tặng mà ai cũng cần — ý nghĩa hơn hoa quả, thiết thực hơn bánh kẹo'
+            },
+            {
+                icon: '🎂',
+                title: 'Dịp Lễ, Tết, Sinh Nhật',
+                desc: 'Combo 3–6 hộp đóng gói đẹp, giao tận nơi — phù hợp làm quà biếu mọi dịp trong năm'
+            }
+        ],
+        packaging: {
+            title: 'Đóng Gói Cẩn Thận, Trao Tay Trọn Vẹn',
+            points: [
+                'Hộp carton chắc chắn, chống va đập khi vận chuyển',
+                'Tem SADU dán trên từng quả — nhận diện hàng chính hãng',
+                'Giao tận địa chỉ người nhận theo yêu cầu',
+                'Túi giấy lịch sự, sang trọng — phù hợp làm quà biếu'
+            ]
+        },
         images: [
-            { src: 'source/qua-5.png', alt: 'Chứng nhận' },
-            { src: 'source/qua-1.png', alt: 'Khay trứng' },
-            { src: 'source/qua-2.png', alt: 'Mẹ bầu' },
-            { src: 'source/qua-7.png', alt: 'Mẹ và bé' },
-            { src: 'source/qua-3.png', alt: 'Lòng đỏ trứng' }
-        ]
+            { src: 'source/qua-5.png', alt: 'Quà tặng SADU' },
+            { src: 'source/qua-1.png', alt: 'Hộp trứng SADU' },
+            { src: 'source/qua-2.png', alt: 'Quà cho mẹ bầu' },
+            { src: 'source/qua-7.png', alt: 'Quà gia đình' },
+            { src: 'source/qua-3.png', alt: 'Lòng đỏ trứng SADU' }
+        ],
+        ctaText: '🎁 Đặt Hàng Làm Quà Ngay'
     },
 
     // Comparison Table
@@ -238,7 +339,7 @@ const siteData = {
             ],
             highlightSpec: true,
             image: "source/qua-1.png",
-            featured: true
+            featured: true // ⭐ Set true để làm sản phẩm nổi bật
         },
         {
             id: "6-hop",
@@ -278,33 +379,33 @@ const siteData = {
     testimonials: [
         {
             name: 'Chị Hương',
-            role: 'Mẹ bầu - Tháng 7',
+            role: 'Mẹ bầu tháng 7 — Hà Nội',
             avatar: 'source/avatar-1.jpg',
-            content: 'Mình rất lo lắng về chất lượng trứng cho thai kỳ. Sau khi dùng Sadu, mình cảm thấy yên tâm vì sản phẩm hoàn toàn tự nhiên và không có kháng sinh. Lòng đỏ sánh màu, ngon lắm!'
+            content: 'Ban đầu mình cũng phân vân vì giá cao hơn trứng thường. Nhưng nhìn lòng đỏ cam sậm, sánh đặc thế này là biết ngay khác biệt rồi. Bác sĩ cũng nói cholesterol trong máu mình ổn định dù ăn trứng mỗi ngày. Xứng đáng từng đồng!'
         },
         {
             name: 'Chị Linh',
-            role: 'Mẹ bỉm sữa - Con 3 tháng',
+            role: 'Mẹ bỉm sữa — Con 3 tháng',
             avatar: 'source/avatar-2.jpg',
-            content: 'Sau khi sinh, mình cần ăn nhiều trứng để tăng sữa. Trứng Sadu rất tốt, cholesterol thấp, lại không có kháng sinh. Con mình khỏe mạnh và sữa cũng nhiều hơn.'
+            content: 'Sau sinh mình ăn rất nhiều trứng để có sữa. Chọn SADU vì không dám đánh cược sức khỏe của con bằng trứng không rõ nguồn gốc. Sữa nhiều hơn hẳn, con tăng cân đều. Đắt hơn một chút nhưng ngủ ngon hơn nhiều!'
         },
         {
             name: 'Anh Long',
-            role: 'Khách hàng mới',
+            role: 'Kỹ sư — Khách hàng 8 tháng',
             avatar: 'source/avatar-4.jpg',
-            content: '10 điểm khâu vận chuyển, sản phẩm mà đúng như chất lượng quảng cáo thì cũng cho 10 điểm. Anh mua hàng ăn uống rất kĩ tính, thường thì anh trả rảnh mà feedback, nhưng sản phẩm tốt cho sức khỏe thì cần phải cảm ơn người sản xuất.'
+            content: 'Mình là người kỹ tính về thực phẩm, đọc kỹ thành phần trước khi mua. SADU là lần đầu tiên mình thấy một thương hiệu trứng dám liệt kê đầy đủ 13 loại thảo dược và con số cholesterol cụ thể. Không cần quảng cáo nhiều — sự minh bạch đó đã đủ thuyết phục tôi rồi.'
         },
         {
             name: 'Chị Bích',
-            role: 'Ăn chay',
+            role: 'Ăn chay — TP. HCM',
             avatar: 'source/avatar-5.jpg',
-            content: 'Gia đình mình ăn chay tháng 10 ngày, có trứng sạch thuần chay là gia đình mình an tâm rồi. Cảm ơn shop.'
+            content: 'Gia đình mình ăn chay 10 ngày mỗi tháng. Tìm mãi mới thấy trứng nuôi hoàn toàn bằng thực vật và thảo dược như SADU. Cả nhà an tâm, không lo tồn dư thuốc. Đây là loại trứng duy nhất mình tin dùng.'
         },
         {
             name: 'Chị Minh',
-            role: 'Mẹ trẻ - Con 2 tuổi',
+            role: 'Mẹ trẻ — Con 2 tuổi',
             avatar: 'source/avatar-3.jpg',
-            content: 'Mình mua Sadu cho cả gia đình. Trứng tươi, ngon, an toàn cho con. Mình đã mua tại sadu 2 năm nay rồi.'
+            content: 'Hai năm dùng SADU, chưa một lần phải lo về chất lượng. Con mình ăn trứng mỗi ngày, khỏe mạnh và phát triển tốt. Với mình, trả thêm vài nghìn mỗi quả để không phải lo — đó là khoản đầu tư xứng đáng nhất cho con.'
         }
     ],
 
@@ -315,7 +416,14 @@ const siteData = {
         { src: 'source/fb3.jpg', alt: 'Khách hàng hài lòng 3' },
         { src: 'source/fb4.jpg', alt: 'Khách hàng hài lòng 4' },
         { src: 'source/fb5.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb6.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb7.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb9.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb10.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb11.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb13.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb14.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb15.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb16.jpg', alt: 'Khách hàng hài lòng 4' },
     ],
 
     // FAQ
@@ -356,6 +464,7 @@ const siteData = {
         email: 'nongnghiepcncthanglong@gmail.com',
         address: 'HTX NÔNG NGHIỆP CÔNG NGHỆ CAO KIÊN CÀ - Thôn Ứng Hòa - Xã Quảng Bị - TP.Hà Nội.',
         facebook: 'https://www.facebook.com/trunggasach.sadu/',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d578.1946638146984!2d105.7084532920405!3d20.887101247562136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDUzJzEzLjkiTiAxMDXCsDQyJzI5LjkiRQ!5e1!3m2!1svi!2s!4v1781854042056!5m2!1svi!2s', // [THAY] Dán src từ Google Maps > Chia sẻ > Nhúng bản đồ vào đây
         socialLinks: [
             { name: 'Facebook', url: 'https://www.facebook.com/trunggasach.sadu/', icon: 'f' },
             // { name: 'Instagram', url: '#', icon: '📷' },
@@ -365,34 +474,45 @@ const siteData = {
 
     // Customers for Alert Notification
     customers: [
-        { name: 'Nguyễn Thị Hương', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
+        { name: 'Nguyễn Thị Hương', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
         { name: 'Trần Văn Đức', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Phạm Thị Linh', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
+        { name: 'Phạm Thị Linh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
         { name: 'Hoàng Minh Tuấn', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
         { name: 'Lê Thị Hoa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
         { name: 'Đỗ Văn Hùng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Vũ Thị Xuân', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
+        { name: 'Vũ Thị Xuân', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
         { name: 'Bùi Văn Long', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Trần Ngọc Bảo', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
+        { name: 'Trần Ngọc Bảo', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
         { name: 'Trương Thị Mai', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Nguyễn Quỳnh Nga', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' },
-        { name: 'Ngô Như', product: 'Trứng Gà Thảo Dược - Combo Kỷ Niệm 10 Năm' }
+        { name: 'Nguyễn Quỳnh Nga', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Ngô Như', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' }
     ],
 
-    // Special Program Section
+    // ============================================================
+    // CHƯƠNG TRÌNH KHUYẾN MÃI HÀNG THÁNG
+    // Mỗi tháng chỉ cần thay các trường được đánh dấu [THAY]
+    // Đặt enabled: false để ẩn section này đi
+    // ============================================================
     specialProgram: {
-        title: '🎉 CHƯƠNG TRÌNH KHUYẾN MÃI ĐẶC BIỆT',
-        subtitle: 'Kỷ Niệm 10 Năm Thành Lập',
-        description: 'Nhân dịp kỷ niệm 10 năm thành lập, SADU dành tặng chương trình ưu đãi đặc biệt chưa từng có! Chỉ áp dụng đến <strong>hết ngày 07/06/2026</strong>.',
-        image: 'source/banner-special.jpg',
-        imageAlt: 'Chương trình đặc biệt kỷ niệm 10 năm SADU',
-        badge: '',
-        highlightText: 'CHỈ 100 SUẤT ĐẦU TIÊN',
+        enabled: false,                          // [THAY] true = hiện, false = ẩn section
+
+        // --- Nhận diện chương trình ---
+        tag: 'Khuyến Mãi Tháng 6/2026',        // [THAY] nhãn nhỏ phía trên
+        title: 'Kỷ Niệm 10 Năm SADU',          // [THAY] tiêu đề chính
+        subtitle: 'Ưu Đãi Chưa Từng Có',       // [THAY] tiêu đề phụ
+        description: 'Nhân dịp kỷ niệm 10 năm thành lập, SADU dành tặng chương trình ưu đãi đặc biệt chưa từng có! Chỉ áp dụng đến <strong>hết ngày 07/06/2026</strong>.', // [THAY]
+
+        // --- Hình ảnh ---
+        image: 'source/banner-special.jpg',     // [THAY] ảnh minh họa chương trình
+        imageAlt: 'Chương trình đặc biệt SADU', // [THAY]
+        highlightText: 'CHỈ 100 SUẤT ĐẦU TIÊN',// [THAY] text nổi bật trên ảnh (bỏ trống nếu không cần)
+
+        // --- Quyền lợi (tối đa 4 mục) ---
         features: [
             {
                 icon: '🎁',
                 title: 'Quà Tặng Đặc Biệt',
-                description: 'Tặng 1 túi đậu xanh (150g)'
+                description: 'Tặng 1 túi đậu xanh (150g)'         // [THAY]
             },
             {
                 icon: '🚚',
@@ -407,14 +527,31 @@ const siteData = {
             {
                 icon: '⭐',
                 title: 'Giá Ưu Đãi',
-                description: 'Giảm đến 25% so với giá thông thường'
+                description: 'Giảm đến 25% so với giá thông thường' // [THAY]
             }
         ],
-        ctaText: '🛒 ĐẶT HÀNG NGAY',
+
+        ctaText: '🛒 ĐẶT HÀNG NGAY',           // [THAY] nếu muốn
+
+        // --- Đếm ngược ---
         countdown: {
             title: '⏰ Kết thúc sau:',
-            enabled: true,
-            endDate: '2026-06-07T23:59:59'
+            enabled: true,                      // [THAY] true = hiện đếm ngược
+            endDate: '2026-06-07T23:59:59'      // [THAY] ngày kết thúc chương trình
         }
+    },
+
+    // Final CTA Section
+    finalCta: {
+        title: 'Bắt Đầu Hành Trình Ăn Sạch Hôm Nay',
+        subtitle: 'Hàng nghìn gia đình đã tin dùng — Đến lượt bạn trải nghiệm sự khác biệt',
+        highlights: [
+            { icon: '🌿', text: '100% thảo dược tự nhiên, 0% kháng sinh' },
+            { icon: '🥚', text: 'Cholesterol thấp hơn 1/2 so với trứng thường' },
+            { icon: '🚚', text: 'Freeship toàn quốc cho combo từ 3 hộp' },
+            { icon: '🛡️', text: 'Bảo hành 1 đổi 1 nếu lỗi vận chuyển' }
+        ],
+        ctaText: '🛒 ĐẶT HÀNG NGAY',
+        ctaSubtext: 'Giao hàng toàn quốc • Thanh toán khi nhận hàng'
     }
 };
