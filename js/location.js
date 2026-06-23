@@ -45030,7 +45030,7 @@ function populateProvinces() {
         option.textContent = province.name;
         provinceSelect.appendChild(option);
     });
-    
+
     // Re-sync searchable select for province
     syncSearchableSelect('province');
 }
@@ -45039,9 +45039,9 @@ function updateDistricts() {
     const provinceSelect = document.getElementById('province');
     const districtSelect = document.getElementById('district');
     const wardSelect = document.getElementById('ward');
-    
+
     const provinceId = provinceSelect.value;
-    
+
     // Reset district and ward
     districtSelect.innerHTML = '<option value="">-- Chọn Quận/Huyện --</option>';
     wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
@@ -45066,16 +45066,16 @@ function updateDistricts() {
     } else {
         districtSelect.disabled = true;
     }
-    
+
     syncSearchableSelect('district');
 }
 
 function updateWards() {
     const districtSelect = document.getElementById('district');
     const wardSelect = document.getElementById('ward');
-    
+
     const districtId = districtSelect.value;
-    
+
     // Reset ward
     wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
 
@@ -45103,6 +45103,6 @@ function updateWards() {
     } else {
         wardSelect.disabled = true;
     }
-    
+
     syncSearchableSelect('ward');
 }

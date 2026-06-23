@@ -8,7 +8,7 @@ const Components = {
     // Render Event Popup
     renderEventPopup: () => {
         const { eventPopup } = siteData;
-        
+
         // Check if popup is enabled
         if (!eventPopup || !eventPopup.enabled) {
             return;
@@ -110,7 +110,7 @@ const Components = {
     renderHerbalStory: () => {
         const section = document.getElementById('herbal-story');
         if (!section) return;
-        const { label, title, description, herbs, result } = siteData.herbalStory;
+        const { label, title, description, herbs, result, gridBackground } = siteData.herbalStory;
 
         section.className = 'herbal-story-section';
         section.innerHTML = `
@@ -121,7 +121,7 @@ const Components = {
                     <p>${description}</p>
                 </div>
                 <div class="herbal-story-body">
-                    <div class="herbs-grid">
+                    <div class="herbs-grid" ${gridBackground ? `style="background-image: url('${gridBackground}')"` : ''}>
                         ${herbs.map(h => `
                             <div class="herb-card">
                                 <div class="herb-icon">🌿</div>
@@ -151,40 +151,51 @@ const Components = {
 
         why.className = 'why-section';
         why.innerHTML = `
-            <h2>${title}</h2>
-            
-            <div class="farm-story">
-                <h3 style="color: var(--primary);">${farmStory.title}</h3>
-                <div class="story-content">
-                    <div class="story-image">
+            <div class="why-container">
+                <div class="why-header">
+                    <span class="why-label">Lý Do Chọn SADU</span>
+                    <h2>${title}</h2>
+                </div>
+
+                <!-- Block 1: 3 KHÔNG -->
+                <div class="why-feature-block">
+                    <div class="why-feature-image">
                         <img src="${farmStory.image}" alt="Lòng đỏ trứng SADU">
                     </div>
-                    <div class="story-text">
-                        <ul class="usp-list">
-                            ${farmStory.uspList.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
+                    <div class="why-feature-content">
+                        <h3>${farmStory.title}</h3>
+                        <div class="why-usp-pills">
+                            ${farmStory.uspList.map(item => `
+                                <div class="why-usp-pill">
+                                    <span class="why-usp-check">✓</span>
+                                    <span>${item}</span>
+                                </div>
+                            `).join('')}
+                        </div>
                         <p>${farmStory.description}</p>
                     </div>
                 </div>
-                
-                <div class="story-content reverse">
-                    <div class="story-image">
-                        <img src="${comparison.image}" alt="So sánh trứng SADU và trứng thường">
+
+                <!-- Block 2: Comparison + Safety cards -->
+                <div class="why-cards-grid">
+                    <div class="why-card">
+                        <div class="why-card-image">
+                            <img src="${comparison.image}" alt="${comparison.title}">
+                        </div>
+                        <div class="why-card-body">
+                            <h3>${comparison.title}</h3>
+                            <p>${comparison.description}</p>
+                        </div>
                     </div>
-                    <div class="story-text">
-                        <h4>${comparison.title}</h4>
-                        <p>${comparison.description}</p>
+                    <div class="why-card">
+                        <div class="why-card-image">
+                            <img src="${safety.image}" alt="${safety.title}">
+                        </div>
+                        <div class="why-card-body">
+                            <h3>${safety.title}</h3>
+                            <p>${safety.description}</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="why-content" style="margin-top: 40px !important;">
-                <div class="why-image">
-                    <img src="${safety.image}" alt="Mẹ và bé">
-                </div>
-                <div class="why-text">
-                    <h3>${safety.title}</h3>
-                    <p>${safety.description}</p>
                 </div>
             </div>
         `;
@@ -393,6 +404,105 @@ const Components = {
         setTimeout(() => App.initCarousel('carouselMainImage', '.comparison-carousel-thumbs'), 0);
     },
 
+    // Render Packaging & Shipping Section
+    renderPackaging: () => {
+        const section = document.getElementById('packaging');
+        if (!section) return;
+        const { label, title, subtitle, methods, guarantee } = siteData.packaging;
+
+        section.className = 'packaging-section';
+        section.innerHTML = `
+            <div class="packaging-container">
+                <div class="packaging-header">
+                    <span class="packaging-label">${label}</span>
+                    <h2>${title}</h2>
+                    <p>${subtitle}</p>
+                </div>
+
+                <div class="packaging-methods">
+                    ${methods.map(m => `
+                        <div class="packaging-card">
+                            <div class="packaging-card-tag">${m.tag}</div>
+                            <div class="packaging-card-image">
+                                <img src="${m.image}" alt="${m.imageAlt}">
+                                <div class="packaging-card-icon">${m.icon}</div>
+                            </div>
+                            <div class="packaging-card-body">
+                                <h3>${m.title}</h3>
+                                <p>${m.description}</p>
+                                <ul class="packaging-points">
+                                    ${m.points.map(p => `<li><span class="pkg-check">✓</span>${p}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="packaging-guarantee">
+                    <div class="pkg-guarantee-icon">${guarantee.icon}</div>
+                    <div class="pkg-guarantee-body">
+                        <strong>${guarantee.title}</strong>
+                        <p>${guarantee.description}</p>
+                        <span class="pkg-guarantee-note">${guarantee.note}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+
+    // Render Farm Story Section
+    renderFarmStory: () => {
+        const section = document.getElementById('farm-story');
+        if (!section) return;
+        const { label, title, stats, process, image, imageAlt } = siteData.farmStory;
+
+        section.className = 'farm-story-section';
+        section.innerHTML = `
+            <div class="farm-story-container">
+                <div class="farm-story-header">
+                    <span class="farm-story-label">${label}</span>
+                    <h2>${title}</h2>
+                </div>
+
+                <div class="farm-story-body">
+                    <div class="farm-story-left">
+                        <div class="farm-story-image-wrap">
+                            <img src="${image}" alt="${imageAlt}" class="farm-story-img">
+                            <div class="farm-story-stats">
+                                ${stats.map(s => `
+                                    <div class="farm-stat-card">
+                                        <div class="farm-stat-icon">${s.icon}</div>
+                                        <div class="farm-stat-number">${s.number}</div>
+                                        <div class="farm-stat-unit">${s.unit}</div>
+                                        <div class="farm-stat-label">${s.label}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="farm-story-right">
+                        <h3 class="farm-process-title">${process.title}</h3>
+                        <div class="farm-process-steps">
+                            ${process.steps.map((step, i) => `
+                                <div class="farm-step">
+                                    <div class="farm-step-left">
+                                        <div class="farm-step-icon">${step.icon}</div>
+                                        <div class="farm-step-line"></div>
+                                    </div>
+                                    <div class="farm-step-content">
+                                        <h4>${step.title}</h4>
+                                        <p>${step.description}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+
     // Render Egg Comparison Section
     renderEggComparison: () => {
         const section = document.getElementById('egg-comparison');
@@ -436,14 +546,14 @@ const Components = {
 
         // Check if any product has featured: true
         const hasFeaturedProduct = productList.some(p => p.featured === true);
-        
+
         products.className = 'products';
-        
+
         if (hasFeaturedProduct) {
             // Separate featured product from others
             const featuredProduct = productList.find(p => p.featured === true);
             const regularProducts = productList.filter(p => p.featured !== true);
-            
+
             products.innerHTML = `
                 <div id="products-section-container">
                     <h2>ĐẶT HÀNG NHANH TAY - ƯU ĐÃI CÓ HẠN</h2>
@@ -454,9 +564,9 @@ const Components = {
                         <div class="featured-product-card">
                             <div class="featured-product-image">
                                 <img src="${featuredProduct.image}" alt="${featuredProduct.name}">
-                                ${featuredProduct.originalPrice > featuredProduct.priceValue 
-                                    ? `<div class="featured-discount-label">-${Math.round((1 - featuredProduct.priceValue / featuredProduct.originalPrice) * 100)}%</div>`
-                                    : ''}
+                                ${featuredProduct.originalPrice > featuredProduct.priceValue
+                    ? `<div class="featured-discount-label">-${Math.round((1 - featuredProduct.priceValue / featuredProduct.originalPrice) * 100)}%</div>`
+                    : ''}
                             </div>
                             <div class="featured-product-info">
                                 <h3 class="featured-product-name">${featuredProduct.name}</h3>
@@ -466,13 +576,13 @@ const Components = {
                                     `).join('')}
                                 </div>
                                 <div class="featured-product-price">
-                                    ${featuredProduct.originalPrice > featuredProduct.priceValue 
-                                        ? `<span class="price-old">${featuredProduct.originalPrice.toLocaleString('vi-VN')}đ</span>`
-                                        : ''}
+                                    ${featuredProduct.originalPrice > featuredProduct.priceValue
+                    ? `<span class="price-old">${featuredProduct.originalPrice.toLocaleString('vi-VN')}đ</span>`
+                    : ''}
                                     <span class="price-new">${featuredProduct.priceDisplay}</span>
-                                    ${featuredProduct.originalPrice > featuredProduct.priceValue 
-                                        ? `<span class="price-save">Tiết kiệm ${(featuredProduct.originalPrice - featuredProduct.priceValue).toLocaleString('vi-VN')}đ</span>`
-                                        : ''}
+                                    ${featuredProduct.originalPrice > featuredProduct.priceValue
+                    ? `<span class="price-save">Tiết kiệm ${(featuredProduct.originalPrice - featuredProduct.priceValue).toLocaleString('vi-VN')}đ</span>`
+                    : ''}
                                 </div>
                                 <button class="featured-product-btn" onclick="App.openOrderModal(${productList.indexOf(featuredProduct)})">
                                     ĐẶT HÀNG NGAY
@@ -484,14 +594,14 @@ const Components = {
                     <!-- Regular Products Grid -->
                     <div class="products-grid">
                         ${regularProducts.map((product, index) => {
-                            const realIndex = productList.indexOf(product);
-                            return `
+                        const realIndex = productList.indexOf(product);
+                        return `
                                 <div class="product-card">
                                     <div class="product-image">
                                         <img src="${product.image}" alt="${product.name}">
-                                        ${product.originalPrice > product.priceValue 
-                                            ? `<div class="discount-label">-${Math.round((1 - product.priceValue / product.originalPrice) * 100)}%</div>`
-                                            : ''}
+                                        ${product.originalPrice > product.priceValue
+                                ? `<div class="discount-label">-${Math.round((1 - product.priceValue / product.originalPrice) * 100)}%</div>`
+                                : ''}
                                     </div>
                                     <div class="product-info">
                                         <h3 class="product-name">${product.name}</h3>
@@ -501,9 +611,9 @@ const Components = {
                                             `).join('')}
                                         </div>
                                         <div class="product-price">
-                                            ${product.originalPrice > product.priceValue 
-                                                ? `<span class="price-old">${product.originalPrice.toLocaleString('vi-VN')}đ</span>`
-                                                : ''}
+                                            ${product.originalPrice > product.priceValue
+                                ? `<span class="price-old">${product.originalPrice.toLocaleString('vi-VN')}đ</span>`
+                                : ''}
                                             <span class="price-new">${product.priceDisplay}</span>
                                         </div>
                                         <button class="product-btn" onclick="App.openOrderModal(${realIndex})">
@@ -512,7 +622,7 @@ const Components = {
                                     </div>
                                 </div>
                             `;
-                        }).join('')}
+                    }).join('')}
                     </div>
                 </div>
             `;
@@ -528,9 +638,9 @@ const Components = {
                             <div class="product-card">
                                 <div class="product-image">
                                     <img src="${product.image}" alt="${product.name}">
-                                    ${product.originalPrice > product.priceValue 
-                                        ? `<div class="discount-label">-${Math.round((1 - product.priceValue / product.originalPrice) * 100)}%</div>`
-                                        : ''}
+                                    ${product.originalPrice > product.priceValue
+                    ? `<div class="discount-label">-${Math.round((1 - product.priceValue / product.originalPrice) * 100)}%</div>`
+                    : ''}
                                 </div>
                                 <div class="product-info">
                                     <h3 class="product-name">${product.name}</h3>
@@ -540,9 +650,9 @@ const Components = {
                                         `).join('')}
                                     </div>
                                     <div class="product-price">
-                                        ${product.originalPrice > product.priceValue 
-                                            ? `<span class="price-old">${product.originalPrice.toLocaleString('vi-VN')}đ</span>`
-                                            : ''}
+                                        ${product.originalPrice > product.priceValue
+                    ? `<span class="price-old">${product.originalPrice.toLocaleString('vi-VN')}đ</span>`
+                    : ''}
                                         <span class="price-new">${product.priceDisplay}</span>
                                     </div>
                                     <button class="product-btn" onclick="App.openOrderModal(${index})">
@@ -618,7 +728,7 @@ const Components = {
     // Render FAQ Section
     renderFAQ: () => {
         const faq = document.getElementById('faq');
-        const { faqs: faqList } = siteData;
+        const { faqs: faqList, contact } = siteData;
 
         faq.className = 'faq';
         faq.innerHTML = `
@@ -636,6 +746,22 @@ const Components = {
                             </div>
                         </div>
                     `).join('')}
+                </div>
+
+                <div class="faq-messenger-cta">
+                    <div class="faq-messenger-text">
+                        <span class="faq-messenger-icon">💬</span>
+                        <div>
+                            <strong>Còn câu hỏi khác?</strong>
+                            <p>Nhắn tin trực tiếp cho đội ngũ CSKH của SADU — phản hồi trong vòng vài phút.</p>
+                        </div>
+                    </div>
+                    <a href="${contact.messenger}" target="_blank" rel="noopener noreferrer" class="faq-messenger-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.914 1.385 5.52 3.565 7.244V22l3.254-1.786A11.1 11.1 0 0 0 12 20.487c5.523 0 10-4.145 10-9.244S17.523 2 12 2zm1.008 12.44-2.545-2.713-4.968 2.713 5.469-5.804 2.609 2.713 4.904-2.713-5.469 5.804z"/>
+                        </svg>
+                        Nhắn Tin Qua Messenger
+                    </a>
                 </div>
             </div>
         `;
@@ -836,6 +962,8 @@ const Components = {
         Components.renderBenefits();
         Components.renderHerbalStory();
         Components.renderWhy();
+        Components.renderPackaging();
+        Components.renderFarmStory();
         Components.renderEggComparison();
         Components.renderValueJustification();
         Components.renderComparison();

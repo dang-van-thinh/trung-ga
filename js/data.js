@@ -30,7 +30,7 @@ const siteData = {
         ctaText: '🛒 Đặt Mua Ngay',
         ctaNote: 'Combo từ 3 hộp — Miễn phí giao hàng toàn quốc',
         offerBadge: 'Ưu đãi: Mua 3 Tặng 1',
-        image: 'source/banner-2.jpg'
+        image: 'source/san-pham.png'
     },
 
     // Benefits Section
@@ -81,7 +81,8 @@ const siteData = {
                 'Cholesterol chỉ 125mg — thấp hơn 1/2 trứng thường (380mg)',
                 'Bảo quản được 15–20 ngày ở nhiệt độ thường'
             ]
-        }
+        },
+        gridBackground: 'source/thuc-an.jpg'  // [THAY] ảnh làm background cho herb grid
     },
 
     // Why Section
@@ -160,7 +161,7 @@ const siteData = {
             },
             {
                 icon: '🥚',
-                number: '10,000,000+',
+                number: '1,000,000+',
                 label: 'Quả Trứng Bán Ra',
                 description: 'Số lượng trứng đã được phân phối'
             },
@@ -323,7 +324,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/qua-1.png",
+            image: "source/product.png",
             featured: false // ⭐ Set true để làm sản phẩm nổi bật
         },
         {
@@ -338,7 +339,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/qua-1.png",
+            image: "source/product.png",
             featured: true // ⭐ Set true để làm sản phẩm nổi bật
         },
         {
@@ -353,7 +354,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/qua-1.png",
+            image: "source/product.png",
             featured: false
         },
         // {
@@ -464,6 +465,7 @@ const siteData = {
         email: 'nongnghiepcncthanglong@gmail.com',
         address: 'HTX NÔNG NGHIỆP CÔNG NGHỆ CAO KIÊN CÀ - Thôn Ứng Hòa - Xã Quảng Bị - TP.Hà Nội.',
         facebook: 'https://www.facebook.com/trunggasach.sadu/',
+        messenger: 'https://m.me/trunggasach.sadu',  // [THAY] nếu link Messenger khác
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d578.1946638146984!2d105.7084532920405!3d20.887101247562136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDUzJzEzLjkiTiAxMDXCsDQyJzI5LjkiRQ!5e1!3m2!1svi!2s!4v1781854042056!5m2!1svi!2s', // [THAY] Dán src từ Google Maps > Chia sẻ > Nhúng bản đồ vào đây
         socialLinks: [
             { name: 'Facebook', url: 'https://www.facebook.com/trunggasach.sadu/', icon: 'f' },
@@ -539,6 +541,94 @@ const siteData = {
             enabled: true,                      // [THAY] true = hiện đếm ngược
             endDate: '2026-06-07T23:59:59'      // [THAY] ngày kết thúc chương trình
         }
+    },
+
+    // Packaging & Shipping Section
+    packaging: {
+        label: 'Đóng Gói & Vận Chuyển',
+        title: 'Trứng Đến Tay Bạn — Nguyên Vẹn Từng Quả',
+        subtitle: 'Dù bạn ở Hà Nội hay bất kỳ tỉnh thành nào, SADU đều có quy trình đóng gói riêng để đảm bảo từng quả trứng đến tay bạn hoàn toàn nguyên vẹn.',
+        methods: [
+            {
+                tag: 'Nội Thành Hà Nội',
+                icon: '🛵',
+                title: 'Shipper SADU Giao Trực Tiếp',
+                description: 'Đơn hàng trong nội thành Hà Nội được chính shipper của SADU đảm nhận — không qua trung gian, không lo va đập ngoài tầm kiểm soát.',
+                points: [
+                    'Shipper nội bộ SADU, được đào tạo xử lý hàng dễ vỡ',
+                    'Giao trong 1–2 ngày kể từ khi xác nhận đơn',
+                    'Liên hệ trực tiếp ngay khi có vấn đề phát sinh'
+                ],
+                image: 'source/qua-1.png',
+                imageAlt: 'Giao hàng nội thành — shipper SADU'
+            },
+            {
+                tag: 'Ngoại Thành & Các Tỉnh',
+                icon: '📦',
+                title: 'Thùng Trấu Chống Sốc Có Vách Ngăn',
+                description: 'Đơn đi tỉnh được đóng trong thùng trấu chuyên dụng có vách ngăn từng quả — trấu hút ẩm tự nhiên, vách ngăn chống va chạm suốt hành trình dài.',
+                points: [
+                    'Thùng trấu tự nhiên — hút ẩm, giữ nhiệt ổn định',
+                    'Vách ngăn riêng từng quả, không va chạm nhau',
+                    'Kiểm tra kỹ lưỡng trước khi bàn giao đơn vị vận chuyển'
+                ],
+                image: 'source/ship1.jpg',
+                imageAlt: 'Đóng gói thùng trấu chống sốc — đơn tỉnh SADU'
+            }
+        ],
+        guarantee: {
+            icon: '🛡️',
+            title: 'Cam Kết Bảo Hành Vận Chuyển',
+            description: 'Nếu trứng bị vỡ trong quá trình vận chuyển — SADU đổi mới hoặc hoàn tiền 100%, không hỏi thêm.',
+            note: 'Chỉ cần quay hoặc chụp lại video/ảnh khi mở hộp là đủ điều kiện.'
+        }
+    },
+
+    // Farm Story Section
+    farmStory: {
+        label: 'Trang Trại SADU',
+        title: 'Nơi Mỗi Quả Trứng Được Tạo Ra Với Tất Cả Sự Tận Tâm',
+        stats: [
+            {
+                icon: '🐓',
+                number: '20.000',
+                unit: 'con gà',
+                label: 'Đàn Gà Hiện Tại'
+            },
+            {
+                icon: '🥚',
+                number: '19.500',
+                unit: 'quả/ngày',
+                label: 'Trứng Xuất Mỗi Ngày'
+            }
+        ],
+        process: {
+            title: 'Quy Trình Nuôi Dưỡng Chuẩn',
+            steps: [
+                {
+                    icon: '🏠',
+                    title: 'Chuồng Trại Kiểm Soát',
+                    description: 'Gà được nuôi nhốt chuồng trong môi trường kiểm soát chặt chẽ — đảm bảo vệ sinh và loại trừ các yếu tố dịch bệnh từ bên ngoài.'
+                },
+                {
+                    icon: '💧',
+                    title: 'Nước Lọc RO + Khử Khuẩn UV',
+                    description: 'Nguồn nước uống được xử lý qua hệ thống lọc RO tiêu chuẩn và khử khuẩn bằng tia UV — sạch từ gốc, an toàn tuyệt đối.'
+                },
+                {
+                    icon: '🌿',
+                    title: 'Thảo Dược Tự Phối Trộn',
+                    description: 'Toàn bộ nguyên liệu 13 loại thảo dược được lấy từ chính vùng trồng đạt chuẩn VietGAP của SADU — kiểm soát chất lượng từ gốc đến bàn ăn.'
+                },
+                {
+                    icon: '✅',
+                    title: 'Kiểm Tra Mỗi Ngày',
+                    description: 'Mỗi lô trứng đều được kiểm tra chất lượng trực tiếp trước khi đóng gói — không một quả nào đến tay khách hàng khi chưa qua kiểm định.'
+                }
+            ]
+        },
+        image: 'source/chuong-trai.jpg',
+        imageAlt: 'Trang trại SADU — ảnh thực tế'
     },
 
     // Final CTA Section
