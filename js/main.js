@@ -207,6 +207,8 @@ const App = {
             App.resetLocationSelectors();
             
             if (typeof fbq !== 'undefined') {
+                const phone = orderData.phone.replace(/\D/g, '');
+                fbq('init', '1668129411185900', { ph: phone });
                 fbq('track', 'Lead', {
                     content_name: orderData.product,
                     value: orderData.totalPrice,
