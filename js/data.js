@@ -320,13 +320,13 @@ const siteData = {
         // },
         {
             id: "6-hop",
-            name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP XẠ ĐEN (150G)",
+            name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP TRÀ (100G)",
             originalPrice: 956000,
             priceValue: 717000,
             priceDisplay: "717.000đ",
             specs: [
                 "✓ 8 hộp x 12 quả",
-                "✓ Tặng 1 hộp xạ đen (150g)",
+                "✓ Tặng 1 hộp trà (100g)",
                 "✓ Miễn phí ship toàn quốc",
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
