@@ -6,13 +6,13 @@
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby7n1vHD2AGcUPTY67hg5chHKTSkKcMPQD4abO0QdDHMQ3-svokYSQ9Hid7cDXqSw/exec';
 
 const App = {
-    
+
     // ============================================
     // COUNTER ANIMATION
     // ============================================
     animateCounters: () => {
         const counters = document.querySelectorAll('.statistic-number');
-        
+
         counters.forEach(counter => {
             const targetText = counter.getAttribute('data-target');
             // Extract number from target (e.g., "5,000+" -> 5000)
@@ -21,7 +21,7 @@ const App = {
             const duration = 2000; // 2 seconds
             const step = targetNumber / (duration / 16); // 60fps
             let current = 0;
-            
+
             const updateCounter = () => {
                 current += step;
                 if (current < targetNumber) {
@@ -33,7 +33,7 @@ const App = {
                     counter.textContent = targetText;
                 }
             };
-            
+
             updateCounter();
         });
     },
@@ -85,7 +85,7 @@ const App = {
         if (popup) {
             popup.classList.remove('show');
             document.body.style.overflow = 'auto';
-            
+
             // Remove from DOM after animation
             setTimeout(() => {
                 if (popup && popup.parentNode) {
@@ -101,7 +101,7 @@ const App = {
     openOrderModal: (productIndex = 0) => {
         const modal = document.getElementById('orderModal');
         const radios = document.querySelectorAll('input[name="productOption"]');
-        
+
         if (radios[productIndex]) {
             radios[productIndex].checked = true;
         } else if (radios.length > 0) {
@@ -186,7 +186,7 @@ const App = {
         // 3. UI Loading State
         const submitBtn = event.target.querySelector('.submit-btn');
         const originalBtnText = submitBtn?.textContent || 'HOÀN TẤT ĐẶT HÀNG';
-        
+
         if (submitBtn) {
             submitBtn.textContent = 'Đang gửi...';
             submitBtn.disabled = true;
@@ -197,37 +197,35 @@ const App = {
             method: 'POST',
             body: new URLSearchParams(orderData)
         })
-        .then(response => {
-            console.log('✅ Order sent to Google Sheets:', orderData);
-            
-            alert('🎉 Đặt hàng thành công!\n\nCảm ơn bạn đã tin tưởng sản phẩm SADU.\nChúng tôi sẽ liên hệ xác nhận đơn hàng trong 24 giờ.');
-            
-            event.target.reset();
-            App.updateTotalPrice();
-            App.resetLocationSelectors();
-            
-            if (typeof fbq !== 'undefined') {
-                const phone = orderData.phone.replace(/\D/g, '');
-                fbq('init', '1668129411185900', { ph: phone });
-                fbq('track', 'Lead', {
-                    content_name: orderData.product,
-                    value: orderData.totalPrice,
-                    currency: 'VND'
-                });
-            }
-            
-            App.closeOrderModal();
-        })
-        .catch(error => {
-            console.error('❌ Error sending order:', error);
-            alert('⚠️ Có lỗi xảy ra khi đặt hàng.\nVui lòng thử lại hoặc gọi hotline: 1900 8952');
-        })
-        .finally(() => {
-            if (submitBtn) {
-                submitBtn.textContent = originalBtnText;
-                submitBtn.disabled = false;
-            }
-        });
+            .then(response => {
+                console.log('✅ Order sent to Google Sheets:', orderData);
+
+                alert('🎉 Đặt hàng thành công!\n\nCảm ơn bạn đã tin tưởng sản phẩm SADU.\nChúng tôi sẽ liên hệ xác nhận đơn hàng trong 24 giờ.');
+
+                event.target.reset();
+                App.updateTotalPrice();
+                App.resetLocationSelectors();
+
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', {
+                        content_name: orderData.product,
+                        value: orderData.totalPrice,
+                        currency: 'VND'
+                    });
+                }
+
+                App.closeOrderModal();
+            })
+            .catch(error => {
+                console.error('❌ Error sending order:', error);
+                alert('⚠️ Có lỗi xảy ra khi đặt hàng.\nVui lòng thử lại hoặc gọi hotline: 1900 8952');
+            })
+            .finally(() => {
+                if (submitBtn) {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            });
     },
 
     // ============================================
@@ -236,12 +234,12 @@ const App = {
     toggleFaq: (element) => {
         const clickedItem = element.parentElement;
         const isActive = clickedItem.classList.contains('active');
-        
+
         const allFaqItems = document.querySelectorAll('.faq-item');
         allFaqItems.forEach(item => {
             item.classList.remove('active');
         });
-        
+
         if (!isActive) {
             clickedItem.classList.add('active');
         }
@@ -334,7 +332,7 @@ const App = {
             const thumb = thumbs[index];
             const newSrc = thumb.getAttribute('data-src');
             const newAlt = thumb.querySelector('img')?.getAttribute('alt') || 'Hình ảnh';
-            
+
             if (newSrc) {
                 mainImage.classList.add('fade-out');
                 setTimeout(() => {
@@ -343,7 +341,7 @@ const App = {
                     mainImage.classList.remove('fade-out');
                 }, 250);
             }
-            
+
             thumbs.forEach(item => item.classList.remove('active'));
             thumb.classList.add('active');
             currentIndex = index;
@@ -380,11 +378,11 @@ const App = {
 
         // Set countdown target from data.js
         const countdownDate = new Date(specialProgram.countdown.endDate).getTime();
-        
+
         const updateCountdown = () => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
-            
+
             if (distance < 0) {
                 const countdownEl = document.getElementById('specialCountdown');
                 if (countdownEl) {
@@ -392,25 +390,52 @@ const App = {
                 }
                 return;
             }
-            
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
+
             const daysEl = document.getElementById('days');
             const hoursEl = document.getElementById('hours');
             const minutesEl = document.getElementById('minutes');
             const secondsEl = document.getElementById('seconds');
-            
+
             if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
             if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
             if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
             if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
         };
-        
+
         updateCountdown();
         setInterval(updateCountdown, 1000);
+    },
+
+    // ============================================
+    // PRODUCT SECTION COUNTDOWN (resets daily at midnight)
+    // ============================================
+    startProductCountdown: () => {
+        const update = () => {
+            const now = new Date();
+            const midnight = new Date(now);
+            midnight.setHours(23, 59, 59, 999);
+            const distance = midnight - now;
+
+            const hours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const hoursEl = document.getElementById('product-countdown-hours');
+            const minutesEl = document.getElementById('product-countdown-minutes');
+            const secondsEl = document.getElementById('product-countdown-seconds');
+
+            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+        };
+
+        update();
+        setInterval(update, 1000);
     },
 
     // ============================================
@@ -456,6 +481,18 @@ const App = {
                 App.closeOrderModal();
             }
         });
+
+        // Scroll to top button visibility
+        const scrollTopBtn = document.getElementById('scrollTop');
+        if (scrollTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('show');
+                } else {
+                    scrollTopBtn.classList.remove('show');
+                }
+            });
+        }
     },
 
     // ============================================
@@ -488,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 initSearchableSelects();
                 console.log('✅ Location selectors initialized');
             }
-            
+
             // Initialize other components AFTER locations are ready
             if (typeof Components !== 'undefined') {
                 Components.init();
@@ -497,6 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (typeof App !== 'undefined') {
                 App.setupEventListeners();
+                App.startProductCountdown();
                 setTimeout(App.showCustomerAlert, 2000);
                 console.log('🎉 SADU Landing Page ready!');
             }
@@ -507,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 initSearchableSelects();
                 console.log('⚠️ Location selectors initialized with fallback data');
             }
-            
+
             if (typeof Components !== 'undefined') {
                 Components.init();
                 console.log('✅ Components rendered');
@@ -515,6 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (typeof App !== 'undefined') {
                 App.setupEventListeners();
+                App.startProductCountdown();
                 setTimeout(App.showCustomerAlert, 2000);
                 console.log('🎉 SADU Landing Page ready (with fallback)!');
             }
@@ -529,6 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (typeof App !== 'undefined') {
             App.setupEventListeners();
+            App.startProductCountdown();
             setTimeout(App.showCustomerAlert, 2000);
             console.log('🎉 SADU Landing Page ready!');
         }

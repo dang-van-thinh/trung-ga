@@ -557,7 +557,26 @@ const Components = {
             products.innerHTML = `
                 <div id="products-section-container">
                     <h2>ĐẶT HÀNG NHANH TAY - ƯU ĐÃI CÓ HẠN</h2>
-                    
+
+                    <!-- Product Section Countdown -->
+                    <div class="countdown-wrapper product-section-countdown">
+                        <p class="countdown-heading">⏰ Ưu đãi kết thúc sau:</p>
+                        <div class="countdown-boxes">
+                            <div class="countdown-box">
+                                <div class="countdown-number" id="product-countdown-hours">00</div>
+                                <div class="countdown-text">Giờ</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-number" id="product-countdown-minutes">00</div>
+                                <div class="countdown-text">Phút</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-number" id="product-countdown-seconds">00</div>
+                                <div class="countdown-text">Giây</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Featured Product (Subtle & Elegant) -->
                     <div class="featured-product-section">
                         <div class="featured-badge">SẢN PHẨM BÁN CHẠY</div>
@@ -631,7 +650,26 @@ const Components = {
             products.innerHTML = `
                 <div id="products-section-container">
                     <h2>ĐẶT HÀNG NHANH TAY - ƯU ĐÃI CÓ HẠN</h2>
-                    
+
+                    <!-- Product Section Countdown -->
+                    <div class="countdown-wrapper product-section-countdown">
+                        <p class="countdown-heading">⏰ Ưu đãi kết thúc sau:</p>
+                        <div class="countdown-boxes">
+                            <div class="countdown-box">
+                                <div class="countdown-number" id="product-countdown-hours">00</div>
+                                <div class="countdown-text">Giờ</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-number" id="product-countdown-minutes">00</div>
+                                <div class="countdown-text">Phút</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-number" id="product-countdown-seconds">00</div>
+                                <div class="countdown-text">Giây</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- All Products Grid -->
                     <div class="products-grid">
                         ${productList.map((product, index) => `
