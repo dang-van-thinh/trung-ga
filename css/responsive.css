@@ -681,29 +681,31 @@
   }
 
   .custom-alert {
-    top: 68px;
-    width: calc(100vw - 20px);
+    bottom: 16px;
+    left: 12px;
+    width: calc(100vw - 24px);
+    max-width: 320px;
   }
   .alert-content {
-    padding: 8px 10px;
-    border-radius: 12px;
+    padding: 10px 12px 8px;
     gap: 8px;
   }
-  .alert-icon {
-    width: 22px;
-    height: 22px;
-    font-size: 12px;
+  .alert-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
   }
   .alert-customer {
     font-size: 12px;
   }
-  .alert-product {
+  .alert-meta {
     font-size: 10px;
   }
-  .alert-close {
-    width: 22px;
-    height: 22px;
-    font-size: 16px;
+  .alert-product {
+    font-size: 11px;
+  }
+  .alert-time {
+    font-size: 9px;
   }
 
   .hero-text h1 {
@@ -892,17 +894,18 @@
 /* Very Small Phones (iPhone 14 Pro & similar) */
 @media (max-width: 393px) {
   .custom-alert {
-    top: 62px;
+    bottom: 12px;
+    left: 8px;
     width: calc(100vw - 16px);
   }
   .alert-content {
-    padding: 8px 9px;
+    padding: 9px 10px 8px;
   }
   .alert-customer {
     font-size: 11px;
   }
   .alert-product {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   header {

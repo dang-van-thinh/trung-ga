@@ -50,10 +50,24 @@ const App = {
         if (!alertEl) return;
 
         document.getElementById('customerName').textContent = customer.name;
+        document.getElementById('alertMeta').textContent = `từ ${customer.location} • vừa đặt mua`;
         document.getElementById('productName').textContent = customer.product;
 
+        const minutes = Math.floor(Math.random() * 5) + 1;
+        document.getElementById('alertTime').textContent =
+            minutes <= 1 ? '🕐 vài giây trước' : `🕐 ${minutes} phút trước`;
+
+        const bar = document.getElementById('alertProgressBar');
+        if (bar) {
+            bar.classList.remove('running');
+            void bar.offsetWidth;
+        }
+
         alertEl.classList.remove('hide');
-        setTimeout(() => alertEl.classList.add('show'), 10);
+        setTimeout(() => {
+            alertEl.classList.add('show');
+            if (bar) bar.classList.add('running');
+        }, 10);
 
         clearTimeout(App.alertTimeout);
         App.alertTimeout = setTimeout(() => {

@@ -479,18 +479,18 @@ const siteData = {
 
     // Customers for Alert Notification
     customers: [
-        { name: 'Nguyễn Thị Hương', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Trần Văn Đức', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Phạm Thị Linh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Hoàng Minh Tuấn', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Lê Thị Hoa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Đỗ Văn Hùng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Vũ Thị Xuân', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Bùi Văn Long', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Trần Ngọc Bảo', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Trương Thị Mai', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Nguyễn Quỳnh Nga', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Ngô Như', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' }
+        { name: 'Nguyễn Thị Hương', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Trần Văn Đức', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Phạm Thị Linh', location: 'Đà Nẵng', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Hoàng Minh Tuấn', location: 'Hải Phòng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Lê Thị Hoa', location: 'Cần Thơ', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Đỗ Văn Hùng', location: 'Bắc Ninh', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Vũ Thị Xuân', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Bùi Văn Long', location: 'Nghệ An', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Trần Ngọc Bảo', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Trương Thị Mai', location: 'Thanh Hóa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Nguyễn Quỳnh Nga', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Ngô Như', location: 'Đà Nẵng', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' }
     ],
 
     // ============================================================
