@@ -214,7 +214,7 @@ const App = {
             .then(response => {
                 console.log('✅ Order sent to Google Sheets:', orderData);
 
-                alert('🎉 Đặt hàng thành công!\n\nCảm ơn bạn đã tin tưởng sản phẩm SADU.\nChúng tôi sẽ liên hệ xác nhận đơn hàng trong 24 giờ.');
+                alert('🎉 Đặt hàng thành công!\n\nCảm ơn bạn đã tin tưởng sản phẩm SADU. Mọi thắc mắc xin vui lòng liên hệ fanpage Trứng Gà Thảo Dược SADU để được giải đáp !');
 
                 event.target.reset();
                 App.updateTotalPrice();
