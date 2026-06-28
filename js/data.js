@@ -146,7 +146,7 @@ const siteData = {
                 value: 'Với trẻ nhỏ và mẹ bầu, chất lượng thực phẩm ảnh hưởng trực tiếp đến sự phát triển — không thể thỏa hiệp'
             }
         ],
-        ctaText: 'Đặt Thử Ngay'
+        ctaText: '🛒 Đặt Thử Ngay'
     },
 
     // Statistics Section
@@ -183,7 +183,7 @@ const siteData = {
     // Gift Section
     giftSection: {
         label: 'Quà Tặng Sức Khỏe',
-        title: 'Trứng SADU — Món Quà Biếu Ý Nghĩa',
+        title: 'Trứng SADU — Món Quà Ý Nghĩa',
         subtitle: 'Không cần đắt tiền để thể hiện sự quan tâm. Một hộp trứng thảo dược chất lượng cao là món quà thiết thực, tốt cho sức khỏe — được lòng người nhận hơn bất kỳ lời chúc nào.',
         occasions: [
             {
@@ -313,19 +313,20 @@ const siteData = {
         //     featured: true // ⭐ Set true để làm sản phẩm nổi bật
         // },
         {
-            id: "1-hop",
-            name: "1 HỘP TRỨNG GÀ THẢO DƯỢC SADU",
-            originalPrice: 0,
-            priceValue: 149500,
-            priceDisplay: "149.500đ (đã bao gồm 30.000đ tiền ship)",
+            id: "6-hop",
+            name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP XẠ ĐEN (150G)",
+            originalPrice: 956000,
+            priceValue: 717000,
+            priceDisplay: "717.000đ",
             specs: [
-                "✓ 1 hộp 12 quả",
-                "✓ Phụ thu 30.000đ tiền ship",
+                "✓ 8 hộp x 12 quả",
+                "✓ Tặng 1 hộp xạ đen (150g)",
+                "✓ Miễn phí ship toàn quốc",
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
             image: "source/product.png",
-            featured: false // ⭐ Set true để làm sản phẩm nổi bật
+            featured: false
         },
         {
             id: "3-hop",
@@ -343,20 +344,22 @@ const siteData = {
             featured: true // ⭐ Set true để làm sản phẩm nổi bật
         },
         {
-            id: "6-hop",
-            name: "COMBO 6 HỘP TẶNG 2 HỘP",
-            originalPrice: 956000,
-            priceValue: 717000,
-            priceDisplay: "717.000đ",
+            id: "1-hop",
+            name: "1 HỘP TRỨNG GÀ THẢO DƯỢC SADU",
+            originalPrice: 0,
+            priceValue: 149500,
+            priceDisplay: "149.500đ (đã bao gồm 30.000đ tiền ship)",
             specs: [
-                "✓ 8 hộp x 12 quả",
-                "✓ Miễn phí ship toàn quốc",
+                "✓ 1 hộp 12 quả",
+                "✓ Phụ thu 30.000đ tiền ship",
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
             image: "source/product.png",
-            featured: false
+            featured: false // ⭐ Set true để làm sản phẩm nổi bật
         },
+
+
         // {
         //     id: "trung-so",
         //     name: "COMBO 5 HỘP TẶNG 2 (TRỨNG SO)",

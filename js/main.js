@@ -305,61 +305,44 @@ const App = {
     // ============================================
     // CAROUSEL FUNCTIONALITY
     // ============================================
-    initCarousel: (mainImageId, thumbsSelector) => {
+    initCarousel: (mainImageId, images) => {
         const mainImage = document.getElementById(mainImageId);
-        const carousel = mainImage?.closest('.comparison-carousel');
-        if (!carousel) return;
+        const carousel = mainImage?.closest('.comparison-carousel, .gift-carousel-wrap');
+        if (!mainImage || !images?.length) return;
 
-        const thumbs = Array.from(carousel.querySelectorAll(`${thumbsSelector} .thumb`));
-        const prevBtn = carousel.querySelector('.carousel-prev');
-        const nextBtn = carousel.querySelector('.carousel-next');
+        const prevBtn = carousel?.querySelector('.carousel-prev');
+        const nextBtn = carousel?.querySelector('.carousel-next');
 
-        if (!mainImage || !thumbs.length) return;
-
-        let currentIndex = thumbs.findIndex(thumb => thumb.classList.contains('active'));
-        if (currentIndex === -1) currentIndex = 0;
+        let currentIndex = 0;
         let autoPlayTimer;
 
         const startAutoPlay = () => {
             clearInterval(autoPlayTimer);
             autoPlayTimer = setInterval(() => {
-                const nextIndex = (currentIndex + 1) % thumbs.length;
-                updateCarousel(nextIndex);
+                updateCarousel((currentIndex + 1) % images.length);
             }, 5000);
         };
 
         const updateCarousel = (index) => {
-            const thumb = thumbs[index];
-            const newSrc = thumb.getAttribute('data-src');
-            const newAlt = thumb.querySelector('img')?.getAttribute('alt') || 'Hình ảnh';
-
-            if (newSrc) {
+            const img = images[index];
+            if (img?.src) {
                 mainImage.classList.add('fade-out');
                 setTimeout(() => {
-                    mainImage.src = newSrc;
-                    mainImage.alt = newAlt;
+                    mainImage.src = img.src;
+                    mainImage.alt = img.alt || '';
                     mainImage.classList.remove('fade-out');
                 }, 250);
             }
-
-            thumbs.forEach(item => item.classList.remove('active'));
-            thumb.classList.add('active');
             currentIndex = index;
             startAutoPlay();
         };
 
-        thumbs.forEach((thumb, index) => {
-            thumb.addEventListener('click', () => updateCarousel(index));
-        });
-
         prevBtn?.addEventListener('click', () => {
-            const nextIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
-            updateCarousel(nextIndex);
+            updateCarousel((currentIndex - 1 + images.length) % images.length);
         });
 
         nextBtn?.addEventListener('click', () => {
-            const nextIndex = (currentIndex + 1) % thumbs.length;
-            updateCarousel(nextIndex);
+            updateCarousel((currentIndex + 1) % images.length);
         });
 
         startAutoPlay();

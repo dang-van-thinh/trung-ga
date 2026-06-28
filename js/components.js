@@ -265,13 +265,6 @@ const Components = {
                                 <img id="carouselGiftMain" src="${images[0].src}" alt="${images[0].alt}" />
                                 <button type="button" class="carousel-nav carousel-next" aria-label="Ảnh tiếp">›</button>
                             </div>
-                            <div class="comparison-carousel-thumbs gift-thumbs">
-                                ${images.map((img, i) => `
-                                    <button type="button" class="thumb ${i === 0 ? 'active' : ''}" data-src="${img.src}" aria-label="${img.alt}">
-                                        <img src="${img.src}" alt="${img.alt}" />
-                                    </button>
-                                `).join('')}
-                            </div>
                         </div>
 
                         <div class="gift-packaging-card">
@@ -289,7 +282,7 @@ const Components = {
             </div>
         `;
 
-        setTimeout(() => App.initCarousel('carouselGiftMain', '.gift-thumbs'), 0);
+        setTimeout(() => App.initCarousel('carouselGiftMain', siteData.giftSection.images), 0);
     },
 
     // Render Value Justification Section
@@ -390,18 +383,11 @@ const Components = {
                     <img id="carouselMainImage" src="${images[0].src}" alt="${images[0].alt}" />
                     <button type="button" class="carousel-nav carousel-next" aria-label="Ảnh tiếp theo">›</button>
                 </div>
-                <div class="comparison-carousel-thumbs">
-                    ${images.map((img, index) => `
-                        <button type="button" class="thumb ${index === 0 ? 'active' : ''}" data-src="${img.src}" aria-label="${img.alt}">
-                            <img src="${img.src}" alt="${img.alt}" />
-                        </button>
-                    `).join('')}
-                </div>
             </div>
         `;
 
         // Initialize carousel functionality
-        setTimeout(() => App.initCarousel('carouselMainImage', '.comparison-carousel-thumbs'), 0);
+        setTimeout(() => App.initCarousel('carouselMainImage', siteData.certificates.images), 0);
     },
 
     // Render Packaging & Shipping Section
