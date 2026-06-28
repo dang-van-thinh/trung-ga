@@ -148,11 +148,26 @@ const App = {
         const selectedProductRadio = document.querySelector('input[name="productOption"]:checked');
         const productPrice = parseInt(selectedProductRadio?.dataset.price) || 0;
         const quantity = parseInt(document.getElementById('quantity').value) || 1;
-        const totalPrice = productPrice * quantity;
+        const subtotal = productPrice * quantity;
+
+        const { freeShipThreshold = 358000, shippingFee = 30000 } = siteData.shipping || {};
+        const hasShipFee = subtotal > 0 && subtotal < freeShipThreshold;
+        const totalPrice = hasShipFee ? subtotal + shippingFee : subtotal;
+
         const totalPriceEl = document.getElementById('totalPrice');
+        const shippingNotice = document.getElementById('shippingNotice');
+        const shippingNoticeText = document.getElementById('shippingNoticeText');
 
         if (totalPriceEl) {
             totalPriceEl.textContent = totalPrice.toLocaleString('vi-VN') + 'đ';
+        }
+
+        if (shippingNotice) {
+            shippingNotice.style.display = hasShipFee ? 'block' : 'none';
+        }
+
+        if (shippingNoticeText && hasShipFee) {
+            shippingNoticeText.innerHTML = `<strong>Đã bao gồm phí vận chuyển:</strong> Giá sản phẩm ${subtotal.toLocaleString('vi-VN')}đ + phí ship <strong style="color: #c62828;">${shippingFee.toLocaleString('vi-VN')}đ</strong> = tổng <strong>${totalPrice.toLocaleString('vi-VN')}đ</strong>. Mua combo từ ${freeShipThreshold.toLocaleString('vi-VN')}đ để được <strong>miễn phí ship toàn quốc</strong>.`;
         }
     },
 

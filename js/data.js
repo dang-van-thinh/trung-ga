@@ -5,6 +5,12 @@
 
 const siteData = {
 
+    // Shipping Config — chỉnh tại đây để thay đổi phí ship & ngưỡng miễn ship
+    shipping: {
+        freeShipThreshold: 358000, // Đơn từ mức này trở lên: miễn phí ship
+        shippingFee: 30000          // Phí ship cho đơn dưới ngưỡng
+    },
+
     // Event Popup Configuration
     eventPopup: {
         enabled: false, // Đổi thành false để tắt popup
@@ -347,8 +353,8 @@ const siteData = {
             id: "1-hop",
             name: "1 HỘP TRỨNG GÀ THẢO DƯỢC SADU",
             originalPrice: 0,
-            priceValue: 149500,
-            priceDisplay: "149.500đ (đã bao gồm 30.000đ tiền ship)",
+            priceValue: 119500,
+            priceDisplay: "119.500đ",
             specs: [
                 "✓ 1 hộp 12 quả",
                 "✓ Phụ thu 30.000đ tiền ship",
