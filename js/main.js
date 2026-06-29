@@ -236,9 +236,10 @@ const App = {
                 App.resetLocationSelectors();
 
                 if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead', {
+                    const rawPrice = (orderData.totalPrice || '').replace(/[^\d]/g, '');
+                    fbq('track', 'CompleteRegistration', {
                         content_name: orderData.product,
-                        value: orderData.totalPrice,
+                        value: parseFloat(rawPrice) || 0,
                         currency: 'VND'
                     });
                 }
