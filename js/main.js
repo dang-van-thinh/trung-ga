@@ -130,6 +130,8 @@ const App = {
         if (modal) {
             modal.classList.add('show');
             document.body.style.overflow = 'hidden';
+            const alertEl = document.getElementById('customAlert');
+            if (alertEl) alertEl.style.zIndex = '0';
         }
     },
 
@@ -138,6 +140,8 @@ const App = {
         if (modal) {
             modal.classList.remove('show');
             document.body.style.overflow = 'auto';
+            const alertEl = document.getElementById('customAlert');
+            if (alertEl) alertEl.style.zIndex = '';
         }
     },
 
