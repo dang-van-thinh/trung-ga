@@ -268,6 +268,29 @@
     <script src="js/components.js"></script>
     <script src="js/location.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Meta Pixel - CTA & Messenger Click Tracking -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('click', (e) => {
+                if (typeof fbq === 'undefined') return;
+
+                // 9 nút "Đặt hàng": header-btn, cta-btn (x3), featured-product-btn,
+                // product-btn (x2), special-cta-button, final-cta-btn
+                // Dùng event delegation vì các nút được Components.init() render
+                // động sau khi loadLocations() resolve (js/main.js:536)
+                if (e.target.closest('[onclick*="openOrderModal"]')) {
+                    fbq('track', 'InitiateCheckout');
+                }
+
+                // Link Messenger (faq-messenger-btn)
+                if (e.target.closest('a[href*="m.me"], a[href*="messenger.com"]')) {
+                    fbq('track', 'Contact');
+                }
+            });
+        });
+    </script>
+    <!-- End Meta Pixel - CTA & Messenger Click Tracking -->
 </body>
 
 </html>

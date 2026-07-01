@@ -213,7 +213,8 @@ const App = {
             note: document.getElementById('note').value || '',
             product: productName,
             quantity: quantity,
-            totalPrice: document.getElementById('totalPrice')?.textContent || ''
+            totalPrice: document.getElementById('totalPrice')?.textContent || '',
+            eventId: 'order_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7)
         };
 
         // 3. UI Loading State
@@ -241,11 +242,11 @@ const App = {
 
                 if (typeof fbq !== 'undefined') {
                     const rawPrice = (orderData.totalPrice || '').replace(/[^\d]/g, '');
-                    fbq('track', 'CompleteRegistration', {
+                    fbq('track', 'Purchase', {
                         content_name: orderData.product,
                         value: parseFloat(rawPrice) || 0,
                         currency: 'VND'
-                    });
+                    }, { eventID: orderData.eventId });
                 }
 
                 App.closeOrderModal();
