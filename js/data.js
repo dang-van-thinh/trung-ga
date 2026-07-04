@@ -473,7 +473,7 @@ const siteData = {
         phone: '1900 8952',
         email: 'nongnghiepcncthanglong@gmail.com',
         address: 'HTX NÔNG NGHIỆP CÔNG NGHỆ CAO KIÊN CÀ - Thôn Ứng Hòa - Xã Quảng Bị - TP.Hà Nội.',
-        facebook: 'https://www.facebook.com/trunggasach.sadu/',
+        facebook: 'https://m.me/346886209053680',
         messenger: 'https://m.me/trunggasach.sadu',  // [THAY] nếu link Messenger khác
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d578.1946638146984!2d105.7084532920405!3d20.887101247562136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDUzJzEzLjkiTiAxMDXCsDQyJzI5LjkiRQ!5e1!3m2!1svi!2s!4v1781854042056!5m2!1svi!2s', // [THAY] Dán src từ Google Maps > Chia sẻ > Nhúng bản đồ vào đây
         socialLinks: [
@@ -496,7 +496,17 @@ const siteData = {
         { name: 'Trần Ngọc Bảo', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
         { name: 'Trương Thị Mai', location: 'Thanh Hóa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
         { name: 'Nguyễn Quỳnh Nga', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Ngô Như', location: 'Đà Nẵng', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' }
+        { name: 'Ngô Như', location: 'Đà Nẵng', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Lê Thị Tiếm', location: 'Phú Thọ', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Lâm Sung', location: 'Đà Nẵng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Phan Hai Uyen', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Minh Chau', location: 'Hải Phòng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Lien Nguyen', location: 'Hưng Yên', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Phạm Thanh Dung', location: 'Thanh Hóa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
+        { name: 'Lê Thu Hoài', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Trương Tú Uyên', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Gia Quyên', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Tống Công Dũng', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
     ],
 
     // ============================================================
