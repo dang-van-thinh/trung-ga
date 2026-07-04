@@ -473,8 +473,8 @@ const siteData = {
         phone: '1900 8952',
         email: 'nongnghiepcncthanglong@gmail.com',
         address: 'HTX NÔNG NGHIỆP CÔNG NGHỆ CAO KIÊN CÀ - Thôn Ứng Hòa - Xã Quảng Bị - TP.Hà Nội.',
-        facebook: 'https://m.me/346886209053680',
-        messenger: 'https://m.me/trunggasach.sadu',  // [THAY] nếu link Messenger khác
+        facebook: 'https://www.facebook.com/trunggasach.sadu/',
+        messenger: 'https://m.me/346886209053680',  // [THAY] nếu link Messenger khác
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d578.1946638146984!2d105.7084532920405!3d20.887101247562136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDUzJzEzLjkiTiAxMDXCsDQyJzI5LjkiRQ!5e1!3m2!1svi!2s!4v1781854042056!5m2!1svi!2s', // [THAY] Dán src từ Google Maps > Chia sẻ > Nhúng bản đồ vào đây
         socialLinks: [
             { name: 'Facebook', url: 'https://www.facebook.com/trunggasach.sadu/', icon: 'f' },
