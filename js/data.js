@@ -616,7 +616,7 @@ const siteData = {
             },
             {
                 icon: '🥚',
-                number: '19.500',
+                number: '17.500',
                 unit: 'quả/ngày',
                 label: 'Trứng Xuất Mỗi Ngày'
             }
