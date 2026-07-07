@@ -2061,6 +2061,16 @@ header {
     transform: translateY(0);
   }
 }
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -2083,6 +2093,94 @@ header {
 }
 .close-btn:hover {
   color: var(--text-dark);
+}
+
+/* Quantity Stepper */
+.quantity-stepper {
+  display: flex;
+  align-items: stretch;
+  max-width: 160px;
+}
+.quantity-stepper input {
+  text-align: center;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  width: 60px;
+  flex: 1;
+}
+.quantity-btn {
+  width: 44px;
+  min-width: 44px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-light);
+  color: var(--primary-dark);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.quantity-btn:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.quantity-btn:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.quantity-btn:hover {
+  background: var(--primary-light);
+}
+
+/* Order Summary Box */
+.order-summary-box {
+  background: var(--bg-light);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 14px;
+}
+.order-summary-row strong {
+  text-align: right;
+}
+.order-summary-total {
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-color);
+}
+
+/* Result Modal (success / error / validation) */
+.result-modal-content {
+  text-align: center;
+  position: relative;
+  max-width: 420px;
+}
+.result-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+}
+.result-modal-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+#resultModalTitle {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+#resultModalMessage {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  white-space: pre-line;
+}
+.result-modal-content .submit-btn {
+  max-width: 220px;
+  margin: 0 auto;
 }
 
 .form-group {
@@ -2525,6 +2623,21 @@ header {
   color: var(--text-light);
   font-size: 12px;
   transition: transform 0.2s ease;
+}
+
+/* Trạng thái chưa thể chọn (VD: Quận/Huyện khi chưa chọn Tỉnh/Thành) */
+.searchable-select.is-disabled .searchable-select-trigger {
+  background: var(--bg-light);
+  border-color: var(--border-color);
+  color: var(--text-light);
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+.searchable-select.is-disabled .searchable-select-label {
+  color: var(--text-light);
+}
+.searchable-select.is-disabled .searchable-select-arrow {
+  opacity: 0.5;
 }
 
 .searchable-select-dropdown {

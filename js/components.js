@@ -147,7 +147,7 @@ const Components = {
     // Render Why Section
     renderWhy: () => {
         const why = document.getElementById('why');
-        const { title, farmStory, comparison, safety } = siteData.why;
+        const { title, subtitle, farmStory, table, comparison, safety } = siteData.why;
 
         why.className = 'why-section';
         why.innerHTML = `
@@ -155,6 +155,7 @@ const Components = {
                 <div class="why-header">
                     <span class="why-label">Lý Do Chọn SADU</span>
                     <h2>${title}</h2>
+                    <p class="egg-comparison-subtitle">${subtitle}</p>
                 </div>
 
                 <!-- Block 1: 3 KHÔNG -->
@@ -176,7 +177,37 @@ const Components = {
                     </div>
                 </div>
 
-                <!-- Block 2: Comparison + Safety cards -->
+                <!-- Block 2: Bảng so sánh chi tiết SADU vs trứng thường -->
+                <div style="margin: 40px 0;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Tiêu Chí</th>
+                                <th>Trứng SADU</th>
+                                <th>Trứng Thường</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${table.map(item => `
+                                <tr>
+                                    <td>${item.criteria}</td>
+                                    <td>
+                                        ${typeof item.sadu === 'boolean'
+                    ? (item.sadu ? '<span class="check-mark">✓</span>' : '<span class="cross-mark">✗</span>')
+                    : item.sadu}
+                                    </td>
+                                    <td>
+                                        ${typeof item.regular === 'boolean'
+                    ? (item.regular ? '<span class="check-mark">✓</span>' : '<span class="cross-mark">✗</span>')
+                    : item.regular}
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Block 3: Comparison + Safety cards -->
                 <div class="why-cards-grid">
                     <div class="why-card">
                         <div class="why-card-image">
@@ -330,45 +361,6 @@ const Components = {
         `;
     },
 
-    // Render Comparison Table
-    renderComparison: () => {
-        const section = document.getElementById('comparison');
-        const { comparison: comparisonData } = siteData;
-
-        section.className = 'comparison';
-        section.innerHTML = `
-            <div id="comparison-table-container">
-                <h2>So Sánh Trứng SADU Và Trứng Thường</h2>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Tiêu Chí</th>
-                            <th>Trứng SADU</th>
-                            <th>Trứng Thường</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${comparisonData.map(item => `
-                            <tr>
-                                <td>${item.criteria}</td>
-                                <td>
-                                    ${typeof item.sadu === 'boolean'
-                ? (item.sadu ? '<span class="check-mark">✓</span>' : '<span class="cross-mark">✗</span>')
-                : item.sadu}
-                                </td>
-                                <td>
-                                    ${typeof item.regular === 'boolean'
-                ? (item.regular ? '<span class="check-mark">✓</span>' : '<span class="cross-mark">✗</span>')
-                : item.regular}
-                                </td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            </div>
-        `;
-    },
-
     // Render Certificates Carousel
     renderCertificates: () => {
         const section = document.getElementById('certificates');
@@ -484,42 +476,6 @@ const Components = {
                             `).join('')}
                         </div>
                     </div>
-                </div>
-            </div>
-        `;
-    },
-
-    // Render Egg Comparison Section
-    renderEggComparison: () => {
-        const section = document.getElementById('egg-comparison');
-        const { title, subtitle, comparisons } = siteData.eggComparison;
-
-        section.className = 'egg-comparison';
-        section.innerHTML = `
-            <div class="egg-comparison-container">
-                <div class="egg-comparison-header">
-                    <h2>${title}</h2>
-                    <p class="egg-comparison-subtitle">${subtitle}</p>
-                </div>
-                
-                <div class="egg-comparison-grid">
-                    ${comparisons.map((item, index) => `
-                        <div class="egg-comparison-card" style="animation-delay: ${index * 0.1}s">
-                            <div class="egg-comparison-icon">${item.icon}</div>
-                            <h3 class="egg-comparison-card-title">${item.title}</h3>
-                            
-                            <div class="egg-comparison-content">
-                                <div class="egg-comparison-item egg-sadu">
-                                    <div class="egg-comparison-badge">✓ SADU</div>
-                                    <p>${item.sadu}</p>
-                                </div>
-                                <div class="egg-comparison-item egg-regular">
-                                    <div class="egg-comparison-badge badge-regular">✗ Trứng Thường</div>
-                                    <p>${item.regular}</p>
-                                </div>
-                            </div>
-                        </div>
-                    `).join('')}
                 </div>
             </div>
         `;
@@ -988,9 +944,7 @@ const Components = {
         Components.renderWhy();
         Components.renderPackaging();
         Components.renderFarmStory();
-        Components.renderEggComparison();
         Components.renderValueJustification();
-        Components.renderComparison();
         Components.renderStatistics();
         Components.renderCertificates();
         Components.renderSpecialProgram();

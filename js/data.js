@@ -94,6 +94,7 @@ const siteData = {
     // Why Section
     why: {
         title: 'Tại sao bạn nên lựa chọn Trứng Gà Thảo Dược SADU ?',
+        subtitle: 'So sánh chi tiết giữa trứng SADU và trứng công nghiệp thông thường',
         farmStory: {
             title: 'Cam kết "3 KHÔNG" từ SADU',
             image: 'source/yolk.jpg',
@@ -104,8 +105,21 @@ const siteData = {
             ],
             description: 'Đàn gà được ăn thức ăn 100% từ thực vật (ngô sơn la, cám gạo tươi, khô đậu tương, khoáng, premix,...), thức ăn được phối trộn thêm 13 loại thảo dược tự nhiên (cà gai leo, xạ đen, đinh lăng, khôi đốm,...), uống nước sạch và được chăm sóc bài bản để cho ra những quả trứng an toàn nhất.'
         },
+        // Bảng so sánh gộp (trước đây tách thành 2 section riêng: "comparison" + "egg-comparison")
+        table: [
+            { criteria: 'Đội Ngũ Chuyên Gia', sadu: true, regular: false },
+            { criteria: 'Cám Công Nghiệp', sadu: false, regular: true },
+            { criteria: 'Thức Ăn 100% Từ Thực Vật', sadu: true, regular: false },
+            { criteria: 'Không Kháng Sinh', sadu: true, regular: false },
+            { criteria: 'Cholesterol Thấp', sadu: '✓ (125mg)', regular: '✗ (380mg)' },
+            { criteria: 'Omega-3 Cao', sadu: true, regular: false },
+            { criteria: 'Chế Độ Chăm Sóc Đặc Biệt', sadu: true, regular: false },
+            { criteria: 'An Toàn Cho Mẹ Bầu', sadu: true, regular: false },
+            { criteria: 'Chất Lượng Trứng', sadu: 'Sánh đặc, không tanh', regular: 'Nhạt màu, dễ vỡ, có mùi tanh' },
+            { criteria: 'Thời Gian Bảo Quản', sadu: '15–20 ngày thường / 45 ngày trong tủ lạnh', regular: '7–10 ngày thường / 20–30 ngày trong tủ lạnh' }
+        ],
         comparison: {
-            image: 'source/comparison.jpg',
+            image: 'source/long-do.png',
             title: 'Sự khác biệt được nhìn thấy bằng mắt thường',
             description: 'Lòng đỏ trứng SADU luôn sánh màu, tươi ngon và đậm đà hơn so với trứng thường. Đây là kết quả của chế độ dinh dưỡng tự nhiên và chăm sóc đặc biệt từ trang trại.'
         },
@@ -232,18 +246,6 @@ const siteData = {
         ctaText: '🎁 Đặt Hàng Làm Quà Ngay'
     },
 
-    // Comparison Table
-    comparison: [
-        { criteria: 'Đội Ngũ Chuyên Gia', sadu: true, regular: false },
-        { criteria: 'Cám Công Nghiệp', sadu: false, regular: true },
-        { criteria: 'Thức Ăn 100% Từ Thực Vật', sadu: true, regular: false },
-        { criteria: 'Không Kháng Sinh', sadu: true, regular: false },
-        { criteria: 'Cholesterol Thấp', sadu: '✓ (125mg)', regular: '✗ (380mg)' },
-        { criteria: 'Omega-3 Cao', sadu: true, regular: false },
-        { criteria: 'Chế độ chăm sóc đặc biệt', sadu: true, regular: false },
-        { criteria: 'An Toàn Cho Mẹ Bầu', sadu: true, regular: false }
-    ],
-
     // Certificates Carousel
     certificates: {
         title: 'Sự An Toàn Được Chứng Nhận',
@@ -253,50 +255,6 @@ const siteData = {
             { src: 'source/t3.jpg', alt: 'Mẹ bầu' },
             { src: 'source/t4.jpg', alt: 'Mẹ và bé' },
             { src: 'source/t5.jpg', alt: 'Lòng đỏ trứng' }
-        ]
-    },
-
-    // Egg Comparison Section
-    eggComparison: {
-        title: 'Trứng Gà Thảo Dược SADU Có Gì Khác Biệt?',
-        subtitle: 'So sánh chi tiết giữa trứng SADU và trứng công nghiệp thông thường',
-        comparisons: [
-            {
-                icon: '🌿',
-                title: 'Nguồn Thức Ăn',
-                sadu: '100% thảo dược tự nhiên: ngô Sơn La, cám gạo tươi, khô đậu tương, 13 loại thảo dược (cà gai leo, xạ đen, đinh lăng, khôi đốm...)',
-                regular: 'Cám công nghiệp phối trộn sẵn, có thể chứa chất kích thích tăng trưởng và kháng sinh'
-            },
-            {
-                icon: '💊',
-                title: 'Cholesterol',
-                sadu: 'Thấp hơn 1/2 so với trứng thường (125mg/quả) - An toàn cho tim mạch',
-                regular: 'Cao (380mg/quả) - Không tốt cho người có vấn đề về tim mạch'
-            },
-            {
-                icon: '🥚',
-                title: 'Chất Lượng Trứng',
-                sadu: 'Lòng đỏ sánh đặc, màu cam đậm, tươi lâu, không tanh khi ăn sống',
-                regular: 'Lòng đỏ nhạt, dễ vỡ, có mùi tanh, thời gian bảo quản ngắn'
-            },
-            {
-                icon: '🔬',
-                title: 'An Toàn Thực Phẩm',
-                sadu: 'Không tồn dư kháng sinh, không hormone, không chất bảo quản - Đạt chứng nhận an toàn thực phẩm',
-                regular: 'Có thể tồn dư kháng sinh và hormone từ thức ăn công nghiệp'
-            },
-            {
-                icon: '👶',
-                title: 'Đối Tượng Sử Dụng',
-                sadu: 'An toàn cho mọi đối tượng: mẹ bầu, mẹ bỉm, trẻ em, người già, người ăn chay',
-                regular: 'Hạn chế cho mẹ bầu, trẻ nhỏ và người có bệnh lý đặc biệt'
-            },
-            {
-                icon: '⏱️',
-                title: 'Thời Gian Bảo Quản',
-                sadu: 'Nhiệt độ thường: 15-20 ngày | Ngăn mát tủ lạnh: đến 45 ngày',
-                regular: 'Nhiệt độ thường: 7-10 ngày | Ngăn mát tủ lạnh: 20-30 ngày'
-            }
         ]
     },
 

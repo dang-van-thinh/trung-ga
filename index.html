@@ -110,14 +110,8 @@
     <section id="packaging" class="packaging-section"></section>
 
 
-    <!-- Egg Comparison Section -->
-    <section id="egg-comparison" class="egg-comparison"></section>
-
     <!-- Value Justification Section -->
     <section id="value-justification" class="value-justification-section"></section>
-
-    <!-- Comparison Table -->
-    <section id="comparison" class="comparison"></section>
 
     <!-- Statistics Section -->
     <section id="statistics" class="statistics-section"></section>
@@ -153,8 +147,8 @@
                 <h2>Đặt Hàng Ngay</h2>
                 <button class="close-btn" onclick="App.closeOrderModal()">×</button>
             </div>
-            <form id="orderForm" onsubmit="App.submitOrder(event)">
-                <input type="hidden" id="productSelect" required>
+            <form id="orderForm" onsubmit="App.submitOrder(event)" novalidate>
+                <input type="hidden" id="productSelect">
 
                 <div class="form-group product-options">
                     <label>Chọn Sản Phẩm *</label>
@@ -165,7 +159,11 @@
 
                 <div class="form-group">
                     <label for="quantity">Số Lượng *</label>
-                    <input type="number" id="quantity" min="1" value="1" required>
+                    <div class="quantity-stepper">
+                        <button type="button" class="quantity-btn" aria-label="Giảm số lượng" onclick="App.changeQuantity(-1)">−</button>
+                        <input type="number" id="quantity" min="1" value="1" required>
+                        <button type="button" class="quantity-btn" aria-label="Tăng số lượng" onclick="App.changeQuantity(1)">+</button>
+                    </div>
                 </div>
 
                 <div class="form-row">
@@ -175,7 +173,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Số Điện Thoại *</label>
-                        <input type="tel" id="phone" required>
+                        <input type="tel" id="phone" inputmode="tel" placeholder="VD: 0912345678" required>
                     </div>
                 </div>
 
@@ -243,10 +241,19 @@
                     <textarea id="note" rows="3" placeholder="Ghi chú thêm cho đơn hàng (nếu có)"></textarea>
                 </div>
 
-                <div class="form-group"
-                    style="background: var(--bg-light); padding: 15px; border-radius: 5px; margin-bottom: 10px;">
-                    <strong>Tổng Tiền: </strong>
-                    <span id="totalPrice" style="color: var(--accent); font-size: 18px; font-weight: bold;">0đ</span>
+                <div class="order-summary-box">
+                    <div class="order-summary-row">
+                        <span>Sản phẩm:</span>
+                        <strong id="summaryProduct">—</strong>
+                    </div>
+                    <div class="order-summary-row">
+                        <span>Số lượng:</span>
+                        <strong id="summaryQuantity">1</strong>
+                    </div>
+                    <div class="order-summary-row order-summary-total">
+                        <span>Tổng Tiền:</span>
+                        <span id="totalPrice" style="color: var(--accent); font-size: 18px; font-weight: bold;">0đ</span>
+                    </div>
                 </div>
 
                 <div id="shippingNotice" style="display:none; background: #fff8e1; border: 1px solid #f9a825; border-radius: 5px; padding: 10px 14px; margin-bottom: 20px; font-size: 14px; color: #5d4037;">
@@ -255,6 +262,17 @@
 
                 <button type="submit" class="submit-btn">HOÀN TẤT ĐẶT HÀNG</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Result Modal (success / error / validation) -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content result-modal-content">
+            <button class="close-btn result-modal-close" onclick="App.closeResultModal()">×</button>
+            <div class="result-modal-icon" id="resultModalIcon">✅</div>
+            <h3 id="resultModalTitle">Đặt hàng thành công!</h3>
+            <p id="resultModalMessage"></p>
+            <button type="button" class="submit-btn" onclick="App.closeResultModal()">Đã hiểu</button>
         </div>
     </div>
 

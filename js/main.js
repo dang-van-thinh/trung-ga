@@ -161,9 +161,19 @@ const App = {
         const totalPriceEl = document.getElementById('totalPrice');
         const shippingNotice = document.getElementById('shippingNotice');
         const shippingNoticeText = document.getElementById('shippingNoticeText');
+        const summaryProductEl = document.getElementById('summaryProduct');
+        const summaryQuantityEl = document.getElementById('summaryQuantity');
 
         if (totalPriceEl) {
             totalPriceEl.textContent = totalPrice.toLocaleString('vi-VN') + 'đ';
+        }
+
+        if (summaryProductEl) {
+            summaryProductEl.textContent = selectedProductRadio?.dataset.product || '—';
+        }
+
+        if (summaryQuantityEl) {
+            summaryQuantityEl.textContent = quantity;
         }
 
         if (shippingNotice) {
@@ -176,12 +186,81 @@ const App = {
     },
 
     // ============================================
+    // QUANTITY STEPPER
+    // ============================================
+    changeQuantity: (delta) => {
+        const quantityInput = document.getElementById('quantity');
+        if (!quantityInput) return;
+        const min = parseInt(quantityInput.min) || 1;
+        const current = parseInt(quantityInput.value) || min;
+        quantityInput.value = Math.max(min, current + delta);
+        App.updateTotalPrice();
+    },
+
+    // ============================================
+    // RESULT MODAL (thay cho alert())
+    // ============================================
+    showResultModal: (type, title, message) => {
+        const modal = document.getElementById('resultModal');
+        const icon = document.getElementById('resultModalIcon');
+        const titleEl = document.getElementById('resultModalTitle');
+        const messageEl = document.getElementById('resultModalMessage');
+        if (!modal) return;
+
+        if (icon) icon.textContent = type === 'success' ? '🎉' : '⚠️';
+        if (titleEl) titleEl.textContent = title;
+        if (messageEl) messageEl.textContent = message;
+
+        modal.classList.add('show');
+    },
+
+    closeResultModal: () => {
+        const modal = document.getElementById('resultModal');
+        if (modal) modal.classList.remove('show');
+    },
+
+    // ============================================
     // SUBMIT ORDER
     // ============================================
     submitOrder: (event) => {
         event.preventDefault();
 
-        // 1. Validate Location
+        // Form dùng novalidate: toàn bộ validate do JS đảm nhiệm để luôn hiện được
+        // thông báo lỗi qua modal, tránh trường hợp trình duyệt tự chặn gửi form ở tầng
+        // HTML5 một cách âm thầm (từng xảy ra với 3 select Tỉnh/Huyện/Xã bị ẩn bằng CSS).
+
+        // 0. Validate Họ Tên
+        const nameEl = document.getElementById('name');
+        if (!nameEl || !nameEl.value.trim()) {
+            App.showResultModal('error', 'Thiếu thông tin', 'Vui lòng nhập Họ Tên.');
+            nameEl?.focus();
+            return;
+        }
+
+        // 1. Validate & chuẩn hoá Số Điện Thoại (kiểm tra trước vì nằm phía trên form)
+        // Chấp nhận cả dạng nội địa (0xxxxxxxxx) lẫn quốc tế (84xxxxxxxxx / +84xxxxxxxxx)
+        // rồi quy về dạng 0xxxxxxxxx để lưu Google Sheet luôn thống nhất, dễ gọi điện xác nhận đơn.
+        const phoneEl = document.getElementById('phone');
+        let normalizedPhone = (phoneEl?.value || '').replace(/[\s.\-()]/g, '').trim();
+        if (normalizedPhone.startsWith('+84')) {
+            normalizedPhone = normalizedPhone.slice(3);
+        } else if (normalizedPhone.startsWith('84')) {
+            normalizedPhone = normalizedPhone.slice(2);
+        }
+        if (!normalizedPhone.startsWith('0')) {
+            normalizedPhone = '0' + normalizedPhone;
+        }
+
+        // Đầu số di động VN hiện hành: 03/05/07/08/09 + đủ 10 số
+        // (chặt hơn "0 + 9-10 số bất kỳ" trước đây - kiểu đó lọt cả số vô lý như 0123456789)
+        if (!/^0(3|5|7|8|9)\d{8}$/.test(normalizedPhone)) {
+            App.showResultModal('error', 'Số điện thoại không hợp lệ', 'Vui lòng nhập đúng số điện thoại Việt Nam. Ví dụ: 0912345678 hoặc +84912345678');
+            phoneEl?.focus();
+            return;
+        }
+        if (phoneEl) phoneEl.value = normalizedPhone;
+
+        // 2. Validate Location
         const provinceEl = document.getElementById('province');
         const districtEl = document.getElementById('district');
         const wardEl = document.getElementById('ward');
@@ -189,14 +268,31 @@ const App = {
         if (!provinceEl || !provinceEl.value ||
             !districtEl || !districtEl.value ||
             !wardEl || !wardEl.value) {
-            alert('Vui lòng chọn đầy đủ Tỉnh/Thành phố, Quận/Huyện và Phường/Xã.');
+            App.showResultModal('error', 'Thiếu thông tin', 'Vui lòng chọn đầy đủ Tỉnh/Thành phố, Quận/Huyện và Phường/Xã.');
             return;
         }
 
-        // 2. Prepare Data Payload (matching template fields)
+        // 2b. Validate Địa Chỉ Chi Tiết
+        const addressEl = document.getElementById('address');
+        if (!addressEl || !addressEl.value.trim()) {
+            App.showResultModal('error', 'Thiếu thông tin', 'Vui lòng nhập Địa Chỉ Chi Tiết.');
+            addressEl?.focus();
+            return;
+        }
+
+        // 2c. Validate Số Lượng
+        const quantityEl = document.getElementById('quantity');
+        const quantityNumber = parseInt(quantityEl?.value);
+        if (!quantityNumber || quantityNumber < 1) {
+            App.showResultModal('error', 'Số lượng không hợp lệ', 'Vui lòng nhập số lượng từ 1 trở lên.');
+            quantityEl?.focus();
+            return;
+        }
+
+        // 3. Prepare Data Payload (matching template fields)
         const selectedProductRadio = document.querySelector('input[name="productOption"]:checked');
         const productName = selectedProductRadio?.dataset.product || '';
-        const quantity = document.getElementById('quantity').value || '1';
+        const quantity = quantityNumber;
 
         // Get display text instead of ID values
         const provinceText = provinceEl.options[provinceEl.selectedIndex]?.text || '';
@@ -205,7 +301,7 @@ const App = {
 
         const orderData = {
             name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
+            phone: normalizedPhone,
             province: provinceText,
             district: districtText,
             ward: wardText,
@@ -217,7 +313,7 @@ const App = {
             eventId: 'order_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7)
         };
 
-        // 3. UI Loading State
+        // 4. UI Loading State
         const submitBtn = event.target.querySelector('.submit-btn');
         const originalBtnText = submitBtn?.textContent || 'HOÀN TẤT ĐẶT HÀNG';
 
@@ -226,15 +322,28 @@ const App = {
             submitBtn.disabled = true;
         }
 
-        // 4. Send to Google Sheets using URLSearchParams (matching template)
+        // 5. Send to Google Sheets using URLSearchParams (matching template)
         fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
             body: new URLSearchParams(orderData)
         })
             .then(response => {
+                // response.type === 'opaque' xảy ra khi trình duyệt không đọc được response
+                // (CORS bị chặn phía Google Apps Script) — trường hợp này không thể kiểm tra
+                // status nên vẫn coi là gửi thành công như trước. Khi đọc được response bình
+                // thường thì phải kiểm tra response.ok để không báo "thành công" giả khi
+                // Apps Script trả lỗi (hết quota, script lỗi, sheet đầy...).
+                if (response.type !== 'opaque' && !response.ok) {
+                    throw new Error(`Google Script trả về lỗi HTTP ${response.status}`);
+                }
+
                 console.log('✅ Order sent to Google Sheets:', orderData);
 
-                alert('🎉 Đặt hàng thành công!\n\nCảm ơn bạn đã tin tưởng sản phẩm SADU. Mọi thắc mắc xin vui lòng liên hệ fanpage Trứng Gà Thảo Dược SADU để được giải đáp !');
+                App.showResultModal(
+                    'success',
+                    'Đặt hàng thành công!',
+                    'Cảm ơn bạn đã tin tưởng sản phẩm SADU. Mọi thắc mắc xin vui lòng liên hệ fanpage Trứng Gà Thảo Dược SADU để được giải đáp!'
+                );
 
                 event.target.reset();
                 App.updateTotalPrice();
@@ -253,7 +362,11 @@ const App = {
             })
             .catch(error => {
                 console.error('❌ Error sending order:', error);
-                alert('⚠️ Có lỗi xảy ra khi đặt hàng.\nVui lòng thử lại hoặc gọi hotline: 1900 8952');
+                App.showResultModal(
+                    'error',
+                    'Đặt hàng không thành công',
+                    'Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại hoặc gọi hotline: 1900 8952. Thông tin bạn vừa nhập vẫn được giữ nguyên trong form.'
+                );
             })
             .finally(() => {
                 if (submitBtn) {
