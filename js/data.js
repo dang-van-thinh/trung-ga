@@ -83,9 +83,8 @@ const siteData = {
             title: 'Kết Quả Nhìn Thấy Bằng Mắt',
             points: [
                 'Lòng đỏ cam sậm, sánh đặc — không phẩm màu',
-                'Không mùi tanh kể cả khi ăn sống',
-                'Cholesterol chỉ 125mg — thấp hơn 1/2 trứng thường (380mg)',
-                'Bảo quản được 15–20 ngày ở nhiệt độ thường'
+                'Không mùi tanh kể cả khi ăn món trứng trần, trứng luộc hay đặc biệt là trứng Osen',
+                'Cholesterol thấp hơn 1/2 trứng gà thường'
             ]
         },
         gridBackground: 'source/thuc-an.jpg'  // [THAY] ảnh làm background cho herb grid
@@ -93,28 +92,28 @@ const siteData = {
 
     // Why Section
     why: {
-        title: 'Tại sao bạn nên lựa chọn Trứng Gà Thảo Dược SADU ?',
+        title: 'Tại sao bạn nên lựa chọn <span style="color: var(--primary)"> TRỨNG GÀ THẢO DƯỢC SADU ?</span>',
         subtitle: 'So sánh chi tiết giữa trứng SADU và trứng công nghiệp thông thường',
         farmStory: {
             title: 'Cam kết "3 KHÔNG" từ SADU',
             image: 'source/yolk.jpg',
             uspList: [
-                'KHÔNG kháng sinh',
-                'KHÔNG hormone tăng trưởng',
-                'KHÔNG cám công nghiệp'
+                'KHÔNG KHÁNG SINH',
+                'KHÔNG HORMONE TĂNG TRƯỞNG',
+                'KHÔNG CÁM CÔNG NGHIỆP'
             ],
-            description: 'Đàn gà được ăn thức ăn 100% từ thực vật (ngô sơn la, cám gạo tươi, khô đậu tương, khoáng, premix,...), thức ăn được phối trộn thêm 13 loại thảo dược tự nhiên (cà gai leo, xạ đen, đinh lăng, khôi đốm,...), uống nước sạch và được chăm sóc bài bản để cho ra những quả trứng an toàn nhất.'
+            description: 'Đàn gà được ăn thức ăn 100% từ thực vật (ngô sơn la, cám gạo tươi, khô đậu tương, khoáng, premix,...), thức ăn được phối trộn thêm 13 loại thảo dược tự nhiên (cà gai leo, xạ đen, đinh lăng, khôi đốm,...), uống nước sạch lọc qua hệ thống RO + khử khuẩn qua tia UV và được chăm sóc theo quy trình để cho ra những quả trứng an toàn nhất.'
         },
         // Bảng so sánh gộp (trước đây tách thành 2 section riêng: "comparison" + "egg-comparison")
         table: [
             { criteria: 'Đội Ngũ Chuyên Gia', sadu: true, regular: false },
             { criteria: 'Cám Công Nghiệp', sadu: false, regular: true },
             { criteria: 'Thức Ăn 100% Từ Thực Vật', sadu: true, regular: false },
+            { criteria: 'Phối Trộn Thảo Dược', sadu: true, regular: false },
             { criteria: 'Không Kháng Sinh', sadu: true, regular: false },
-            { criteria: 'Cholesterol Thấp', sadu: '✓ (125mg)', regular: '✗ (380mg)' },
+            { criteria: 'Cholesterol xấu', sadu: 'Thấp', regular: 'Cao' },
             { criteria: 'Omega-3 Cao', sadu: true, regular: false },
             { criteria: 'Chế Độ Chăm Sóc Đặc Biệt', sadu: true, regular: false },
-            { criteria: 'An Toàn Cho Mẹ Bầu', sadu: true, regular: false },
             { criteria: 'Chất Lượng Trứng', sadu: 'Sánh đặc, không tanh', regular: 'Nhạt màu, dễ vỡ, có mùi tanh' },
             { criteria: 'Thời Gian Bảo Quản', sadu: '15–20 ngày thường / 45 ngày trong tủ lạnh', regular: '7–10 ngày thường / 20–30 ngày trong tủ lạnh' }
         ],
@@ -125,8 +124,8 @@ const siteData = {
         },
         safety: {
             image: 'source/me-bau-3.jpg',
-            title: 'An Toàn Cho Mẹ Bầu & Mẹ Bỉm Sữa',
-            description: 'Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ.'
+            title: 'An Toàn Cho Cả Gia Đình',
+            description: 'Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ và người lớn tuổi.'
         }
     },
 
@@ -233,7 +232,8 @@ const siteData = {
                 'Hộp carton chắc chắn, chống va đập khi vận chuyển',
                 'Tem SADU dán trên từng quả — nhận diện hàng chính hãng',
                 'Giao tận địa chỉ người nhận theo yêu cầu',
-                'Túi giấy lịch sự, sang trọng — phù hợp làm quà biếu'
+                'Túi giấy lịch sự, sang trọng — phù hợp làm quà biếu',
+                "LƯU Ý: Quý khách vui lòng ghi chú cho đơn hàng nếu muốn đặt trứng làm quà tặng, giá hỗ trợ túi quà là 12.000đ/túi"
             ]
         },
         images: [
@@ -283,7 +283,7 @@ const siteData = {
             priceValue: 717000,
             priceDisplay: "717.000đ",
             specs: [
-                "✓ 8 hộp x 12 quả",
+                "✓ 8 hộp x 12 quả (~ 7.500đ/quả)",
                 "✓ Tặng 1 hộp trà (100g)",
                 "✓ Miễn phí ship toàn quốc",
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
@@ -299,7 +299,7 @@ const siteData = {
             priceValue: 358500,
             priceDisplay: "358.500đ",
             specs: [
-                "✓ 4 hộp x 12 quả",
+                "✓ 4 hộp x 12 quả (~ 7.500đ/quả)",
                 "✓ Miễn phí ship toàn quốc",
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
