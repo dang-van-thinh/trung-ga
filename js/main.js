@@ -624,6 +624,25 @@ const App = {
                 }
             });
         }
+
+        // Scroll progress bar
+        const scrollProgressBar = document.getElementById('scrollProgress');
+        if (scrollProgressBar) {
+            let ticking = false;
+            const updateScrollProgress = () => {
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+                scrollProgressBar.style.width = `${progress}%`;
+                ticking = false;
+            };
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(updateScrollProgress);
+                    ticking = true;
+                }
+            });
+            updateScrollProgress();
+        }
     },
 
     // ============================================

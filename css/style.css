@@ -357,6 +357,18 @@ body {
   animation: progressShrink 5s linear forwards;
 }
 
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  z-index: 10001;
+  transition: width 0.1s ease-out;
+}
+
 /* Header */
 header {
   background: linear-gradient(135deg, var(--primary) 0%, #1b5e20 100%);
