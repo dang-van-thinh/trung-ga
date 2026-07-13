@@ -179,6 +179,10 @@
     column-gap: 15px;
   }
 
+  .feedback-masonry-wrap.is-collapsed {
+    max-height: 560px;
+  }
+
   .feedback-item {
     margin-bottom: 15px;
     border-radius: 10px;
@@ -231,6 +235,19 @@
   }
   .hero-image {
     order: 2;
+  }
+  .hero-signature-badge {
+    left: 12px;
+    bottom: -18px;
+    padding: 6px 14px 6px 6px;
+  }
+  .hero-signature-badge img {
+    width: 46px;
+    height: 46px;
+  }
+  .hero-signature-caption {
+    font-size: 11px;
+    max-width: 110px;
   }
   .hero-text {
     order: 1;
@@ -648,6 +665,14 @@
     column-gap: 0;
   }
 
+  .feedback-masonry-wrap.is-collapsed {
+    max-height: 420px;
+  }
+
+  .feedback-fade-overlay {
+    height: 120px;
+  }
+
   .feedback-item {
     margin-bottom: 15px;
     border-radius: 10px;
@@ -1008,6 +1033,21 @@
   }
   .hero-image img {
     border-radius: 12px;
+  }
+  .hero-signature-badge {
+    left: 4px;
+    bottom: -14px;
+    gap: 8px;
+    padding: 5px 12px 5px 5px;
+  }
+  .hero-signature-badge img {
+    width: 38px;
+    height: 38px;
+    border-width: 2px;
+  }
+  .hero-signature-caption {
+    font-size: 10px;
+    max-width: 92px;
   }
 
   .benefits {
@@ -1522,10 +1562,6 @@
     font-size: 26px;
   }
 
-  .value-price-compare {
-    gap: 16px;
-  }
-
   /* Gift Section — tablet */
   .gift-section {
     padding: 50px 16px;
@@ -1608,15 +1644,6 @@
 
   .value-header h2 {
     font-size: 22px;
-  }
-
-  .value-price-compare {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .value-price-amount {
-    font-size: 26px;
   }
 
   .value-anchor-card {

@@ -402,6 +402,14 @@ const App = {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     },
 
+    expandFeedbackGallery: () => {
+        const wrap = document.getElementById('feedbackMasonryWrap');
+        if (wrap) wrap.classList.remove('is-collapsed');
+
+        const loadMoreWrap = document.getElementById('feedbackLoadMoreWrap');
+        if (loadMoreWrap) loadMoreWrap.remove();
+    },
+
     // ============================================
     // LOCATION SELECTORS
     // ============================================

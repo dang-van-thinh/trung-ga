@@ -65,7 +65,7 @@ const Components = {
     // Render Hero Section
     renderHero: () => {
         const hero = document.getElementById('hero');
-        const { label, title, description, ctaText, ctaNote, offerBadge, image } = siteData.hero;
+        const { label, title, description, ctaText, ctaNote, offerBadge, image, signatureImage, signatureCaption } = siteData.hero;
 
         hero.className = 'hero';
         hero.innerHTML = `
@@ -82,6 +82,12 @@ const Components = {
                 </div>
                 <div class="hero-image">
                     <img src="${image}" alt="Trứng Gà Thảo Dược SADU">
+                    ${signatureImage ? `
+                        <div class="hero-signature-badge">
+                            <img src="${signatureImage}" alt="Lòng đỏ trứng SADU cam sậm tự nhiên">
+                            <span class="hero-signature-caption">${signatureCaption || ''}</span>
+                        </div>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -107,10 +113,13 @@ const Components = {
     },
 
     // Render Herbal Story Section
+    // Chapter 1 (thảo dược) + Chapter 2 (trang trại) gộp thành 1 mạch chuyện liền mạch,
+    // thay vì 2 section riêng lặp lại cùng luận điểm "SADU sạch & tự nhiên".
     renderHerbalStory: () => {
         const section = document.getElementById('herbal-story');
         if (!section) return;
         const { label, title, description, herbs, result, gridBackground } = siteData.herbalStory;
+        const { title: farmTitle, stats, process, image: farmImage, imageAlt: farmImageAlt } = siteData.farmStory;
 
         section.className = 'herbal-story-section';
         section.innerHTML = `
@@ -138,6 +147,47 @@ const Components = {
                         <ul class="herbal-result-list">
                             ${result.points.map(p => `<li>${p}</li>`).join('')}
                         </ul>
+                    </div>
+                </div>
+
+                <div class="herbal-farm-divider">
+                    <span class="herbal-farm-divider-line"></span>
+                    <h3 class="herbal-farm-transition-title">${farmTitle}</h3>
+                </div>
+
+                <div class="farm-story-body">
+                    <div class="farm-story-left">
+                        <div class="farm-story-image-wrap">
+                            <img src="${farmImage}" alt="${farmImageAlt}" class="farm-story-img">
+                            <div class="farm-story-stats">
+                                ${stats.map(s => `
+                                    <div class="farm-stat-card">
+                                        <div class="farm-stat-icon">${s.icon}</div>
+                                        <div class="farm-stat-number">${s.number}</div>
+                                        <div class="farm-stat-unit">${s.unit}</div>
+                                        <div class="farm-stat-label">${s.label}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="farm-story-right">
+                        <h4 class="farm-process-title">${process.title}</h4>
+                        <div class="farm-process-steps">
+                            ${process.steps.map((step, i) => `
+                                <div class="farm-step">
+                                    <div class="farm-step-left">
+                                        <div class="farm-step-icon">${step.icon}</div>
+                                        <div class="farm-step-line"></div>
+                                    </div>
+                                    <div class="farm-step-content">
+                                        <h4>${step.title}</h4>
+                                        <p>${step.description}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -271,6 +321,7 @@ const Components = {
         section.innerHTML = `
             <div class="gift-container">
                 <div class="gift-header">
+                    <div class="gift-header-icon">🎁</div>
                     <span class="gift-label">${label}</span>
                     <h2>${title}</h2>
                     <p>${subtitle}</p>
@@ -320,7 +371,7 @@ const Components = {
     renderValueJustification: () => {
         const section = document.getElementById('value-justification');
         if (!section) return;
-        const { label, title, subtitle, comparisons, anchors, ctaText } = siteData.valueJustification;
+        const { label, title, subtitle, anchors, ctaText } = siteData.valueJustification;
 
         section.className = 'value-justification-section';
         section.innerHTML = `
@@ -329,17 +380,6 @@ const Components = {
                     <span class="value-label">${label}</span>
                     <h2>${title}</h2>
                     <p>${subtitle}</p>
-                </div>
-
-                <div class="value-price-compare">
-                    ${comparisons.map(c => `
-                        <div class="value-price-card ${c.highlight ? 'value-price-card--highlight' : ''}">
-                            ${c.highlight ? '<div class="value-price-best">Lựa chọn của bạn</div>' : ''}
-                            <div class="value-price-label">${c.label}</div>
-                            <div class="value-price-amount">${c.price}</div>
-                            <div class="value-price-note">${c.note}</div>
-                        </div>
-                    `).join('')}
                 </div>
 
                 <div class="value-anchors">
@@ -422,59 +462,6 @@ const Components = {
                         <strong>${guarantee.title}</strong>
                         <p>${guarantee.description}</p>
                         <span class="pkg-guarantee-note">${guarantee.note}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-    },
-
-    // Render Farm Story Section
-    renderFarmStory: () => {
-        const section = document.getElementById('farm-story');
-        if (!section) return;
-        const { label, title, stats, process, image, imageAlt } = siteData.farmStory;
-
-        section.className = 'farm-story-section';
-        section.innerHTML = `
-            <div class="farm-story-container">
-                <div class="farm-story-header">
-                    <span class="farm-story-label">${label}</span>
-                    <h2>${title}</h2>
-                </div>
-
-                <div class="farm-story-body">
-                    <div class="farm-story-left">
-                        <div class="farm-story-image-wrap">
-                            <img src="${image}" alt="${imageAlt}" class="farm-story-img">
-                            <div class="farm-story-stats">
-                                ${stats.map(s => `
-                                    <div class="farm-stat-card">
-                                        <div class="farm-stat-icon">${s.icon}</div>
-                                        <div class="farm-stat-number">${s.number}</div>
-                                        <div class="farm-stat-unit">${s.unit}</div>
-                                        <div class="farm-stat-label">${s.label}</div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="farm-story-right">
-                        <h3 class="farm-process-title">${process.title}</h3>
-                        <div class="farm-process-steps">
-                            ${process.steps.map((step, i) => `
-                                <div class="farm-step">
-                                    <div class="farm-step-left">
-                                        <div class="farm-step-icon">${step.icon}</div>
-                                        <div class="farm-step-line"></div>
-                                    </div>
-                                    <div class="farm-step-content">
-                                        <h4>${step.title}</h4>
-                                        <p>${step.description}</p>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -658,6 +645,10 @@ const Components = {
             return;
         }
 
+        // Ảnh nhiều hơn ~2 hàng (3 cột) thì thu gọn lại, mờ dần + nút "Xem Thêm"
+        const FEEDBACK_COLLAPSE_THRESHOLD = 6;
+        const shouldCollapse = feedbackImages.length > FEEDBACK_COLLAPSE_THRESHOLD;
+
         section.className = 'customer-feedback-gallery';
         section.innerHTML = `
             <div class="feedback-gallery-container">
@@ -665,14 +656,23 @@ const Components = {
                     <h2>Những Câu Chuyện Thực Từ Gia Đình Việt</h2>
                     <p>Hình ảnh thực tế từ khách hàng đã tin dùng sản phẩm Sadu</p>
                 </div>
-                
-                <div class="feedback-masonry-grid">
-                    ${feedbackImages.map(img => `
-                        <div class="feedback-item">
-                            <img src="${img.src}" alt="${img.alt}" loading="lazy">
-                        </div>
-                    `).join('')}
+
+                <div id="feedbackMasonryWrap" class="feedback-masonry-wrap ${shouldCollapse ? 'is-collapsed' : ''}">
+                    <div class="feedback-masonry-grid">
+                        ${feedbackImages.map(img => `
+                            <div class="feedback-item">
+                                <img src="${img.src}" alt="${img.alt}" loading="lazy">
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${shouldCollapse ? '<div class="feedback-fade-overlay"></div>' : ''}
                 </div>
+
+                ${shouldCollapse ? `
+                    <div id="feedbackLoadMoreWrap" class="feedback-load-more-wrap">
+                        <button type="button" class="feedback-load-more-btn" onclick="App.expandFeedbackGallery()">Xem Thêm</button>
+                    </div>
+                ` : ''}
             </div>
         `;
     },
@@ -943,7 +943,6 @@ const Components = {
         Components.renderHerbalStory();
         Components.renderWhy();
         Components.renderPackaging();
-        Components.renderFarmStory();
         Components.renderValueJustification();
         Components.renderStatistics();
         Components.renderCertificates();

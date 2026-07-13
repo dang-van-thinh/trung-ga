@@ -36,14 +36,16 @@ const siteData = {
         ctaText: '🛒 Đặt Mua Ngay',
         ctaNote: 'Combo từ 3 hộp — Miễn phí giao hàng toàn quốc',
         offerBadge: 'Ưu đãi: Mua 3 Tặng 1',
-        image: 'source/san-pham.png'
+        image: 'source/san-pham.png',
+        signatureImage: 'source/long-do.png',
+        signatureCaption: 'Lòng đỏ cam sậm<br>tự nhiên, không phẩm màu'
     },
 
     // Benefits Section
     benefits: [
         {
             icon: '🌿',
-            title: 'Yên Tâm Tuyệt Đối',
+            title: 'Tiêu Chí 3 "KHÔNG"',
             description: '3 KHÔNG: Không kháng sinh · Không chất kích thích · Không cám công nghiệp — kiểm định độc lập'
         },
         {
@@ -134,20 +136,6 @@ const siteData = {
         label: 'Tại Sao Xứng Đáng?',
         title: 'Hơn 10.000đ Một Quả — Bạn Đang Mua Gì?',
         subtitle: 'So sánh thật, không che giấu. Một quả trứng SADU có giá khoảng 10.000đ — cao hơn trứng thường. Đây là lý do tại sao con số đó xứng đáng.',
-        comparisons: [
-            {
-                label: 'Trứng thường',
-                price: '~2.000đ/quả',
-                note: 'Nuôi cám công nghiệp · Có thể tồn dư kháng sinh · Cholesterol 380mg',
-                highlight: false
-            },
-            {
-                label: 'Trứng SADU',
-                price: '~10.000đ/quả',
-                note: '13 loại thảo dược · 0 kháng sinh · Cholesterol chỉ 125mg',
-                highlight: true
-            }
-        ],
         anchors: [
             {
                 icon: '☕',
@@ -561,9 +549,8 @@ const siteData = {
         }
     },
 
-    // Farm Story Section
+    // Farm Story (merged into Herbal Story section as its second chapter)
     farmStory: {
-        label: 'Trang Trại SADU',
         title: 'Nơi Mỗi Quả Trứng Được Tạo Ra Với Tất Cả Sự Tận Tâm',
         stats: [
             {
