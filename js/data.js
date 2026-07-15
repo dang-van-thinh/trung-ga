@@ -153,7 +153,7 @@ const siteData = {
                 value: 'Với trẻ nhỏ và mẹ bầu, chất lượng thực phẩm ảnh hưởng trực tiếp đến sự phát triển — không thể thỏa hiệp'
             }
         ],
-        ctaText: '🛒 ĐẶT NGAY'
+        ctaText: '🛒 ĐẶT HÀNG NGAY'
     },
 
     // Statistics Section

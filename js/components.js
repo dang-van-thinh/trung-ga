@@ -189,11 +189,10 @@ const Components = {
                             `).join('')}
                         </div>
                     </div>
-
-                    <div class="value-cta">
+                </div>
+                <div class="value-cta" style="margin-top: 20px; text-align: center;">
                         <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
                     </div>
-                </div>
             </div>
         `;
     },
