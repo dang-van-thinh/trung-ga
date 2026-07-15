@@ -153,7 +153,7 @@ const siteData = {
                 value: 'Với trẻ nhỏ và mẹ bầu, chất lượng thực phẩm ảnh hưởng trực tiếp đến sự phát triển — không thể thỏa hiệp'
             }
         ],
-        ctaText: '🛒 Đặt Thử Ngay'
+        ctaText: '🛒 ĐẶT NGAY'
     },
 
     // Statistics Section
@@ -231,7 +231,7 @@ const siteData = {
             { src: 'source/qua-7.png', alt: 'Quà gia đình' },
             { src: 'source/qua-3.png', alt: 'Lòng đỏ trứng SADU' }
         ],
-        ctaText: '🎁 Đặt Hàng Làm Quà Ngay'
+        ctaText: '🎁 ĐẶT LÀM QUÀ NGAY'
     },
 
     // Certificates Carousel
@@ -546,7 +546,8 @@ const siteData = {
             title: 'Cam Kết Bảo Hành Vận Chuyển',
             description: 'Nếu trứng bị vỡ trong quá trình vận chuyển — SADU đổi mới hoặc hoàn tiền 100%, không hỏi thêm.',
             note: 'Chỉ cần quay hoặc chụp lại video/ảnh khi mở hộp là đủ điều kiện.'
-        }
+        },
+        ctaText: '🛒 ĐẶT HÀNG NGAY'
     },
 
     // Farm Story (merged into Herbal Story section as its second chapter)
@@ -592,7 +593,8 @@ const siteData = {
             ]
         },
         image: 'source/chuong-trai.jpg',
-        imageAlt: 'Trang trại SADU — ảnh thực tế'
+        imageAlt: 'Trang trại SADU — ảnh thực tế',
+        ctaText: '🛒 ĐẶT HÀNG NGAY'
     },
 
     // Final CTA Section

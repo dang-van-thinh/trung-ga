@@ -119,7 +119,7 @@ const Components = {
         const section = document.getElementById('herbal-story');
         if (!section) return;
         const { label, title, description, herbs, result, gridBackground } = siteData.herbalStory;
-        const { title: farmTitle, stats, process, image: farmImage, imageAlt: farmImageAlt } = siteData.farmStory;
+        const { title: farmTitle, stats, process, image: farmImage, imageAlt: farmImageAlt, ctaText } = siteData.farmStory;
 
         section.className = 'herbal-story-section';
         section.innerHTML = `
@@ -189,6 +189,10 @@ const Components = {
                             `).join('')}
                         </div>
                     </div>
+
+                    <div class="value-cta">
+                        <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
+                    </div>
                 </div>
             </div>
         `;
@@ -243,13 +247,13 @@ const Components = {
                                     <td>${item.criteria}</td>
                                     <td>
                                         ${typeof item.sadu === 'boolean'
-                    ? (item.sadu ? '<span class="check-mark">✓</span>' : '<span class="cross-mark">✗</span>')
-                    : item.sadu}
+                ? (item.sadu ? '<span class="check-mark">✓</span>' : '<span class="cross-mark">✗</span>')
+                : item.sadu}
                                     </td>
                                     <td>
                                         ${typeof item.regular === 'boolean'
-                    ? (item.regular ? '<span class="check-mark">✓</span>' : '<span class="cross-mark">✗</span>')
-                    : item.regular}
+                ? (item.regular ? '<span class="check-mark">✓</span>' : '<span class="cross-mark">✗</span>')
+                : item.regular}
                                     </td>
                                 </tr>
                             `).join('')}
@@ -426,7 +430,7 @@ const Components = {
     renderPackaging: () => {
         const section = document.getElementById('packaging');
         if (!section) return;
-        const { label, title, subtitle, methods, guarantee } = siteData.packaging;
+        const { label, title, subtitle, methods, guarantee, ctaText } = siteData.packaging;
 
         section.className = 'packaging-section';
         section.innerHTML = `
@@ -463,6 +467,9 @@ const Components = {
                         <p>${guarantee.description}</p>
                         <span class="pkg-guarantee-note">${guarantee.note}</span>
                     </div>
+                </div>
+                 <div class="value-cta" style="margin-top: 20px; text-align: center;">
+                    <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
                 </div>
             </div>
         `;

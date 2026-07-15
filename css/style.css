@@ -3545,7 +3545,7 @@ footer {
 @media (max-width: 768px) {
   .statistics-section {
     padding: 60px 16px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
 
   .statistics-header h2 {
@@ -3585,7 +3585,7 @@ footer {
 @media (max-width: 480px) {
   .statistics-section {
     padding: 40px 12px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
 
   .statistics-header h2 {
@@ -3730,7 +3730,11 @@ footer {
   right: 0;
   bottom: 0;
   height: 170px;
-  background: linear-gradient(to bottom, rgba(253, 248, 240, 0) 0%, var(--bg-light) 88%);
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 248, 240, 0) 0%,
+    var(--bg-light) 88%
+  );
   pointer-events: none;
 }
 

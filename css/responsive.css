@@ -5,7 +5,7 @@
   /* Statistics Section - Tablet */
   .statistics-section {
     padding: 60px 16px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
 
   .statistics-header h2 {
@@ -435,7 +435,7 @@
   /* Statistics Section - Mobile */
   .statistics-section {
     padding: 40px 12px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
 
   .statistics-header h2 {
@@ -1594,9 +1594,10 @@
   }
 
   .cta-btn {
-    width: 100%;
+    width: 75%;
     font-size: 15px;
     padding: 14px 20px;
+    display: inline-block;
   }
 
   .hero-offer-badge {
