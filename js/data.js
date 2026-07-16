@@ -114,7 +114,6 @@ const siteData = {
             { criteria: 'Phối Trộn Thảo Dược', sadu: true, regular: false },
             { criteria: 'Không Kháng Sinh', sadu: true, regular: false },
             { criteria: 'Cholesterol xấu', sadu: 'Thấp', regular: 'Cao' },
-            { criteria: 'Omega-3 Cao', sadu: true, regular: false },
             { criteria: 'Chế Độ Chăm Sóc Đặc Biệt', sadu: true, regular: false },
             { criteria: 'Chất Lượng Trứng', sadu: 'Sánh đặc, không tanh', regular: 'Nhạt màu, dễ vỡ, có mùi tanh' },
             { criteria: 'Thời Gian Bảo Quản', sadu: '15–20 ngày thường / 45 ngày trong tủ lạnh', regular: '7–10 ngày thường / 20–30 ngày trong tủ lạnh' }
@@ -277,7 +276,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/product.png",
+            image: "source/combo-6hop.png",
             featured: false
         },
         {
@@ -292,7 +291,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/product.png",
+            image: "source/combo-3hop.png",
             featured: true // ⭐ Set true để làm sản phẩm nổi bật
         },
         {
@@ -307,7 +306,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/product.png",
+            image: "source/1-hop.png",
             featured: false // ⭐ Set true để làm sản phẩm nổi bật
         },
 
@@ -410,7 +409,7 @@ const siteData = {
         },
         {
             question: 'Có hỗ trợ khách hàng 24/7 không?',
-            answer: 'Có, chúng tôi có đội hỗ trợ khách hàng 24/7. Bạn có thể liên hệ qua Hotline: 1900 8952, Email: nongnghiepcncthanglong@gmail.com hoặc nhắn tin qua fanpage Trứng Gà Thảo Dươc SADU & SADU FARM.'
+            answer: 'Có, chúng tôi có đội hỗ trợ khách hàng 24/7. Bạn có thể liên hệ qua Hotline: 1900 8952, Email: nongnghiepcncthanglong@gmail.com hoặc nhắn tin qua fanpage Trứng Gà Thảo Dươc SADU.'
         }
     ],
 
@@ -578,7 +577,7 @@ const siteData = {
                 {
                     icon: '💧',
                     title: 'Nước Lọc RO + Khử Khuẩn UV',
-                    description: 'Nguồn nước uống được xử lý qua hệ thống lọc RO tiêu chuẩn và khử khuẩn bằng tia UV — sạch từ gốc, an toàn tuyệt đối.'
+                    description: 'Nguồn nước uống được xử lý qua hệ thống lọc RO tiêu chuẩn và khử khuẩn bằng tia UV.'
                 },
                 {
                     icon: '🌿',
@@ -588,7 +587,7 @@ const siteData = {
                 {
                     icon: '✅',
                     title: 'Kiểm Tra Mỗi Ngày',
-                    description: 'Mỗi lô trứng đều được kiểm tra chất lượng trực tiếp trước khi đóng gói — không một quả nào đến tay khách hàng khi chưa qua kiểm định.'
+                    description: 'Mỗi lô trứng đều được kiểm tra chất lượng trực tiếp trước khi đóng gói và đảm bảo trứng được xuất đi đều là trứng mới trong ngày.'
                 }
             ]
         },

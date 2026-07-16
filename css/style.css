@@ -12,7 +12,7 @@
 
 :root {
   /* Primary Colors */
-  --primary: #2e7d32;
+  --primary: #246b39;
   --primary-dark: #1b5e20;
   --primary-light: #e8f5e9;
 
@@ -378,6 +378,14 @@ header {
   top: 0;
   z-index: 100;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+header.scrolled {
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.75) 0%, rgba(27, 94, 32, 0.75) 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .header-container {

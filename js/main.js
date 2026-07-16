@@ -621,6 +621,16 @@ const App = {
             }
         });
 
+        // Transparent header on scroll
+        const siteHeader = document.querySelector('header');
+        if (siteHeader) {
+            const updateHeaderBg = () => {
+                siteHeader.classList.toggle('scrolled', window.scrollY > 50);
+            };
+            window.addEventListener('scroll', updateHeaderBg);
+            updateHeaderBg();
+        }
+
         // Scroll to top button visibility
         const scrollTopBtn = document.getElementById('scrollTop');
         if (scrollTopBtn) {
