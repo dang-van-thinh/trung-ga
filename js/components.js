@@ -81,7 +81,7 @@ const Components = {
                     <div class="hero-offer-badge">${offerBadge}</div>
                 </div>
                 <div class="hero-image">
-                    <img src="${image}" alt="Trứng Gà Thảo Dược SADU">
+                    <img src="${image}" alt="Trứng Gà Thảo Dược SADU" fetchpriority="high">
                     ${signatureImage ? `
                         <div class="hero-signature-badge">
                             <img src="${signatureImage}" alt="Lòng đỏ trứng SADU cam sậm tự nhiên">
@@ -158,7 +158,7 @@ const Components = {
                 <div class="farm-story-body">
                     <div class="farm-story-left">
                         <div class="farm-story-image-wrap">
-                            <img src="${farmImage}" alt="${farmImageAlt}" class="farm-story-img">
+                            <img src="${farmImage}" alt="${farmImageAlt}" class="farm-story-img" loading="lazy">
                             <div class="farm-story-stats">
                                 ${stats.map(s => `
                                     <div class="farm-stat-card">
@@ -214,7 +214,7 @@ const Components = {
                 <!-- Block 1: 3 KHÔNG -->
                 <div class="why-feature-block">
                     <div class="why-feature-image">
-                        <img src="${farmStory.image}" alt="Lòng đỏ trứng SADU">
+                        <img src="${farmStory.image}" alt="Lòng đỏ trứng SADU" loading="lazy">
                     </div>
                     <div class="why-feature-content">
                         <h3>${farmStory.title}</h3>
@@ -264,7 +264,7 @@ const Components = {
                 <div class="why-cards-grid">
                     <div class="why-card">
                         <div class="why-card-image">
-                            <img src="${comparison.image}" alt="${comparison.title}">
+                            <img src="${comparison.image}" alt="${comparison.title}" loading="lazy">
                         </div>
                         <div class="why-card-body">
                             <h3>${comparison.title}</h3>
@@ -273,7 +273,7 @@ const Components = {
                     </div>
                     <div class="why-card">
                         <div class="why-card-image">
-                            <img src="${safety.image}" alt="${safety.title}">
+                            <img src="${safety.image}" alt="${safety.title}" loading="lazy">
                         </div>
                         <div class="why-card-body">
                             <h3>${safety.title}</h3>
@@ -347,7 +347,7 @@ const Components = {
                         <div class="gift-carousel-wrap comparison-carousel">
                             <div class="comparison-carousel-main">
                                 <button type="button" class="carousel-nav carousel-prev" aria-label="Ảnh trước">‹</button>
-                                <img id="carouselGiftMain" src="${images[0].src}" alt="${images[0].alt}" />
+                                <img id="carouselGiftMain" src="${images[0].src}" alt="${images[0].alt}" loading="lazy" />
                                 <button type="button" class="carousel-nav carousel-next" aria-label="Ảnh tiếp">›</button>
                             </div>
                         </div>
@@ -415,7 +415,7 @@ const Components = {
             <div class="comparison-carousel">
                 <div class="comparison-carousel-main">
                     <button type="button" class="carousel-nav carousel-prev" aria-label="Ảnh trước">‹</button>
-                    <img id="carouselMainImage" src="${images[0].src}" alt="${images[0].alt}" />
+                    <img id="carouselMainImage" src="${images[0].src}" alt="${images[0].alt}" loading="lazy" />
                     <button type="button" class="carousel-nav carousel-next" aria-label="Ảnh tiếp theo">›</button>
                 </div>
             </div>
@@ -445,7 +445,7 @@ const Components = {
                         <div class="packaging-card">
                             <div class="packaging-card-tag">${m.tag}</div>
                             <div class="packaging-card-image">
-                                <img src="${m.image}" alt="${m.imageAlt}">
+                                <img src="${m.image}" alt="${m.imageAlt}" loading="lazy">
                                 <div class="packaging-card-icon">${m.icon}</div>
                             </div>
                             <div class="packaging-card-body">
@@ -517,7 +517,7 @@ const Components = {
                         <div class="featured-badge">SẢN PHẨM BÁN CHẠY</div>
                         <div class="featured-product-card">
                             <div class="featured-product-image">
-                                <img src="${featuredProduct.image}" alt="${featuredProduct.name}">
+                                <img src="${featuredProduct.image}" alt="${featuredProduct.name}" loading="lazy">
                                 ${featuredProduct.originalPrice > featuredProduct.priceValue
                     ? `<div class="featured-discount-label">-${Math.round((1 - featuredProduct.priceValue / featuredProduct.originalPrice) * 100)}%</div>`
                     : ''}
@@ -552,7 +552,7 @@ const Components = {
                         return `
                                 <div class="product-card">
                                     <div class="product-image">
-                                        <img src="${product.image}" alt="${product.name}">
+                                        <img src="${product.image}" alt="${product.name}" loading="lazy">
                                         ${product.originalPrice > product.priceValue
                                 ? `<div class="discount-label">-${Math.round((1 - product.priceValue / product.originalPrice) * 100)}%</div>`
                                 : ''}
@@ -610,7 +610,7 @@ const Components = {
                         ${productList.map((product, index) => `
                             <div class="product-card">
                                 <div class="product-image">
-                                    <img src="${product.image}" alt="${product.name}">
+                                    <img src="${product.image}" alt="${product.name}" loading="lazy">
                                     ${product.originalPrice > product.priceValue
                     ? `<div class="discount-label">-${Math.round((1 - product.priceValue / product.originalPrice) * 100)}%</div>`
                     : ''}
@@ -698,7 +698,7 @@ const Components = {
                             <div class="stars">★★★★★</div>
                             <p class="testimonial-text">"${item.content}"</p>
                             <div class="testimonial-author">
-                                <img src="${item.avatar}" alt="${item.name}" class="author-avatar">
+                                <img src="${item.avatar}" alt="${item.name}" class="author-avatar" loading="lazy">
                                 <div class="author-info">
                                     <h4>${item.name}</h4>
                                     <p>${item.role}</p>
@@ -870,7 +870,7 @@ const Components = {
 
                 <div class="special-program-content">
                     <div class="special-program-image-wrapper">
-                        <img src="${specialProgram.image}" alt="${specialProgram.imageAlt}">
+                        <img src="${specialProgram.image}" alt="${specialProgram.imageAlt}" loading="lazy">
                         ${specialProgram.highlightText ? `<div class="urgency-tag">${specialProgram.highlightText}</div>` : ''}
                     </div>
 

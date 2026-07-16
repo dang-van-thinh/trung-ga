@@ -595,6 +595,44 @@ const App = {
     // ============================================
     // EVENT LISTENERS SETUP
     // ============================================
+    // ============================================
+    // SCROLL REVEAL (hiệu ứng hiện dần khi cuộn tới từng section)
+    // ============================================
+    initScrollReveal: () => {
+        // Hero luôn hiện ngay (đã có animation riêng), chỉ áp dụng reveal
+        // cho các section bên dưới để tránh tải/animate toàn bộ trang cùng lúc lúc load.
+        const sectionIds = [
+            'benefits', 'herbal-story', 'statistics', 'why', 'packaging',
+            'value-justification', 'certificates', 'special-program',
+            'products', 'gift-carousel', 'customer-feedback-gallery',
+            'faq', 'final-cta'
+        ];
+        const sections = sectionIds
+            .map(id => document.getElementById(id))
+            .filter(Boolean);
+
+        if (!sections.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+            sections.forEach(el => el.classList.add('reveal-section', 'is-visible'));
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+        sections.forEach(el => {
+            el.classList.add('reveal-section');
+            observer.observe(el);
+        });
+    },
+
     setupEventListeners: () => {
         // Close modal when clicking outside
         const orderModal = document.getElementById('orderModal');
@@ -717,6 +755,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (typeof App !== 'undefined') {
                 App.setupEventListeners();
+                App.initScrollReveal();
                 App.startProductCountdown();
                 setTimeout(App.showCustomerAlert, 2000);
                 console.log('🎉 SADU Landing Page ready!');
@@ -736,6 +775,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (typeof App !== 'undefined') {
                 App.setupEventListeners();
+                App.initScrollReveal();
                 App.startProductCountdown();
                 setTimeout(App.showCustomerAlert, 2000);
                 console.log('🎉 SADU Landing Page ready (with fallback)!');
@@ -751,6 +791,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (typeof App !== 'undefined') {
             App.setupEventListeners();
+            App.initScrollReveal();
             App.startProductCountdown();
             setTimeout(App.showCustomerAlert, 2000);
             console.log('🎉 SADU Landing Page ready!');

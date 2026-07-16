@@ -202,6 +202,24 @@ body {
   animation: slideInRight 0.6s ease-out;
 }
 
+/* Scroll Reveal - section hiện dần khi cuộn tới (IntersectionObserver, xem main.js) */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Live Order Notification */
 .custom-alert {
   position: fixed;

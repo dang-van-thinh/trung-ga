@@ -36,8 +36,8 @@ const siteData = {
         ctaText: '🛒 Đặt Mua Ngay',
         ctaNote: 'Combo từ 3 hộp — Miễn phí giao hàng toàn quốc',
         offerBadge: 'Ưu đãi: Mua 3 Tặng 1',
-        image: 'source/san-pham.png',
-        signatureImage: 'source/long-do.png',
+        image: 'source/san-pham.webp',
+        signatureImage: 'source/long-do.webp',
         signatureCaption: 'Lòng đỏ cam sậm<br>tự nhiên, không phẩm màu'
     },
 
@@ -89,7 +89,7 @@ const siteData = {
                 'Cholesterol thấp hơn 1/2 trứng gà thường'
             ]
         },
-        gridBackground: 'source/thuc-an.jpg'  // [THAY] ảnh làm background cho herb grid
+        gridBackground: 'source/thuc-an.webp'  // [THAY] ảnh làm background cho herb grid
     },
 
     // Why Section
@@ -98,7 +98,7 @@ const siteData = {
         subtitle: 'So sánh chi tiết giữa trứng SADU và trứng công nghiệp thông thường',
         farmStory: {
             title: 'Cam kết "3 KHÔNG" từ SADU',
-            image: 'source/yolk.jpg',
+            image: 'source/yolk.webp',
             uspList: [
                 'KHÔNG KHÁNG SINH',
                 'KHÔNG HORMONE TĂNG TRƯỞNG',
@@ -119,12 +119,12 @@ const siteData = {
             { criteria: 'Thời Gian Bảo Quản', sadu: '15–20 ngày thường / 45 ngày trong tủ lạnh', regular: '7–10 ngày thường / 20–30 ngày trong tủ lạnh' }
         ],
         comparison: {
-            image: 'source/long-do.png',
+            image: 'source/long-do.webp',
             title: 'Sự khác biệt được nhìn thấy bằng mắt thường',
             description: 'Lòng đỏ trứng SADU luôn sánh màu, tươi ngon và đậm đà hơn so với trứng thường. Đây là kết quả của chế độ dinh dưỡng tự nhiên và chăm sóc đặc biệt từ trang trại.'
         },
         safety: {
-            image: 'source/me-bau-3.jpg',
+            image: 'source/me-bau-3.webp',
             title: 'An Toàn Cho Cả Gia Đình',
             description: 'Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ và người lớn tuổi.'
         }
@@ -224,11 +224,11 @@ const siteData = {
             ]
         },
         images: [
-            { src: 'source/qua-5.png', alt: 'Quà tặng SADU' },
-            { src: 'source/qua-1.png', alt: 'Hộp trứng SADU' },
-            { src: 'source/qua-2.png', alt: 'Quà cho mẹ bầu' },
-            { src: 'source/qua-7.png', alt: 'Quà gia đình' },
-            { src: 'source/qua-3.png', alt: 'Lòng đỏ trứng SADU' }
+            { src: 'source/qua-5.webp', alt: 'Quà tặng SADU' },
+            { src: 'source/qua-1.webp', alt: 'Hộp trứng SADU' },
+            { src: 'source/qua-2.webp', alt: 'Quà cho mẹ bầu' },
+            { src: 'source/qua-7.webp', alt: 'Quà gia đình' },
+            { src: 'source/qua-3.webp', alt: 'Lòng đỏ trứng SADU' }
         ],
         ctaText: '🎁 ĐẶT LÀM QUÀ NGAY'
     },
@@ -237,11 +237,11 @@ const siteData = {
     certificates: {
         title: 'Sự An Toàn Được Chứng Nhận',
         images: [
-            { src: 'source/t1.jpg', alt: 'Chứng nhận' },
-            { src: 'source/t2.jpg', alt: 'Khay trứng' },
-            { src: 'source/t3.jpg', alt: 'Mẹ bầu' },
-            { src: 'source/t4.jpg', alt: 'Mẹ và bé' },
-            { src: 'source/t5.jpg', alt: 'Lòng đỏ trứng' }
+            { src: 'source/t1.webp', alt: 'Chứng nhận' },
+            { src: 'source/t2.webp', alt: 'Khay trứng' },
+            { src: 'source/t3.webp', alt: 'Mẹ bầu' },
+            { src: 'source/t4.webp', alt: 'Mẹ và bé' },
+            { src: 'source/t5.webp', alt: 'Lòng đỏ trứng' }
         ]
     },
 
@@ -260,7 +260,7 @@ const siteData = {
         //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
         //     ],
         //     highlightSpec: true,
-        //     image: "source/banner-special.jpg",
+        //     image: "source/banner-special.webp",
         //     featured: true // ⭐ Set true để làm sản phẩm nổi bật
         // },
         {
@@ -276,7 +276,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/combo-6hop.png",
+            image: "source/combo-6hop.webp",
             featured: false
         },
         {
@@ -291,7 +291,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/combo-3hop.png",
+            image: "source/combo-3hop.webp",
             featured: true // ⭐ Set true để làm sản phẩm nổi bật
         },
         {
@@ -306,7 +306,7 @@ const siteData = {
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/1-hop.png",
+            image: "source/1-hop.webp",
             featured: false // ⭐ Set true để làm sản phẩm nổi bật
         },
 
@@ -324,7 +324,7 @@ const siteData = {
         //         "Chỉ áp dụng cho sản phẩm trứng so (trứng nhỏ)"
         //     ],
         //     highlightSpec: true,
-        //     image: "source/qua-1.png",
+        //     image: "source/qua-1.webp",
         //     featured: false
         // },
 
@@ -366,19 +366,19 @@ const siteData = {
 
     // Customer Feedback Images (Masonry Gallery)
     feedbackImages: [
-        { src: 'source/fb1.jpg', alt: 'Khách hàng hài lòng 1' },
-        { src: 'source/fb2.jpg', alt: 'Khách hàng hài lòng 2' },
-        { src: 'source/fb3.jpg', alt: 'Khách hàng hài lòng 3' },
-        { src: 'source/fb4.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb5.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb7.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb9.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb10.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb11.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb13.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb14.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb15.jpg', alt: 'Khách hàng hài lòng 4' },
-        { src: 'source/fb16.jpg', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb1.webp', alt: 'Khách hàng hài lòng 1' },
+        { src: 'source/fb2.webp', alt: 'Khách hàng hài lòng 2' },
+        { src: 'source/fb3.webp', alt: 'Khách hàng hài lòng 3' },
+        { src: 'source/fb4.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb5.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb7.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb9.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb10.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb11.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb13.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb14.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb15.webp', alt: 'Khách hàng hài lòng 4' },
+        { src: 'source/fb16.webp', alt: 'Khách hàng hài lòng 4' },
     ],
 
     // FAQ
@@ -469,7 +469,7 @@ const siteData = {
         description: 'Nhân dịp kỷ niệm 10 năm thành lập, SADU dành tặng chương trình ưu đãi đặc biệt chưa từng có! Chỉ áp dụng đến <strong>hết ngày 07/06/2026</strong>.', // [THAY]
 
         // --- Hình ảnh ---
-        image: 'source/banner-special.jpg',     // [THAY] ảnh minh họa chương trình
+        image: 'source/banner-special.webp',     // [THAY] ảnh minh họa chương trình
         imageAlt: 'Chương trình đặc biệt SADU', // [THAY]
         highlightText: 'CHỈ 100 SUẤT ĐẦU TIÊN',// [THAY] text nổi bật trên ảnh (bỏ trống nếu không cần)
 
@@ -523,7 +523,7 @@ const siteData = {
                     'Giao trong 1–2 ngày kể từ khi xác nhận đơn',
                     'Liên hệ trực tiếp ngay khi có vấn đề phát sinh'
                 ],
-                image: 'source/qua-1.png',
+                image: 'source/qua-1.webp',
                 imageAlt: 'Giao hàng nội thành — shipper SADU'
             },
             {
@@ -536,7 +536,7 @@ const siteData = {
                     'Vách ngăn riêng từng quả, không va chạm nhau',
                     'Kiểm tra kỹ lưỡng trước khi bàn giao đơn vị vận chuyển'
                 ],
-                image: 'source/ship1.jpg',
+                image: 'source/ship1.webp',
                 imageAlt: 'Đóng gói thùng trấu chống sốc — đơn tỉnh SADU'
             }
         ],
@@ -591,7 +591,7 @@ const siteData = {
                 }
             ]
         },
-        image: 'source/chuong-trai.jpg',
+        image: 'source/chuong-trai.webp',
         imageAlt: 'Trang trại SADU — ảnh thực tế',
         ctaText: '🛒 ĐẶT HÀNG NGAY'
     },
