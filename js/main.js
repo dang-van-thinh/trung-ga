@@ -220,6 +220,19 @@ const App = {
     },
 
     // ============================================
+    // FULL-SCREEN LOADING OVERLAY
+    // ============================================
+    showLoadingOverlay: () => {
+        const overlay = document.getElementById('loadingOverlay');
+        if (overlay) overlay.classList.add('show');
+    },
+
+    hideLoadingOverlay: () => {
+        const overlay = document.getElementById('loadingOverlay');
+        if (overlay) overlay.classList.remove('show');
+    },
+
+    // ============================================
     // SUBMIT ORDER
     // ============================================
     submitOrder: (event) => {
@@ -321,6 +334,7 @@ const App = {
             submitBtn.textContent = 'Đang gửi...';
             submitBtn.disabled = true;
         }
+        App.showLoadingOverlay();
 
         // 5. Send to Google Sheets using URLSearchParams (matching template)
         fetch(GOOGLE_SCRIPT_URL, {
@@ -373,6 +387,7 @@ const App = {
                     submitBtn.textContent = originalBtnText;
                     submitBtn.disabled = false;
                 }
+                App.hideLoadingOverlay();
             });
     },
 
