@@ -398,6 +398,41 @@
   .product-radio-card strong {
     font-size: 16px;
   }
+
+  .order-section {
+    padding: 60px 14px 80px;
+  }
+
+  .order-section-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .order-section-header h2 {
+    font-size: 24px;
+  }
+
+  .order-section-header p {
+    font-size: 14px;
+  }
+
+  .quantity-stepper {
+    max-width: 100%;
+  }
+
+  .quantity-stepper input {
+    width: 100%;
+  }
+
+  .order-summary-box {
+    padding: 12px;
+  }
+
+  .order-summary-row {
+    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
   .product-radio-card p,
   .product-radio-card small {
     line-height: 1.5;
@@ -751,6 +786,55 @@
     font-size: 24px;
     margin-bottom: 15px;
   }
+
+  .hero-text,
+  .hero-image,
+  .hero-content,
+  .why-content,
+  .story-content,
+  .packaging-methods,
+  .gift-body,
+  .farm-story-body,
+  .final-cta-highlights,
+  .feedback-masonry-grid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .herbs-grid,
+  .statistics-grid,
+  .products-grid,
+  .farm-story-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hero-signature-badge,
+  .farm-story-video,
+  .product-radio-card,
+  .faq-item,
+  .gift-occasion-card,
+  .value-anchor-card,
+  .packaging-card,
+  .packaging-guarantee,
+  .herb-card,
+  .farm-stat-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cta-btn,
+  .header-btn,
+  .product-btn,
+  .featured-product-btn,
+  .special-cta-button,
+  .final-cta-btn {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
   .header-container {
     padding: 0 12px;
   }
@@ -780,6 +864,16 @@
 
   .hero {
     padding: 30px 16px;
+  }
+
+  .herbal-story-section,
+  .packaging-section,
+  .customer-feedback-gallery,
+  .faq,
+  .final-cta-section,
+  .special-program-section {
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .hero-text p {
     font-size: 14px;
@@ -1624,6 +1718,61 @@
 
   .herb-card {
     padding: 12px 14px;
+  }
+
+  .herb-image-wrap {
+    height: 180px;
+  }
+
+  .herb-info strong {
+    font-size: 15px;
+  }
+
+  .herb-info span {
+    font-size: 13px;
+  }
+
+  .farm-story-body {
+    gap: 24px;
+  }
+
+  .farm-story-img {
+    height: 220px;
+  }
+
+  .farm-story-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .farm-stat-card {
+    padding: 12px 10px;
+  }
+
+  .farm-stat-number {
+    font-size: 20px;
+  }
+
+  .farm-stat-label {
+    font-size: 11px;
+  }
+
+  .farm-story-video {
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  .farm-process-title {
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+
+  .farm-step-content h4 {
+    font-size: 14px;
+  }
+
+  .farm-step-content p {
+    font-size: 13px;
   }
 
   .herbal-result-card {
