@@ -71,25 +71,16 @@ const siteData = {
         title: '13 Loại Thảo Dược — Dưỡng Từ Bên Trong',
         description: 'Không có con đường tắt nào để tạo ra trứng thực sự sạch. SADU phối trộn 13 loại thảo dược quý vào khẩu phần ăn hàng ngày của đàn gà — kết quả hiện ra ngay trên từng quả trứng bạn cầm trên tay.',
         herbs: [
-            { name: 'Cà Gai Leo', benefit: 'Hỗ trợ gan, giải độc tự nhiên' },
-            { name: 'Xạ Đen', benefit: 'Tăng đề kháng, chống oxy hóa' },
-            { name: 'Đinh Lăng', benefit: 'Bổ khí huyết, tăng sức sống' },
-            { name: 'Khôi Đốm', benefit: 'Kháng viêm, bảo vệ đường tiêu hóa' },
-            { name: 'Ngô Sơn La', benefit: 'Nguồn tinh bột sạch từ vùng cao' },
-            { name: 'Cám Gạo Tươi', benefit: 'Vitamin E tự nhiên, dưỡng lòng đỏ' },
-            { name: 'Khô Đậu Tương', benefit: 'Protein thực vật, không cholesterol xấu' },
-            { name: '+ 6 Thảo Dược Khác', benefit: 'Bổ sung khoáng chất & premix tự nhiên' }
+            { name: 'Cà Gai Leo', benefit: 'Hỗ trợ gan, giải độc tự nhiên', image: "source/herbals/cagaileo.jpg", imageAlt: 'Nguyên liệu Cà Gai Leo' },
+            { name: 'Xạ Đen', benefit: 'Tăng đề kháng, chống oxy hóa', image: "source/herbals/xa-den.jpg", imageAlt: 'Nguyên liệu Xạ Đen' },
+            { name: 'Đinh Lăng', benefit: 'Bổ khí huyết, tăng sức sống', image: "source/herbals/dinh-lang.jpg", imageAlt: 'Nguyên liệu Đinh Lăng' },
+            { name: 'Khôi Đốm', benefit: 'Kháng viêm, bảo vệ đường tiêu hóa', image: "source/herbals/khoi-dom.png", imageAlt: 'Nguyên liệu Khôi Đốm' },
+            { name: 'Ngô Sơn La', benefit: 'Nguồn tinh bột sạch từ vùng cao', image: "source/herbals/ngo.jpg", imageAlt: 'Nguyên liệu Ngô Sơn La' },
+            { name: 'Cám Gạo Tươi', benefit: 'Vitamin E tự nhiên, dưỡng lòng đỏ', image: "source/herbals/cam-gao.jpg", imageAlt: 'Nguyên liệu Cám Gạo Tươi' },
+            { name: 'Khô Đậu Tương', benefit: 'Protein thực vật, không cholesterol xấu', image: "source/herbals/kho-dau-tuong.png", imageAlt: 'Nguyên liệu Khô Đậu Tương' },
+            { name: '+ 6 Thảo Dược Khác', benefit: 'Bổ sung khoáng chất & premix tự nhiên', image: "source/thuc-an.webp", imageAlt: 'Nguyên liệu thảo dược khác' }
         ],
-        result: {
-            icon: '🥚',
-            title: 'Kết Quả Nhìn Thấy Bằng Mắt',
-            points: [
-                'Lòng đỏ cam sậm, sánh đặc — không phẩm màu',
-                'Không mùi tanh kể cả khi ăn món trứng trần, trứng luộc hay đặc biệt là trứng Osen',
-                'Cholesterol thấp hơn 1/2 trứng gà thường'
-            ]
-        },
-        gridBackground: 'source/thuc-an.webp'  // [THAY] ảnh làm background cho herb grid
+        gridBackground: ''  // [THAY] ảnh làm background cho herb grid
     },
 
     // Why Section
@@ -128,31 +119,6 @@ const siteData = {
             title: 'An Toàn Cho Cả Gia Đình',
             description: 'Chất lượng và độ an toàn của thực phẩm cho gia đình là ưu tiên hàng đầu. Trứng thường chứa tồn dư kháng sinh từ thức ăn công nghiệp, gây lo lắng cho sức khỏe gia đình, đặc biệt là bé nhỏ và người lớn tuổi.'
         }
-    },
-
-    // Value Justification Section
-    valueJustification: {
-        label: 'Tại Sao Xứng Đáng?',
-        title: 'Hơn 10.000đ Một Quả — Bạn Đang Mua Gì?',
-        subtitle: 'So sánh thật, không che giấu. Một quả trứng SADU có giá khoảng 10.000đ — cao hơn trứng thường. Đây là lý do tại sao con số đó xứng đáng.',
-        anchors: [
-            {
-                icon: '☕',
-                comparison: 'Bằng 1 ly cà phê',
-                value: 'Một quả trứng SADU có giá tương đương 1 ly cà phê sáng — nhưng nuôi dưỡng cả gia đình bạn'
-            },
-            {
-                icon: '🏥',
-                comparison: 'Rẻ hơn 1 lần khám bệnh',
-                value: 'Chi phí điều trị kháng sinh đề kháng tốn gấp hàng trăm lần — ăn sạch từ đầu mới là tiết kiệm thực sự'
-            },
-            {
-                icon: '👶',
-                comparison: 'Đầu tư cho con',
-                value: 'Với trẻ nhỏ và mẹ bầu, chất lượng thực phẩm ảnh hưởng trực tiếp đến sự phát triển — không thể thỏa hiệp'
-            }
-        ],
-        ctaText: '🛒 ĐẶT HÀNG NGAY'
     },
 
     // Statistics Section

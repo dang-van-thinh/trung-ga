@@ -118,7 +118,7 @@ const Components = {
     renderHerbalStory: () => {
         const section = document.getElementById('herbal-story');
         if (!section) return;
-        const { label, title, description, herbs, result, gridBackground } = siteData.herbalStory;
+        const { label, title, description, herbs, gridBackground } = siteData.herbalStory;
         const { title: farmTitle, stats, process, image: farmImage, imageAlt: farmImageAlt, ctaText } = siteData.farmStory;
 
         section.className = 'herbal-story-section';
@@ -133,20 +133,15 @@ const Components = {
                     <div class="herbs-grid" ${gridBackground ? `style="background-image: url('${gridBackground}')"` : ''}>
                         ${herbs.map(h => `
                             <div class="herb-card">
-                                <div class="herb-icon">🌿</div>
+                                <div class="herb-image-wrap">
+                                    <img class="herb-image" src="${h.image || ''}" alt="${h.imageAlt || h.name}" loading="lazy">
+                                </div>
                                 <div class="herb-info">
                                     <strong>${h.name}</strong>
                                     <span>${h.benefit}</span>
                                 </div>
                             </div>
                         `).join('')}
-                    </div>
-                    <div class="herbal-result-card">
-                        <div class="herbal-result-icon">${result.icon}</div>
-                        <h3>${result.title}</h3>
-                        <ul class="herbal-result-list">
-                            ${result.points.map(p => `<li>${p}</li>`).join('')}
-                        </ul>
                     </div>
                 </div>
 
@@ -190,6 +185,13 @@ const Components = {
                         </div>
                     </div>
                 </div>
+
+                <div class="farm-story-video">
+                    <div class="farm-story-video-wrap">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4S-lCNEwv68?si=H_wm_B7n1JykS0sw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+
                 <div class="value-cta" style="margin-top: 20px; text-align: center;">
                         <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
                     </div>
@@ -285,35 +287,6 @@ const Components = {
         `;
     },
 
-    // Render Statistics Section
-    renderStatistics: () => {
-        const section = document.getElementById('statistics');
-        const { title, stats } = siteData.statistics;
-
-        section.className = 'statistics-section';
-        section.innerHTML = `
-            <div class="statistics-container">
-                <div class="statistics-header">
-                    <h2>${title}</h2>
-                </div>
-                
-                <div class="statistics-grid">
-                    ${stats.map((stat, index) => `
-                        <div class="statistic-card" style="animation-delay: ${index * 0.1}s">
-                            <div class="statistic-icon">${stat.icon}</div>
-                            <div class="statistic-number" data-target="${stat.number}">${stat.number}</div>
-                            <div class="statistic-label">${stat.label}</div>
-                            <div class="statistic-description">${stat.description}</div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-
-        // Initialize counter animation
-        setTimeout(() => App.animateCounters(), 300);
-    },
-
     // Render Gift Carousel Section
     renderGiftCarousel: () => {
         const section = document.getElementById('gift-carousel');
@@ -368,40 +341,6 @@ const Components = {
         `;
 
         setTimeout(() => App.initCarousel('carouselGiftMain', siteData.giftSection.images), 0);
-    },
-
-    // Render Value Justification Section
-    renderValueJustification: () => {
-        const section = document.getElementById('value-justification');
-        if (!section) return;
-        const { label, title, subtitle, anchors, ctaText } = siteData.valueJustification;
-
-        section.className = 'value-justification-section';
-        section.innerHTML = `
-            <div class="value-justification-container">
-                <div class="value-header">
-                    <span class="value-label">${label}</span>
-                    <h2>${title}</h2>
-                    <p>${subtitle}</p>
-                </div>
-
-                <div class="value-anchors">
-                    ${anchors.map(a => `
-                        <div class="value-anchor-card">
-                            <div class="value-anchor-icon">${a.icon}</div>
-                            <div class="value-anchor-body">
-                                <strong>${a.comparison}</strong>
-                                <p>${a.value}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-
-                <div class="value-cta">
-                    <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
-                </div>
-            </div>
-        `;
     },
 
     // Render Certificates Carousel
@@ -949,8 +888,6 @@ const Components = {
         Components.renderHerbalStory();
         Components.renderWhy();
         Components.renderPackaging();
-        Components.renderValueJustification();
-        Components.renderStatistics();
         Components.renderCertificates();
         Components.renderSpecialProgram();
         Components.renderProducts();

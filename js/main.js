@@ -110,10 +110,9 @@ const App = {
     },
 
     // ============================================
-    // ORDER MODAL
+    // ORDER SECTION
     // ============================================
     openOrderModal: (productIndex = 0) => {
-        const modal = document.getElementById('orderModal');
         const radios = document.querySelectorAll('input[name="productOption"]');
 
         if (radios[productIndex]) {
@@ -127,21 +126,22 @@ const App = {
             checkedRadio.dispatchEvent(new Event('change', { bubbles: true }));
         }
 
-        if (modal) {
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden';
-            const alertEl = document.getElementById('customAlert');
-            if (alertEl) alertEl.style.zIndex = '0';
+        const section = document.getElementById('order-section');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => {
+                const nameInput = document.getElementById('name');
+                if (nameInput && document.activeElement !== nameInput) {
+                    nameInput.focus({ preventScroll: true });
+                }
+            }, 600);
         }
     },
 
     closeOrderModal: () => {
-        const modal = document.getElementById('orderModal');
-        if (modal) {
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto';
-            const alertEl = document.getElementById('customAlert');
-            if (alertEl) alertEl.style.zIndex = '';
+        const resultModal = document.getElementById('resultModal');
+        if (resultModal) {
+            resultModal.classList.remove('show');
         }
     },
 
@@ -372,7 +372,6 @@ const App = {
                     }, { eventID: orderData.eventId });
                 }
 
-                App.closeOrderModal();
             })
             .catch(error => {
                 console.error('❌ Error sending order:', error);
@@ -604,7 +603,7 @@ const App = {
         const sectionIds = [
             'benefits', 'herbal-story', 'statistics', 'why', 'packaging',
             'value-justification', 'certificates', 'special-program',
-            'products', 'gift-carousel', 'customer-feedback-gallery',
+            'products', 'order-section', 'gift-carousel', 'customer-feedback-gallery',
             'faq', 'final-cta'
         ];
         const sections = sectionIds
