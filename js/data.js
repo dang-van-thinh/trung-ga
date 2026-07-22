@@ -85,7 +85,7 @@ const siteData = {
 
     // Why Section
     why: {
-        title: 'Tại sao bạn nên lựa chọn <span style="color: var(--primary)"> TRỨNG GÀ THẢO DƯỢC SADU ?</span>',
+        title: 'Tại sao bạn nên lựa chọn <span style="color: var(--primary) "> TRỨNG GÀ THẢO DƯỢC SADU ?</span>',
         subtitle: 'So sánh chi tiết giữa trứng SADU và trứng công nghiệp thông thường',
         farmStory: {
             title: 'Cam kết "3 KHÔNG" từ SADU',

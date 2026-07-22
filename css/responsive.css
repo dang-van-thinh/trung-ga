@@ -286,24 +286,48 @@
   .nav-menu {
     display: none;
     position: absolute;
-    top: 60px;
+    top: 100%;
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, var(--primary) 0%, #1b5e20 100%);
+    background: linear-gradient(135deg, var(--primary, #2e7d32) 0%, #1b5e20 100%);
     flex-direction: column;
     gap: 0;
-    padding: 15px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 12px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    z-index: 10001;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
   }
   .nav-menu.mobile-active {
-    display: flex;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
   .nav-menu a {
-    padding: 12px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    text-decoration: none;
+    display: block;
   }
   .mobile-menu-btn {
-    display: block;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 10002;
+    position: relative;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .pricing-item.featured {

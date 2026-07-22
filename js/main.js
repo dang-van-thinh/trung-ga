@@ -673,6 +673,30 @@ const App = {
             quantityInput.addEventListener('change', App.updateTotalPrice);
         }
 
+        // Mobile menu toggle button listener (Click & Touchstart for instant response)
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn') || document.querySelector('.mobile-menu-btn');
+        if (mobileMenuBtn) {
+            const handleToggle = (e) => {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                App.toggleMenu();
+            };
+            mobileMenuBtn.onclick = handleToggle;
+            mobileMenuBtn.addEventListener('touchstart', handleToggle, { passive: false });
+        }
+
+        // Close mobile menu when clicking outside header
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('header')) {
+                const nav = document.querySelector('.nav-menu');
+                if (nav && nav.classList.contains('mobile-active')) {
+                    nav.classList.remove('mobile-active');
+                }
+            }
+        });
+
         // Mobile menu close on link click
         const navLinks = document.querySelectorAll('.nav-menu a');
         navLinks.forEach(link => {
@@ -767,6 +791,9 @@ const App = {
         console.log('🎉 SADU Landing Page ready!');
     }
 };
+
+// Export App to global window object so inline onclick handlers work across all browsers
+window.App = App;
 
 // Run application when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {

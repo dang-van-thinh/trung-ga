@@ -56,7 +56,7 @@ const Components = {
                 <nav class="nav-menu">
                     ${navigation.map(item => `<a href="${item.href}">${item.label}</a>`).join('')}
                 </nav>
-                <button class="mobile-menu-btn" onclick="App.toggleMenu()">☰</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Toggle navigation menu" onclick="if(window.App && window.App.toggleMenu) window.App.toggleMenu();">☰</button>
             </div>
         `;
     },
@@ -211,7 +211,7 @@ const Components = {
             <div class="why-container">
                 <div class="why-header">
                     <span class="why-label">Lý Do Chọn SADU</span>
-                    <h2>${title}</h2>
+                    <h2 style="font-weight: 900;">${title}</h2>
                     <p class="egg-comparison-subtitle">${subtitle}</p>
                 </div>
 
