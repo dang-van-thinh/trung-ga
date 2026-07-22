@@ -760,6 +760,55 @@ const App = {
     },
 
     // ============================================
+    // FACEBOOK PIXEL SCROLL DEPTH TRACKING (25%, 50%, 75%, 100%)
+    // ============================================
+    initScrollDepthTracking: () => {
+        const trackedDepths = { 25: false, 50: false, 75: false, 100: false };
+        let ticking = false;
+
+        const handleScroll = () => {
+            if (ticking) return;
+            ticking = true;
+
+            requestAnimationFrame(() => {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+                if (scrollHeight <= 0) {
+                    ticking = false;
+                    return;
+                }
+
+                const percent = Math.min(100, Math.round((scrollTop / scrollHeight) * 100));
+
+                [25, 50, 75, 100].forEach(depth => {
+                    if (percent >= depth && !trackedDepths[depth]) {
+                        trackedDepths[depth] = true;
+
+                        if (typeof fbq === 'function') {
+                            // Tự động bắn Custom Event cho Facebook Pixel
+                            fbq('trackCustom', `Scroll_${depth}%`, {
+                                depth_percent: depth,
+                                page_path: window.location.pathname
+                            });
+
+                            fbq('trackCustom', 'ScrollDepth', {
+                                percent: depth
+                            });
+
+                            console.log(`📊 FB Pixel Tracked Scroll: ${depth}%`);
+                        }
+                    }
+                });
+
+                ticking = false;
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    },
+
+    // ============================================
     // MAIN INITIALIZATION
     // ============================================
     init: async () => {
@@ -785,6 +834,7 @@ const App = {
         App.setupEventListeners();
         App.initScrollReveal();
         App.startProductCountdown();
+        App.initScrollDepthTracking();
 
         setTimeout(App.showCustomerAlert, 2000);
 
