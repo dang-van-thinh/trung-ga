@@ -283,19 +283,30 @@
     font-size: 15px;
   }
 
+  /* Mobile Header & Menu Scroll Fix */
+  header,
+  header.scrolled {
+    background: #1b5e20 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
   .nav-menu {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: linear-gradient(135deg, var(--primary, #2e7d32) 0%, #1b5e20 100%);
-    flex-direction: column;
-    gap: 0;
-    padding: 12px 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    z-index: 10001;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    /* position and top are controlled by JS — no !important so JS can override */
+    position: fixed;
+    top: 54px;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #1b4332 !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 8px 0 !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4) !important;
+    z-index: 99999 !important;
+    border-bottom: 3px solid var(--primary, #2e7d32) !important;
   }
   .nav-menu.mobile-active {
     display: flex !important;
@@ -304,13 +315,32 @@
     pointer-events: auto !important;
   }
   .nav-menu a {
-    color: #ffffff;
-    padding: 14px 20px;
-    font-size: 15px;
-    font-weight: 600;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    text-decoration: none;
-    display: block;
+    color: #ffffff !important;
+    padding: 14px 24px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    text-decoration: none !important;
+    display: block !important;
+    background: transparent !important;
+  }
+  .nav-menu a:last-child {
+    border-bottom: none !important;
+  }
+  /* Nút MUA NGAY trong mobile menu: full-width nổi bật */
+  .nav-menu .cta-btn {
+    display: block !important;
+    width: calc(100% - 32px) !important;
+    margin: 12px 16px 8px !important;
+    padding: 14px 20px !important;
+    font-size: 16px !important;
+    border-radius: 12px !important;
+    border-bottom: none !important;
+    text-align: center !important;
+    background: linear-gradient(135deg, #ff8f00 0%, #f44336 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(244, 67, 54, 0.4) !important;
   }
   .mobile-menu-btn {
     display: flex !important;
@@ -1183,11 +1213,7 @@
     border-radius: 4px;
   }
   .mobile-menu-btn {
-    font-size: 20px;
-  }
-  .nav-menu a {
-    font-size: 12px;
-    padding: 10px 14px;
+    font-size: 24px;
   }
 
   .hero {

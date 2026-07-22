@@ -54,9 +54,10 @@ const Components = {
                     </div>
                 </div>
                 <nav class="nav-menu">
+                <button class="cta-btn" onclick="App.openOrderModal()"> 🛒 MUA NGAY</button>
                     ${navigation.map(item => `<a href="${item.href}">${item.label}</a>`).join('')}
                 </nav>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Toggle navigation menu" onclick="if(window.App && window.App.toggleMenu) window.App.toggleMenu();">☰</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Toggle navigation menu">☰</button>
             </div>
         `;
     },

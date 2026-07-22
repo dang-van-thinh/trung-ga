@@ -491,6 +491,91 @@ header.scrolled {
   opacity: 0.8;
 }
 
+/* ====================================================
+   Header CTA Button — compact, pill-style, eye-catching
+   Chỉ áp dụng cho nút MUA NGAY bên trong nav-menu ở header
+   ==================================================== */
+.nav-menu .cta-btn {
+  /* Reset general cta-btn sizing */
+  padding: 9px 20px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.6px !important;
+  white-space: nowrap !important;
+
+  /* Pill shape */
+  border-radius: 50px !important;
+
+  /* Vivid accent gradient */
+  background: linear-gradient(135deg, #ff8f00 0%, #f44336 100%) !important;
+  color: #fff !important;
+  border: 2px solid rgba(255, 255, 255, 0.22) !important;
+
+  /* Glow shadow */
+  box-shadow:
+    0 3px 14px rgba(244, 67, 54, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+
+  /* Flex inline */
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+
+  /* Transitions */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+
+  /* Override the big-button animation with a lighter one */
+  animation: header-btn-glow 2s ease-in-out infinite !important;
+}
+
+@keyframes header-btn-glow {
+  0%, 100% {
+    box-shadow: 0 3px 14px rgba(244, 67, 54, 0.4), 0 0 0 0 rgba(244, 67, 54, 0.15);
+  }
+  50% {
+    box-shadow: 0 5px 22px rgba(244, 67, 54, 0.65), 0 0 0 6px rgba(244, 67, 54, 0);
+  }
+}
+
+/* Shimmer cho nút header */
+.nav-menu .cta-btn::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -60% !important;
+  width: 45% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.28) 50%,
+    rgba(255,255,255,0) 100%
+  ) !important;
+  transform: skewX(-20deg) !important;
+  animation: btn-shimmer 2.8s ease-in-out infinite !important;
+  pointer-events: none !important;
+}
+
+/* Before reset (không cần ripple to ở header) */
+.nav-menu .cta-btn::before {
+  display: none !important;
+}
+
+.nav-menu .cta-btn:hover {
+  background: linear-gradient(135deg, #e65100 0%, #c62828 100%) !important;
+  transform: translateY(-2px) scale(1.04) !important;
+  box-shadow: 0 8px 24px rgba(244, 67, 54, 0.6) !important;
+  animation: none !important;
+}
+
+.nav-menu .cta-btn:active {
+  transform: scale(0.96) translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.35) !important;
+  animation: none !important;
+}
+
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -2923,7 +3008,7 @@ header.scrolled {
 
 .submit-btn {
   width: 100%;
-  background: var(--accent);
+  background: var(--primary);
   color: white;
   border: none;
   padding: 14px;
@@ -2937,8 +3022,9 @@ header.scrolled {
   overflow-wrap: anywhere;
 }
 .submit-btn:hover {
-  background: var(--accent-dark);
+  background: var(--primary-dark, #1b5e20);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
 }
 
 /* Scroll to Top Button */
@@ -4819,4 +4905,124 @@ textarea:focus-visible {
   margin: 0 auto 16px auto;
   width: fit-content;
   border: 1px solid rgba(46, 125, 50, 0.18);
+}
+
+/* ===================================================
+   CTA BUTTON ATTENTION ANIMATIONS
+   - Shimmer light sweep (quét ánh sáng ngang)
+   - Glow pulse (nhịp đập phát sáng)
+   - Periodic wiggle (lắc nhẹ mỗi 4 giây)
+   =================================================== */
+
+@keyframes btn-shimmer {
+  0% { transform: translateX(-140%) skewX(-20deg); }
+  100% { transform: translateX(260%) skewX(-20deg); }
+}
+
+@keyframes btn-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 18px rgba(245, 124, 0, 0.35), 0 0 0 0 rgba(245, 124, 0, 0.12);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(245, 124, 0, 0.6), 0 0 0 8px rgba(245, 124, 0, 0);
+  }
+}
+
+@keyframes btn-wiggle {
+  0%, 88%, 100%  { transform: translateY(0) rotate(0deg); }
+  90%  { transform: translateY(-3px) rotate(-1.5deg); }
+  92%  { transform: translateY(-3px) rotate(1.5deg); }
+  94%  { transform: translateY(-2px) rotate(-1deg); }
+  96%  { transform: translateY(-2px) rotate(1deg); }
+  98%  { transform: translateY(-1px) rotate(0deg); }
+}
+
+/* Shimmer pseudo-element cho tất cả nút mua hàng (trừ submit-btn) */
+.cta-btn::after,
+.featured-product-btn::after,
+.product-btn::after,
+.special-cta-button::after,
+.final-cta-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: btn-shimmer 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* submit-btn shimmer riêng */
+.submit-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: btn-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Glow pulse + wiggle combined trên tất cả nút mua (màu cam) */
+.cta-btn,
+.featured-product-btn,
+.product-btn,
+.special-cta-button,
+.final-cta-btn {
+  animation: btn-glow-pulse 2.2s ease-in-out infinite, btn-wiggle 4s ease-in-out infinite !important;
+}
+
+/* submit-btn: glow màu xanh lá --primary */
+@keyframes submit-btn-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 18px rgba(46, 125, 50, 0.35), 0 0 0 0 rgba(46, 125, 50, 0.12);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(46, 125, 50, 0.6), 0 0 0 8px rgba(46, 125, 50, 0);
+  }
+}
+.submit-btn {
+  animation: submit-btn-glow-pulse 2.2s ease-in-out infinite, btn-wiggle 4s ease-in-out infinite !important;
+}
+
+/* Khi hover: tắt animation, giữ glow mạnh */
+.cta-btn:hover,
+.featured-product-btn:hover,
+.product-btn:hover,
+.special-cta-button:hover,
+.final-cta-btn:hover {
+  animation: none !important;
+  box-shadow: 0 10px 36px rgba(245, 124, 0, 0.58) !important;
+}
+.submit-btn:hover {
+  animation: none !important;
+  box-shadow: 0 10px 36px rgba(46, 125, 50, 0.55) !important;
+}
+
+/* Khi :active: scale nhỏ lại tạo cảm giác nhấn */
+.cta-btn:active,
+.featured-product-btn:active,
+.product-btn:active,
+.special-cta-button:active,
+.final-cta-btn:active,
+.submit-btn:active {
+  animation: none !important;
+  transform: scale(0.97) translateY(1px) !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
 }

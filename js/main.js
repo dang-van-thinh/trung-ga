@@ -420,10 +420,42 @@ const App = {
         }
     },
 
-    toggleMenu: () => {
-        const nav = document.querySelector('.nav-menu');
-        if (nav) nav.classList.toggle('mobile-active');
-        // header height may change on mobile when menu opens
+    lastMenuToggleTime: 0,
+
+    toggleMenu: (e) => {
+        if (e) {
+            if (typeof e.preventDefault === 'function') e.preventDefault();
+            if (typeof e.stopPropagation === 'function') e.stopPropagation();
+        }
+        const now = Date.now();
+        if (now - App.lastMenuToggleTime < 350) return;
+        App.lastMenuToggleTime = now;
+
+        const header = document.querySelector('header');
+        let nav = document.querySelector('.nav-menu');
+
+        // Move nav-menu to document.body (escape header stacking context and overflow clipping)
+        if (nav && nav.parentElement !== document.body) {
+            document.body.appendChild(nav);
+        }
+
+        if (nav && header) {
+            const isActive = nav.classList.contains('mobile-active');
+            if (isActive) {
+                nav.classList.remove('mobile-active');
+            } else {
+                // Calculate exact position below header using getBoundingClientRect
+                const rect = header.getBoundingClientRect();
+                // Use setProperty with 'important' to guarantee JS wins over any CSS !important
+                nav.style.setProperty('position', 'fixed', 'important');
+                nav.style.setProperty('top', rect.bottom + 'px', 'important');
+                nav.style.setProperty('left', '0', 'important');
+                nav.style.setProperty('right', '0', 'important');
+                nav.style.setProperty('width', '100%', 'important');
+                nav.style.setProperty('z-index', '999999', 'important');
+                nav.classList.add('mobile-active');
+            }
+        }
         setTimeout(() => App.syncBodyPaddingWithHeader(), 80);
     },
 
@@ -673,23 +705,17 @@ const App = {
             quantityInput.addEventListener('change', App.updateTotalPrice);
         }
 
-        // Mobile menu toggle button listener (Click & Touchstart for instant response)
+        // Mobile menu toggle button listener
         const mobileMenuBtn = document.getElementById('mobileMenuBtn') || document.querySelector('.mobile-menu-btn');
         if (mobileMenuBtn) {
-            const handleToggle = (e) => {
-                if (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-                App.toggleMenu();
-            };
-            mobileMenuBtn.onclick = handleToggle;
-            mobileMenuBtn.addEventListener('touchstart', handleToggle, { passive: false });
+            mobileMenuBtn.onclick = (e) => App.toggleMenu(e);
+            mobileMenuBtn.ontouchstart = (e) => App.toggleMenu(e);
         }
 
-        // Close mobile menu when clicking outside header
+        // Close mobile menu when clicking outside header or nav-menu
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('header')) {
+            if (Date.now() - App.lastMenuToggleTime < 350) return;
+            if (!e.target.closest('header') && !e.target.closest('.nav-menu')) {
                 const nav = document.querySelector('.nav-menu');
                 if (nav && nav.classList.contains('mobile-active')) {
                     nav.classList.remove('mobile-active');
@@ -698,12 +724,11 @@ const App = {
         });
 
         // Mobile menu close on link click
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.nav-menu a')) {
                 const nav = document.querySelector('.nav-menu');
                 if (nav) nav.classList.remove('mobile-active');
-            });
+            }
         });
 
         // Close modal with Escape key
