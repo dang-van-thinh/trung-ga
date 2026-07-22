@@ -472,6 +472,90 @@ const App = {
     },
 
     // ============================================
+    // IMAGE LIGHTBOX
+    // ============================================
+    _lightbox: {
+        currentIndex: 0,
+        images: [],
+        touchStartX: 0,
+    },
+
+    openLightbox: (index) => {
+        const lb = App._lightbox;
+        lb.images = siteData.feedbackImages || [];
+        if (!lb.images.length) return;
+
+        lb.currentIndex = index;
+        App._lightboxRender();
+
+        const overlay = document.getElementById('imageLightbox');
+        overlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+
+        // Keyboard navigation
+        document._lightboxKeyHandler = (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') App.lightboxNext();
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') App.lightboxPrev();
+            else if (e.key === 'Escape') App.closeLightbox();
+        };
+        document.addEventListener('keydown', document._lightboxKeyHandler);
+
+        // Touch swipe support
+        overlay.addEventListener('touchstart', (e) => {
+            App._lightbox.touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        overlay.addEventListener('touchend', (e) => {
+            const diff = App._lightbox.touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) App.lightboxNext();
+                else App.lightboxPrev();
+            }
+        }, { passive: true });
+    },
+
+    closeLightbox: () => {
+        const overlay = document.getElementById('imageLightbox');
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+        if (document._lightboxKeyHandler) {
+            document.removeEventListener('keydown', document._lightboxKeyHandler);
+            document._lightboxKeyHandler = null;
+        }
+    },
+
+    closeLightboxOnBackdrop: (e) => {
+        if (e.target === document.getElementById('imageLightbox')) {
+            App.closeLightbox();
+        }
+    },
+
+    lightboxNext: () => {
+        const lb = App._lightbox;
+        lb.currentIndex = (lb.currentIndex + 1) % lb.images.length;
+        App._lightboxRender();
+    },
+
+    lightboxPrev: () => {
+        const lb = App._lightbox;
+        lb.currentIndex = (lb.currentIndex - 1 + lb.images.length) % lb.images.length;
+        App._lightboxRender();
+    },
+
+    _lightboxRender: () => {
+        const lb = App._lightbox;
+        const img = document.getElementById('lightboxImg');
+        const counter = document.getElementById('lightboxCounter');
+
+        // Trigger re-animation bằng cách clone + replace
+        const newImg = img.cloneNode();
+        newImg.src = lb.images[lb.currentIndex].src;
+        newImg.alt = lb.images[lb.currentIndex].alt;
+        img.parentNode.replaceChild(newImg, img);
+
+        counter.textContent = `${lb.currentIndex + 1} / ${lb.images.length}`;
+    },
+
+    // ============================================
     // LOCATION SELECTORS
     // ============================================
     updateDistricts: () => {

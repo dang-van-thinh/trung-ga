@@ -297,6 +297,17 @@
     <!-- Footer -->
     <footer id="footer"></footer>
 
+    <!-- Image Lightbox Modal -->
+    <div id="imageLightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to" onclick="App.closeLightboxOnBackdrop(event)">
+        <button class="lightbox-close" id="lightboxClose" onclick="App.closeLightbox()" aria-label="Đóng">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" onclick="App.lightboxPrev()" aria-label="Ảnh trước">&#8249;</button>
+        <div class="lightbox-content-wrap">
+            <img id="lightboxImg" src="" alt="Ảnh khách hàng" class="lightbox-img">
+            <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" onclick="App.lightboxNext()" aria-label="Ảnh tiếp">&#8250;</button>
+    </div>
+
     <!-- Full-screen Loading Overlay (hiện khi đang gửi đơn hàng) -->
     <div id="loadingOverlay" class="loading-overlay">
         <div class="loading-overlay-content">

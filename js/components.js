@@ -608,8 +608,8 @@ const Components = {
 
                 <div id="feedbackMasonryWrap" class="feedback-masonry-wrap ${shouldCollapse ? 'is-collapsed' : ''}">
                     <div class="feedback-masonry-grid">
-                        ${feedbackImages.map(img => `
-                            <div class="feedback-item">
+                        ${feedbackImages.map((img, idx) => `
+                            <div class="feedback-item" onclick="App.openLightbox(${idx})">
                                 <img src="${img.src}" alt="${img.alt}" loading="lazy">
                             </div>
                         `).join('')}
