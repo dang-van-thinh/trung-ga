@@ -47,7 +47,7 @@ const Components = {
         header.innerHTML = `
             <div class="header-container">
                 <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <div class="logo-icon">🥚</div>
+                    <div class="logo-icon"><img src="source/logo-sadu.png" alt="SADU logo"></div>
                     <div>
                         <div>SADU</div>
                         <div style="font-size: 12px;">Trứng Gà Thảo Dược</div>
@@ -56,7 +56,6 @@ const Components = {
                 <nav class="nav-menu">
                     ${navigation.map(item => `<a href="${item.href}">${item.label}</a>`).join('')}
                 </nav>
-                <button class="header-btn" onclick="App.openOrderModal()">ĐẶT HÀNG NGAY</button>
                 <button class="mobile-menu-btn" onclick="App.toggleMenu()">☰</button>
             </div>
         `;
@@ -130,18 +129,21 @@ const Components = {
                     <p>${description}</p>
                 </div>
                 <div class="herbal-story-body">
-                    <div class="herbs-grid" ${gridBackground ? `style="background-image: url('${gridBackground}')"` : ''}>
-                        ${herbs.map(h => `
-                            <div class="herb-card">
-                                <div class="herb-image-wrap">
-                                    <img class="herb-image" src="${h.image || ''}" alt="${h.imageAlt || h.name}" loading="lazy">
+                    <div class="herbs-swipe-hint"><span>👈</span> Vuốt xem 13 thảo dược tự nhiên <span>👉</span></div>
+                    <div class="herbs-grid-wrapper">
+                        <div class="herbs-grid" ${gridBackground ? `style="background-image: url('${gridBackground}')"` : ''}>
+                            ${herbs.map(h => `
+                                <div class="herb-card">
+                                    <div class="herb-image-wrap">
+                                        <img class="herb-image" src="${h.image || ''}" alt="${h.imageAlt || h.name}" loading="lazy">
+                                    </div>
+                                    <div class="herb-info">
+                                        <strong>${h.name}</strong>
+                                        <span>${h.benefit}</span>
+                                    </div>
                                 </div>
-                                <div class="herb-info">
-                                    <strong>${h.name}</strong>
-                                    <span>${h.benefit}</span>
-                                </div>
-                            </div>
-                        `).join('')}
+                            `).join('')}
+                        </div>
                     </div>
                 </div>
 
@@ -233,7 +235,8 @@ const Components = {
                 </div>
 
                 <!-- Block 2: Bảng so sánh chi tiết SADU vs trứng thường -->
-                <div style="margin: 40px 0;">
+                <div class="comparison-swipe-hint"><span>👈</span> Vuốt sang để xem bảng so sánh chi tiết <span>👉</span></div>
+                <div class="comparison-table-wrapper">
                     <table class="comparison-table">
                         <thead>
                             <tr>

@@ -151,7 +151,12 @@ const App = {
     updateTotalPrice: () => {
         const selectedProductRadio = document.querySelector('input[name="productOption"]:checked');
         const productPrice = parseInt(selectedProductRadio?.dataset.price) || 0;
-        const quantity = parseInt(document.getElementById('quantity').value) || 1;
+        const quantityInput = document.getElementById('quantity');
+        let quantity = parseInt(quantityInput?.value) || 1;
+        if (quantity < 1) {
+            quantity = 1;
+            if (quantityInput) quantityInput.value = 1;
+        }
         const subtotal = productPrice * quantity;
 
         const { freeShipThreshold = 358000, shippingFee = 30000 } = siteData.shipping || {};
@@ -393,6 +398,14 @@ const App = {
     // ============================================
     // UI INTERACTIONS
     // ============================================
+    // Ensure body padding-top matches header height to avoid layout jumps
+    syncBodyPaddingWithHeader: () => {
+        const headerContainer = document.querySelector('header .header-container');
+        const siteHeader = document.querySelector('header');
+        if (!siteHeader) return;
+        const headerHeight = headerContainer ? headerContainer.offsetHeight : siteHeader.offsetHeight;
+        document.body.style.paddingTop = headerHeight + 'px';
+    },
     toggleFaq: (element) => {
         const clickedItem = element.parentElement;
         const isActive = clickedItem.classList.contains('active');
@@ -410,6 +423,8 @@ const App = {
     toggleMenu: () => {
         const nav = document.querySelector('.nav-menu');
         if (nav) nav.classList.toggle('mobile-active');
+        // header height may change on mobile when menu opens
+        setTimeout(() => App.syncBodyPaddingWithHeader(), 80);
     },
 
     scrollToTop: () => {
@@ -612,7 +627,8 @@ const App = {
 
         if (!sections.length) return;
 
-        if (!('IntersectionObserver' in window)) {
+        // Tránh translateY jump khi cuộn màn hình trên mobile (< 768px)
+        if (window.innerWidth <= 768 || !('IntersectionObserver' in window)) {
             sections.forEach(el => el.classList.add('reveal-section', 'is-visible'));
             return;
         }
@@ -633,12 +649,12 @@ const App = {
     },
 
     setupEventListeners: () => {
-        // Close modal when clicking outside
-        const orderModal = document.getElementById('orderModal');
-        if (orderModal) {
-            orderModal.addEventListener('click', (e) => {
-                if (e.target === orderModal) {
-                    App.closeOrderModal();
+        // Close result modal when clicking outside
+        const resultModal = document.getElementById('resultModal');
+        if (resultModal) {
+            resultModal.addEventListener('click', (e) => {
+                if (e.target === resultModal) {
+                    App.closeResultModal();
                 }
             });
         }
@@ -683,6 +699,10 @@ const App = {
             updateHeaderBg();
         }
 
+        // Keep body padding in sync with header height
+        App.syncBodyPaddingWithHeader();
+        window.addEventListener('resize', () => App.syncBodyPaddingWithHeader());
+
         // Scroll to top button visibility
         const scrollTopBtn = document.getElementById('scrollTop');
         if (scrollTopBtn) {
@@ -718,8 +738,20 @@ const App = {
     // ============================================
     // MAIN INITIALIZATION
     // ============================================
-    init: () => {
+    init: async () => {
         console.log('🚀 SADU Landing Page Initializing...');
+
+        if (typeof loadLocations === 'function') {
+            try {
+                await loadLocations();
+                if (typeof initSearchableSelects === 'function') {
+                    initSearchableSelects();
+                    console.log('✅ Location selectors initialized');
+                }
+            } catch (err) {
+                console.error('❌ Error loading locations:', err);
+            }
+        }
 
         if (typeof Components !== 'undefined') {
             Components.init();
@@ -727,6 +759,8 @@ const App = {
         }
 
         App.setupEventListeners();
+        App.initScrollReveal();
+        App.startProductCountdown();
 
         setTimeout(App.showCustomerAlert, 2000);
 
@@ -736,64 +770,5 @@ const App = {
 
 // Run application when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 SADU Landing Page Initializing...');
-
-    // Initialize location selectors first (must complete before other components)
-    if (typeof loadLocations === 'function') {
-        loadLocations().then(() => {
-            if (typeof initSearchableSelects === 'function') {
-                initSearchableSelects();
-                console.log('✅ Location selectors initialized');
-            }
-
-            // Initialize other components AFTER locations are ready
-            if (typeof Components !== 'undefined') {
-                Components.init();
-                console.log('✅ Components rendered');
-            }
-
-            if (typeof App !== 'undefined') {
-                App.setupEventListeners();
-                App.initScrollReveal();
-                App.startProductCountdown();
-                setTimeout(App.showCustomerAlert, 2000);
-                console.log('🎉 SADU Landing Page ready!');
-            }
-        }).catch(err => {
-            console.error('❌ Error loading locations:', err);
-            // Still initialize app even if locations fail (will use fallback data)
-            if (typeof initSearchableSelects === 'function') {
-                initSearchableSelects();
-                console.log('⚠️ Location selectors initialized with fallback data');
-            }
-
-            if (typeof Components !== 'undefined') {
-                Components.init();
-                console.log('✅ Components rendered');
-            }
-
-            if (typeof App !== 'undefined') {
-                App.setupEventListeners();
-                App.initScrollReveal();
-                App.startProductCountdown();
-                setTimeout(App.showCustomerAlert, 2000);
-                console.log('🎉 SADU Landing Page ready (with fallback)!');
-            }
-        });
-    } else {
-        // Fallback if loadLocations is not available
-        console.warn('⚠️ loadLocations not found, initializing without location data');
-        if (typeof Components !== 'undefined') {
-            Components.init();
-            console.log('✅ Components rendered');
-        }
-
-        if (typeof App !== 'undefined') {
-            App.setupEventListeners();
-            App.initScrollReveal();
-            App.startProductCountdown();
-            setTimeout(App.showCustomerAlert, 2000);
-            console.log('🎉 SADU Landing Page ready!');
-        }
-    }
+    App.init();
 });
