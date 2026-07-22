@@ -798,6 +798,16 @@ const App = {
 
                             console.log(`📊 FB Pixel Tracked Scroll: ${depth}%`);
                         }
+
+                        // Tự động bắn Event cho Google Analytics 4 (GA4)
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'scroll_depth', {
+                                'percent_scrolled': depth,
+                                'page_location': window.location.href
+                            });
+
+                            console.log(`📊 GA4 Tracked Scroll: ${depth}%`);
+                        }
                     }
                 });
 
