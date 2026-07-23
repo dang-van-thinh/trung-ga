@@ -413,18 +413,19 @@
     background: #fff;
   }
 
-  /* Modal thông báo (thành công/lỗi) trượt từ TRÊN XUỐNG thay vì bottom-sheet
-     như modal đặt hàng - phù hợp hơn với dạng banner thông báo ngắn trên mobile */
+  /* Modal thông báo kết quả (thành công/lỗi) dạng Dialog Card căn giữa */
   #resultModal.show {
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
   }
   .result-modal-content {
-    margin: 0;
-    max-height: none;
-    border-radius: 0 0 20px 20px;
-    padding: calc(20px + env(safe-area-inset-top)) 18px 24px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18);
-    animation: slideInDown 0.3s ease-out;
+    width: calc(100% - 32px);
+    max-width: 360px;
+    margin: auto;
+    border-radius: 20px;
+    padding: 28px 20px 22px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.22);
   }
 
   .form-group input,
@@ -1109,9 +1110,10 @@
     border-radius: 18px 18px 0 0;
   }
   .result-modal-content {
-    max-height: none;
-    padding: calc(18px + env(safe-area-inset-top)) 14px 20px;
-    border-radius: 0 0 18px 18px;
+    width: calc(100% - 24px);
+    max-width: 340px;
+    padding: 24px 16px 20px;
+    border-radius: 18px;
   }
   .form-group {
     margin-bottom: 15px;
