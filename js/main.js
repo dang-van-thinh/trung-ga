@@ -243,21 +243,62 @@ const App = {
     submitOrder: (event) => {
         event.preventDefault();
 
-        // Form dùng novalidate: toàn bộ validate do JS đảm nhiệm để luôn hiện được
-        // thông báo lỗi qua modal, tránh trường hợp trình duyệt tự chặn gửi form ở tầng
-        // HTML5 một cách âm thầm (từng xảy ra với 3 select Tỉnh/Huyện/Xã bị ẩn bằng CSS).
+        // Form dùng novalidate: toàn bộ validate do JS đảm nhiệm.
+        // Lỗi được hiển thị inline ngay dưới từng ô input thay vì qua modal.
 
-        // 0. Validate Họ Tên
+        // ---- Helpers ----
+        const showFieldError = (groupId, errId, message) => {
+            const group = document.getElementById(groupId);
+            const errEl = document.getElementById(errId);
+            if (group) {
+                group.classList.add('has-error');
+                group.classList.remove('shake');
+                void group.offsetWidth; // restart animation
+                group.classList.add('shake');
+                setTimeout(() => group.classList.remove('shake'), 450);
+            }
+            if (errEl) {
+                errEl.textContent = message;
+                errEl.classList.add('visible');
+            }
+        };
+
+        const clearFieldError = (groupId, errId) => {
+            const group = document.getElementById(groupId);
+            const errEl = document.getElementById(errId);
+            if (group) group.classList.remove('has-error', 'shake');
+            if (errEl) {
+                errEl.textContent = '';
+                errEl.classList.remove('visible');
+            }
+        };
+
+        // Clear tất cả lỗi cũ trước khi validate lại
+        [
+            ['fg-name', 'err-name'],
+            ['fg-phone', 'err-phone'],
+            ['fg-province', 'err-province'],
+            ['fg-district', 'err-district'],
+            ['fg-ward', 'err-ward'],
+            ['fg-address', 'err-address'],
+            ['fg-quantity', 'err-quantity'],
+        ].forEach(([g, e]) => clearFieldError(g, e));
+
+        let firstErrorGroupId = null;
+        const markError = (groupId, errId, message) => {
+            showFieldError(groupId, errId, message);
+            if (!firstErrorGroupId) firstErrorGroupId = groupId;
+        };
+
+        // 0. Validate Ho Ten
         const nameEl = document.getElementById('name');
         if (!nameEl || !nameEl.value.trim()) {
-            App.showResultModal('error', 'Thiếu thông tin', 'Vui lòng nhập Họ Tên.');
-            nameEl?.focus();
-            return;
+            markError('fg-name', 'err-name', 'Vui lòng nhập Tên người nhận.');
         }
 
-        // 1. Validate & chuẩn hoá Số Điện Thoại (kiểm tra trước vì nằm phía trên form)
-        // Chấp nhận cả dạng nội địa (0xxxxxxxxx) lẫn quốc tế (84xxxxxxxxx / +84xxxxxxxxx)
-        // rồi quy về dạng 0xxxxxxxxx để lưu Google Sheet luôn thống nhất, dễ gọi điện xác nhận đơn.
+        // 1. Validate & chuan hoa So Dien Thoai
+        // Chap nhan ca dang noi dia (0xxxxxxxxx) lan quoc te (84xxxxxxxxx / +84xxxxxxxxx)
+        // roi quy ve dang 0xxxxxxxxx de luu Google Sheet luon thong nhat.
         const phoneEl = document.getElementById('phone');
         let normalizedPhone = (phoneEl?.value || '').replace(/[\s.\-()]/g, '').trim();
         if (normalizedPhone.startsWith('+84')) {
@@ -268,42 +309,47 @@ const App = {
         if (!normalizedPhone.startsWith('0')) {
             normalizedPhone = '0' + normalizedPhone;
         }
-
         // Đầu số di động VN hiện hành: 03/05/07/08/09 + đủ 10 số
-        // (chặt hơn "0 + 9-10 số bất kỳ" trước đây - kiểu đó lọt cả số vô lý như 0123456789)
         if (!/^0(3|5|7|8|9)\d{8}$/.test(normalizedPhone)) {
-            App.showResultModal('error', 'Số điện thoại không hợp lệ', 'Vui lòng nhập đúng số điện thoại Việt Nam. Ví dụ: 0912345678 hoặc +84912345678');
-            phoneEl?.focus();
-            return;
+            markError('fg-phone', 'err-phone', 'Số điện thoại không hợp lệ. VD: 0912345678 hoặc +84912345678');
+        } else {
+            if (phoneEl) phoneEl.value = normalizedPhone;
         }
-        if (phoneEl) phoneEl.value = normalizedPhone;
 
         // 2. Validate Location
         const provinceEl = document.getElementById('province');
         const districtEl = document.getElementById('district');
         const wardEl = document.getElementById('ward');
 
-        if (!provinceEl || !provinceEl.value ||
-            !districtEl || !districtEl.value ||
-            !wardEl || !wardEl.value) {
-            App.showResultModal('error', 'Thiếu thông tin', 'Vui lòng chọn đầy đủ Tỉnh/Thành phố, Quận/Huyện và Phường/Xã.');
-            return;
+        if (!provinceEl || !provinceEl.value) {
+            markError('fg-province', 'err-province', 'Vui lòng chọn Tỉnh/Thành Phố.');
+        }
+        if (!districtEl || !districtEl.value) {
+            markError('fg-district', 'err-district', 'Vui lòng chọn Quận/Huyện.');
+        }
+        if (!wardEl || !wardEl.value) {
+            markError('fg-ward', 'err-ward', 'Vui lòng chọn Phường/Xã.');
         }
 
         // 2b. Validate Địa Chỉ Chi Tiết
         const addressEl = document.getElementById('address');
         if (!addressEl || !addressEl.value.trim()) {
-            App.showResultModal('error', 'Thiếu thông tin', 'Vui lòng nhập Địa Chỉ Chi Tiết.');
-            addressEl?.focus();
-            return;
+            markError('fg-address', 'err-address', 'Vui lòng nhập Địa Chỉ Chi Tiết, Shipper sẽ giao tận nơi.');
         }
 
         // 2c. Validate Số Lượng
         const quantityEl = document.getElementById('quantity');
         const quantityNumber = parseInt(quantityEl?.value);
         if (!quantityNumber || quantityNumber < 1) {
-            App.showResultModal('error', 'Số lượng không hợp lệ', 'Vui lòng nhập số lượng từ 1 trở lên.');
-            quantityEl?.focus();
+            markError('fg-quantity', 'err-quantity', 'Vui lòng nhập số lượng từ 1 trở lên.');
+        }
+
+        // Nếu có lỗi → scroll đến field đầu tiên bị lỗi và dừng lại
+        if (firstErrorGroupId) {
+            const firstGroup = document.getElementById(firstErrorGroupId);
+            if (firstGroup) {
+                firstGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
             return;
         }
 
@@ -347,16 +393,14 @@ const App = {
             body: new URLSearchParams(orderData)
         })
             .then(response => {
-                // response.type === 'opaque' xảy ra khi trình duyệt không đọc được response
-                // (CORS bị chặn phía Google Apps Script) — trường hợp này không thể kiểm tra
-                // status nên vẫn coi là gửi thành công như trước. Khi đọc được response bình
-                // thường thì phải kiểm tra response.ok để không báo "thành công" giả khi
-                // Apps Script trả lỗi (hết quota, script lỗi, sheet đầy...).
+                // response.type === 'opaque' xay ra khi trinh duyet khong doc duoc response
+                // (CORS bi chan phia Google Apps Script) - truong hop nay khong the kiem tra
+                // status nen van coi la gui thanh cong nhu truoc.
                 if (response.type !== 'opaque' && !response.ok) {
-                    throw new Error(`Google Script trả về lỗi HTTP ${response.status}`);
+                    throw new Error(`Google Script tra ve loi HTTP ${response.status}`);
                 }
 
-                console.log('✅ Order sent to Google Sheets:', orderData);
+                console.log('Order sent to Google Sheets:', orderData);
 
                 App.showResultModal(
                     'success',
@@ -379,7 +423,7 @@ const App = {
 
             })
             .catch(error => {
-                console.error('❌ Error sending order:', error);
+                console.error('Error sending order:', error);
                 App.showResultModal(
                     'error',
                     'Đặt hàng không thành công',
@@ -562,12 +606,35 @@ const App = {
         if (typeof updateDistricts === 'function') {
             updateDistricts();
         }
+        // Xoá lỗi tỉnh khi user đã chọn; reset lỗi huyện/xã vì chúng sẽ cần chọn lại
+        const fg = document.getElementById('fg-province');
+        const err = document.getElementById('err-province');
+        if (fg) fg.classList.remove('has-error', 'shake');
+        if (err) { err.textContent = ''; err.classList.remove('visible'); }
+        // Reset district/ward errors khi tỉnh thay đổi
+        ['fg-district', 'fg-ward'].forEach(id => {
+            const g = document.getElementById(id);
+            if (g) g.classList.remove('has-error', 'shake');
+        });
+        ['err-district', 'err-ward'].forEach(id => {
+            const e = document.getElementById(id);
+            if (e) { e.textContent = ''; e.classList.remove('visible'); }
+        });
     },
 
     updateWards: () => {
         if (typeof updateWards === 'function') {
             updateWards();
         }
+        // Xoá lỗi huyện khi user đã chọn; reset lỗi xã vì sẽ cần chọn lại
+        const fg = document.getElementById('fg-district');
+        const err = document.getElementById('err-district');
+        if (fg) fg.classList.remove('has-error', 'shake');
+        if (err) { err.textContent = ''; err.classList.remove('visible'); }
+        const fgw = document.getElementById('fg-ward');
+        const errw = document.getElementById('err-ward');
+        if (fgw) fgw.classList.remove('has-error', 'shake');
+        if (errw) { errw.textContent = ''; errw.classList.remove('visible'); }
     },
 
     resetLocationSelectors: () => {
@@ -787,6 +854,24 @@ const App = {
         if (quantityInput) {
             quantityInput.addEventListener('input', App.updateTotalPrice);
             quantityInput.addEventListener('change', App.updateTotalPrice);
+            // Xoá lỗi số lượng khi user thay đổi giá trị
+            quantityInput.addEventListener('input', () => {
+                const fg = document.getElementById('fg-quantity');
+                const err = document.getElementById('err-quantity');
+                if (fg) fg.classList.remove('has-error', 'shake');
+                if (err) { err.textContent = ''; err.classList.remove('visible'); }
+            });
+        }
+
+        // Xoá lỗi Phường/Xã khi user chọn (ward không có onchange ở HTML)
+        const wardEl = document.getElementById('ward');
+        if (wardEl) {
+            wardEl.addEventListener('change', () => {
+                const fg = document.getElementById('fg-ward');
+                const err = document.getElementById('err-ward');
+                if (fg) fg.classList.remove('has-error', 'shake');
+                if (err) { err.textContent = ''; err.classList.remove('visible'); }
+            });
         }
 
         // Mobile menu toggle button listener

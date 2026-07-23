@@ -168,7 +168,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="fg-quantity">
                         <label for="quantity">Số Lượng <span style="color: red">*</span></label>
                         <div class="quantity-stepper">
                             <button type="button" class="quantity-btn" aria-label="Giảm số lượng"
@@ -177,20 +177,23 @@
                             <button type="button" class="quantity-btn" aria-label="Tăng số lượng"
                                 onclick="App.changeQuantity(1)">+</button>
                         </div>
+                        <span class="field-error-msg" id="err-quantity"></span>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group" id="fg-name">
                             <label for="name">Họ Tên <span style="color: red">*</span></label>
                             <input type="text" id="name" placeholder="VD: Nguyen Van A" required>
+                            <span class="field-error-msg" id="err-name"></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="fg-phone">
                             <label for="phone">Số Điện Thoại <span style="color: red">*</span></label>
                             <input type="tel" id="phone" inputmode="tel" placeholder="VD: 0912345678" required>
+                            <span class="field-error-msg" id="err-phone"></span>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="fg-province">
                         <label for="province">Tỉnh/Thành Phố <span style="color: red">*</span></label>
                         <div class="searchable-select" data-target="province">
                             <button type="button" class="searchable-select-trigger">
@@ -206,9 +209,10 @@
                         <select id="province" required onchange="App.updateDistricts()" class="native-select-hidden">
                             <option value="">-- Chọn Tỉnh/Thành Phố --</option>
                         </select>
+                        <span class="field-error-msg" id="err-province"></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="fg-district">
                         <label for="district">Quận/Huyện <span style="color: red">*</span></label>
                         <div class="searchable-select is-disabled" data-target="district">
                             <button type="button" class="searchable-select-trigger" disabled>
@@ -226,9 +230,10 @@
                             class="native-select-hidden">
                             <option value="">-- Chọn Quận/Huyện --</option>
                         </select>
+                        <span class="field-error-msg" id="err-district"></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="fg-ward">
                         <label for="ward">Phường/Xã <span style="color: red">*</span></label>
                         <div class="searchable-select is-disabled" data-target="ward">
                             <button type="button" class="searchable-select-trigger" disabled>
@@ -244,11 +249,13 @@
                         <select id="ward" required disabled class="native-select-hidden">
                             <option value="">-- Chọn Phường/Xã --</option>
                         </select>
+                        <span class="field-error-msg" id="err-ward"></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="fg-address">
                         <label for="address">Địa Chỉ Chi Tiết <span style="color: red">*</span></label>
                         <input type="text" id="address" placeholder="VD: 123 Đường ABC, Số nhà..." required>
+                        <span class="field-error-msg" id="err-address"></span>
                     </div>
 
                     <div class="form-group">

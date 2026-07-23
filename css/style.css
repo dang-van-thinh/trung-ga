@@ -2461,6 +2461,59 @@ header.scrolled {
 }
 
 /* ============================================
+   INLINE FORM VALIDATION ERRORS
+   ============================================ */
+
+/* Field-level error message */
+.field-error-msg {
+  display: none;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #e53935;
+  font-weight: 500;
+  align-items: center;
+  gap: 5px;
+}
+.field-error-msg::before {
+  content: "⚠";
+  font-size: 12px;
+}
+.field-error-msg.visible {
+  display: flex;
+}
+
+/* Input / select / textarea khi có lỗi */
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea {
+  border-color: #e53935 !important;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.15) !important;
+  background-color: #fff8f8;
+}
+
+/* Searchable select custom trigger khi có lỗi */
+.form-group.has-error .searchable-select-trigger {
+  border-color: #e53935 !important;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.15) !important;
+  background-color: #fff8f8;
+}
+
+/* Shake animation khi submit với lỗi */
+@keyframes field-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+.form-group.has-error.shake input,
+.form-group.has-error.shake select,
+.form-group.has-error.shake textarea,
+.form-group.has-error.shake .searchable-select-trigger {
+  animation: field-shake 0.4s ease;
+}
+
+/* ============================================
    SPECIAL PROGRAM SECTION
    ============================================ */
 
