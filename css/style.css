@@ -2986,9 +2986,20 @@ header.scrolled {
   font-size: 14px;
   color: var(--text-dark);
   cursor: pointer;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.searchable-select-option:hover,
+.searchable-select-option.is-focused {
+  background: rgba(46, 125, 50, 0.08);
+  color: var(--primary);
+  outline: none;
+}
+
+.searchable-select-option.is-selected {
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .product-radio-card {

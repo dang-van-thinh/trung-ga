@@ -1150,9 +1150,11 @@
 /* Mobile Devices (iPhone 14 Pro Max 430px, iPhone 14 Pro 393px, iPhone 12 Pro 390px & all phones) */
 @media (max-width: 768px) {
   .custom-alert {
-    bottom: 12px;
-    left: 8px;
-    width: calc(100% - 16px);
+    bottom: 20px;
+    left: 12px;
+    width: calc(100% - 24px);
+    max-width: 290px;
+    z-index: 999;
   }
   .cta-btn {
     width: 100%;

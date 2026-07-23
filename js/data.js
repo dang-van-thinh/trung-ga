@@ -121,37 +121,6 @@ const siteData = {
         }
     },
 
-    // Statistics Section
-    statistics: {
-        title: 'Những Con Số Ấn Tượng',
-        stats: [
-            {
-                icon: '👨‍👩‍👧‍👦',
-                number: '42,300+',
-                label: 'Gia Đình Tin Dùng',
-                description: 'Hàng nghìn gia đình đã tin tưởng lựa chọn'
-            },
-            {
-                icon: '🥚',
-                number: '1,000,000+',
-                label: 'Quả Trứng Bán Ra',
-                description: 'Số lượng trứng đã được phân phối'
-            },
-            {
-                icon: '⭐',
-                number: '39,700+',
-                label: 'Phản Hồi & Đánh Giá',
-                description: 'Đánh giá tích cực từ khách hàng'
-            },
-            {
-                icon: '🏆',
-                number: '98%',
-                label: 'Khách Hài Lòng',
-                description: 'Tỷ lệ khách hàng hài lòng về sản phẩm'
-            }
-        ]
-    },
-
     // Gift Section
     giftSection: {
         label: 'Quà Tặng Sức Khỏe',

@@ -73,7 +73,7 @@ const App = {
         App.alertTimeout = setTimeout(() => {
             App.hideCustomerAlert();
             App.alertIndex = (App.alertIndex + 1) % siteData.customers.length;
-            setTimeout(App.showCustomerAlert, 7000);
+            setTimeout(App.showCustomerAlert, 12000);
         }, 5000);
     },
 
@@ -110,9 +110,93 @@ const App = {
     },
 
     // ============================================
-    // ORDER SECTION
+    // LAZY-LOAD LOCATION DATA & KEYBOARD NAV
+    // ============================================
+    locationLoadingPromise: null,
+    ensureLocationsLoaded: async () => {
+        if (typeof loadLocations === 'function' && window.locationsData && Object.keys(window.locationsData).length > 0) {
+            return true;
+        }
+        if (App.locationLoadingPromise) {
+            return App.locationLoadingPromise;
+        }
+
+        App.locationLoadingPromise = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'js/location.js';
+            script.async = true;
+            script.onload = async () => {
+                try {
+                    if (typeof loadLocations === 'function') {
+                        await loadLocations();
+                    }
+                    if (typeof initSearchableSelects === 'function') {
+                        initSearchableSelects();
+                    }
+                    App.setupSearchableKeyboardNav();
+                    console.log('✅ Location selectors (1.88MB) lazy-loaded successfully!');
+                    resolve(true);
+                } catch (err) {
+                    console.error('❌ Error executing loadLocations:', err);
+                    reject(err);
+                }
+            };
+            script.onerror = (err) => {
+                console.error('❌ Failed to load js/location.js:', err);
+                App.locationLoadingPromise = null;
+                reject(err);
+            };
+            document.body.appendChild(script);
+        });
+
+        return App.locationLoadingPromise;
+    },
+
+    setupSearchableKeyboardNav: () => {
+        document.querySelectorAll('.searchable-select').forEach(container => {
+            const input = container.querySelector('.searchable-select-input');
+            const optionsContainer = container.querySelector('.searchable-select-options');
+            if (!input || !optionsContainer) return;
+
+            input.addEventListener('keydown', (e) => {
+                const options = Array.from(optionsContainer.querySelectorAll('.searchable-select-option'));
+                if (!options.length) return;
+
+                let activeIndex = options.findIndex(opt => opt.classList.contains('is-focused'));
+
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const nextIndex = activeIndex < options.length - 1 ? activeIndex + 1 : 0;
+                    options.forEach(opt => opt.classList.remove('is-focused'));
+                    options[nextIndex].classList.add('is-focused');
+                    options[nextIndex].scrollIntoView({ block: 'nearest' });
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prevIndex = activeIndex > 0 ? activeIndex - 1 : options.length - 1;
+                    options.forEach(opt => opt.classList.remove('is-focused'));
+                    options[prevIndex].classList.add('is-focused');
+                    options[prevIndex].scrollIntoView({ block: 'nearest' });
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (activeIndex >= 0 && options[activeIndex]) {
+                        options[activeIndex].click();
+                    } else if (options.length > 0) {
+                        options[0].click();
+                    }
+                } else if (e.key === 'Escape') {
+                    container.classList.remove('is-open');
+                }
+            });
+        });
+    },
+
+    // ============================================
+    // ORDER SECTION & MODAL
     // ============================================
     openOrderModal: (productIndex = 0) => {
+        // Tự động nạp dữ liệu Tỉnh/Huyện/Xã ngay khi nhấp Đặt Mua
+        App.ensureLocationsLoaded();
+
         const radios = document.querySelectorAll('input[name="productOption"]');
 
         if (radios[productIndex]) {
@@ -377,6 +461,15 @@ const App = {
             eventId: 'order_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7)
         };
 
+        // 3b. LocalStorage Backup cho an toàn dữ liệu khách hàng
+        try {
+            const savedOrders = JSON.parse(localStorage.getItem('sadu_backup_orders') || '[]');
+            savedOrders.push({ ...orderData, timestamp: new Date().toISOString() });
+            localStorage.setItem('sadu_backup_orders', JSON.stringify(savedOrders.slice(-20)));
+        } catch (e) {
+            console.warn('LocalStorage order backup warning:', e);
+        }
+
         // 4. UI Loading State
         const submitBtn = event.target.querySelector('.submit-btn');
         const originalBtnText = submitBtn?.textContent || 'HOÀN TẤT ĐẶT HÀNG';
@@ -387,17 +480,19 @@ const App = {
         }
         App.showLoadingOverlay();
 
-        // 5. Send to Google Sheets using URLSearchParams (matching template)
+        // 5. Send to Google Sheets với AbortController (Timeout 12s)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 12000);
+
         fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            body: new URLSearchParams(orderData)
+            body: new URLSearchParams(orderData),
+            signal: controller.signal
         })
             .then(response => {
-                // response.type === 'opaque' xay ra khi trinh duyet khong doc duoc response
-                // (CORS bi chan phia Google Apps Script) - truong hop nay khong the kiem tra
-                // status nen van coi la gui thanh cong nhu truoc.
+                clearTimeout(timeoutId);
                 if (response.type !== 'opaque' && !response.ok) {
-                    throw new Error(`Google Script tra ve loi HTTP ${response.status}`);
+                    throw new Error(`Google Script trả về lỗi HTTP ${response.status}`);
                 }
 
                 console.log('Order sent to Google Sheets:', orderData);
@@ -423,11 +518,15 @@ const App = {
 
             })
             .catch(error => {
+                clearTimeout(timeoutId);
                 console.error('Error sending order:', error);
+                const isTimeout = error.name === 'AbortError';
                 App.showResultModal(
                     'error',
-                    'Đặt hàng không thành công',
-                    'Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại hoặc gọi hotline: 1900 8952. Thông tin bạn vừa nhập vẫn được giữ nguyên trong form.'
+                    isTimeout ? 'Kết nối mạng phản hồi chậm' : 'Đặt hàng không thành công',
+                    isTimeout 
+                        ? 'Hệ thống đã lưu lại thông tin đơn hàng của bạn. Chúng tôi sẽ gọi lại xác nhận ngay! Bạn cũng có thể gọi hotline 1900 8952 để được hỗ trợ tức thì.'
+                        : 'Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại hoặc gọi hotline: 1900 8952. Thông tin bạn vừa nhập vẫn được giữ nguyên trong form.'
                 );
             })
             .finally(() => {
@@ -1018,18 +1117,6 @@ const App = {
     init: async () => {
         console.log('🚀 SADU Landing Page Initializing...');
 
-        if (typeof loadLocations === 'function') {
-            try {
-                await loadLocations();
-                if (typeof initSearchableSelects === 'function') {
-                    initSearchableSelects();
-                    console.log('✅ Location selectors initialized');
-                }
-            } catch (err) {
-                console.error('❌ Error loading locations:', err);
-            }
-        }
-
         if (typeof Components !== 'undefined') {
             Components.init();
             console.log('✅ Components rendered');
@@ -1040,7 +1127,22 @@ const App = {
         App.startProductCountdown();
         App.initScrollDepthTracking();
 
-        setTimeout(App.showCustomerAlert, 2000);
+        // Tự động nạp trước location.js khi cuộn gần tới #order-section
+        const orderSection = document.getElementById('order-section');
+        if (orderSection && 'IntersectionObserver' in window) {
+            const locationObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    App.ensureLocationsLoaded();
+                    locationObserver.disconnect();
+                }
+            }, { rootMargin: '300px 0px' });
+            locationObserver.observe(orderSection);
+        } else {
+            // Fallback: nếu browser không hỗ trợ observer thì pre-load sau 3 giây khi trang rảnh
+            setTimeout(() => App.ensureLocationsLoaded(), 3000);
+        }
+
+        setTimeout(App.showCustomerAlert, 3000);
 
         console.log('🎉 SADU Landing Page ready!');
     }
