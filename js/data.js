@@ -34,6 +34,8 @@ const siteData = {
         title: 'Khi Mỗi Bữa Ăn Là Một Lựa Chọn Cho Sức Khỏe',
         description: 'SADU nuôi gà bằng 13 loại thảo dược tự nhiên — không kháng sinh, không chất kích thích, cholesterol thấp hơn 1/2 trứng thường. Từng quả trứng là cam kết bảo vệ sức khỏe gia đình bạn.',
         ctaText: '🛒 Đặt Mua Ngay',
+        secondaryCtaText: '<i class="fa-solid fa-circle-info"></i> Tìm Hiểu Thêm',
+        secondaryCtaHref: '#benefits',
         ctaNote: 'Combo từ 3 hộp — Miễn phí giao hàng toàn quốc',
         offerBadge: 'Ưu đãi: Mua 3 Tặng 1',
         image: 'source/san-pham.webp',
@@ -106,7 +108,7 @@ const siteData = {
             { criteria: 'Không Kháng Sinh', sadu: true, regular: false },
             { criteria: 'Cholesterol xấu', sadu: 'Thấp', regular: 'Cao' },
             { criteria: 'Chế Độ Chăm Sóc Đặc Biệt', sadu: true, regular: false },
-            { criteria: 'Chất Lượng Trứng', sadu: 'Sánh đặc, không tanh', regular: 'Nhạt màu, dễ vỡ, có mùi tanh' },
+            { criteria: 'Chất Lượng Trứng', sadu: 'Sánh đặc, hạn chế mùi tanh', regular: 'Nhạt màu, dễ vỡ, có mùi tanh nồng' },
             { criteria: 'Thời Gian Bảo Quản', sadu: '15–20 ngày thường / 45 ngày trong tủ lạnh', regular: '7–10 ngày thường / 20–30 ngày trong tủ lạnh' }
         ],
         comparison: {
@@ -347,6 +349,35 @@ const siteData = {
             answer: 'Có, chúng tôi có đội hỗ trợ khách hàng 24/7. Bạn có thể liên hệ qua Hotline: 1900 8952, Email: nongnghiepcncthanglong@gmail.com hoặc nhắn tin qua fanpage Trứng Gà Thảo Dươc SADU.'
         }
     ],
+
+    // FAQ Support Cards (Thay thế nút Messenger)
+    faqSupport: {
+        title: 'HỖ TRỢ BẠN',
+        subtitle: 'Cần tư vấn hay có thắc mắc? Đội ngũ SADU luôn ở đây vì bạn.',
+        cards: [
+            {
+                icon: '<i class="fa-solid fa-phone"></i>',
+                label: 'HOTLINE',
+                value: '1900 8952',
+                href: 'tel:19008952',
+                note: '8:00 – 22:00 mỗi ngày'
+            },
+            {
+                icon: '<i class="fa-solid fa-comments"></i>',
+                label: 'FACEBOOK',
+                value: 'Trứng Gà Thảo Dược SADU',
+                href: 'https://www.facebook.com/trunggasach.sadu/',
+                note: 'Phản hồi trong vòng 30 phút'
+            },
+            {
+                icon: '<i class="fa-solid fa-envelope"></i>',
+                label: 'EMAIL',
+                value: 'nongnghiepcncthanglong@gmail.com',
+                href: 'mailto:nongnghiepcncthanglong@gmail.com',
+                note: 'Phản hồi trong 24 giờ'
+            }
+        ]
+    },
 
     // Contact Info
     contact: {

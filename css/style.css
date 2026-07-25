@@ -87,6 +87,10 @@ html {
   overflow-x: hidden;
 }
 
+section {
+  scroll-margin-top: 70px;
+}
+
 /* Ensure images never overflow their containers */
 img {
   max-width: 100%;
@@ -214,23 +218,83 @@ body {
   animation: slideInRight 0.6s ease-out;
 }
 
-/* Scroll Reveal - section hiện dần khi cuộn tới (IntersectionObserver, xem main.js) */
+/* ===================================================
+   MULTI-DIRECTIONAL SCROLL REVEAL SYSTEM
+   Chuyển động mượt mà, rõ ràng từ nhiều hướng
+   =================================================== */
+
+/* Trạng thái ban đầu cho tất cả phần tử cuộn tới */
+[class*="reveal-from-"],
+.reveal-zoom-in,
+.reveal-element,
 .reveal-section {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.7s ease-out,
-    transform 0.7s ease-out;
+  opacity: 0 !important;
+  will-change: opacity, transform;
+  transition: opacity 0.85s cubic-bezier(0.215, 0.61, 0.355, 1),
+              transform 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
+
+/* 1. Reveal Từ Dưới Lên */
+.reveal-from-bottom,
+.reveal-section {
+  transform: translateY(60px) !important;
+}
+
+/* 2. Reveal Từ Trên Xuống */
+.reveal-from-top {
+  transform: translateY(-50px) !important;
+}
+
+/* 3. Reveal Từ Trái Sang */
+.reveal-from-left {
+  transform: translateX(-70px) !important;
+}
+
+/* 4. Reveal Từ Phải Sang */
+.reveal-from-right {
+  transform: translateX(70px) !important;
+}
+
+/* 5. Reveal Phóng To Nhẹ (Zoom In) */
+.reveal-zoom-in {
+  transform: scale(0.82) !important;
+}
+
+/* Trạng thái khi lướt tới (Observer / Scroll trigger gán class is-visible) */
+[class*="reveal-from-"].is-visible,
+.reveal-zoom-in.is-visible,
+.reveal-element.is-visible,
 .reveal-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
 }
+
+/* Hiệu ứng trễ nối tiếp (Staggered Delays) */
+.reveal-delay-1 { transition-delay: 0.1s !important; }
+.reveal-delay-2 { transition-delay: 0.22s !important; }
+.reveal-delay-3 { transition-delay: 0.34s !important; }
+.reveal-delay-4 { transition-delay: 0.46s !important; }
+.reveal-delay-5 { transition-delay: 0.58s !important; }
+
+/* Tối ưu hóa trên Mobile - giảm biên độ dịch chuyển chống vỡ layout */
+@media (max-width: 768px) {
+  .reveal-from-left { transform: translateX(-35px) !important; }
+  .reveal-from-right { transform: translateX(35px) !important; }
+  .reveal-from-bottom,
+  .reveal-section { transform: translateY(35px) !important; }
+  .reveal-from-top { transform: translateY(-35px) !important; }
+  .reveal-zoom-in { transform: scale(0.9) !important; }
+}
+
+/* Tắt hiệu ứng nếu người dùng cài đặt giảm chuyển động */
 @media (prefers-reduced-motion: reduce) {
+  [class*="reveal-from-"],
+  .reveal-zoom-in,
+  .reveal-element,
   .reveal-section {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
@@ -653,10 +717,57 @@ header.scrolled {
 
 .hero-cta-group {
   display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
   margin-bottom: 24px;
+}
+
+.hero-buttons-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Quy chuẩn kích thước đồng đều 100% cho 2 nút Hero */
+.hero-buttons-wrap .cta-btn,
+.hero-buttons-wrap .hero-secondary-btn {
+  height: 54px;
+  padding: 0 28px;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1;
+}
+
+.hero-buttons-wrap .cta-btn {
+  border: 2px solid transparent;
+}
+
+.hero-secondary-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(232, 245, 233, 0.95) 100%);
+  color: var(--primary-dark, #1b5e20);
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+.hero-secondary-btn i {
+  font-size: 18px;
+  color: var(--primary, #246b39);
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .hero-cta-note {
@@ -2064,85 +2175,121 @@ header.scrolled {
   line-height: 1.8;
 }
 
-.faq-messenger-cta {
-  max-width: 800px;
-  margin: 28px auto 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  background: #e8f0fe;
-  border: 1.5px solid #b3c4f5;
-  border-radius: var(--radius-xl);
-  padding: 24px 28px;
+/* ============================================
+   FAQ SUPPORT CARDS (Thay thế nút Messenger)
+   ============================================ */
+.faq-support-section {
+  max-width: 900px;
+  margin: 45px auto 0;
+  text-align: center;
 }
 
-.faq-messenger-text {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.faq-support-header {
+  margin-bottom: 24px;
 }
 
-.faq-messenger-icon {
-  font-size: 32px;
-  flex-shrink: 0;
+.faq-support-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--primary-dark, #1b5e20);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
 }
 
-.faq-messenger-text strong {
-  display: block;
+.faq-support-subtitle {
   font-size: 15px;
-  font-weight: 700;
-  color: #1a1a2e;
-  margin-bottom: 4px;
+  color: var(--text-light, #666666);
+  line-height: 1.6;
 }
 
-.faq-messenger-text p {
-  font-size: 13px;
-  color: #555;
-  line-height: 1.5;
-  margin: 0;
+.faq-support-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
 }
 
-.faq-messenger-btn {
-  display: inline-flex;
+.faq-support-card {
+  background: #ffffff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  background: #0084ff;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 12px 22px;
-  border-radius: var(--radius-full);
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.faq-support-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary, #246b39);
+}
+
+.faq-support-icon-wrap {
+  width: 58px;
+  height: 58px;
+  background: var(--primary-light, #e8f5e9);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--primary-dark, #1b5e20);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.faq-support-card:hover .faq-support-icon-wrap {
+  background: var(--primary, #246b39);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.faq-support-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #888888;
+  margin-bottom: 8px;
+}
+
+.faq-support-value {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--primary-dark, #1b5e20);
   text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition:
-    background var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
-  box-shadow: 0 4px 14px rgba(0, 132, 255, 0.35);
+  word-break: break-word;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  transition: color 0.2s ease;
 }
 
-.faq-messenger-btn:hover {
-  background: #006acc;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 132, 255, 0.45);
+.faq-support-value:hover {
+  color: var(--accent, #f57c00);
 }
 
-@media (max-width: 600px) {
-  .faq-messenger-cta {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
+.faq-support-note {
+  font-size: 13px;
+  color: #666666;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .faq-support-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .faq-messenger-text {
-    flex-direction: column;
+  .faq-support-title {
+    font-size: 22px;
   }
 
-  .faq-messenger-btn {
-    width: 100%;
-    justify-content: center;
+  .faq-support-card {
+    padding: 22px 18px;
   }
 }
 
@@ -5168,12 +5315,13 @@ textarea:focus-visible {
   98%  { transform: translateY(-1px) rotate(0deg); }
 }
 
-/* Shimmer pseudo-element cho tất cả nút mua hàng (trừ submit-btn) */
+/* Shimmer pseudo-element cho tất cả nút (bao gồm hero-secondary-btn) */
 .cta-btn::after,
 .featured-product-btn::after,
 .product-btn::after,
 .special-cta-button::after,
-.final-cta-btn::after {
+.final-cta-btn::after,
+.hero-secondary-btn::after {
   content: "";
   position: absolute;
   top: 0;
@@ -5183,11 +5331,11 @@ textarea:focus-visible {
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0.45) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   transform: skewX(-20deg);
-  animation: btn-shimmer 3.5s ease-in-out infinite;
+  animation: btn-shimmer 3.2s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -5219,6 +5367,20 @@ textarea:focus-visible {
   animation: btn-glow-pulse 2.2s ease-in-out infinite, btn-wiggle 4s ease-in-out infinite !important;
 }
 
+/* Glow pulse màu trắng ngọc cho hero-secondary-btn */
+@keyframes hero-sec-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 18px rgba(255, 255, 255, 0.25), 0 0 0 0 rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 8px 28px rgba(255, 255, 255, 0.55), 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+}
+
+.hero-secondary-btn {
+  animation: hero-sec-glow-pulse 2.2s ease-in-out infinite, btn-wiggle 4s ease-in-out infinite !important;
+}
+
 /* submit-btn: glow màu xanh lá --primary */
 @keyframes submit-btn-glow-pulse {
   0%, 100% {
@@ -5232,7 +5394,7 @@ textarea:focus-visible {
   animation: submit-btn-glow-pulse 2.2s ease-in-out infinite, btn-wiggle 4s ease-in-out infinite !important;
 }
 
-/* Khi hover: tắt animation, giữ glow mạnh */
+/* Khi hover: tắt animation, đổi màu sang dải màu cam rực rỡ & đổ bóng mạnh mẽ */
 .cta-btn:hover,
 .featured-product-btn:hover,
 .product-btn:hover,
@@ -5241,6 +5403,21 @@ textarea:focus-visible {
   animation: none !important;
   box-shadow: 0 10px 36px rgba(245, 124, 0, 0.58) !important;
 }
+
+.hero-secondary-btn:hover {
+  animation: none !important;
+  background: #ffffff !important;
+  color: var(--primary-dark, #1b5e20) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.45), 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+.hero-secondary-btn:hover i {
+  color: var(--primary-dark, #1b5e20) !important;
+  transform: scale(1.2) rotate(10deg);
+}
+
 .submit-btn:hover {
   animation: none !important;
   box-shadow: 0 10px 36px rgba(46, 125, 50, 0.55) !important;
@@ -5252,7 +5429,8 @@ textarea:focus-visible {
 .product-btn:active,
 .special-cta-button:active,
 .final-cta-btn:active,
-.submit-btn:active {
+.submit-btn:active,
+.hero-secondary-btn:active {
   animation: none !important;
   transform: scale(0.97) translateY(1px) !important;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;

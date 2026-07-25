@@ -1905,6 +1905,14 @@
     gap: 10px;
   }
 
+  .hero-buttons-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
   .hero-cta-note {
     font-size: 12px;
   }
@@ -1971,11 +1979,22 @@
     gap: 8px;
   }
 
-  .cta-btn {
-    width: 75%;
+  .hero-buttons-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-buttons-wrap .cta-btn,
+  .hero-buttons-wrap .hero-secondary-btn {
+    width: 100%;
+    max-width: 100%;
+    height: 48px;
     font-size: 15px;
-    padding: 14px 20px;
-    display: inline-block;
+    padding: 0 16px;
+    text-align: center;
+    box-sizing: border-box;
   }
 
   .hero-offer-badge {

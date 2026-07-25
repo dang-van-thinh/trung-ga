@@ -895,39 +895,133 @@ const App = {
     // SCROLL REVEAL (hiệu ứng hiện dần khi cuộn tới từng section)
     // ============================================
     initScrollReveal: () => {
-        // Hero luôn hiện ngay (đã có animation riêng), chỉ áp dụng reveal
-        // cho các section bên dưới để tránh tải/animate toàn bộ trang cùng lúc lúc load.
-        const sectionIds = [
-            'benefits', 'herbal-story', 'statistics', 'why', 'packaging',
-            'value-justification', 'certificates', 'special-program',
-            'products', 'order-section', 'gift-carousel', 'customer-feedback-gallery',
-            'faq', 'final-cta'
-        ];
-        const sections = sectionIds
-            .map(id => document.getElementById(id))
-            .filter(Boolean);
-
-        if (!sections.length) return;
-
-        // Tránh translateY jump khi cuộn màn hình trên mobile (< 768px)
-        if (window.innerWidth <= 768 || !('IntersectionObserver' in window)) {
-            sections.forEach(el => el.classList.add('reveal-section', 'is-visible'));
-            return;
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+        // Gán hướng chuyển động reveal cho tất cả các khu vực bên dưới Hero
+        const applyRevealDirectionClasses = () => {
+            // 1. Tiêu đề / Header các section -> Trôi nhẹ từ trên xuống
+            document.querySelectorAll(`
+                .herbal-story-header, .why-header, .value-header,
+                .packaging-header, .gift-header, .statistics-header,
+                .section-header, .egg-comparison-header, .order-section-header
+            `).forEach(el => {
+                if (!el.dataset.revealSet) {
+                    el.classList.add('reveal-from-top');
+                    el.dataset.revealSet = 'true';
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 
-        sections.forEach(el => {
-            el.classList.add('reveal-section');
-            observer.observe(el);
-        });
+            // 2. Cột bên trái / Hình ảnh bên trái -> Trôi mượt từ trái sang (Bán kính -70px)
+            document.querySelectorAll(`
+                .farm-story-left, .why-left, .value-left,
+                .packaging-left, .farm-story-img, .gift-body, .comparison-left
+            `).forEach(el => {
+                if (!el.dataset.revealSet) {
+                    el.classList.add('reveal-from-left');
+                    el.dataset.revealSet = 'true';
+                }
+            });
+
+            // 3. Cột bên phải / Khối thông tin bên phải -> Trôi mượt từ phải sang (Bán kính +70px)
+            document.querySelectorAll(`
+                .farm-story-right, .why-right, .value-right,
+                .packaging-right, .farm-story-stats, .comparison-right
+            `).forEach(el => {
+                if (!el.dataset.revealSet) {
+                    el.classList.add('reveal-from-right');
+                    el.dataset.revealSet = 'true';
+                }
+            });
+
+            // 4. Các điểm nhấn / Bảng so sánh -> Phóng to nhẹ (Zoom In 0.82 -> 1.0)
+            document.querySelectorAll(`
+                .comparison-table-wrapper, .special-program-card, .value-card, .order-section-card
+            `).forEach(el => {
+                if (!el.dataset.revealSet) {
+                    el.classList.add('reveal-zoom-in');
+                    el.dataset.revealSet = 'true';
+                }
+            });
+
+            // 5. Thẻ danh sách (Cards) -> Hiện từ dưới lên + Hiệu ứng trễ nối tiếp (Staggered Delays)
+            const listSelectors = [
+                '.benefit-item', '.herb-card', '.product-card',
+                '.stat-card', '.gift-card', '.certificate-card',
+                '.feedback-card', '.faq-item', '.farm-process-step', '.value-item', '.faq-support-card'
+            ];
+
+            listSelectors.forEach(selector => {
+                document.querySelectorAll(selector).forEach((el, index) => {
+                    if (!el.dataset.revealSet) {
+                        el.classList.add('reveal-from-bottom');
+                        const delayClass = `reveal-delay-${(index % 5) + 1}`;
+                        el.classList.add(delayClass);
+                        el.dataset.revealSet = 'true';
+                    }
+                });
+            });
+
+            // Fallback cho toàn bộ các Section chính
+            const sectionIds = [
+                'benefits', 'herbal-story', 'statistics', 'why', 'packaging',
+                'value-justification', 'certificates', 'special-program',
+                'products', 'order-section', 'gift-carousel', 'customer-feedback-gallery',
+                'faq', 'final-cta'
+            ];
+            sectionIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && !el.dataset.revealSet) {
+                    el.classList.add('reveal-from-bottom');
+                    el.dataset.revealSet = 'true';
+                }
+            });
+        };
+
+        applyRevealDirectionClasses();
+
+        // Danh sách các phần tử cần quan sát
+        const getRevealElements = () => Array.from(document.querySelectorAll(`
+            [class*="reveal-from-"], .reveal-zoom-in, .reveal-element, .reveal-section
+        `));
+
+        let revealElements = getRevealElements();
+        if (!revealElements.length) return;
+
+        // Hàm kiểm tra vị trí hiển thị liên tục (Failsafe scroll trigger)
+        const checkVisible = () => {
+            const viewportBottom = window.innerHeight * 0.92;
+            revealElements.forEach(el => {
+                if (el.classList.contains('is-visible')) return;
+                const rect = el.getBoundingClientRect();
+                if (rect.top < viewportBottom && rect.bottom > 0) {
+                    el.classList.add('is-visible');
+                }
+            });
+        };
+
+        // 1. Dùng IntersectionObserver nếu trình duyệt hỗ trợ
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.08,
+                rootMargin: '0px 0px -30px 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        // 2. Dual Trigger: Lắng nghe sự kiện scroll & resize để bảo đảm 100% phần tử xuất hiện mượt mà
+        window.addEventListener('scroll', checkVisible, { passive: true });
+        window.addEventListener('resize', checkVisible, { passive: true });
+
+        // Trigger ngay lập tức + sau các mốc thời gian load
+        checkVisible();
+        setTimeout(checkVisible, 150);
+        setTimeout(checkVisible, 600);
     },
 
     setupEventListeners: () => {

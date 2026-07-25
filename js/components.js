@@ -65,7 +65,7 @@ const Components = {
     // Render Hero Section
     renderHero: () => {
         const hero = document.getElementById('hero');
-        const { label, title, description, ctaText, ctaNote, offerBadge, image, signatureImage, signatureCaption } = siteData.hero;
+        const { label, title, description, ctaText, secondaryCtaText, secondaryCtaHref, ctaNote, offerBadge, image, signatureImage, signatureCaption } = siteData.hero;
 
         hero.className = 'hero';
         hero.innerHTML = `
@@ -75,7 +75,10 @@ const Components = {
                     <h1>${title}</h1>
                     <p>${description}</p>
                     <div class="hero-cta-group">
-                        <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
+                        <div class="hero-buttons-wrap">
+                            <button class="cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
+                            ${secondaryCtaText ? `<a href="${secondaryCtaHref || '#benefits'}" class="hero-secondary-btn">${secondaryCtaText}</a>` : ''}
+                        </div>
                         <span class="hero-cta-note">${ctaNote}</span>
                     </div>
                     <div class="hero-offer-badge">${offerBadge}</div>
@@ -657,7 +660,7 @@ const Components = {
     // Render FAQ Section
     renderFAQ: () => {
         const faq = document.getElementById('faq');
-        const { faqs: faqList, contact } = siteData;
+        const { faqs: faqList, faqSupport } = siteData;
 
         faq.className = 'faq';
         faq.innerHTML = `
@@ -677,20 +680,23 @@ const Components = {
                     `).join('')}
                 </div>
 
-                <div class="faq-messenger-cta">
-                    <div class="faq-messenger-text">
-                        <span class="faq-messenger-icon">💬</span>
-                        <div>
-                            <strong>Còn câu hỏi khác?</strong>
-                            <p>Nhắn tin trực tiếp cho đội ngũ CSKH của SADU — phản hồi trong vòng vài phút.</p>
-                        </div>
+                <div class="faq-support-section">
+                    <div class="faq-support-header">
+                        <h3 class="faq-support-title">${faqSupport?.title || 'HỖ TRỢ BẠN'}</h3>
+                        <p class="faq-support-subtitle">${faqSupport?.subtitle || 'Cần tư vấn hay có thắc mắc? Đội ngũ SADU luôn ở đây vì bạn.'}</p>
                     </div>
-                    <a href="${contact.messenger}" target="_blank" rel="noopener noreferrer" class="faq-messenger-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.914 1.385 5.52 3.565 7.244V22l3.254-1.786A11.1 11.1 0 0 0 12 20.487c5.523 0 10-4.145 10-9.244S17.523 2 12 2zm1.008 12.44-2.545-2.713-4.968 2.713 5.469-5.804 2.609 2.713 4.904-2.713-5.469 5.804z"/>
-                        </svg>
-                        Nhắn Tin Qua Messenger
-                    </a>
+                    <div class="faq-support-cards">
+                        ${(faqSupport?.cards || []).map(card => `
+                            <div class="faq-support-card">
+                                <div class="faq-support-icon-wrap">
+                                    ${card.icon}
+                                </div>
+                                <span class="faq-support-label">${card.label}</span>
+                                <a href="${card.href}" target="${card.href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer" class="faq-support-value">${card.value}</a>
+                                <span class="faq-support-note">${card.note}</span>
+                            </div>
+                        `).join('')}
+                    </div>
                 </div>
             </div>
         `;
