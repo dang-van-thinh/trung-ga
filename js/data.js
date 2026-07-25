@@ -35,7 +35,7 @@ const siteData = {
         description: 'SADU nuôi gà bằng 13 loại thảo dược tự nhiên — không kháng sinh, không chất kích thích, cholesterol thấp hơn 1/2 trứng thường. Từng quả trứng là cam kết bảo vệ sức khỏe gia đình bạn.',
         ctaText: '🛒 Đặt Mua Ngay',
         secondaryCtaText: '<i class="fa-solid fa-circle-info"></i> Tìm Hiểu Thêm',
-        secondaryCtaHref: '#benefits',
+        secondaryCtaHref: '#herbal-story',
         ctaNote: 'Combo từ 3 hộp — Miễn phí giao hàng toàn quốc',
         offerBadge: 'Ưu đãi: Mua 3 Tặng 1',
         image: 'source/san-pham.webp',
