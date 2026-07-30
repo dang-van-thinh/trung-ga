@@ -427,28 +427,40 @@
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- Meta Pixel - CTA & Messenger Click Tracking -->
+    <!-- Meta Pixel - Event & Click Tracking -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_name: 'Trứng Gà Thảo Dược SADU',
+                    content_category: 'Thực phẩm sạch',
+                    currency: 'VND'
+                });
+            }
+
             document.addEventListener('click', (e) => {
                 if (typeof fbq === 'undefined') return;
 
                 // 9 nút "Đặt hàng": header-btn, cta-btn (x3), featured-product-btn,
                 // product-btn (x2), special-cta-button, final-cta-btn
                 // Dùng event delegation vì các nút được Components.init() render
-                // động sau khi loadLocations() resolve (js/main.js:536)
+                // động sau khi loadLocations() resolve
                 if (e.target.closest('[onclick*="openOrderSection"], [onclick*="openOrderModal"]')) {
                     fbq('track', 'InitiateCheckout');
                 }
 
-                // Link Messenger (faq-messenger-btn)
-                if (e.target.closest('a[href*="m.me"], a[href*="messenger.com"]')) {
-                    fbq('track', 'Contact');
+                // Link Messenger, Hotline (tel:), Zalo
+                const contactLink = e.target.closest('a[href*="m.me"], a[href*="messenger.com"], a[href^="tel:"], a[href*="zalo.me"]');
+                if (contactLink) {
+                    fbq('track', 'Contact', {
+                        contact_type: contactLink.getAttribute('href').startsWith('tel:') ? 'Hotline' : 'Chat',
+                        link_url: contactLink.getAttribute('href')
+                    });
                 }
             });
         });
     </script>
-    <!-- End Meta Pixel - CTA & Messenger Click Tracking -->
+    <!-- End Meta Pixel - Event & Click Tracking -->
 </body>
 
 </html>

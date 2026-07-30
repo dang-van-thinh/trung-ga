@@ -509,6 +509,16 @@ const App = {
 
                 if (typeof fbq !== 'undefined') {
                     const rawPrice = (orderData.totalPrice || '').replace(/[^\d]/g, '');
+
+                    // Kích hoạt Advanced Matching để tăng điểm Event Match Quality (EMQ)
+                    if (orderData.phone || orderData.fullName) {
+                        const cleanPhone = (orderData.phone || '').replace(/[^\d+]/g, '');
+                        fbq('init', '1668129411185900', {
+                            ph: cleanPhone,
+                            fn: orderData.fullName || ''
+                        });
+                    }
+
                     fbq('track', 'Purchase', {
                         content_name: orderData.product,
                         value: parseFloat(rawPrice) || 0,
@@ -1174,13 +1184,9 @@ const App = {
 
                         if (typeof fbq === 'function') {
                             // Tự động bắn Custom Event cho Facebook Pixel
-                            fbq('trackCustom', `Scroll_${depth}%`, {
+                            fbq('trackCustom', 'ScrollDepth', {
                                 depth_percent: depth,
                                 page_path: window.location.pathname
-                            });
-
-                            fbq('trackCustom', 'ScrollDepth', {
-                                percent: depth
                             });
 
                             console.log(`📊 FB Pixel Tracked Scroll: ${depth}%`);
