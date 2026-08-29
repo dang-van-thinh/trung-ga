@@ -5,10 +5,15 @@
    ROOT VARIABLES & DESIGN TOKENS
    ============================================ */
 
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body, input, button, select, textarea, optgroup, option,
+h1, h2, h3, h4, h5, h6, p, a, span, div, label, table, td, th, li, ul, ol, button {
+  font-family: var(--font-primary);
 }
 
 :root {
@@ -38,8 +43,8 @@
   --gradient-primary: linear-gradient(135deg, var(--primary) 0%, #43a047 100%);
   --gradient-header: linear-gradient(135deg, var(--primary) 0%, #1b5e20 100%);
 
-  /* Typography */
-  --font-primary: "Be Vietnam Pro", sans-serif;
+  /* Typography - Unified Font Family */
+  --font-primary: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* Spacing Scale */
   --spacing-xs: 0.5rem;
@@ -182,6 +187,28 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideInTopLeft {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutTopLeft {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }
 
@@ -5435,3 +5462,650 @@ textarea:focus-visible {
   transform: scale(0.97) translateY(1px) !important;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
 }
+
+/* ============================================
+   QUICK OFFER SECTION — P2-1
+   Card nhỏ ngay sau Hero, tối ưu cho traffic quảng cáo
+   ============================================ */
+
+/* ============================================
+   QUICK OFFER SECTION — Redesigned & Spacious (P2-1)
+   ============================================ */
+
+.quick-offer-section {
+  padding: 10px 20px 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.quick-offer-container {
+  max-width: 1100px;
+  width: 100%;
+}
+
+.quick-offer-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f4fbf6 50%, #e8f5eb 100%);
+  border: 2px solid #a5d6a7;
+  border-radius: 24px;
+  padding: 32px 36px;
+  box-shadow: 0 12px 36px rgba(27, 94, 32, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quick-offer-card:hover {
+  box-shadow: 0 16px 44px rgba(27, 94, 32, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.quick-offer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #2e7d32, #66bb6a, #ffa726);
+}
+
+.quick-offer-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.quick-offer-header-badge {
+  margin-bottom: 0;
+}
+
+.quick-offer-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  padding: 7px 18px;
+  border-radius: 50px;
+  box-shadow: 0 4px 14px rgba(211, 47, 47, 0.22);
+  text-transform: uppercase;
+}
+
+/* Quick Offer Countdown Timer — Harmonious & Premium Styling */
+.quick-offer-timer-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1.5px solid #ffcdd2;
+  padding: 6px 16px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.08);
+  transition: all 0.25s ease;
+}
+
+.quick-offer-timer-wrap:hover {
+  border-color: #ef9a9a;
+  box-shadow: 0 6px 16px rgba(211, 47, 47, 0.12);
+}
+
+.quick-offer-timer-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #c62828;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.quick-offer-timer-boxes {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.qo-timer-box {
+  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  min-width: 30px;
+  height: 26px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(211, 47, 47, 0.28);
+  font-family: inherit;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+.qo-timer-unit {
+  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  height: 26px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(211, 47, 47, 0.28);
+}
+
+.qo-colon {
+  font-size: 14px;
+  font-weight: 900;
+  color: #d32f2f;
+  line-height: 1;
+}
+
+.quick-offer-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+/* Media Column - Large un-distorted photo presentation */
+.quick-offer-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quick-offer-img-box {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.quick-offer-card:hover .quick-offer-img-box {
+  transform: scale(1.02);
+}
+
+.quick-offer-img {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+
+.quick-offer-discount-tag {
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  background: #d32f2f;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 5px 12px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+  z-index: 2;
+}
+
+/* Info Column */
+.quick-offer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quick-offer-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--primary-dark, #1b5e20);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.quick-offer-perks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 16px;
+}
+
+.quick-offer-perk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #c8e6c9;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #2e7d32;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.quick-offer-perk-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.quick-offer-price-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.quick-offer-price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.quick-offer-price-new {
+  font-size: 28px;
+  font-weight: 900;
+  color: #d32f2f;
+  line-height: 1;
+}
+
+.quick-offer-price-old {
+  font-size: 16px;
+  color: #888888;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+.quick-offer-price-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+.quick-offer-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.quick-offer-cta-main {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.35);
+  text-decoration: none;
+}
+
+.quick-offer-cta-main:hover {
+  background: linear-gradient(135deg, #1b5e20 0%, #0d3b11 100%);
+  box-shadow: 0 8px 26px rgba(46, 125, 50, 0.45);
+  transform: translateY(-2px);
+}
+
+.quick-offer-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #1b5e20;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 13px 20px;
+  border: 2px solid #a5d6a7;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.quick-offer-cta-secondary:hover {
+  background: #e8f5e9;
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+
+.quick-offer-footer-trust {
+  font-size: 12.5px;
+  color: #666666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+/* ============================================
+   CTA HIERARCHY — P2-2
+   3 tiers: primary / secondary / text-phone
+   ============================================ */
+
+/* Tier 2: Secondary CTA — outline style */
+.cta-btn--secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--primary-dark);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.cta-btn--secondary:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-dark);
+  color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Tier 3: Text/Phone CTA link */
+.cta-link-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-light);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cta-link-phone:hover {
+  color: var(--primary-dark);
+}
+
+.cta-link-phone i {
+  font-size: 14px;
+  color: var(--primary);
+}
+
+/* Final CTA — secondary row (review + phone) */
+.final-cta-secondary-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   ORDER REASSURANCE NOTE — P1-3
+   ============================================ */
+.order-reassurance {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-light);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.order-reassurance i {
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+.order-reassurance a {
+  color: var(--primary-dark);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.order-reassurance a:hover {
+  color: var(--accent);
+}
+
+/* ============================================
+   POLICY MODAL — P1-3
+   ============================================ */
+.policy-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 999999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.policy-modal.show {
+  display: flex;
+  animation: modalFadeIn 0.25s ease-out forwards;
+}
+
+.policy-modal-content {
+  background: var(--bg-white);
+  border-radius: 16px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.policy-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.policy-modal-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-dark);
+}
+
+.policy-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.policy-modal-icon {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.policy-modal-header h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+.policy-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 16px;
+  padding-right: 6px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-dark);
+}
+
+.policy-modal-body h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 18px 0 8px 0;
+}
+
+.policy-modal-body p {
+  margin-bottom: 10px;
+}
+
+.policy-modal-body ul,
+.policy-modal-body ol {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.policy-modal-body li {
+  margin-bottom: 6px;
+}
+
+.policy-modal-footer {
+  padding-top: 16px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   COMPARISON MOBILE CARDS — P1-5
+   ============================================ */
+.comparison-mobile-cards {
+  display: none; /* Hiển thị trên mobile qua responsive.css */
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0 24px 0;
+}
+
+.comparison-mobile-card {
+  background: var(--bg-white);
+  border: 1px solid rgba(36, 107, 57, 0.15);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.comparison-mobile-criteria {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.comparison-mobile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.comparison-mobile-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f9fbf9;
+  border: 1px solid #e8ede8;
+}
+
+.comparison-mobile-item.sadu-item {
+  background: #f0faf2;
+  border-color: #c8e6c9;
+}
+
+.comparison-mobile-brand {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.sadu-item .comparison-mobile-brand {
+  color: var(--primary);
+}
+
+.comparison-mobile-value {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.badge-success {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-danger {
+  background: #ffebee;
+  color: #c62828;
+}
+
+

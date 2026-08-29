@@ -238,8 +238,10 @@ const Components = {
                     </div>
                 </div>
 
-                <!-- Block 2: Bảng so sánh chi tiết SADU vs trứng thường -->
-                <div class="comparison-swipe-hint"><span>👈</span> Vuốt sang để xem bảng so sánh chi tiết <span>👉</span></div>
+                <!-- Block 2: Bảng so sánh chi tiết SADU vs trứng thường (Desktop Table + Mobile Cards) -->
+                <div class="comparison-swipe-hint"><i class="fa-solid fa-arrows-left-right"></i> Vuốt xem bảng so sánh chi tiết</div>
+                
+                <!-- Desktop & Tablet Table Layout -->
                 <div class="comparison-table-wrapper">
                     <table class="comparison-table">
                         <thead>
@@ -267,6 +269,33 @@ const Components = {
                             `).join('')}
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Mobile Cards Layout (No Horizontal Scroll Required) — P1-5 -->
+                <div class="comparison-mobile-cards">
+                    ${table.map(item => `
+                        <div class="comparison-mobile-card">
+                            <div class="comparison-mobile-criteria">${item.criteria}</div>
+                            <div class="comparison-mobile-grid">
+                                <div class="comparison-mobile-item sadu-item">
+                                    <span class="comparison-mobile-brand">SADU</span>
+                                    <span class="comparison-mobile-value">
+                                        ${typeof item.sadu === 'boolean'
+                        ? (item.sadu ? '<span class="badge-tag badge-success"><i class="fa-solid fa-check"></i> Có</span>' : '<span class="badge-tag badge-danger"><i class="fa-solid fa-xmark"></i> Không</span>')
+                        : item.sadu}
+                                    </span>
+                                </div>
+                                <div class="comparison-mobile-item regular-item">
+                                    <span class="comparison-mobile-brand">Trứng Thường</span>
+                                    <span class="comparison-mobile-value">
+                                        ${typeof item.regular === 'boolean'
+                        ? (item.regular ? '<span class="badge-tag badge-success"><i class="fa-solid fa-check"></i> Có</span>' : '<span class="badge-tag badge-danger"><i class="fa-solid fa-xmark"></i> Không</span>')
+                        : item.regular}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
                 </div>
 
                 <!-- Block 3: Comparison + Safety cards -->
@@ -717,17 +746,17 @@ const Components = {
                 <div class="footer-section">
                     <h4>Chính Sách</h4>
                     <ul>
-                        <li><a href="#">Chính sách bảo mật</a></li>
-                        <li><a href="#">Điều khoản sử dụng</a></li>
-                        <li><a href="#">Chính sách đổi trả</a></li>
-                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="javascript:void(0)" onclick="App.openPolicyModal('privacy')">Chính sách bảo mật</a></li>
+                        <li><a href="javascript:void(0)" onclick="App.openPolicyModal('terms')">Điều khoản sử dụng</a></li>
+                        <li><a href="javascript:void(0)" onclick="App.openPolicyModal('returns')">Chính sách đổi trả & bảo hành</a></li>
+                        <li><a href="javascript:void(0)" onclick="App.openPolicyModal('shipping')">Chính sách giao hàng</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Liên Hệ</h4>
-                    <p>📞 Hotline: ${contact.phone}</p>
-                    <p>📧 Email: ${contact.email}</p>
-                    <p>📍 ${contact.address}</p>
+                    <p><i class="fa-solid fa-phone"></i> Hotline: ${contact.phone}</p>
+                    <p><i class="fa-solid fa-envelope"></i> Email: ${contact.email}</p>
+                    <p><i class="fa-solid fa-location-dot"></i> ${contact.address}</p>
                     <div class="social-links">
                         ${contact.socialLinks.map(link => `
                             <a href="${link.url}" title="${link.name}">${link.icon}</a>
@@ -738,8 +767,8 @@ const Components = {
                     <h4>Hỗ Trợ</h4>
                     <ul>
                         <li><a href="#faq">Câu hỏi thường gặp</a></li>
-                        <li><a href="#footer">Liên hệ chúng tôi</a></li>
-                        <li><a href="#">Hướng dẫn sử dụng</a></li>
+                        <li><a href="javascript:void(0)" onclick="App.openPolicyModal('returns')">Hướng dẫn đổi trả 1:1</a></li>
+                        <li><a href="tel:19008952">Tổng đài 1900 8952</a></li>
                     </ul>
                 </div>
             </div>
@@ -864,6 +893,108 @@ const Components = {
         }
     },
 
+    renderQuickOffer: () => {
+        const section = document.getElementById('quick-offer');
+        if (!section) return;
+
+        const { products } = siteData;
+        const featured = products.find(p => p.featured === true) || products[0];
+        if (!featured) { section.style.display = 'none'; return; }
+
+        const featuredIndex = products.indexOf(featured);
+
+        const perks = [
+            { icon: '✅', text: 'Combo 4 hộp (48 quả)' },
+            { icon: '🚚', text: 'Miễn phí vận chuyển toàn quốc' },
+            { icon: '🎁', text: 'Tặng 1 túi gạo lứt 350g' },
+            { icon: '🛡️', text: 'Đổi mới 1:1 nếu vỡ do vận chuyển' }
+        ];
+
+        const savedAmount = featured.originalPrice > featured.priceValue
+            ? (featured.originalPrice - featured.priceValue).toLocaleString('vi-VN') + 'đ'
+            : null;
+
+        const discountPercent = featured.originalPrice > featured.priceValue
+            ? Math.round((1 - featured.priceValue / featured.originalPrice) * 100)
+            : null;
+
+        const qoCountdown = siteData.quickOfferCountdown;
+
+        section.innerHTML = `
+            <div class="quick-offer-container">
+                <div class="quick-offer-card">
+                    <div class="quick-offer-header-bar">
+                        <div class="quick-offer-header-badge">
+                            <span class="quick-offer-badge-tag"><i class="fa-solid fa-fire"></i> COMBO BÁN CHẠY NHẤT · MỪNG TẾT ĐỘC LẬP 2/9</span>
+                        </div>
+
+                        ${(qoCountdown && qoCountdown.enabled !== false) ? `
+                            <div class="quick-offer-timer-wrap">
+                                <span class="quick-offer-timer-label"><i class="fa-solid fa-clock"></i> ${qoCountdown.label || 'Ưu đãi kết thúc sau:'}</span>
+                                <div class="quick-offer-timer-boxes">
+                                    <span class="qo-timer-unit" id="qo-days" style="display:none;"></span>
+                                    <span class="qo-timer-box" id="qo-hours">00</span><span class="qo-colon">:</span>
+                                    <span class="qo-timer-box" id="qo-minutes">00</span><span class="qo-colon">:</span>
+                                    <span class="qo-timer-box" id="qo-seconds">00</span>
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="quick-offer-grid">
+                        <div class="quick-offer-media">
+                            <div class="quick-offer-img-box">
+                                ${discountPercent ? `<span class="quick-offer-discount-tag">TIẾT KIỆM ${discountPercent}%</span>` : ''}
+                                <img class="quick-offer-img" src="${featured.image}" alt="${featured.name}" loading="lazy">
+                            </div>
+                        </div>
+
+                        <div class="quick-offer-info">
+                            <h3 class="quick-offer-title">${featured.name}</h3>
+
+                            <div class="quick-offer-perks">
+                                ${perks.map(p => `
+                                    <div class="quick-offer-perk">
+                                        <span class="quick-offer-perk-icon">${p.icon}</span>
+                                        <span class="quick-offer-perk-text">${p.text}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <div class="quick-offer-price-block">
+                                <div class="quick-offer-price-main">
+                                    <span class="quick-offer-price-new">${featured.priceDisplay}</span>
+                                    ${featured.originalPrice > featured.priceValue
+                ? `<span class="quick-offer-price-old">${featured.originalPrice.toLocaleString('vi-VN')}đ</span>`
+                : ''}
+                                </div>
+                                ${savedAmount ? `<span class="quick-offer-price-save"><i class="fa-solid fa-gift"></i> Tiết kiệm ngay ${savedAmount}</span>` : ''}
+                            </div>
+
+                            <div class="quick-offer-actions">
+                                <button class="quick-offer-cta-main" id="quick-offer-cta"
+                                    onclick="App.openOrderModal(${featuredIndex})">
+                                    <i class="fa-solid fa-cart-shopping"></i> ĐẶT MUA COMBO NGAY (${featured.priceDisplay})
+                                </button>
+                                <a href="#customer-feedback-gallery" class="quick-offer-cta-secondary">
+                                    <i class="fa-solid fa-star" style="color: #fbc02d;"></i> Xem đánh giá từ khách hàng
+                                </a>
+                            </div>
+
+                            <div class="quick-offer-footer-trust">
+                                <span><i class="fa-solid fa-shield-halved"></i> SADU cam kết: Kiểm tra hàng trước khi thanh toán · Đổi mới 1:1 nếu vỡ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        if (typeof App !== 'undefined' && App.startQuickOfferCountdown) {
+            setTimeout(() => App.startQuickOfferCountdown(), 50);
+        }
+    },
+
     // Render Final CTA Section
     renderFinalCTA: () => {
         const section = document.getElementById('final-cta');
@@ -885,6 +1016,14 @@ const Components = {
                 </ul>
                 <button class="final-cta-btn" onclick="App.openOrderModal()">${ctaText}</button>
                 <p class="final-cta-subtext">${ctaSubtext}</p>
+                <div class="final-cta-secondary-row">
+                    <a href="#customer-feedback-gallery" class="cta-btn--secondary">
+                        <i class="fa-solid fa-star"></i> Xem khách hàng đánh giá
+                    </a>
+                    <a href="tel:19008952" class="cta-link-phone">
+                        <i class="fa-solid fa-phone"></i> Gọi tư vấn: 1900 8952
+                    </a>
+                </div>
             </div>
         `;
     },
@@ -894,6 +1033,7 @@ const Components = {
         Components.renderEventPopup();
         Components.renderHeader();
         Components.renderHero();
+        Components.renderQuickOffer();
         Components.renderBenefits();
         Components.renderHerbalStory();
         Components.renderWhy();

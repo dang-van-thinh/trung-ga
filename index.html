@@ -40,6 +40,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preload" as="image" href="source/san-pham.webp" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -208,6 +209,8 @@
     <!-- Hero Section -->
     <section id="hero" class="hero"></section>
 
+    <!-- Quick Offer Block — hiển thị ngay dưới Hero để traffic quảng cáo thấy offer mà không cần cuộn -->
+    <section id="quick-offer" class="quick-offer-section"></section>
 
     <!-- Benefits Section -->
     <section id="benefits" class="benefits"></section>
@@ -368,6 +371,11 @@
                     </div>
 
                     <button type="submit" class="submit-btn">HOÀN TẤT ĐẶT HÀNG</button>
+                    <p class="order-reassurance">
+                        <i class="fa-solid fa-shield-halved"></i> SADU sẽ gọi điện xác nhận đơn trước khi giao. Xem 
+                        <a href="javascript:void(0)" onclick="App.openPolicyModal('privacy')">Chính sách bảo mật</a> & 
+                        <a href="javascript:void(0)" onclick="App.openPolicyModal('returns')">Chính sách đổi trả</a>.
+                    </p>
                 </form>
             </div>
         </div>
@@ -414,6 +422,23 @@
             <h3 id="resultModalTitle">Đặt hàng thành công!</h3>
             <p id="resultModalMessage"></p>
             <button type="button" class="submit-btn" onclick="App.closeResultModal()">Đã hiểu</button>
+        </div>
+    </div>
+
+    <!-- Policy Modal — P1-3 (Chính sách bảo mật, Điều khoản, Đổi trả, Giao hàng) -->
+    <div id="policyModal" class="modal policy-modal" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle" onclick="App.closePolicyModalOnBackdrop(event)">
+        <div class="modal-content policy-modal-content">
+            <button class="close-btn policy-modal-close" onclick="App.closePolicyModal()" aria-label="Đóng">×</button>
+            <div class="policy-modal-header">
+                <i class="fa-solid fa-file-contract policy-modal-icon"></i>
+                <h3 id="policyModalTitle">Chính Sách</h3>
+            </div>
+            <div class="policy-modal-body" id="policyModalBody">
+                <!-- Data inserted by App.openPolicyModal -->
+            </div>
+            <div class="policy-modal-footer">
+                <button type="button" class="cta-btn--secondary" onclick="App.closePolicyModal()">Đóng cửa sổ</button>
+            </div>
         </div>
     </div>
 

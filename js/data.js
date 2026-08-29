@@ -36,8 +36,8 @@ const siteData = {
         ctaText: '🛒 Đặt Mua Ngay',
         secondaryCtaText: '<i class="fa-solid fa-circle-info"></i> Tìm Hiểu Thêm',
         secondaryCtaHref: '#herbal-story',
-        ctaNote: 'Combo từ 3 hộp — Miễn phí giao hàng toàn quốc',
-        offerBadge: 'Ưu đãi: Mua 3 Tặng 1',
+        ctaNote: '',
+        offerBadge: "Kiểm tra hàng trước khi thanh toán - Bảo hành vỡ 1 đổi 1",
         image: 'source/san-pham.webp',
         signatureImage: 'source/long-do.webp',
         signatureCaption: 'Lòng đỏ cam sậm<br>tự nhiên, không phẩm màu'
@@ -184,53 +184,53 @@ const siteData = {
 
     // Products
     products: [
-        // {
-        //     id: "special-offer",
-        //     name: "Combo Kỷ Niệm 10 Năm SADU",
-        //     originalPrice: 478000,
-        //     priceValue: 358500,
-        //     priceDisplay: "358.500đ",
-        //     specs: [
-        //         "✓ 4 hộp x 12 quả",
-        //         "✓ Miễn phí ship toàn quốc",
-        //         "✓ Tặng 1 túi đậu xanh (150g)",
-        //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
-        //     ],
-        //     highlightSpec: true,
-        //     image: "source/banner-special.webp",
-        //     featured: true // ⭐ Set true để làm sản phẩm nổi bật
-        // },
         {
-            id: "6-hop",
-            name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP TRÀ (100G)",
-            originalPrice: 956000,
-            priceValue: 717000,
-            priceDisplay: "717.000đ",
-            specs: [
-                "✓ 8 hộp x 12 quả (~ 7.500đ/quả)",
-                "✓ Tặng 1 hộp trà (100g)",
-                "✓ Miễn phí ship toàn quốc",
-                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
-            ],
-            highlightSpec: true,
-            image: "source/combo-6hop.webp",
-            featured: false
-        },
-        {
-            id: "3-hop",
-            name: "COMBO 3 HỘP TẶNG 1 HỘP",
+            id: "special-offer",
+            name: "COMBO TẾT ĐỘC LẬP - Mừng 2/9",
             originalPrice: 478000,
             priceValue: 358500,
             priceDisplay: "358.500đ",
             specs: [
-                "✓ 4 hộp x 12 quả (~ 7.500đ/quả)",
+                "✓ 4 hộp x 12 quả",
                 "✓ Miễn phí ship toàn quốc",
+                "✓ Tặng 1 túi gạo lứt SADU (350g)",
                 "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
             ],
             highlightSpec: true,
-            image: "source/combo-3hop.webp",
+            image: "source/event-2-9.jpg",
             featured: true // ⭐ Set true để làm sản phẩm nổi bật
         },
+        // {
+        //     id: "6-hop",
+        //     name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP TRÀ (100G)",
+        //     originalPrice: 956000,
+        //     priceValue: 717000,
+        //     priceDisplay: "717.000đ",
+        //     specs: [
+        //         "✓ 8 hộp x 12 quả (~ 7.500đ/quả)",
+        //         "✓ Tặng 1 hộp trà (100g)",
+        //         "✓ Miễn phí ship toàn quốc",
+        //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+        //     ],
+        //     highlightSpec: true,
+        //     image: "source/combo-6hop.webp",
+        //     featured: false
+        // },
+        // {
+        //     id: "3-hop",
+        //     name: "COMBO 3 HỘP TẶNG 1 HỘP",
+        //     originalPrice: 478000,
+        //     priceValue: 358500,
+        //     priceDisplay: "358.500đ",
+        //     specs: [
+        //         "✓ 4 hộp x 12 quả (~ 7.500đ/quả)",
+        //         "✓ Miễn phí ship toàn quốc",
+        //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+        //     ],
+        //     highlightSpec: true,
+        //     image: "source/combo-3hop.webp",
+        //     featured: false // ⭐ Set true để làm sản phẩm nổi bật
+        // },
         {
             id: "1-hop",
             name: "1 HỘP TRỨNG GÀ THẢO DƯỢC SADU",
@@ -326,7 +326,7 @@ const siteData = {
         },
         {
             question: 'Giao hàng mất bao lâu?',
-            answer: '- Đối với các đơn trong nội thành TP Hà Nội: thời gian giao hàng dao động từ 2-3 ngày (Kể từ khi lên đơn thành công). <br>- Đối với các tỉnh thành khác: Tùy thuộc vào vị trí của bạn mà thời gian giao hàng dao động từ 4-7 ngày (Kể từ khi lên đơn thành công).'
+            answer: '- Đối với các đơn nội thành TP Hà Nội: thời gian giao hàng từ 1–2 ngày kể từ khi xác nhận đơn.<br>- Đối với các tỉnh thành khác: thời gian giao hàng từ 3–5 ngày tùy thuộc vào khu vực.'
         },
         {
             question: 'Trứng để được bao nhiêu ngày và bảo quản như thế nào?',
@@ -360,7 +360,7 @@ const siteData = {
                 label: 'HOTLINE',
                 value: '1900 8952',
                 href: 'tel:19008952',
-                note: '8:00 – 22:00 mỗi ngày'
+                note: '8:00 – 17:30 mỗi ngày'
             },
             {
                 icon: '<i class="fa-solid fa-comments"></i>',
@@ -396,29 +396,41 @@ const siteData = {
 
     // Customers for Alert Notification
     customers: [
-        { name: 'Nguyễn Thị Hương', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Trần Văn Đức', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Phạm Thị Linh', location: 'Đà Nẵng', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Hoàng Minh Tuấn', location: 'Hải Phòng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Lê Thị Hoa', location: 'Cần Thơ', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Đỗ Văn Hùng', location: 'Bắc Ninh', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Vũ Thị Xuân', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Bùi Văn Long', location: 'Nghệ An', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Trần Ngọc Bảo', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Trương Thị Mai', location: 'Thanh Hóa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Nguyễn Quỳnh Nga', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Ngô Như', location: 'Đà Nẵng', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Lê Thị Tiếm', location: 'Phú Thọ', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Lâm Sung', location: 'Đà Nẵng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Phan Hai Uyen', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Minh Chau', location: 'Hải Phòng', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Lien Nguyen', location: 'Hưng Yên', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Phạm Thanh Dung', location: 'Thanh Hóa', product: 'Trứng Gà Thảo Dược - 3 Hộp Tặng 1' },
-        { name: 'Lê Thu Hoài', location: 'Hà Nội', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Trương Tú Uyên', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Gia Quyên', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
-        { name: 'Tống Công Dũng', location: 'TP. Hồ Chí Minh', product: 'Trứng Gà Thảo Dược - 6 Hộp Tặng 2' },
+        { name: 'Nguyễn Văn An', location: 'Hà Nội', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Trần Thị Mỹ Linh', location: 'TP. Hồ Chí Minh', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Lê Hoàng Nam', location: 'Đà Nẵng', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Phạm Thanh Thảo', location: 'Hải Phòng', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Vũ Quốc Huy', location: 'Cần Thơ', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Nguyễn Thị Hương', location: 'Hà Nội', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Trần Văn Đức', location: 'TP. Hồ Chí Minh', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Phạm Thị Linh', location: 'Đà Nẵng', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Hoàng Minh Tuấn', location: 'Hải Phòng', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Lê Thị Hoa', location: 'Cần Thơ', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Đỗ Văn Hùng', location: 'Bắc Ninh', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Vũ Thị Xuân', location: 'Hà Nội', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Bùi Văn Long', location: 'Nghệ An', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Trần Ngọc Bảo', location: 'TP. Hồ Chí Minh', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Trương Thị Mai', location: 'Thanh Hóa', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Nguyễn Quỳnh Nga', location: 'Hà Nội', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Ngô Như', location: 'Đà Nẵng', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Lê Thị Tiếm', location: 'Phú Thọ', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Lâm Sung', location: 'Đà Nẵng', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Phan Hai Uyen', location: 'Hà Nội', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Minh Chau', location: 'Hải Phòng', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Lien Nguyen', location: 'Hưng Yên', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Phạm Thanh Dung', location: 'Thanh Hóa', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Lê Thu Hoài', location: 'Hà Nội', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Trương Tú Uyên', location: 'TP. Hồ Chí Minh', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Gia Quyên', location: 'TP. Hồ Chí Minh', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' },
+        { name: 'Tống Công Dũng', location: 'TP. Hồ Chí Minh', product: 'COMBO TẾT ĐỘC LẬP - Mừng 2/9' }
     ],
+
+    // Countdown Timer cho Quick Offer (Mừng Tết Độc Lập 2/9)
+    quickOfferCountdown: {
+        enabled: true,
+        label: 'Ưu đãi kết thúc sau:',
+        endDate: '2026-09-02T23:59:59' // Ngày kết thúc chương trình 2/9
+    },
 
     // ============================================================
     // CHƯƠNG TRÌNH KHUYẾN MÃI HÀNG THÁNG
@@ -429,9 +441,9 @@ const siteData = {
         enabled: false,                          // [THAY] true = hiện, false = ẩn section
 
         // --- Nhận diện chương trình ---
-        tag: 'Khuyến Mãi Tháng 6/2026',        // [THAY] nhãn nhỏ phía trên
-        title: 'Kỷ Niệm 10 Năm SADU',          // [THAY] tiêu đề chính
-        subtitle: 'Ưu Đãi Chưa Từng Có',       // [THAY] tiêu đề phụ
+        tag: 'Khuyến Mãi Tháng 9/2026',        // [THAY] nhãn nhỏ phía trên
+        title: 'Mừng Tết Độc Lập 2/9',          // [THAY] tiêu đề chính
+        subtitle: 'Ưu Đãi Đặc Biệt',       // [THAY] tiêu đề phụ
         description: 'Nhân dịp kỷ niệm 10 năm thành lập, SADU dành tặng chương trình ưu đãi đặc biệt chưa từng có! Chỉ áp dụng đến <strong>hết ngày 07/06/2026</strong>.', // [THAY]
 
         // --- Hình ảnh ---
@@ -486,7 +498,7 @@ const siteData = {
                 description: 'Đơn hàng trong nội thành Hà Nội được chính shipper của SADU đảm nhận — không qua trung gian, không lo va đập ngoài tầm kiểm soát.',
                 points: [
                     'Shipper nội bộ SADU, được đào tạo xử lý hàng dễ vỡ',
-                    'Giao trong 1–2 ngày kể từ khi xác nhận đơn',
+                    'Giao trong 1–2 ngày kể từ khi xác nhận đơn ()',
                     'Liên hệ trực tiếp ngay khi có vấn đề phát sinh'
                 ],
                 image: 'source/qua-1.webp',
@@ -574,5 +586,73 @@ const siteData = {
         ],
         ctaText: '🛒 ĐẶT HÀNG NGAY',
         ctaSubtext: 'Giao hàng toàn quốc • Thanh toán khi nhận hàng'
+    },
+
+    // Policies Content — P1-3
+    policies: {
+        privacy: {
+            title: 'Chính Sách Bảo Mật Thông Tin',
+            content: `
+                <p>SADU cam kết bảo vệ tuyệt đối thông tin cá nhân của Quý khách hàng khi đặt mua sản phẩm trên website.</p>
+                <h4>1. Mục đích thu thập thông tin</h4>
+                <p>Thông tin cá nhân (Họ tên, Số điện thoại, Địa chỉ giao hàng) chỉ được sử dụng cho các mục đích:</p>
+                <ul>
+                    <li>Xử lý và hoàn tất đơn hàng giao đến tận tay Quý khách.</li>
+                    <li>Nhân viên tư vấn gọi điện xác nhận đơn và tư vấn sản phẩm.</li>
+                    <li>Giải quyết khiếu nại, sự cố vỡ hỏng trong quá trình vận chuyển (nếu có).</li>
+                </ul>
+                <h4>2. Phạm vi sử dụng thông tin</h4>
+                <p>SADU chỉ sử dụng thông tin trong nội bộ doanh nghiệp và cung cấp cho đối tác vận chuyển để hoàn thành việc giao hàng. Chúng tôi <strong>tuyệt đối không kinh doanh, chia sẻ hay bán thông tin</strong> cho bất kỳ bên thứ ba nào khác.</p>
+            
+            `
+        },
+        terms: {
+            title: 'Điều Khoản Sử Dụng',
+            content: `
+                <p>Khi truy cập và đặt mua sản phẩm Trứng Gà Thảo Dược SADU, Quý khách đồng ý tuân thủ các điều khoản sau:</p>
+                <h4>1. Quy trình đặt hàng & Xác nhận</h4>
+                <p>Sau khi Quý khách điền form đặt hàng thành công, đơn hàng của quý khách sẽ được ưu tiên để xử lý trước</p>
+                <h4>2. Phương thức thanh toán</h4>
+                <p>SADU áp dụng hình thức <strong>Thanh toán khi nhận hàng (COD)</strong> toàn quốc. Quý khách kiểm tra hàng trước khi thanh toán cho nhân viên giao hàng.</p>
+                <h4>3. Quyền hạn & Trách nhiệm</h4>
+                <p>SADU cam kết cung cấp đúng chủng loại, số lượng và chất lượng trứng tươi mới nhất. Quý khách có trách nhiệm cung cấp chính xác Số điện thoại và Địa chỉ giao hàng để việc nhận hàng diễn ra thuận lợi.</p>
+            `
+        },
+        returns: {
+            title: 'Chính Sách Đổi Trả & Bảo Hành Vận Chuyển',
+            content: `
+                <p>SADU áp dụng chính sách <strong>bảo hành 1 đổi 1 hoặc hoàn tiền 100%</strong> đối với các sự cố vỡ hỏng do vận chuyển.</p>
+                <h4>1. Điều kiện bảo hành</h4>
+                <ul>
+                    <li>Trứng bị vỡ, nứt hoặc hỏng trong quá trình vận chuyển.</li>
+                    <li>Sản phẩm giao không đúng chủng loại, số lượng so với đơn đặt hàng.</li>
+                </ul>
+                <h4>2. Quy trình xử lý đổi trả</h4>
+                <ol>
+                    <li>Quý khách vui lòng <strong>quay video hoặc chụp ảnh</strong> thực tế sản phẩm bị hỏng ngay khi mở hộp.</li>
+                    <li>Gửi hình ảnh/video qua Hotline/Zalo: <strong>1900 8952</strong> hoặc Fanpage <strong>Trứng Gà Thảo Dược SADU</strong>.</li>
+                    <li>Đội ngũ CSKH sẽ kiểm tra và lập tức chọn phương án giải quyết tốt nhất (Hoàn tiền hoặc gửi bù trứng cho những đơn hàng sau).</li>
+                </ol>
+            `
+        },
+        shipping: {
+            title: 'Chính Sách Giao Hàng & Đóng Gói',
+            content: `
+                <p>SADU áp dụng quy trình đóng gói và vận chuyển chuyên dụng để đảm bảo từng quả trứng đến tay khách hàng nguyên vẹn.</p>
+                <h4>1. Thời gian giao hàng (Nếu không nợ đơn)</h4>
+                <ul>
+                    <li><strong>Nội thành Hà Nội:</strong> 1–2 ngày làm việc kể từ khi xác nhận đơn. Do shipper nội bộ SADU giao trực tiếp.</li>
+                    <li><strong>Các tỉnh thành khác:</strong> 3–5 ngày làm việc tùy khu vực địa lý. Đóng thùng trấu chống sốc có vách ngăn.</li>
+                </ul>
+                <h4>2. Phí giao hàng & Miễn phí ship</h4>
+                <ul>
+                    <li><strong>Miễn phí ship toàn quốc:</strong> Cho các đơn hàng Combo từ 3 hộp trở lên (hoặc tổng giá trị đơn từ 358.000đ).</li>
+                    <li><strong>Phí ship cố định:</strong> 30.000đ cho đơn mua lẻ 1 hộp.</li>
+                </ul>
+                <h4>3. Đồng kiểm khi nhận hàng</h4>
+                <p>Khách hàng được quyền mở thùng kiểm tra số lượng và tình trạng sản phẩm trước khi thanh toán tiền cho nhân viên giao hàng.</p>
+            `
+        }
     }
 };
+

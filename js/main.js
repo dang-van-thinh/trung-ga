@@ -39,6 +39,20 @@ const App = {
     },
 
     // ============================================
+    // GA4 TRACKING HELPER — P2-3
+    // ============================================
+    trackGA4: (eventName, params = {}) => {
+        if (typeof gtag === 'function') {
+            gtag('event', eventName, {
+                page_location: window.location.href,
+                ...params
+            });
+            console.log(`📊 GA4: ${eventName}`, params);
+        }
+    },
+
+
+    // ============================================
     // CUSTOMER ALERT NOTIFICATION
     // ============================================
     alertIndex: 0,
@@ -220,7 +234,21 @@ const App = {
                 }
             }, 600);
         }
+
+        // GA4: ghi nhận CTA click và user bắt đầu xem offer — P2-3
+        const selectedProduct = siteData.products?.[productIndex];
+        App.trackGA4('cta_click', {
+            button_location: 'order_modal',
+            product_id: selectedProduct?.id || 'unknown',
+            product_name: selectedProduct?.name || 'unknown'
+        });
+        App.trackGA4('view_offer', {
+            product_id: selectedProduct?.id || 'unknown',
+            product_name: selectedProduct?.name || 'unknown',
+            price: selectedProduct?.priceValue || 0
+        });
     },
+
 
     closeOrderModal: () => {
         const resultModal = document.getElementById('resultModal');
@@ -228,6 +256,34 @@ const App = {
             resultModal.classList.remove('show');
         }
     },
+
+    // ============================================
+    // META PIXEL PURCHASE — P2-4
+    // Tách riêng để chỉ gọi sau khi fetch không bị abort/error
+    // ============================================
+    firePurchaseEvent: (orderData) => {
+        if (typeof fbq === 'undefined') return;
+
+        const rawPrice = (orderData.totalPrice || '').replace(/[^\d]/g, '');
+
+        // Kích hoạt Advanced Matching để tăng điểm Event Match Quality (EMQ)
+        if (orderData.phone || orderData.name) {
+            const cleanPhone = (orderData.phone || '').replace(/[^\d+]/g, '');
+            fbq('init', '1668129411185900', {
+                ph: cleanPhone,
+                fn: orderData.name || ''
+            });
+        }
+
+        fbq('track', 'Purchase', {
+            content_name: orderData.product,
+            value: parseFloat(rawPrice) || 0,
+            currency: 'VND'
+        }, { eventID: orderData.eventId });
+
+        console.log('💰 Meta Pixel Purchase fired (post-submit confirm):', orderData.product);
+    },
+
 
     // ============================================
     // TOTAL PRICE
@@ -306,6 +362,41 @@ const App = {
     closeResultModal: () => {
         const modal = document.getElementById('resultModal');
         if (modal) modal.classList.remove('show');
+    },
+
+    // ============================================
+    // POLICY MODAL — P1-3
+    // ============================================
+    openPolicyModal: (policyKey) => {
+        const policy = siteData.policies?.[policyKey];
+        if (!policy) return;
+
+        const modal = document.getElementById('policyModal');
+        const titleEl = document.getElementById('policyModalTitle');
+        const bodyEl = document.getElementById('policyModalBody');
+        if (!modal || !titleEl || !bodyEl) return;
+
+        titleEl.textContent = policy.title;
+        bodyEl.innerHTML = policy.content;
+
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+
+        App.trackGA4('view_policy', { policy_type: policyKey });
+    },
+
+    closePolicyModal: () => {
+        const modal = document.getElementById('policyModal');
+        if (modal) {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    },
+
+    closePolicyModalOnBackdrop: (e) => {
+        if (e.target === document.getElementById('policyModal')) {
+            App.closePolicyModal();
+        }
     },
 
     // ============================================
@@ -434,8 +525,13 @@ const App = {
             if (firstGroup) {
                 firstGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+            // GA4: ghi nhận form có lỗi — P2-3
+            App.trackGA4('form_error', {
+                error_field: firstErrorGroupId.replace('fg-', '')
+            });
             return;
         }
+
 
         // 3. Prepare Data Payload (matching template fields)
         const selectedProductRadio = document.querySelector('input[name="productOption"]:checked');
@@ -484,7 +580,15 @@ const App = {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 12000);
 
+        // GA4: ghi nhận form được gửi — P2-3
+        App.trackGA4('order_submit', {
+            product_name: orderData.product,
+            quantity: orderData.quantity,
+            event_id: orderData.eventId
+        });
+
         fetch(GOOGLE_SCRIPT_URL, {
+
             method: 'POST',
             body: new URLSearchParams(orderData),
             signal: controller.signal
@@ -507,24 +611,21 @@ const App = {
                 App.updateTotalPrice();
                 App.resetLocationSelectors();
 
-                if (typeof fbq !== 'undefined') {
-                    const rawPrice = (orderData.totalPrice || '').replace(/[^\d]/g, '');
+                // GA4: order_success — chỉ bắn khi endpoint xác nhận (không abort/error) — P2-3
+                App.trackGA4('order_success', {
+                    product_name: orderData.product,
+                    quantity: orderData.quantity,
+                    value: parseFloat((orderData.totalPrice || '').replace(/[^\d]/g, '')) || 0,
+                    currency: 'VND',
+                    event_id: orderData.eventId
+                });
 
-                    // Kích hoạt Advanced Matching để tăng điểm Event Match Quality (EMQ)
-                    if (orderData.phone || orderData.fullName) {
-                        const cleanPhone = (orderData.phone || '').replace(/[^\d+]/g, '');
-                        fbq('init', '1668129411185900', {
-                            ph: cleanPhone,
-                            fn: orderData.fullName || ''
-                        });
-                    }
-
-                    fbq('track', 'Purchase', {
-                        content_name: orderData.product,
-                        value: parseFloat(rawPrice) || 0,
-                        currency: 'VND'
-                    }, { eventID: orderData.eventId });
-                }
+                // Meta Pixel Purchase — P2-4
+                // Chỉ bắn sau khi fetch không bị abort và không throw error.
+                // Lưu ý: do Google Apps Script trả opaque response (CORS no-cors),
+                // ta không xác nhận được cụ thể server đã ghi Sheet hay chưa.
+                // Tuy nhiên đây là thời điểm an toàn nhất có thể, tránh bắn sớn.
+                App.firePurchaseEvent(orderData);
 
             })
             .catch(error => {
@@ -899,6 +1000,60 @@ const App = {
     },
 
     // ============================================
+    // QUICK OFFER COUNTDOWN TIMER
+    // ============================================
+    startQuickOfferCountdown: () => {
+        const update = () => {
+            const now = new Date().getTime();
+            let targetDate;
+
+            const config = siteData.quickOfferCountdown;
+            if (config && config.endDate) {
+                targetDate = new Date(config.endDate).getTime();
+            } else {
+                const midnight = new Date();
+                midnight.setHours(23, 59, 59, 999);
+                targetDate = midnight.getTime();
+            }
+
+            const distance = targetDate - now;
+
+            const daysEl = document.getElementById('qo-days');
+            const hoursEl = document.getElementById('qo-hours');
+            const minutesEl = document.getElementById('qo-minutes');
+            const secondsEl = document.getElementById('qo-seconds');
+
+            if (distance < 0) {
+                if (hoursEl) hoursEl.textContent = '00';
+                if (minutesEl) minutesEl.textContent = '00';
+                if (secondsEl) secondsEl.textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (daysEl) {
+                if (days > 0) {
+                    daysEl.style.display = 'inline-flex';
+                    daysEl.textContent = `${days} ngày`;
+                } else {
+                    daysEl.style.display = 'none';
+                }
+            }
+
+            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+        };
+
+        update();
+        setInterval(update, 1000);
+    },
+
+    // ============================================
     // EVENT LISTENERS SETUP
     // ============================================
     // ============================================
@@ -1077,6 +1232,20 @@ const App = {
             });
         }
 
+        // GA4: form_start — bắn 1 lần khi user bắt đầu điền form — P2-3
+        const nameInput = document.getElementById('name');
+        if (nameInput) {
+            const onFormStart = () => {
+                App.trackGA4('form_start', {
+                    form_id: 'orderForm'
+                });
+                nameInput.removeEventListener('focus', onFormStart);
+                nameInput.removeEventListener('click', onFormStart);
+            };
+            nameInput.addEventListener('focus', onFormStart);
+            nameInput.addEventListener('click', onFormStart);
+        }
+
         // Mobile menu toggle button listener
         const mobileMenuBtn = document.getElementById('mobileMenuBtn') || document.querySelector('.mobile-menu-btn');
         if (mobileMenuBtn) {
@@ -1107,6 +1276,8 @@ const App = {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 App.closeOrderModal();
+                App.closeResultModal();
+                App.closePolicyModal();
             }
         });
 
@@ -1225,6 +1396,7 @@ const App = {
         App.setupEventListeners();
         App.initScrollReveal();
         App.startProductCountdown();
+        App.startQuickOfferCountdown();
         App.initScrollDepthTracking();
 
         // Tự động nạp trước location.js khi cuộn gần tới #order-section
