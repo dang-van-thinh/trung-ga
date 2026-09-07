@@ -184,53 +184,53 @@ const siteData = {
 
     // Products
     products: [
-        {
-            id: "special-offer",
-            name: "COMBO TẾT ĐỘC LẬP - Mừng 2/9",
-            originalPrice: 478000,
-            priceValue: 358500,
-            priceDisplay: "358.500đ",
-            specs: [
-                "✓ 4 hộp x 12 quả",
-                "✓ Miễn phí ship toàn quốc",
-                "✓ Tặng 1 túi gạo lứt SADU (350g)",
-                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
-            ],
-            highlightSpec: true,
-            image: "source/event-2-9.jpg",
-            featured: true // ⭐ Set true để làm sản phẩm nổi bật
-        },
         // {
-        //     id: "6-hop",
-        //     name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP TRÀ (100G)",
-        //     originalPrice: 956000,
-        //     priceValue: 717000,
-        //     priceDisplay: "717.000đ",
-        //     specs: [
-        //         "✓ 8 hộp x 12 quả (~ 7.500đ/quả)",
-        //         "✓ Tặng 1 hộp trà (100g)",
-        //         "✓ Miễn phí ship toàn quốc",
-        //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
-        //     ],
-        //     highlightSpec: true,
-        //     image: "source/combo-6hop.webp",
-        //     featured: false
-        // },
-        // {
-        //     id: "3-hop",
-        //     name: "COMBO 3 HỘP TẶNG 1 HỘP",
+        //     id: "special-offer",
+        //     name: "COMBO TẾT ĐỘC LẬP - Mừng 2/9",
         //     originalPrice: 478000,
         //     priceValue: 358500,
         //     priceDisplay: "358.500đ",
         //     specs: [
-        //         "✓ 4 hộp x 12 quả (~ 7.500đ/quả)",
+        //         "✓ 4 hộp x 12 quả",
         //         "✓ Miễn phí ship toàn quốc",
+        //         "✓ Tặng 1 túi gạo lứt SADU (350g)",
         //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
         //     ],
         //     highlightSpec: true,
-        //     image: "source/combo-3hop.webp",
-        //     featured: false // ⭐ Set true để làm sản phẩm nổi bật
+        //     image: "source/event-2-9.jpg",
+        //     featured: true // ⭐ Set true để làm sản phẩm nổi bật
         // },
+        {
+            id: "6-hop",
+            name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP TRÀ (100G)",
+            originalPrice: 956000,
+            priceValue: 717000,
+            priceDisplay: "717.000đ",
+            specs: [
+                "✓ 8 hộp x 12 quả (~ 7.500đ/quả)",
+                "✓ Tặng 1 hộp trà (100g)",
+                "✓ Miễn phí ship toàn quốc",
+                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+            ],
+            highlightSpec: true,
+            image: "source/combo-6hop.webp",
+            featured: false
+        },
+        {
+            id: "3-hop",
+            name: "COMBO 3 HỘP TẶNG 1 HỘP",
+            originalPrice: 478000,
+            priceValue: 358500,
+            priceDisplay: "358.500đ",
+            specs: [
+                "✓ 4 hộp x 12 quả (~ 7.500đ/quả)",
+                "✓ Miễn phí ship toàn quốc",
+                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+            ],
+            highlightSpec: true,
+            image: "source/combo-3hop.webp",
+            featured: true // ⭐ Set true để làm sản phẩm nổi bật
+        },
         {
             id: "1-hop",
             name: "1 HỘP TRỨNG GÀ THẢO DƯỢC SADU",

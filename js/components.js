@@ -904,9 +904,9 @@ const Components = {
         const featuredIndex = products.indexOf(featured);
 
         const perks = [
-            { icon: '✅', text: 'Combo 4 hộp (48 quả)' },
+            { icon: '✅', text: 'Tổng nhận 4 hộp (48 quả)' },
             { icon: '🚚', text: 'Miễn phí vận chuyển toàn quốc' },
-            { icon: '🎁', text: 'Tặng 1 túi gạo lứt 350g' },
+            { icon: '🎁', text: 'Ưu đãi 7.500đ/quả' },
             { icon: '🛡️', text: 'Đổi mới 1:1 nếu vỡ do vận chuyển' }
         ];
 
@@ -925,7 +925,7 @@ const Components = {
                 <div class="quick-offer-card">
                     <div class="quick-offer-header-bar">
                         <div class="quick-offer-header-badge">
-                            <span class="quick-offer-badge-tag"><i class="fa-solid fa-fire"></i> COMBO BÁN CHẠY NHẤT · MỪNG TẾT ĐỘC LẬP 2/9</span>
+                            <span class="quick-offer-badge-tag"><i class="fa-solid fa-fire"></i> COMBO BÁN CHẠY NHẤT · ƯU ĐÃI TRẢI NGHIỆM</span>
                         </div>
 
                         ${(qoCountdown && qoCountdown.enabled !== false) ? `
