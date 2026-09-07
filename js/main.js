@@ -1004,45 +1004,22 @@ const App = {
     // ============================================
     startQuickOfferCountdown: () => {
         const update = () => {
-            const now = new Date().getTime();
-            let targetDate;
+            const now = new Date();
+            const midnight = new Date(now);
+            midnight.setHours(23, 59, 59, 999);
+            const distance = midnight - now;
 
-            const config = siteData.quickOfferCountdown;
-            if (config && config.endDate) {
-                targetDate = new Date(config.endDate).getTime();
-            } else {
-                const midnight = new Date();
-                midnight.setHours(23, 59, 59, 999);
-                targetDate = midnight.getTime();
-            }
-
-            const distance = targetDate - now;
+            const hours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             const daysEl = document.getElementById('qo-days');
             const hoursEl = document.getElementById('qo-hours');
             const minutesEl = document.getElementById('qo-minutes');
             const secondsEl = document.getElementById('qo-seconds');
 
-            if (distance < 0) {
-                if (hoursEl) hoursEl.textContent = '00';
-                if (minutesEl) minutesEl.textContent = '00';
-                if (secondsEl) secondsEl.textContent = '00';
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            if (daysEl) {
-                if (days > 0) {
-                    daysEl.style.display = 'inline-flex';
-                    daysEl.textContent = `${days} ngày`;
-                } else {
-                    daysEl.style.display = 'none';
-                }
-            }
+            // Ẩn phần "ngày" vì luôn đếm trong ngày hôm nay
+            if (daysEl) daysEl.style.display = 'none';
 
             if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
             if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
