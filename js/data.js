@@ -446,7 +446,7 @@ const siteData = {
     // Countdown Timer cho Quick Offer
     quickOfferCountdown: {
         enabled: true,
-        label: '🌕 Ưu đãi Trung Thu kết thúc sau:',
+        label: '⏱️ Ưu đãi kết thúc sau:',
         endDate: '2026-09-25T23:59:59' // Ngày kết thúc chương trình 25/9
     },
 
