@@ -519,7 +519,7 @@ const siteData = {
                     'Giao trong 1–2 ngày kể từ khi xác nhận đơn ()',
                     'Liên hệ trực tiếp ngay khi có vấn đề phát sinh'
                 ],
-                image: 'source/qua-1.webp',
+                image: 'source/ship-ha-noi.webp',
                 imageAlt: 'Giao hàng nội thành — shipper SADU'
             },
             {
@@ -532,7 +532,7 @@ const siteData = {
                     'Vách ngăn riêng từng quả, không va chạm nhau',
                     'Kiểm tra kỹ lưỡng trước khi bàn giao đơn vị vận chuyển'
                 ],
-                image: 'source/ship1.webp',
+                image: 'source/ship-tinh.webp',
                 imageAlt: 'Đóng gói thùng trấu chống sốc — đơn tỉnh SADU'
             }
         ],
