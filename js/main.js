@@ -3,7 +3,7 @@
    ============================================ */
 
 // CONFIGURATION
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby7n1vHD2AGcUPTY67hg5chHKTSkKcMPQD4abO0QdDHMQ3-svokYSQ9Hid7cDXqSw/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydXaQ4jDY7mXDM5xL-TtGyC0vJDQRsIRPKPRUhWPGtD73qXaMMB1DMHDo9ebppfwI/exec';
 
 const App = {
 
@@ -635,7 +635,7 @@ const App = {
                 App.showResultModal(
                     'error',
                     isTimeout ? 'Kết nối mạng phản hồi chậm' : 'Đặt hàng không thành công',
-                    isTimeout 
+                    isTimeout
                         ? 'Hệ thống đã lưu lại thông tin đơn hàng của bạn. Chúng tôi sẽ gọi lại xác nhận ngay! Bạn cũng có thể gọi hotline 1900 8952 để được hỗ trợ tức thì.'
                         : 'Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại hoặc gọi hotline: 1900 8952. Thông tin bạn vừa nhập vẫn được giữ nguyên trong form.'
                 );
