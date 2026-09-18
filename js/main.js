@@ -1003,25 +1003,60 @@ const App = {
     // QUICK OFFER COUNTDOWN TIMER
     // ============================================
     startQuickOfferCountdown: () => {
-        const update = () => {
-            const now = new Date();
-            const midnight = new Date(now);
+        // Đọc endDate từ data.js — nếu không có hoặc đã qua thì fallback về cuối ngày hôm nay
+        const qoCfg = siteData.quickOfferCountdown;
+        let targetTime;
+
+        if (qoCfg && qoCfg.endDate) {
+            const configured = new Date(qoCfg.endDate).getTime();
+            const now = Date.now();
+            if (configured > now) {
+                targetTime = configured;
+            }
+        }
+
+        // Fallback: cuối ngày hôm nay nếu không có endDate hoặc đã hết hạn
+        if (!targetTime) {
+            const midnight = new Date();
             midnight.setHours(23, 59, 59, 999);
-            const distance = midnight - now;
+            targetTime = midnight.getTime();
+        }
 
-            const hours = Math.floor(distance / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const update = () => {
+            const now = Date.now();
+            const distance = targetTime - now;
 
-            const daysEl = document.getElementById('qo-days');
-            const hoursEl = document.getElementById('qo-hours');
+            const daysEl    = document.getElementById('qo-days');
+            const hoursEl   = document.getElementById('qo-hours');
             const minutesEl = document.getElementById('qo-minutes');
             const secondsEl = document.getElementById('qo-seconds');
 
-            // Ẩn phần "ngày" vì luôn đếm trong ngày hôm nay
-            if (daysEl) daysEl.style.display = 'none';
+            if (distance <= 0) {
+                // Đã hết hạn
+                if (daysEl)    { daysEl.style.display = 'none'; }
+                if (hoursEl)   hoursEl.textContent   = '00';
+                if (minutesEl) minutesEl.textContent = '00';
+                if (secondsEl) secondsEl.textContent = '00';
+                return;
+            }
 
-            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+            const totalHours = Math.floor(distance / (1000 * 60 * 60));
+            const days    = Math.floor(totalHours / 24);
+            const hours   = totalHours % 24;
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Hiện "ngày" nếu còn >= 1 ngày
+            if (daysEl) {
+                if (days >= 1) {
+                    daysEl.style.display = '';
+                    daysEl.textContent = String(days).padStart(2, '0');
+                } else {
+                    daysEl.style.display = 'none';
+                }
+            }
+
+            if (hoursEl)   hoursEl.textContent   = String(hours).padStart(2, '0');
             if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
             if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
         };

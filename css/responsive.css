@@ -2420,3 +2420,73 @@
     padding: 14px 16px;
   }
 }
+
+/* ============================================
+   IPHONE 14 PRO & SMALL PHONES (≤ 430px)
+   ============================================ */
+@media (max-width: 430px) {
+  /* Timer wrap: căn giữa hoàn toàn, stack label + boxes nếu quá chật */
+  .quick-offer-timer-wrap {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 8px;
+    padding: 8px 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .quick-offer-timer-label {
+    font-size: 10.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+
+  /* Boxes hàng ngang, căn giữa, đồng chiều cao */
+  .quick-offer-timer-boxes {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+
+  .qo-timer-box,
+  .qo-timer-unit {
+    height: 26px;
+    min-width: 26px;
+    font-size: 12px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .qo-timer-unit {
+    padding: 0 7px;
+    font-size: 11px;
+  }
+
+  .qo-colon {
+    font-size: 13px;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  /* Header bar: badge + timer xếp dọc, căn giữa */
+  .quick-offer-header-bar {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .quick-offer-badge-tag {
+    font-size: 10.5px;
+    padding: 6px 10px;
+    letter-spacing: 0.2px;
+  }
+}
