@@ -201,22 +201,22 @@ const siteData = {
             featured: true // ⭐ Set true để làm sản phẩm nổi bật
         },
 
-        // {
-        //     id: "6-hop",
-        //     name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP TRÀ (100G)",
-        //     originalPrice: 956000,
-        //     priceValue: 717000,
-        //     priceDisplay: "717.000đ",
-        //     specs: [
-        //         "✓ 8 hộp x 12 quả (~ 7.500đ/quả)",
-        //         "✓ Tặng 1 hộp trà (100g)",
-        //         "✓ Miễn phí ship toàn quốc",
-        //         "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
-        //     ],
-        //     highlightSpec: true,
-        //     image: "source/combo-6hop.webp",
-        //     featured: false
-        // },
+        {
+            id: "6-hop",
+            name: "COMBO 6 HỘP TẶNG 2 HỘP - TẶNG 1 HỘP TRÀ (100G)",
+            originalPrice: 956000,
+            priceValue: 717000,
+            priceDisplay: "717.000đ",
+            specs: [
+                "✓ 8 hộp x 12 quả (~ 7.500đ/quả)",
+                "✓ Tặng 1 hộp trà (100g)",
+                "✓ Miễn phí ship toàn quốc",
+                "✓ Bảo hành 1 đổi 1 (lỗi do vận chuyển)"
+            ],
+            highlightSpec: true,
+            image: "source/combo-6hop.webp",
+            featured: false
+        },
         {
             id: "3-hop",
             name: "COMBO 3 HỘP TẶNG 1 HỘP",
@@ -401,17 +401,17 @@ const siteData = {
         { name: 'Nguyễn Thị Hương', location: 'Hà Nội', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Trần Mỹ Linh', location: 'TP. Hồ Chí Minh', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Lê Hoàng Nam', location: 'Đà Nẵng', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
-        { name: 'Phạm Thanh Thảo', location: 'Hải Phòng', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
+        { name: 'Phạm Thanh Thảo', location: 'Hải Phòng', product: 'COMBO 6 HỘP TẶNG 2 HỘP TẶNG 1 HỘP TRÀ (100G)' },
         { name: 'Vũ Quỳnh Anh', location: 'Cần Thơ', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Nguyễn Bảo Châu', location: 'Hà Nội', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Đặng Thùy Linh', location: 'Bắc Ninh', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
-        { name: 'Hoàng Minh Tuấn', location: 'Hải Phòng', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
+        { name: 'Hoàng Minh Tuấn', location: 'Hải Phòng', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Vũ Thị Xuân', location: 'Hà Nội', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Phan Ngọc Hà', location: 'Nghệ An', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Trần Ngọc Bảo', location: 'TP. Hồ Chí Minh', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Nguyễn Thị Mai', location: 'Thanh Hóa', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Bùi Phương Linh', location: 'Hà Nội', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
-        { name: 'Lê Thu Hoài', location: 'Hà Nội', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
+        { name: 'Lê Thu Hoài', location: 'Hà Nội', product: 'COMBO 6 HỘP TẶNG 2 HỘP TẶNG 1 HỘP TRÀ (100G)' },
         { name: 'Trương Tú Uyên', location: 'TP. Hồ Chí Minh', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Đinh Thị Hà', location: 'Hưng Yên', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
         { name: 'Đỗ Lan Anh', location: 'Hải Dương', product: 'COMBO ĐOÀN VIÊN - TẾT TRUNG THU' },
@@ -427,17 +427,17 @@ const siteData = {
 
         // === COMBO 3 HỘP TẶNG 1 HỘP ===
         { name: 'Nguyễn Văn An', location: 'Hà Nội', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
-        { name: 'Trần Văn Đức', location: 'TP. Hồ Chí Minh', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
+        { name: 'Trần Văn Đức', location: 'TP. Hồ Chí Minh', product: 'COMBO 6 HỘP TẶNG 2 HỘP TẶNG 1 HỘP TRÀ (100G)' },
         { name: 'Phạm Thị Linh', location: 'Đà Nẵng', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Lê Thị Hoa', location: 'Cần Thơ', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Đỗ Văn Hùng', location: 'Bắc Ninh', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Bùi Văn Long', location: 'Nghệ An', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Lê Thị Tiếm', location: 'Phú Thọ', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
-        { name: 'Lâm Sung', location: 'Đà Nẵng', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
+        { name: 'Lâm Sung', location: 'Đà Nẵng', product: 'COMBO 6 HỘP TẶNG 2 HỘP TẶNG 1 HỘP TRÀ (100G)' },
         { name: 'Vũ Quốc Huy', location: 'Cần Thơ', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Nguyễn Quỳnh Nga', location: 'Hà Nội', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Trương Thị Mai', location: 'Thanh Hóa', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
-        { name: 'Hoàng Thị Thúy', location: 'Nam Định', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
+        { name: 'Hoàng Thị Thúy', location: 'Nam Định', product: 'COMBO 6 HỘP TẶNG 2 HỘP TẶNG 1 HỘP TRÀ (100G)' },
         { name: 'Nguyễn Hải Long', location: 'Quảng Ninh', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Lê Thị Kim Oanh', location: 'Bình Dương', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
         { name: 'Dương Thị Hồng', location: 'Vĩnh Phúc', product: 'COMBO 3 HỘP TẶNG 1 HỘP' },
