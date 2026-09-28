@@ -903,10 +903,17 @@ const Components = {
 
         const featuredIndex = products.indexOf(featured);
 
-        const perks = [
-            { icon: '✅', text: 'Tổng nhận 7 hộp (84 quả)' },
+        // Lấy thông tin perks từ specs của sản phẩm featured
+        const specPerks = (featured.specs || []).map(spec => {
+            const s = spec.replace(/^✓\s*/, '').trim();
+            let icon = '✅';
+            if (s.toLowerCase().includes('ship') || s.toLowerCase().includes('vận chuyển')) icon = '🚚';
+            else if (s.toLowerCase().includes('tặng') || s.toLowerCase().includes('trà')) icon = '🎁';
+            else if (s.toLowerCase().includes('bảo hành') || s.toLowerCase().includes('đổi')) icon = '🛡️';
+            return { icon, text: s };
+        });
+        const perks = specPerks.length > 0 ? specPerks : [
             { icon: '🚚', text: 'Miễn phí vận chuyển toàn quốc' },
-            { icon: '🎁', text: 'Ưu đãi 7.100đ/quả' },
             { icon: '🛡️', text: 'Đổi mới 1:1 nếu vỡ do vận chuyển' }
         ];
 
@@ -925,7 +932,7 @@ const Components = {
                 <div class="quick-offer-card">
                     <div class="quick-offer-header-bar">
                         <div class="quick-offer-header-badge">
-                            <span class="quick-offer-badge-tag"><i class="fa-solid fa-fire"></i> COMBO BÁN CHẠY NHẤT · ƯU ĐÃI TẾT TRUNG THU</span>
+                            <span class="quick-offer-badge-tag"><i class="fa-solid fa-fire"></i> COMBO BÁN CHẠY NHẤT</span>
                         </div>
 
                         ${(qoCountdown && qoCountdown.enabled !== false) ? `
